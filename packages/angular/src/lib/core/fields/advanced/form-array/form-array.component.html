@@ -1,0 +1,55 @@
+<ng-container [formGroup]="group">
+  @if (field.label) {
+    <header>{{ field.label }}</header>
+  }
+
+  <div
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    [formArrayName]="field.key"
+    class="form-array form-array-{{ field.key }}"
+  >
+    @for (formGroup of array.controls; track formGroup; let i = $index) {
+      <div
+        cdkDrag
+        [formGroupName]="i"
+        class="form-array-row form-array-row-{{ i }}"
+      >
+        <div class="handle" cdkDragHandle>
+          <preforms-handle />
+        </div>
+
+        <preforms-dynamic-field-group
+          [fields]="fields(i)"
+          [control]="formGroup"
+          class="form-array-fields form-array-fields-{{ field.key }}"
+        />
+
+        @if (field.removeButton) {
+          <button
+            [disabled]="removeBtnDisabled"
+            class="form-array-remove-btn"
+            type="button"
+            (click)="remove(i)"
+          >
+            Remove
+          </button>
+        }
+      </div>
+    }
+
+    <div class="preforms-form-field-hint form-array-hint">{{ field.hint }}</div>
+    <div class="preforms-form-field-error form-array-error">{{ error }}</div>
+
+    @if (field.addButton) {
+      <button
+        [disabled]="addBtnDisabled"
+        class="form-array-add-btn"
+        type="button"
+        (click)="add()"
+      >
+        Add
+      </button>
+    }
+  </div>
+</ng-container>

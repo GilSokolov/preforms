@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022", "es2019", "dom"],
+    "outDir": "../../dist/out-tsc",
+    "declaration": true,
+    "declarationMap": true,
+    "types": [],
+    "moduleResolution": "bundler",
+    "paths": {
+      "@preforms/ts": ["../../packages/ts/dist"]
+    },
+    "experimentalDecorators": true
+  },
+  "include": ["src/**/*.ts"]
+}

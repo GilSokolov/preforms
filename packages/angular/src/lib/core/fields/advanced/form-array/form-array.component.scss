@@ -1,0 +1,19 @@
+label {
+  margin: 10px 0;
+  display: block;
+}
+
+.handle {
+  width: 18px;
+  preforms-handle {
+    display: none;
+  }
+}
+
+.form-array-row:hover {
+  .handle {
+    preforms-handle {
+      display: inline;
+    }
+  }
+}
