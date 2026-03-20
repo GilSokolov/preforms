@@ -1,0 +1,27 @@
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+import { FieldActionContext } from '@preforms/angular/core/services';
+import { FIELD_ACTIONS } from '@preforms/angular/core/tokens';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideNativeDateAdapter(),
+    provideRouter(routes),
+    {
+      provide: FIELD_ACTIONS,
+      useValue: {
+        increment: (ctx: FieldActionContext) => {
+          const val = ctx.control.value;
+          ctx.control.setValue(typeof val === 'number' ? Math.min(val + 1, ctx.field.max) : val);
+        },
+        decrement: (ctx: FieldActionContext) => {
+          const val = ctx.control.value;
+          ctx.control.setValue(typeof val === 'number' ? Math.max(val - 1, ctx.field.min) : val);
+        },
+      },
+    },
+  ],
+};

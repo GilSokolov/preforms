@@ -1,0 +1,10 @@
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  height: calc(100vh - 60px);
+}
+
+.content {
+  padding: 40px;
+  overflow: auto;
+}

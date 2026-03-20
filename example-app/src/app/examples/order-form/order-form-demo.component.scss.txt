@@ -1,0 +1,103 @@
+.product-form {
+  width: 400px;
+
+  .app-selection {
+    flex-direction: row;
+    align-items: center;
+
+    .label-text {
+      margin-left: 8px;
+    }
+
+    .description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-left: auto;
+    }
+  }
+
+  .preforms-input-field {
+    width: 100%;
+    border: 0;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .form-end {
+    height: 20px;
+  }
+
+  fieldset {
+    border: 1px solid #e6e9ef;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.25rem;
+    align-items: start;
+  }
+
+  .preforms-form-field {
+    border: 1px solid #cfd6e3;
+    border-radius: 6px;
+  }
+
+  .preforms-form-field:focus-within {
+    outline: 3px solid rgba(99, 102, 241, 0.12);
+    border-color: #6366f1;
+  }
+
+  .preforms-input-field:focus {
+    outline: none;
+    border: none;
+  }
+
+  .primary {
+    background-color: rgb(255, 187, 0);
+    padding: 0.6rem 0.6rem;
+    border: 1px solid #cfd6e3;
+    border-radius: 25px;
+    width: 200px;
+    font-weight: 700;
+  }
+
+  .amount-control {
+    border: 1px solid #cfd6e3;
+    border-radius: 25px;
+    .preforms-form-field-row {
+      display: flex;
+    }
+    .preforms-input-field {
+      border: 0;
+      width: 50px;
+      text-align: center;
+    }
+
+    .preforms-input-field::-webkit-inner-spin-button {
+      appearance: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      padding: 0.4rem;
+      height: 100%;
+    }
+  }
+
+  .preforms-radio-field-header {
+    display: none;
+  }
+
+  .textarea {
+    label {
+      margin-left: 10px;
+    }
+  }
+}

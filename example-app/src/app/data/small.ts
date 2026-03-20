@@ -1,0 +1,55 @@
+import {
+  Fieldset,
+  TextField,
+  EmailField,
+  PasswordField,
+  TextareaField,
+  FormGrid,
+  InputField,
+  SelectField,
+  FormFieldOption,
+  NumberField,
+  DetailsField,
+  DialogField,
+  FormRow,
+  FormField,
+  OutputField,
+  Name,
+  SubmitButton,
+  CloseDialogButton,
+  FieldArray,
+  FieldGroup,
+  CheckboxField,
+  RadioField,
+  CheckboxFieldGroup,
+} from '@preforms/ts';
+
+export const smallForm = [
+  new InputField({ key: 'test-checkbox', type: 'checkbox' }),
+  new InputField({ key: 'test-radio', type: 'radio', id: 'test-radio1', value: 'M' }),
+  new InputField({ key: 'test-radio', type: 'radio', id: 'test-radio2', value: 'F' }),
+  new SelectField({ key: 'list', options: ['a', 'b'] }),
+  new PasswordField({
+    hint: 'At least 8 characters. Use a mix of letters and numbers.',
+    minLength: 8,
+    autocomplete: 'off',
+    icons: [
+      {
+        name: '🎲',
+        side: 'left',
+        action: 'generatePassword',
+        title: 'Generate a random password',
+      },
+      {
+        name: '🔑',
+        side: 'left',
+        expressions: [
+          "field.type = field.type === 'text' ? 'password' : 'text'",
+          "icon.name = field.type === 'text' ? '👁️': '🔑'",
+        ],
+      },
+    ],
+  }),
+  new RadioField('gender', ['male', 'female']),
+  new CheckboxFieldGroup('notifications', ['email', 'sms', 'push'], ['email']),
+];

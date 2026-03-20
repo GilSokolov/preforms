@@ -1,0 +1,15 @@
+<div class="editor-wrap">
+  <preforms-dynamic-form (fieldChange)="onLangSelect($event)" [fields]="fields" />
+
+  <pre>
+    <code
+      #editableCode
+      class="hljs"
+      contenteditable="true"
+      spellcheck="false"
+      (input)="onInput()"
+      >
+      {{control.value}}
+    </code>
+  </pre>
+</div>
