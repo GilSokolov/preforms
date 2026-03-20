@@ -1,0 +1,1 @@
+import{a as o}from"./chunk-VZLZGCIG.js";import{a as r,b as i}from"./chunk-7DXB7J77.js";var s=class extends o{constructor(e="",n=!0){let t=typeof e=="string"?{value:e}:e;super(i(r({},t),{key:t.key||"password",type:"password",required:n}))}};export{s as a};

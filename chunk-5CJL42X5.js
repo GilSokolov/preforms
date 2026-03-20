@@ -1,0 +1,1 @@
+import{v as o}from"./chunk-TM3Y56KO.js";import{a as r}from"./chunk-7DXB7J77.js";var t=class extends o{kind="group";fields;key;constructor(e){super(r({component:"group"},e)),this.fields=e.fields,this.key=e.key}};export{t as a};

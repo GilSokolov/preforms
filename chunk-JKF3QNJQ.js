@@ -1,0 +1,1 @@
+import{a as t}from"./chunk-WY6FPKDK.js";import{a as i}from"./chunk-7DXB7J77.js";var r=class extends t{constructor(e="",o=!0){let s=typeof e=="string"?{value:e,required:o}:e;super(i({key:"username",aria:{"aria-label":"User Name"}},s))}};export{r as a};

@@ -1,0 +1,1 @@
+import{w as r}from"./chunk-TM3Y56KO.js";import{a as t,b as e}from"./chunk-7DXB7J77.js";var i=class extends r{constructor(o){let n=typeof o=="string"?{value:o}:o;super(e(t({},n),{component:"form-description"}))}};export{i as a};

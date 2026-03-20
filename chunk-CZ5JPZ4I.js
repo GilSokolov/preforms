@@ -1,0 +1,1 @@
+import{b as r}from"./chunk-CZYD44RT.js";import{a as i,b as n}from"./chunk-7DXB7J77.js";var o=class extends r{constructor(t,s,p=!1){let e=typeof t=="string"?{key:t,value:s,required:p}:t;super(n(i({},e),{key:e.key,component:"textarea",type:"text"}))}};export{o as a};

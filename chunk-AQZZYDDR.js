@@ -1,0 +1,1 @@
+import{b as o}from"./chunk-CZYD44RT.js";import{a as r,b as t}from"./chunk-7DXB7J77.js";var i=class extends o{constructor(e,m,p=!1){let n=typeof e=="string"?{key:e,value:m,required:p}:e;super(t(r({},n),{key:n.key,type:"number",component:"number"}))}};export{i as a};

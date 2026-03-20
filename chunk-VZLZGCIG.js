@@ -1,0 +1,1 @@
+import{b as i}from"./chunk-CZYD44RT.js";import{a as t,b as n}from"./chunk-7DXB7J77.js";var o=class extends i{type;constructor(e){super(n(t({},e),{component:"input"})),this.type=e.type}};export{o as a};
