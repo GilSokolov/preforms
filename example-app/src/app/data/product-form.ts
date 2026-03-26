@@ -21,7 +21,7 @@ import {
   FieldGroup,
   CheckboxField,
   RadioField,
-  CheckboxFieldGroup,
+  CheckboxGroupField,
   ImageField,
   FormImage,
   FormTitle,

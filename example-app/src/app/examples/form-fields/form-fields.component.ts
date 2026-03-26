@@ -8,13 +8,12 @@ import {
   NumberField,
   SelectField,
   FormFieldOption,
-  CheckboxFieldGroup,
+  CheckboxGroupField,
   InputField,
   TextareaField,
   OutputField,
   SubmitButton,
 } from '@preforms/ts';
-import { PasswordStrengthField } from 'src/app/custom-form-fields/PasswordStrengthField';
 
 @Component({
   selector: 'app-form-fields',
@@ -32,7 +31,6 @@ export class FormFieldsComponent {
     new PasswordField({
       key: 'password',
       hint: 'At least 8 characters',
-      icons: [{ name: '🎲', side: 'left', action: 'generatePassword' }],
     }),
     new NumberField({ key: 'age', min: 1, max: 120 }),
     new SelectField({
@@ -42,19 +40,10 @@ export class FormFieldsComponent {
         new FormFieldOption({ value: 'es', label: 'Spanish' }),
       ],
     }),
-    new CheckboxFieldGroup('notifications', ['email', 'sms'], ['email']),
+    new CheckboxGroupField('notifications', ['email', 'sms'], ['email']),
     new InputField({ type: 'range', key: 'volume', min: 0, max: 100 }),
     new InputField({ type: 'file', key: 'upload' }),
     new TextareaField({ key: 'bio', placeholder: 'Short bio', maxLength: 280 }),
-    new OutputField({ key: 'total', calculation: 'price + tax', for: ['price', 'tax'] }),
-    new PasswordStrengthField({
-      key: 'passwordStrength',
-      min: 0,
-      max: 4,
-      low: 1,
-      high: 4,
-      optimum: 4,
-    }),
     new SubmitButton('Save'),
   ];
 

@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormArray, FormControl, ReactiveFormsModule } from "@angular/forms";
 
-import { CheckboxFieldGroup } from "@preforms/ts";
+import { CheckboxGroupField } from "@preforms/ts";
 import { DynamicFormElement } from "../../core/decorators";
 import { BaseFieldComponent } from "../../core/fields";
 
@@ -19,6 +19,7 @@ import { BaseFieldComponent } from "../../core/fields";
             type="checkbox"
             [value]="option.value"
             (change)="update($event.target)"
+            [checked]="isSelected(option.value)"
           />
           <span class="label-text">{{ option.label }}</span>
           <span class="description">{{ option.description }}</span>
@@ -28,15 +29,27 @@ import { BaseFieldComponent } from "../../core/fields";
   `,
   imports: [ReactiveFormsModule],
 })
-export class CheckboxGroupFieldComponent extends BaseFieldComponent<
-  FormArray,
-  CheckboxFieldGroup<string>
-> {
+export class CheckboxGroupFieldComponent
+  extends BaseFieldComponent<FormArray, CheckboxGroupField<string>>
+  implements OnInit
+{
+  ngOnInit(): void {
+    if (this.field.value) {
+      this.field.value.forEach((value) =>
+        this.control.push(new FormControl(value)),
+      );
+    }
+  }
+
   update(checkbox: HTMLInputElement) {
     if (checkbox.checked) {
       this.control.push(new FormControl(checkbox.value));
     } else {
       this.control.removeAt(this.control.value.indexOf(checkbox.value));
     }
+  }
+
+  isSelected(value: any) {
+    return this.control.value.includes(value);
   }
 }

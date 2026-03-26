@@ -1,7 +1,7 @@
 .sidebar {
   width: 250px;
-  background-color: #f5f6fa;
   padding: 1rem;
+  background-color: #f5f6fa;
   border-right: 1px solid #e0e0e0;
   height: calc(100vh - 60px);
   overflow: auto;
@@ -23,9 +23,14 @@
         padding: 0.5rem 1rem;
         cursor: pointer;
         border-radius: 4px;
+        display: block;
 
         &:hover {
           background-color: #e0e0e0;
+        }
+
+        a {
+          display: block;
         }
       }
     }

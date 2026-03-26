@@ -26,13 +26,22 @@ export class FormFieldOption<T = any> {
 
   description?: string;
 
+  selected?: boolean;
+
   /**
    * Creates a new FormFieldOption.
    * @param valueOrConfig - Either a primitive value (`string | number`) or an object with `{ value, label }` for custom types
    * @param label - Optional label for primitive values
    */
   constructor(
-    valueOrConfig: T | { value: T; label: string; description?: string },
+    valueOrConfig:
+      | T
+      | {
+          value: T;
+          label: string;
+          description?: string;
+          selected?: boolean;
+        },
     label?: string,
   ) {
     if (
@@ -44,6 +53,7 @@ export class FormFieldOption<T = any> {
       this.value = valueOrConfig.value;
       this.label = valueOrConfig.label;
       this.description = valueOrConfig.description;
+      this.selected = valueOrConfig.selected;
     } else {
       // Only primitive values reach here
       this.value = valueOrConfig as T;

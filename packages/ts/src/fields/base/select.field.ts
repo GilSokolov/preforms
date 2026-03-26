@@ -26,7 +26,6 @@ type SelectConfig<T> = Omit<FormFieldConfig<T>, "component">;
 export class SelectField<
   T extends string | number = string,
 > extends FormField<T> {
-  // 🔹 overload signatures
   constructor(config: SelectConfig<T>, value?: T);
   constructor(key: string, options: FormFieldOptionConfig<T>, value?: T);
 

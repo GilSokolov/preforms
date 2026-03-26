@@ -21,7 +21,7 @@ import {
   FieldGroup,
   CheckboxField,
   RadioField,
-  CheckboxFieldGroup,
+  CheckboxGroupField,
 } from '@preforms/ts';
 
 export const smallForm = [
@@ -51,5 +51,5 @@ export const smallForm = [
     ],
   }),
   new RadioField('gender', ['male', 'female']),
-  new CheckboxFieldGroup('notifications', ['email', 'sms', 'push'], ['email']),
+  new CheckboxGroupField('notifications', ['email', 'sms', 'push'], ['email']),
 ];

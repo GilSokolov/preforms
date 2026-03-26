@@ -4,16 +4,26 @@ import { provideRouter } from '@angular/router';
 import { FieldActionContext } from '@preforms/angular/core/services';
 import { FIELD_ACTIONS } from '@preforms/angular/core/tokens';
 import { routes } from './app.routes';
-import { CUSTOM_LAZY_FIELDS } from './custom-form-fields';
 import { generatePassword } from './utils/generate-password';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { provideMarkdown } from 'ngx-markdown';
+import { provideDynamicFormLazyFields } from '@preforms/angular/core/providers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(withFetch()),
+    provideMarkdown({ loader: HttpClient }),
     provideBrowserGlobalErrorListeners(),
     provideNativeDateAdapter(),
     provideRouter(routes),
-    CUSTOM_LAZY_FIELDS,
+    provideDynamicFormLazyFields([
+      {
+        type: 'editor',
+        loader: () =>
+          import('./custom-form-fields/editor/editor.component').then((m) => m.EditorComponent),
+      },
+    ]),
     {
       provide: FIELD_ACTIONS,
       useValue: {
@@ -45,6 +55,7 @@ export const appConfig: ApplicationConfig = {
           ctx.control.setValue(newPwd);
         },
       },
-    }, provideClientHydration(withEventReplay()),
+    },
+    provideClientHydration(withEventReplay()),
   ],
 };

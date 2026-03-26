@@ -3,11 +3,11 @@ import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.compon
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
 import { FieldGroup, TextField } from '@preforms/ts';
 
-import { WizardFieldComponent } from './wizard';
+import { WizardFieldComponent } from './wizard.component';
 import { WizardField } from './wizard.field';
 
 @Component({
-  selector: 'app-extensible-form',
+  selector: 'app-extensible-form-wizard',
   template: `<preforms-dynamic-form (submittedData)="logData($event)" [fields]="fields" />`,
   imports: [DynamicFormComponent],
   encapsulation: ViewEncapsulation.None,

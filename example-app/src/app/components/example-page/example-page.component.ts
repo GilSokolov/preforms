@@ -1,46 +1,37 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
   ComponentRef,
   OnDestroy,
-  AfterViewInit,
   outputBinding,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 import { Subscription } from 'rxjs';
+import { ExampleDefinition } from 'src/app/example-registry';
 import { EXAMPLES } from 'src/app/examples';
-import { ExampleDefinition } from '../../example-registry';
-import { CodeTabsComponent } from '../code-tabs/code-tabs.component';
 import { DemoCardComponent } from '../demo-card/demo-card.component';
 import { ResultViewerComponent } from '../result-viewer/result-viewer.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { CodeTabsComponent } from '../code-tabs/code-tabs.component';
 
 @Component({
   selector: 'app-example-page',
   templateUrl: './example-page.component.html',
   styleUrl: './example-page.component.scss',
-  imports: [DemoCardComponent, CodeTabsComponent, ResultViewerComponent, MarkdownModule],
-  providers: [provideMarkdown()],
+  imports: [DemoCardComponent, ResultViewerComponent, MarkdownModule, CodeTabsComponent],
 })
 export class ExamplePageComponent implements AfterViewInit, OnDestroy {
-  ngAfterViewInit(): void {
-    // throw new Error('Method not implemented.');
-  }
-  ngOnDestroy(): void {
-    // throw new Error('Method not implemented.');
-  }
   @ViewChild('demoContainer', { read: ViewContainerRef })
   container!: ViewContainerRef;
 
   example!: ExampleDefinition;
 
-  formValue: any;
-  /*
   private compRef?: ComponentRef<any>;
 
- 
+  formValue: any;
 
   codeAssets: { label: string; language: string; content: string }[] = [];
 
@@ -81,5 +72,5 @@ export class ExamplePageComponent implements AfterViewInit, OnDestroy {
     this.container?.clear();
 
     this.sub?.unsubscribe();
-  }*/
+  }
 }

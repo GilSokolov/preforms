@@ -1,0 +1,23 @@
+<mat-stepper #stepper [linear]="true" orientation="vertical">
+  @for (field of field.fields; track $index; let i = $index) {
+    <mat-step [stepControl]="formGroup(field.key)" [label]="field.label">
+      <preforms-dynamic-field-group [fields]="field.fields" [control]="formGroup(field.key)" />
+
+      <div>
+        @if (i) {
+          <button matButton matStepperPrevious>Back</button>
+        }
+        <button matButton matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  }
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button matButton matStepperPrevious>Back</button>
+      <button matButton (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

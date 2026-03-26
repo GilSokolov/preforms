@@ -1,14 +1,13 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AsyncPipe, NgClass } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { SidenavService } from '../../services/sidenav.service';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
+  imports: [NgClass, AsyncPipe],
 })
 export class ToolbarComponent {
-  @Output() toggleTheme = new EventEmitter<void>();
-
-  onToggleTheme() {
-    this.toggleTheme.emit();
-  }
+  sidenav = inject(SidenavService);
 }

@@ -1,38 +1,43 @@
-// import { ExampleDefinition } from 'src/app/example-registry';
+import { ExampleDefinition } from 'src/app/example-registry';
+import { OrderFormDemoComponent } from './order-form-demo.component';
 
-// export const SIMPLE_FORM_EXAMPLE: ExampleDefinition = {
-//   id: 'order-form',
-//   title: 'Order Form',
-//   description: `
-//   Modern product/order form demo built with @preforms/angular featuring:
+import ts from './order-form-demo.component.ts.txt';
+import scss from './order-form-demo.component.scss.txt';
+import config from './app.config.ts.txt';
 
-//   - live price recalculation
-//   - dynamic submit button text
-//   - quantity stepper with emoji buttons
-//   - conditional field visibility/logic
-//   - fieldsets, rows & dividers
-//   - product image + rich typography
-//   - fully declarative field & layout definition
+export const SIMPLE_FORM_EXAMPLE: ExampleDefinition = {
+  id: 'order-form',
+  title: 'Order Form',
+  description: `
+  Modern product/order form demo built with @preforms/angular featuring:
 
-//   No handwritten template HTML or reactive forms boilerplate — everything is defined in clean TypeScript objects.
-//   `,
-//   loadComponent: () => import('./order-form-demo.component').then((m) => m.OrderFormDemoComponent),
-//   category: 'Examples',
-//   assets: [
-//     {
-//       label: 'TS',
-//       language: 'typescript',
-//       load: () => import('./order-form-demo.component.ts.txt').then((m) => m.default),
-//     },
-//     {
-//       label: 'SCSS',
-//       language: 'scss',
-//       load: () => import('./order-form-demo.component.scss.txt').then((m) => m.default),
-//     },
-//     {
-//       label: 'App Config',
-//       language: 'typescript',
-//       load: () => import('./app.config.ts.txt').then((m) => m.default),
-//     },
-//   ],
-// };
+  - live price recalculation
+  - dynamic submit button text
+  - quantity stepper with emoji buttons
+  - conditional field visibility/logic
+  - fieldsets, rows & dividers
+  - product image + rich typography
+  - fully declarative field & layout definition
+
+  No handwritten template HTML or reactive forms boilerplate — everything is defined in clean TypeScript objects.
+  `,
+  component: OrderFormDemoComponent,
+  category: 'Examples',
+  assets: [
+    {
+      label: 'TS',
+      language: 'typescript',
+      content: ts,
+    },
+    {
+      label: 'SCSS',
+      language: 'css',
+      content: scss,
+    },
+    {
+      label: 'App Config',
+      language: 'typescript',
+      content: config,
+    },
+  ],
+};

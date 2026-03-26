@@ -1,5 +1,5 @@
 <app-toolbar></app-toolbar>
-<div class="layout">
+<div class="layout" [ngClass]="{ open: service.isOpen$ | async }">
   <app-sidebar></app-sidebar>
 
   <main class="content">

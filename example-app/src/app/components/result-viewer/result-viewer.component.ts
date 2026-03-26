@@ -1,15 +1,15 @@
 import { JsonPipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { HighlightDirective } from 'src/app/directives/highlight.directive';
+import { MarkdownModule, LanguagePipe } from 'ngx-markdown';
 
 @Component({
   selector: 'result-viewer',
   template: `
     @if (value) {
-      <!-- <pre><code appHighlight="{{value|json}}" language="json"></code></pre> -->
+      <markdown [data]="value | json | language: 'javascript'"></markdown>
     }
   `,
-  // imports: [JsonPipe],
+  imports: [JsonPipe, MarkdownModule, LanguagePipe],
 })
 export class ResultViewerComponent {
   @Input() value: any;

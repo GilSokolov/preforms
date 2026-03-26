@@ -1,6 +1,19 @@
-import { FormFieldOption, FormFieldConfig, FieldArray } from "../../core";
+import {
+  FieldArray,
+  FieldArrayConfig,
+  FormFieldOption,
+  FormFieldOptionConfig,
+} from "../../core";
 
 import { CheckboxField } from "./checkbox";
+
+export interface CheckboxGroupFieldConfig<T> extends Partial<
+  FieldArrayConfig<T>
+> {
+  key: string;
+  options: FormFieldOptionConfig<T>;
+  value?: T[];
+}
 
 /**
  * A group of checkboxes
@@ -9,31 +22,35 @@ import { CheckboxField } from "./checkbox";
  *
  * Example:
  * ```ts
- * new CheckboxFieldGroup("interests", ["music", "sports"], "music");
- * new CheckboxFieldGroup("interests", [new FormFieldOption(1, "Music")]);
- * new CheckboxFieldGroup("interests", [
+ * new CheckboxGroupField("interests", ["music", "sports"], ["music"]);
+ * new CheckboxGroupField("interests", [new FormFieldOption(1, "Music")]);
+ * new CheckboxGroupField("interests", [
  *   { value: "music", label: "Music" },
  *   { value: "sports", label: "Sports" }
  * ]);
  * ```
  */
-export class CheckboxFieldGroup<T = string> extends FieldArray<T> {
+export class CheckboxGroupField<T = string> extends FieldArray<T> {
+  constructor(config: CheckboxGroupFieldConfig<T>);
+  constructor(key: string, options: string[] | FormFieldOption[], value?: T[]);
   constructor(
-    key: string,
-    options: string[] | FormFieldOption[],
+    keyOrConfig: string | CheckboxGroupFieldConfig<T>,
+    options?: string[] | FormFieldOption[],
     value?: T[],
-    config: Partial<FormFieldConfig<T[]>> = {},
   ) {
-    const fields: any = options
-      .map((o) => new FormFieldOption(o))
-      .map((o) => new CheckboxField<T>(o.value, o.value));
+    const config =
+      typeof keyOrConfig === "string"
+        ? {
+            key: keyOrConfig,
+            value,
+            options,
+          }
+        : keyOrConfig;
 
-    super({
-      ...config,
-      key,
-      fields,
-      value,
-      component: "checkbox-group",
-    });
+    const fields = (config.options as string[] | FormFieldOption[])
+      .map((o) => new FormFieldOption(o))
+      .map((o: FormFieldOption) => new CheckboxField<T>(o.value, o.value));
+
+    super({ ...config, fields, component: "checkbox-group" });
   }
 }

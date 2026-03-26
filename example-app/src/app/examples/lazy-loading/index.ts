@@ -1,47 +1,32 @@
-// import { ExampleDefinition } from 'src/app/example-registry';
+import { ExampleDefinition } from 'src/app/example-registry';
+import { LazyLoadingFieldsComponent } from './lazy-loading.component';
 
-// export const LAZY_LOADING_FIELDS_EXAMPLE: ExampleDefinition = {
-//   id: 'lazy-loading-fields',
-//   title: 'Lazy Loaded Fields',
-//   description:
-//     'Demonstrates lazy-loading custom fields. The editor field component is loaded only when required.',
-//   category: 'Extensibility',
-//   loadComponent: () => import('./lazy-loading.component').then((m) => m.LazyLoadingFieldsComponent),
-//   assets: [
-//     {
-//       label: 'TS',
-//       language: 'typescript',
-//       load: () => import('./lazy-loading.component.ts.txt').then((m) => m.default),
-//     },
+import ts from './lazy-loading.component.ts.txt';
+import editor from './editor.component.ts.txt';
+import config from './app.config.ts.txt';
 
-//     {
-//       label: 'Extened Field',
-//       language: 'typescript',
-//       load: () => import('./editor.ts.txt').then((m) => m.default),
-//     },
-
-//     {
-//       label: 'App Config',
-//       language: 'typescript',
-//       load: () => import('./app.config.ts.txt').then((m) => m.default),
-//     },
-
-//     {
-//       label: 'Editor ts',
-//       language: 'typescript',
-//       load: () => import('./editor.component.ts.txt').then((m) => m.default),
-//     },
-
-//     {
-//       label: 'Editor scss',
-//       language: 'scss',
-//       load: () => import('./editor.component.scss.txt').then((m) => m.default),
-//     },
-
-//     {
-//       label: 'Editor html',
-//       language: 'html',
-//       load: () => import('./editor.component.html.txt').then((m) => m.default),
-//     },
-//   ],
-// };
+export const LAZY_LOADING_FIELDS_EXAMPLE: ExampleDefinition = {
+  id: 'lazy-loading-fields',
+  title: 'Lazy Loaded Fields',
+  description:
+    'Demonstrates lazy-loading custom fields. The editor field component is loaded only when required.',
+  category: 'Extensibility',
+  component: LazyLoadingFieldsComponent,
+  assets: [
+    {
+      label: 'TS',
+      language: 'typescript',
+      content: ts,
+    },
+    {
+      label: 'editor.component.ts',
+      language: 'typescript',
+      content: editor,
+    },
+    {
+      label: 'app.config.ts',
+      language: 'typescript',
+      content: config,
+    },
+  ],
+};

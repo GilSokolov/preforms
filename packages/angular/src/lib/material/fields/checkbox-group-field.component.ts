@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormArray, FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { CheckboxFieldGroup } from "@preforms/ts";
+import { CheckboxGroupField } from "@preforms/ts";
 import { DynamicFormElement } from "../../core/decorators";
 import { BaseFieldComponent } from "../../core/fields";
 
@@ -27,7 +27,7 @@ import { BaseFieldComponent } from "../../core/fields";
 })
 export class CheckboxGroupFieldComponent extends BaseFieldComponent<
   FormArray,
-  CheckboxFieldGroup
+  CheckboxGroupField
 > {
   update(checked: boolean, i: number, value: any) {
     if (checked) {

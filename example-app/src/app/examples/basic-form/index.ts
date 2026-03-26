@@ -1,6 +1,6 @@
 import { ExampleDefinition } from 'src/app/example-registry';
 import { BasicFormComponent } from './basic-form.component';
-import introMd from './basic-form.component.ts.txt';
+import content from './basic-form.component.ts.txt';
 
 export const BASIC_FORM_EXAMPLE: ExampleDefinition = {
   id: 'basic-form',
@@ -12,7 +12,7 @@ export const BASIC_FORM_EXAMPLE: ExampleDefinition = {
     {
       label: 'TS',
       language: 'typescript',
-      content: introMd,
+      content,
     },
   ],
 };

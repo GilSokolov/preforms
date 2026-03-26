@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { AsyncPipe, NgClass } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ExampleDefinition } from 'src/app/example-registry';
-import { EXAMPLES } from 'src/app/examples';
+import { ExampleDefinition } from '../../example-registry';
+import { EXAMPLES } from '../../examples';
+import { SidenavService } from '../../services/sidenav.service';
 interface CategoryGroup {
   name: string;
   examples: ExampleDefinition[];
@@ -10,9 +12,10 @@ interface CategoryGroup {
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass, AsyncPipe],
 })
 export class SidebarComponent {
+  sidenav = inject(SidenavService);
   groupedExamples: CategoryGroup[] = [];
 
   constructor() {

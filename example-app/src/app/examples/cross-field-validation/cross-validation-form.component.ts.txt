@@ -2,14 +2,12 @@ import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/cor
 import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
 import {
-  PasswordField,
-  TriggerAction,
-  TextField,
-  InputField,
-  NumberField,
-  SubmitButton,
-  EmailField,
   DateField,
+  EmailField,
+  NumberField,
+  PasswordField,
+  SubmitButton,
+  TriggerAction,
 } from '@preforms/ts';
 
 @Component({
@@ -23,11 +21,8 @@ export class CrossValidationFormComponent {
   @Output() formChange = new EventEmitter<any>();
 
   fields = [
-    // ------------------------
-    // PASSWORD CONFIRMATION
-    // ------------------------
     new PasswordField({
-      minLength: 8,
+      minLength: 4,
       hint: 'At least 8 characters',
     }),
 
@@ -47,9 +42,6 @@ export class CrossValidationFormComponent {
       ],
     }),
 
-    // ------------------------
-    // EMAIL CONFIRMATION
-    // ------------------------
     new EmailField({
       placeholder: 'you@example.com',
     }),
@@ -70,9 +62,6 @@ export class CrossValidationFormComponent {
       ],
     }),
 
-    // ------------------------
-    // DATE RANGE VALIDATION
-    // ------------------------
     new DateField({
       key: 'startDate',
       label: 'Start date',
@@ -95,9 +84,6 @@ export class CrossValidationFormComponent {
       ],
     }),
 
-    // ------------------------
-    // MINIMUM ORDER VALIDATION
-    // ------------------------
     new NumberField({
       key: 'orderAmount',
       label: 'Order amount ($)',
