@@ -1,1 +1,0 @@
-import{b as n}from"./chunk-CZYD44RT.js";import{a as o,b as t}from"./chunk-7DXB7J77.js";var i=class extends n{constructor(e,r){let p=typeof e=="string"?{key:e,value:r}:e;super(t(o({},p),{type:"checkbox",component:"checkbox"}))}};export{i as a};

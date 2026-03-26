@@ -1,1 +1,0 @@
-import{b as t}from"./chunk-CZYD44RT.js";import{a as i,b as n}from"./chunk-7DXB7J77.js";var r=class extends t{constructor(o,e,s){let F=typeof o=="string"?{key:o,options:e,value:s}:o;super(n(i({},F),{component:"radio"}))}};export{r as a};

@@ -1,1 +1,0 @@
-import{a as n}from"./chunk-UZDJE37F.js";import{a as e,b as t}from"./chunk-7DXB7J77.js";var i=class extends n{gap;position;constructor(o,s={}){let r=Array.isArray(o)?t(e({},s),{fields:o}):o;super(t(e({},r),{component:"form-row"})),this.gap=r.gap??"5px",this.position=r.position??"start"}};export{i as a};

@@ -1,1 +1,0 @@
-import{v as o}from"./chunk-TM3Y56KO.js";import{a as r}from"./chunk-7DXB7J77.js";var t=class extends o{kind="wrapper";fields;constructor(e){super(r({component:"wrapper"},e)),this.fields=e.fields}};export{t as a};

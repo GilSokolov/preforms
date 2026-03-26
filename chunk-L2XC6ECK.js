@@ -1,1 +1,0 @@
-import{b as i}from"./chunk-CZYD44RT.js";import{a as t,b as e}from"./chunk-7DXB7J77.js";var r=class extends i{constructor(o,s,c){let n=typeof o=="string"?{key:o,value:c,options:s}:o;super(e(t({},n),{key:n.key,component:"select"}))}};export{r as a};
