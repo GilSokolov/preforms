@@ -1,7 +1,7 @@
 <mat-tab-group mat-stretch-tabs="false" dynamicHeight>
   @for (asset of codeAssets; track asset.label) {
     <mat-tab [label]="asset.label">
-      <pre><code [appHighlight]="asset.content" [language]="asset.language"></code></pre>
+      <!-- <pre><code [appHighlight]="asset.content" [language]="asset.language"></code></pre> -->
     </mat-tab>
   }
 </mat-tab-group>

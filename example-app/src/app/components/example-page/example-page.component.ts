@@ -3,7 +3,7 @@ import {
   Component,
   ComponentRef,
   OnDestroy,
-  OnInit,
+  AfterViewInit,
   outputBinding,
   ViewChild,
   ViewContainerRef,
@@ -24,15 +24,23 @@ import { ResultViewerComponent } from '../result-viewer/result-viewer.component'
   imports: [DemoCardComponent, CodeTabsComponent, ResultViewerComponent, MarkdownModule],
   providers: [provideMarkdown()],
 })
-export class ExamplePageComponent implements OnInit, OnDestroy {
+export class ExamplePageComponent implements AfterViewInit, OnDestroy {
+  ngAfterViewInit(): void {
+    // throw new Error('Method not implemented.');
+  }
+  ngOnDestroy(): void {
+    // throw new Error('Method not implemented.');
+  }
   @ViewChild('demoContainer', { read: ViewContainerRef })
   container!: ViewContainerRef;
 
   example!: ExampleDefinition;
 
+  formValue: any;
+  /*
   private compRef?: ComponentRef<any>;
 
-  formValue: any;
+ 
 
   codeAssets: { label: string; language: string; content: string }[] = [];
 
@@ -43,12 +51,10 @@ export class ExamplePageComponent implements OnInit, OnDestroy {
     private cd: ChangeDetectorRef,
   ) {}
 
-  async loadComponent() {
-    const component = await this.example.loadComponent();
-
+  loadComponent() {
     this.container.clear();
 
-    this.compRef = this.container.createComponent(component, {
+    this.compRef = this.container.createComponent(this.example.component, {
       bindings: [
         outputBinding('formChange', (value) => {
           this.formValue = value;
@@ -57,29 +63,12 @@ export class ExamplePageComponent implements OnInit, OnDestroy {
     });
   }
 
-  async loadAssets() {
-    this.codeAssets = await Promise.all(
-      this.example.assets.map(async (asset) => {
-        const content = await asset.load();
-        return {
-          label: asset.label,
-          language: asset.language,
-          content,
-        };
-      }),
-    );
-  }
-
-  ngOnInit() {
+  ngAfterViewInit() {
     this.sub = this.route.params.subscribe((params) => {
       this.example = EXAMPLES.find((e) => e.id === params['id'])!;
-
-      // Then load component and assets
-      Promise.all([this.loadComponent(), this.loadAssets()]).then(() => {
-        // TO avoid NG0100. detect changes again after all async updates
-        this.formValue = undefined;
-        this.cd.detectChanges();
-      });
+      this.formValue = undefined;
+      this.cd.detectChanges();
+      this.loadComponent();
     });
   }
 
@@ -92,5 +81,5 @@ export class ExamplePageComponent implements OnInit, OnDestroy {
     this.container?.clear();
 
     this.sub?.unsubscribe();
-  }
+  }*/
 }

@@ -5,7 +5,7 @@ import { HighlightDirective } from '../../directives/highlight.directive';
 @Component({
   selector: 'code-tabs',
   templateUrl: './code-tabs.component.html',
-  imports: [MatTabsModule, HighlightDirective],
+  imports: [MatTabsModule],
 })
 export class CodeTabsComponent {
   @Input() codeAssets: { label: string; language: string; content: string }[] = [];

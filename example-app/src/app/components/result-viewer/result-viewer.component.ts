@@ -6,10 +6,10 @@ import { HighlightDirective } from 'src/app/directives/highlight.directive';
   selector: 'result-viewer',
   template: `
     @if (value) {
-      <pre><code appHighlight="{{value|json}}" language="json"></code></pre>
+      <!-- <pre><code appHighlight="{{value|json}}" language="json"></code></pre> -->
     }
   `,
-  imports: [JsonPipe, HighlightDirective],
+  // imports: [JsonPipe],
 })
 export class ResultViewerComponent {
   @Input() value: any;

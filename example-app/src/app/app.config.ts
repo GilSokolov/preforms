@@ -6,6 +6,7 @@ import { FIELD_ACTIONS } from '@preforms/angular/core/tokens';
 import { routes } from './app.routes';
 import { CUSTOM_LAZY_FIELDS } from './custom-form-fields';
 import { generatePassword } from './utils/generate-password';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -44,6 +45,6 @@ export const appConfig: ApplicationConfig = {
           ctx.control.setValue(newPwd);
         },
       },
-    },
+    }, provideClientHydration(withEventReplay()),
   ],
 };

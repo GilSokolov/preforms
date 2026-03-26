@@ -7,7 +7,9 @@
     "build": "npm run sync:examples && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "sync:examples": "node scripts/copy-to-txt.js"
+    "sync:examples": "node scripts/copy-to-txt.js",
+    "serve:ssr:example-app": "node dist/example-app/server/server.mjs",
+    "deploy:docs": "npx angular-cli-ghpages --dir=dist/example-app/browser"
   },
   "prettier": {
     "printWidth": 100,
@@ -31,7 +33,10 @@
     "@angular/forms": "^21.1.0",
     "@angular/material": "^21.1.5",
     "@angular/platform-browser": "^21.1.0",
+    "@angular/platform-server": "^21.1.0",
     "@angular/router": "^21.1.0",
+    "@angular/ssr": "^21.1.3",
+    "express": "^5.1.0",
     "marked": "^17.0.4",
     "ngx-markdown": "^21.1.0",
     "prismjs": "^1.30.0",
@@ -42,6 +47,8 @@
     "@angular/build": "^21.1.4",
     "@angular/cli": "^21.1.4",
     "@angular/compiler-cli": "^21.1.0",
+    "@types/express": "^5.0.1",
+    "@types/node": "^20.17.19",
     "gh-pages": "^6.3.0",
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",
