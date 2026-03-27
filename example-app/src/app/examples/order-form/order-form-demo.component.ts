@@ -68,7 +68,7 @@ export class OrderFormDemoComponent {
   fields = [
     new NumberField({ key: 'id', value: 2316, hidden: true }),
     new FormImage({
-      src: '/chickengarlic.jpg',
+      src: 'chickengarlic.jpg',
       width: '400px',
     }),
     new FormTitle('Garlic Knot Chicken Breasts'),
