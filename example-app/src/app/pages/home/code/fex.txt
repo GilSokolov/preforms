@@ -1,0 +1,8 @@
+export class PasswordStrengthField extends NumberField {
+  constructor() {
+    super({
+      key: 'strength',
+      component: 'password-strength',
+    });
+  }
+}

@@ -1,0 +1,7 @@
+@DynamicFormElement({
+  component: 'password-strength',
+})
+export class PasswordStrengthComponent extends BaseFieldComponent<
+  FormControl<number>,
+  PasswordStrengthField
+> {}

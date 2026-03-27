@@ -6,3 +6,4 @@ export * from "./field-option-group";
 export * from "./field-group";
 export * from "./form-field";
 export * from "./field-wrapper";
+export * from "./field-button";

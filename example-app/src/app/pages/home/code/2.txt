@@ -1,0 +1,14 @@
+new PasswordField({
+  key: 'confirmPassword',
+  triggers: [
+    {
+      on: 'input',
+      action: TriggerAction.VALIDATE,
+      validation: {
+        operator: 'eq',
+        compareTo: 'password',
+        message: 'must match password'
+      }
+    }
+  ]
+})

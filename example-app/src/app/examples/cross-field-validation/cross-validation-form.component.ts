@@ -22,7 +22,7 @@ export class CrossValidationFormComponent {
 
   fields = [
     new PasswordField({
-      minLength: 4,
+      minLength: 8,
       hint: 'At least 8 characters',
     }),
 

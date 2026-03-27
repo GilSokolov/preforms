@@ -1,5 +1,4 @@
 export * from "./address.field";
-export * from "../../core/models/field-button";
 export * from "./city.field";
 export * from "./close-dialog-button.field";
 export * from "./confirm-button.field";

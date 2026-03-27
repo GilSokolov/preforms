@@ -1,0 +1,2 @@
+new NumberField({ key: 'amount' })
+new InputField({ key: 'username' })

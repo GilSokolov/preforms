@@ -9,13 +9,13 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MarkdownModule } from 'ngx-markdown';
 import { Subscription } from 'rxjs';
+import { CodeTabsComponent } from 'src/app/components/code-tabs/code-tabs.component';
+import { DemoCardComponent } from 'src/app/components/demo-card/demo-card.component';
+import { ResultViewerComponent } from 'src/app/components/result-viewer/result-viewer.component';
 import { ExampleDefinition } from 'src/app/example-registry';
 import { EXAMPLES } from 'src/app/examples';
-import { DemoCardComponent } from '../demo-card/demo-card.component';
-import { ResultViewerComponent } from '../result-viewer/result-viewer.component';
-import { MarkdownModule } from 'ngx-markdown';
-import { CodeTabsComponent } from '../code-tabs/code-tabs.component';
 
 @Component({
   selector: 'app-example-page',

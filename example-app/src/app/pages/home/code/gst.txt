@@ -1,0 +1,4 @@
+fields = [
+  new EmailField(),
+  new NumberField({ key: 'amount' })
+];

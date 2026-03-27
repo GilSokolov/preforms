@@ -1,0 +1,84 @@
+<h1>Preforms</h1>
+<h2>A class-based form modeling system for Angular</h2>
+<p>Build forms as real domain models — not configuration objects.</p>
+<p>
+  Preforms gives you a strongly-typed form modeling system with a built-in trigger engine for
+  cross-field validation, behavior and a domain-ready field library.
+</p>
+
+<h2>Why Preforms</h2>
+<p>Most Angular form solutions treat forms as configuration:</p>
+<ul>
+  <li>JSON schemas</li>
+  <li>Config objects</li>
+  <li>Template-driven mappings</li>
+</ul>
+<p>Preforms takes a different approach:</p>
+<blockquote>Forms are object models with behavior.</blockquote>
+<p>
+  You define forms using classes like <strong>FormField</strong>, <strong>FieldGroup</strong>,
+  <strong>NumberField</strong>, and compose them like a real domain model.
+</p>
+
+<h2>Get Started in 30 Seconds</h2>
+
+<p>Install:</p>
+<markdown data="TBD" />
+<p>Define a form:</p>
+<markdown [data]="code[7] | language: 'typescript'" />
+<p>Render (Angular adapter handles UI automatically):</p>
+<markdown [data]="code[8] | language: 'html'" />
+
+<p>
+  Preforms models are rendered automatically by the Angular adapter. <br />
+  No manual form wiring is required — models are interpreted into reactive forms and UI components.
+</p>
+
+<h3>1. Form Modeling System</h3>
+<p>Define forms using strongly-typed classes.</p>
+<markdown [data]="code[0] | language: 'typescript'" />
+
+<h3>2. Trigger Engine</h3>
+<p>Add cross-field behavior directly inside field definitions.</p>
+<markdown [data]="code[1] | language: 'typescript'" />
+
+<h3>3. Domain Field Library (DX layer)</h3>
+<p>Preforms ships with a rich set of domain-ready field primitives.</p>
+<strong>Semantic Fields</strong>
+<markdown [data]="code[2] | language: 'typescript'" />
+<p>These fields include sensible defaults, structure, and validation.</p>
+
+<strong>Domain Fields</strong>
+<markdown [data]="code[3] | language: 'typescript'" />
+<h2>Smart Defaults vs Explicit Control</h2>
+<p>Preforms balances minimal configuration with explicit identity.</p>
+<p>Intent-based fields (no key required)</p>
+<markdown [data]="code[9] | language: 'typescript'" />
+<p>Data-bound fields (explicit identity required)</p>
+<markdown [data]="code[10] | language: 'typescript'" />
+
+<h2>Extensible UI System</h2>
+<p>You can create your own strongly-typed fields.</p>
+<markdown [data]="code[11] | language: 'typescript'" />
+<p>Preforms allows custom field components to be plugged directly into the form model.</p>
+<strong>Custom Field Components</strong>
+<p>Preforms lets you create fully custom UI field components.</p>
+<markdown [data]="code[5] | language: 'typescript'" />
+<strong>Bind it to a field model</strong>
+<markdown [data]="code[6] | language: 'typescript'" />
+
+<h2>What makes Preforms different</h2>
+<ul>
+  <li>Strongly typed form models</li>
+  <li>Object-oriented field system</li>
+  <li>Built-in cross-field validation</li>
+  <li>Declarative trigger engine</li>
+  <li>No JSON schema required</li>
+</ul>
+
+<h2>Example</h2>
+
+<markdown [data]="code[4] | language: 'typescript'" />
+
+<br />
+<br />

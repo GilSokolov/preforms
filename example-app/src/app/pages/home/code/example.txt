@@ -1,0 +1,22 @@
+fields = [
+  new EmailField(),
+
+  new PasswordField(),
+
+  new PasswordField({
+    key: 'confirmPassword',
+    triggers: [
+      {
+        on: 'blur',
+        action: TriggerAction.VALIDATE,
+        validation: {
+          operator: 'eq',
+          compareTo: 'password',
+          message: 'must match password'
+        }
+      }
+    ]
+  }),
+
+  new Address()
+];
