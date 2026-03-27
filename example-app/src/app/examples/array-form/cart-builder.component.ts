@@ -71,6 +71,7 @@ export class CartBuilderComponent {
               calculation: 'Number(items[$index].price) * Number(items[$index].qty)',
               for: ['price[$index]', 'qty[$index]'],
               disabled: true,
+              className: 'subtotal',
             }),
           ],
         }),
@@ -78,8 +79,8 @@ export class CartBuilderComponent {
 
       aggregates: [
         {
-          action: 'product',
-          field: ['price', 'qty'],
+          action: 'product', // Special action: Σ(price × qty) across all items
+          field: ['price', 'qty'], // Fields to multiply per item
           value: 2000,
           operator: 'lte',
           message: 'Cart total cannot exceed $2000',

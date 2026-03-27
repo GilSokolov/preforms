@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
 import { SubmitButton } from '@preforms/ts';
-import { EditorField } from '../../custom-form-fields/editor/editor.component';
+import { EditorField } from './editor';
 
 @Component({
   selector: 'app-lazy-loading',

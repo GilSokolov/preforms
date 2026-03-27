@@ -24,7 +24,7 @@ function matchesFieldPattern(pattern: string, id: string): boolean {
 @Component({
   selector: "preforms-output-field",
   template: `
-    <label>
+    <label [class]="field.className">
       {{ field.label }}
       <output [for]="field.for.join(',')">{{ output }}</output>
     </label>
