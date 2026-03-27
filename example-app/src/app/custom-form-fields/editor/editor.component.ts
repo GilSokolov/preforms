@@ -19,6 +19,7 @@ export class EditorComponent
   extends BaseFieldComponent<FormControl<string>, EditorField>
   implements OnInit
 {
+  // lazy load css
   ngOnInit() {
     const id = 'quill-theme';
 
