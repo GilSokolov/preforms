@@ -16,173 +16,316 @@
 </style><style ng-app-id="ng">.mat-ripple{overflow:hidden;position:relative}.mat-ripple:not(:empty){transform:translateZ(0)}.mat-ripple.mat-ripple-unbounded{overflow:visible}.mat-ripple-element{position:absolute;border-radius:50%;pointer-events:none;transition:opacity,transform 0ms cubic-bezier(0, 0, 0.2, 1);transform:scale3d(0, 0, 0);background-color:var(--mat-ripple-color, color-mix(in srgb, var(--mat-sys-on-surface) 10%, transparent))}@media(forced-colors: active){.mat-ripple-element{display:none}}.cdk-drag-preview .mat-ripple-element,.cdk-drag-placeholder .mat-ripple-element{display:none}
 </style><style ng-app-id="ng">.mat-focus-indicator{position:relative}.mat-focus-indicator::before{top:0;left:0;right:0;bottom:0;position:absolute;box-sizing:border-box;pointer-events:none;display:var(--mat-focus-indicator-display, none);border-width:var(--mat-focus-indicator-border-width, 3px);border-style:var(--mat-focus-indicator-border-style, solid);border-color:var(--mat-focus-indicator-border-color, transparent);border-radius:var(--mat-focus-indicator-border-radius, 4px)}.mat-focus-indicator:focus-visible::before{content:""}@media(forced-colors: active){html{--mat-focus-indicator-display: block}}
 </style><style ng-app-id="ng">.mat-mdc-tab-body{top:0;left:0;right:0;bottom:0;position:absolute;display:block;overflow:hidden;outline:0;flex-basis:100%}.mat-mdc-tab-body.mat-mdc-tab-body-active{position:relative;overflow-x:hidden;overflow-y:auto;z-index:1;flex-grow:1}.mat-mdc-tab-group.mat-mdc-tab-group-dynamic-height .mat-mdc-tab-body.mat-mdc-tab-body-active{overflow-y:hidden}.mat-mdc-tab-body-content{height:100%;overflow:auto;transform:none;visibility:hidden}.mat-tab-body-animating>.mat-mdc-tab-body-content,.mat-mdc-tab-body-active>.mat-mdc-tab-body-content{visibility:visible}.mat-tab-body-animating>.mat-mdc-tab-body-content{min-height:1px}.mat-mdc-tab-group-dynamic-height .mat-mdc-tab-body-content{overflow:hidden}.mat-tab-body-content-can-animate{transition:transform var(--mat-tab-animation-duration) 1ms cubic-bezier(0.35, 0, 0.25, 1)}.mat-mdc-tab-body-wrapper._mat-animation-noopable .mat-tab-body-content-can-animate{transition:none}.mat-tab-body-content-left{transform:translate3d(-100%, 0, 0)}.mat-tab-body-content-right{transform:translate3d(100%, 0, 0)}
-</style></head>
+</style><style ng-app-id="ng">.pokemon .grid{max-width:400px;padding:20px;display:grid;grid-template-areas:"a a" "b b";gap:10px;grid-auto-rows:40px 300px;align-items:end}.pokemon .hit .preforms-input-field{all:unset}.pokemon .indicator .preforms-input-field{max-width:100%}.pokemon .primary{background-color:#fb0;padding:.6rem 2rem;border:1px solid #cfd6e3;border-radius:25px;font-weight:700;margin-top:30px;display:inline-block}
+</style><style ng-app-id="ng">.close-btn[_ngcontent-ng-c1117299657]{display:flex;justify-content:end}.close-btn[_ngcontent-ng-c1117299657]   button[_ngcontent-ng-c1117299657]{background:none;border:none;padding:0;color:inherit;font:inherit;cursor:pointer}</style><style ng-app-id="ng">.form-divider[_ngcontent-ng-c2176329426]{display:flex;align-items:center;width:100%}.form-divider[_ngcontent-ng-c2176329426]:before, .form-divider[_ngcontent-ng-c2176329426]:after{content:"";flex:1;height:1px;background:var(--divider-color, #e5e7eb)}.form-divider__label[_ngcontent-ng-c2176329426]{font-size:.875rem;color:var(--divider-label-color, #6b7280);white-space:nowrap}</style><style ng-app-id="ng">.preforms-image[_ngcontent-ng-c3290052894]{margin:.5rem 0 1rem}.preforms-image[_ngcontent-ng-c3290052894]   img[_ngcontent-ng-c3290052894]{max-width:100%;height:auto;display:block;border-radius:var(--form-image-radius, 4px)}</style></head>
   <body><!--nghm--><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
 </script><script>window.__jsaction_bootstrap(document.body,"ng",["click","submit","input","focusout","focusin","change","compositionstart","compositionend","mousedown","touchend","keydown"],["blur"]);</script>
-    <app-root ng-version="21.2.6" _nghost-ng-c732584497 ngh="15" ng-server-context="ssg"><app-toolbar _ngcontent-ng-c732584497 _nghost-ng-c4131581979 ngh="0"><header _ngcontent-ng-c4131581979 class="toolbar"><div _ngcontent-ng-c4131581979 class="title"><a _ngcontent-ng-c4131581979 routerlink href="/preforms/" jsaction="click:;">Preforms Showcase</a></div><button _ngcontent-ng-c4131581979 id="toggle-sidenav" jsaction="click:;"><div _ngcontent-ng-c4131581979 class="menu_icon"><div _ngcontent-ng-c4131581979 class="bar1"></div><div _ngcontent-ng-c4131581979 class="bar2"></div><div _ngcontent-ng-c4131581979 class="bar3"></div></div></button></header></app-toolbar><div _ngcontent-ng-c732584497 class="layout"><app-sidebar _ngcontent-ng-c732584497 _nghost-ng-c1018871276 ngh="1"><nav _ngcontent-ng-c1018871276 class="sidebar"><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Getting Started</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/basic-form" jsaction="click:;">Basic Form Example</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Form Fields</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/form-fields" jsaction="click:;">Form Fields Reference</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/simple-validation-form" jsaction="click:;">Simple validation</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/common-fields" jsaction="click:;">Common Fields</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/icons-fields" jsaction="click:;">Icons &amp; Input Actions</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Examples</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/order-form" jsaction="click:;">Order Form</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/extensible-wizard" jsaction="click:;">Wizard Form</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/dynamic-select-fetch-remote" jsaction="click:;">Pokemon Game</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Extensibility</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/extensibility" jsaction="click:;">Custom Fields</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/lazy-loading-fields" jsaction="click:;">Lazy Loaded Fields</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Reactivity &amp; Validation</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/cross-field-validation" jsaction="click:;">Cross Field Validation</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/async-validation" jsaction="click:;">Async Validation</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/dynamic-select-fetch" jsaction="click:;">Fetch Form</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/room-selection" jsaction="click:;">Dynamic Content</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Advanced Components</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/cart-builder" jsaction="click:;">Dynamic FieldArray</a></li><!----></ul></div><!----><br _ngcontent-ng-c1018871276><br _ngcontent-ng-c1018871276></nav></app-sidebar><main _ngcontent-ng-c732584497 class="content"><router-outlet _ngcontent-ng-c732584497></router-outlet><app-example-page _nghost-ng-c3737945541 ngh="14"><h1 _ngcontent-ng-c3737945541>Fetch Form</h1><div _ngcontent-ng-c3737945541 class="info"><markdown _ngcontent-ng-c3737945541 ngh="0"><h2>Dynamic Form Replacement</h2>
-<p>This demo shows how to build a <strong>multi-step / conditional form</strong> that completely replaces its fields based on user selection — using a <code>fetch</code> trigger in <code>'replace'</code> mode.</p>
-<h3>What it does</h3>
-<ul>
-<li>Starts with a single <strong>product selector</strong> dropdown.</li>
-<li>When the user picks "Product A" or "Product B":</li>
-<li>A <code>fetch</code> trigger fires on <code>CHANGE</code>.</li>
-<li>The custom <code>DYNAMIC_FORM_FETCHER</code> simulates an API call to <code>/api/forms/{selectedValue}</code>.</li>
-<li>It returns a new array of fields tailored to the chosen product.</li>
-<li><code>mode: 'replace'</code> <strong>overwrites the entire form content</strong> with the returned fields.</li>
-<li>Result: The form dynamically switches between different input sets (e.g. "Feature A + Quantity" vs "Color + Units").</li>
-</ul>
-<h3>Key Features</h3>
-<ul>
-<li><strong>Form-level replacement</strong> via <code>mode: 'replace'</code> on fetch trigger</li>
-<li>Returning <strong>full field definitions</strong> from the fetcher (not just patches)</li>
-<li>Self-referencing trigger on the <code>SelectField</code> (<code>fetchUrl: '/api/forms/$value'</code>)</li>
-<li>Keeping the selected value preserved by including the <code>SelectField</code> in every response</li>
-<li>Clean simulation of backend-driven conditional forms</li>
-</ul>
-<h3>Code Highlights</h3>
-<pre><code class="language-ts">// Trigger on the initial SelectField
-triggers: [{
- on: FormFieldEventType.CHANGE,
- action: TriggerAction.FETCH,
- fetchUrl: '/api/forms/$value',   // $value = current selection
- mode: 'replace'
-}]
-// Fetcher returns different field sets
-if (selection === 'productA') {
- return of([
-   selectField,                    // preserve the selector
-   new TextField({ key: 'productA_feature', ... }),
-   new NumberField({ key: 'productA_quantity', ... }),
- ]);
-}
-</code></pre>
-<blockquote>
-<p> Ideal for wizards, product configurators, onboarding flows,
- or any form where the structure changes significantly based on early choices — all without manual component swapping or complex *ngIf logic.
-Perfect example of how @preforms/angular turns static forms into fully dynamic, backend-driven experiences.
- </p>
-</blockquote>
-</markdown><!----></div><div _ngcontent-ng-c3737945541 class="demo-layout"><demo-card _ngcontent-ng-c3737945541 title="Live Demo" _nghost-ng-c1535181870 ngh="0"><div _ngcontent-ng-c1535181870 class="demo-card"><h3 _ngcontent-ng-c1535181870>Live Demo</h3><div _ngcontent-ng-c1535181870 class="demo-body"><app-dynamic-form-fetch ngh="0"><preforms-dynamic-form ngh="0"><form novalidate id="dynamic-form-a0b3622f-276e-496a-8bb4-5b99312970ef" class="ng-untouched ng-pristine ng-invalid" jsaction="submit:;"><preforms-dynamic-field-group ngh="8"><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-select-field data-field-id="product" ngh="3" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="2"><div class="preforms-form-field select"><label class="preforms-form-field-label" for="product"> Select Product </label><!----><div class="preforms-form-field-row"><!----><select class="preforms-select-field ng-untouched ng-pristine ng-valid" id="product" name="product" autocomplete="product" jsaction="change:;blur:;"><!----><option value="productA">Product A</option><!----><!----><option value="productB">Product B</option><!----><!----></select><!----></div><!----><!----></div></preforms-form-field></preforms-select-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-input-field data-field-id="productA_feature" ngh="5" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="4"><div class="input preforms-form-field"><label class="preforms-form-field-label" for="productA_feature"> Feature A </label><!----><div class="preforms-form-field-row"><!----><input class="preforms-input-field ng-untouched ng-pristine ng-invalid" id="productA_feature" type="text" name="productA_feature" placeholder="Enter feature A" autocomplete="productA_feature" value jsaction="input:;blur:;compositionstart:;compositionend:;"><!----><!----></div><!----><!----></div></preforms-form-field></preforms-input-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-number-input data-field-id="productA_quantity" ngh="6" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="2"><div class="number preforms-form-field"><label class="preforms-form-field-label" for="productA_quantity"> Quantity </label><!----><div class="preforms-form-field-row"><!----><input type="number" class="preforms-input-field ng-untouched ng-pristine ng-valid" id="productA_quantity" name="productA_quantity" autocomplete="productA_quantity" value="1" jsaction="input:;blur:;compositionstart:;compositionend:;"><!----></div><!----><!----></div></preforms-form-field></preforms-number-input><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-button-field data-field-id="button-bb96e561-bc4b-4f06-ac52-1c2a7bd92357" ngh="7" jsaction="click:;input:;focusout:;focusin:;change:;"><button class="button preforms-form-button" type="submit" value="undefined"><!----> Submit <!----></button></preforms-button-field><!----></div><!----></preforms-dynamic-field-group></form></preforms-dynamic-form></app-dynamic-form-fetch><!----></div></div></demo-card><demo-card _ngcontent-ng-c3737945541 title="Result" _nghost-ng-c1535181870 ngh="0"><div _ngcontent-ng-c1535181870 class="demo-card"><h3 _ngcontent-ng-c1535181870>Result</h3><div _ngcontent-ng-c1535181870 class="demo-body"><result-viewer _ngcontent-ng-c3737945541 ngh="9"><!----></result-viewer></div></div></demo-card></div><code-tabs _ngcontent-ng-c3737945541 ngh="13"><mat-tab-group mat-stretch-tabs="false" dynamicheight class="mat-mdc-tab-group mat-primary mat-mdc-tab-group-dynamic-height" style="--mat-tab-animation-duration: 500ms;" ngh="11"><mat-tab-header class="mat-mdc-tab-header" ngh="0"><div mat-ripple class="mat-ripple mat-mdc-tab-header-pagination mat-mdc-tab-header-pagination-before mat-mdc-tab-header-pagination-disabled" jsaction="click:;mousedown:;touchend:;"><div class="mat-mdc-tab-header-pagination-chevron"></div></div><div class="mat-mdc-tab-label-container" jsaction="keydown:;"><div role="tablist" class="mat-mdc-tab-list" style="transform: translateX(0px);"><div class="mat-mdc-tab-labels"><div role="tab" mattablabelwrapper cdkmonitorelementfocus class="mdc-tab mat-mdc-tab mat-focus-indicator mdc-tab--active" id="mat-tab-group-4-label-0" tabindex="0" aria-posinset="1" aria-setsize="1" aria-controls="mat-tab-group-4-content-0" aria-selected="true" aria-disabled="false" jsaction="click:;"><span class="mdc-tab__ripple"></span><div mat-ripple class="mat-ripple mat-mdc-tab-ripple"></div><span class="mdc-tab__content"><span class="mdc-tab__text-label"><!---->TS<!----></span></span><span class="mdc-tab-indicator"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span></div><!----></div></div></div><div mat-ripple class="mat-ripple mat-mdc-tab-header-pagination mat-mdc-tab-header-pagination-after mat-mdc-tab-header-pagination-disabled" jsaction="mousedown:;click:;touchend:;"><div class="mat-mdc-tab-header-pagination-chevron"></div></div></mat-tab-header><mat-tab hidden ngh="12"><!----></mat-tab><!----><!----><!----><div class="mat-mdc-tab-body-wrapper"><mat-tab-body role="tabpanel" class="mat-mdc-tab-body mat-mdc-tab-body-active" id="mat-tab-group-4-content-0" aria-labelledby="mat-tab-group-4-label-0" aria-hidden="false" ngh="10"><div cdkscrollable class="mat-mdc-tab-body-content mat-tab-body-content-can-animate"><markdown ngh="0"><pre><code class="language-typescript">import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+    <app-root ng-version="21.2.6" _nghost-ng-c732584497 ngh="21" ng-server-context="ssg"><app-toolbar _ngcontent-ng-c732584497 _nghost-ng-c4131581979 ngh="0"><header _ngcontent-ng-c4131581979 class="toolbar"><div _ngcontent-ng-c4131581979 class="title"><a _ngcontent-ng-c4131581979 routerlink href="/preforms/" jsaction="click:;">Preforms Showcase</a></div><button _ngcontent-ng-c4131581979 id="toggle-sidenav" jsaction="click:;"><div _ngcontent-ng-c4131581979 class="menu_icon"><div _ngcontent-ng-c4131581979 class="bar1"></div><div _ngcontent-ng-c4131581979 class="bar2"></div><div _ngcontent-ng-c4131581979 class="bar3"></div></div></button></header></app-toolbar><div _ngcontent-ng-c732584497 class="layout"><app-sidebar _ngcontent-ng-c732584497 _nghost-ng-c1018871276 ngh="1"><nav _ngcontent-ng-c1018871276 class="sidebar"><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Getting Started</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/basic-form" jsaction="click:;">Basic Form Example</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Form Fields</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/form-fields" jsaction="click:;">Form Fields Reference</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/simple-validation-form" jsaction="click:;">Simple validation</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/common-fields" jsaction="click:;">Common Fields</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/icons-fields" jsaction="click:;">Icons &amp; Input Actions</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Examples</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/order-form" jsaction="click:;">Order Form</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/extensible-wizard" jsaction="click:;">Wizard Form</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/dynamic-select-fetch-remote" jsaction="click:;">Pokemon Game</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Extensibility</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/extensibility" jsaction="click:;">Custom Fields</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/lazy-loading-fields" jsaction="click:;">Lazy Loaded Fields</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Reactivity &amp; Validation</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/cross-field-validation" jsaction="click:;">Cross Field Validation</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/async-validation" jsaction="click:;">Async Validation</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/dynamic-select-fetch" jsaction="click:;">Fetch Form</a></li><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/room-selection" jsaction="click:;">Dynamic Content</a></li><!----></ul></div><div _ngcontent-ng-c1018871276 class="category"><div _ngcontent-ng-c1018871276 class="category-title">Advanced Components</div><ul _ngcontent-ng-c1018871276><li _ngcontent-ng-c1018871276><a _ngcontent-ng-c1018871276 href="/preforms/examples/cart-builder" jsaction="click:;">Dynamic FieldArray</a></li><!----></ul></div><!----><br _ngcontent-ng-c1018871276><br _ngcontent-ng-c1018871276></nav></app-sidebar><main _ngcontent-ng-c732584497 class="content"><router-outlet _ngcontent-ng-c732584497></router-outlet><app-example-page _nghost-ng-c3737945541 ngh="20"><h1 _ngcontent-ng-c3737945541>Pokemon Game</h1><div _ngcontent-ng-c3737945541 class="info"><markdown _ngcontent-ng-c3737945541 ngh="0"></markdown><!----></div><div _ngcontent-ng-c3737945541 class="demo-layout"><demo-card _ngcontent-ng-c3737945541 title="Live Demo" _nghost-ng-c1535181870 ngh="0"><div _ngcontent-ng-c1535181870 class="demo-card"><h3 _ngcontent-ng-c1535181870>Live Demo</h3><div _ngcontent-ng-c1535181870 class="demo-body"><app-dynamic-form-fetch-remote ngh="0"><preforms-dynamic-form classname="pokemon" ngh="0"><form novalidate class="pokemon ng-untouched ng-pristine ng-valid" id="dynamic-form-38d9c4d6-84cf-474d-b91c-34606d890309" jsaction="submit:;"><preforms-dynamic-field-group ngh="14"><div hidden><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-checkbox-input data-field-id="done" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><label class="checkbox"><input type="checkbox" class="ng-untouched ng-pristine ng-valid" jsaction="change:;blur:;"><span class="label-text">Done</span><span class="description"><!--ngetn--></span></label></preforms-checkbox-input><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-output-field data-field-id="score" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><label class="output"> Score <output for="done">0</output></label></preforms-output-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-dialog-field _nghost-ng-c1117299657 data-field-id="popup" ngh="4" jsaction="click:;input:;focusout:;focusin:;change:;"><dialog _ngcontent-ng-c1117299657 class="dialog" id="popup" style="width: 500px;"><form _ngcontent-ng-c1117299657 novalidate method="dialog" class="close-btn"><button _ngcontent-ng-c1117299657 class="dialog-close-btn">✖️</button></form><!----><preforms-dynamic-form _ngcontent-ng-c1117299657 ngh="0"><form novalidate id="dynamic-form-0336fd83-4379-42a8-ab16-754d5bec0dd6" class="ng-untouched ng-pristine ng-valid" jsaction="submit:;"><preforms-dynamic-field-group ngh="3"><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-form-title data-field-id="form-title-08fc6145-50d2-4e6b-a4f0-8333ec097c21" ngh="2" jsaction="click:;input:;focusout:;focusin:;change:;"><h1 class="form-title undefined">Tie!</h1><!----><!----><!----><!----><!----><!----><!----></preforms-form-title><!----></div><!----></preforms-dynamic-field-group></form></preforms-dynamic-form></dialog></preforms-dialog-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-wrapper data-field-id="wrapper-f96f50a8-e560-4267-b358-a7b46c162fff" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-dynamic-field-group class="grid wrapper" ngh="11"><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-divider-field _nghost-ng-c2176329426 data-field-id="form-divider-759a2bcc-096c-4921-81f1-0fa183944093" ngh="5" jsaction="click:;input:;focusout:;focusin:;change:;"><div _ngcontent-ng-c2176329426 role="separator" class="form-divider" style="gap: 0.75rem;"><span _ngcontent-ng-c2176329426 class="form-divider__label"> Player </span><!----></div></preforms-divider-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-divider-field _nghost-ng-c2176329426 data-field-id="form-divider-49842f9a-578c-45c5-9559-3bae8010c615" ngh="5" jsaction="click:;input:;focusout:;focusin:;change:;"><div _ngcontent-ng-c2176329426 role="separator" class="form-divider" style="gap: 0.75rem;"><span _ngcontent-ng-c2176329426 class="form-divider__label"> Enemy </span><!----></div></preforms-divider-field><!----></div><div hidden><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-form-group data-field-id="p1" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-dynamic-field-group ngh="10"><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-image-field _nghost-ng-c3290052894 data-field-id="image" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><div _ngcontent-ng-c3290052894 class="preforms-image form-image"><img _ngcontent-ng-c3290052894 loading="lazy" src alt></div></preforms-image-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-input-field data-field-id="hp" ngh="7" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="6"><div class="indicator preforms-form-field"><label class="preforms-form-field-label" for="hp"> Hp </label><!----><div class="preforms-form-field-row"><!----><input class="preforms-input-field ng-untouched ng-pristine ng-valid" id="hp" type="range" name="hp" autocomplete="hp" value="0" jsaction="input:;blur:;compositionstart:;compositionend:;"><!----><!----></div><!----><!----></div></preforms-form-field></preforms-input-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-input-field data-field-id="attack" ngh="7" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="6"><div class="indicator preforms-form-field"><label class="preforms-form-field-label" for="attack"> Attack </label><!----><div class="preforms-form-field-row"><!----><input class="preforms-input-field ng-untouched ng-pristine ng-valid" id="attack" type="range" name="attack" autocomplete="attack" value="0" jsaction="input:;blur:;compositionstart:;compositionend:;"><!----><!----></div><!----><!----></div></preforms-form-field></preforms-input-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-input-field data-field-id="defense" ngh="7" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="6"><div class="indicator preforms-form-field"><label class="preforms-form-field-label" for="defense"> Defense </label><!----><div class="preforms-form-field-row"><!----><input class="preforms-input-field ng-untouched ng-pristine ng-valid" id="defense" type="range" name="defense" autocomplete="defense" value="0" jsaction="input:;blur:;compositionstart:;compositionend:;"><!----><!----></div><!----><!----></div></preforms-form-field></preforms-input-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-number-input data-field-id="hit" ngh="9" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="8"><div class="hit preforms-form-field"><label class="preforms-form-field-label" for="hit"> Hit </label><!----><div class="preforms-form-field-row"><!----><input type="number" class="preforms-input-field ng-untouched ng-pristine ng-valid" id="hit" name="hit" readonly="true" autocomplete="hit" value jsaction="input:;blur:;compositionstart:;compositionend:;"><!----></div><!----><!----></div></preforms-form-field></preforms-number-input><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-output-field data-field-id="damage" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><label class="output"> Damage <output for="p1,p2">0</output></label></preforms-output-field><!----></div><!----></preforms-dynamic-field-group></preforms-form-group><!----></div><div hidden><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-form-group data-field-id="p2" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-dynamic-field-group ngh="10"><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-image-field _nghost-ng-c3290052894 data-field-id="image" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><div _ngcontent-ng-c3290052894 class="preforms-image form-image"><img _ngcontent-ng-c3290052894 loading="lazy" src alt></div></preforms-image-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-input-field data-field-id="hp" ngh="7" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="6"><div class="indicator preforms-form-field"><label class="preforms-form-field-label" for="hp"> Hp </label><!----><div class="preforms-form-field-row"><!----><input class="preforms-input-field ng-untouched ng-pristine ng-valid" id="hp" type="range" name="hp" autocomplete="hp" value="0" jsaction="input:;blur:;compositionstart:;compositionend:;"><!----><!----></div><!----><!----></div></preforms-form-field></preforms-input-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-input-field data-field-id="attack" ngh="7" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="6"><div class="indicator preforms-form-field"><label class="preforms-form-field-label" for="attack"> Attack </label><!----><div class="preforms-form-field-row"><!----><input class="preforms-input-field ng-untouched ng-pristine ng-valid" id="attack" type="range" name="attack" autocomplete="attack" value="0" jsaction="input:;blur:;compositionstart:;compositionend:;"><!----><!----></div><!----><!----></div></preforms-form-field></preforms-input-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-input-field data-field-id="defense" ngh="7" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="6"><div class="indicator preforms-form-field"><label class="preforms-form-field-label" for="defense"> Defense </label><!----><div class="preforms-form-field-row"><!----><input class="preforms-input-field ng-untouched ng-pristine ng-valid" id="defense" type="range" name="defense" autocomplete="defense" value="0" jsaction="input:;blur:;compositionstart:;compositionend:;"><!----><!----></div><!----><!----></div></preforms-form-field></preforms-input-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-number-input data-field-id="hit" ngh="9" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="8"><div class="hit preforms-form-field"><label class="preforms-form-field-label" for="hit"> Hit </label><!----><div class="preforms-form-field-row"><!----><input type="number" class="preforms-input-field ng-untouched ng-pristine ng-valid" id="hit" name="hit" readonly="true" autocomplete="hit" value jsaction="input:;blur:;compositionstart:;compositionend:;"><!----></div><!----><!----></div></preforms-form-field></preforms-number-input><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-output-field data-field-id="damage" ngh="0" jsaction="click:;input:;focusout:;focusin:;change:;"><label class="output"> Damage <output for="p1,p2">0</output></label></preforms-output-field><!----></div><!----></preforms-dynamic-field-group></preforms-form-group><!----></div><!----></preforms-dynamic-field-group></preforms-wrapper><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-divider-field _nghost-ng-c2176329426 data-field-id="form-divider-ee7b1f34-f37a-43db-8d74-3b300096e5a9" ngh="5" jsaction="click:;input:;focusout:;focusin:;change:;"><div _ngcontent-ng-c2176329426 role="separator" class="form-divider" style="gap: 0.75rem;"><span _ngcontent-ng-c2176329426 class="form-divider__label"> Play! </span><!----></div></preforms-divider-field><!----></div><div><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-select-field data-field-id="type" ngh="12" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="8"><div class="preforms-form-field select"><label class="preforms-form-field-label" for="type"> Select Pokemon Type </label><!----><div class="preforms-form-field-row"><!----><select class="preforms-select-field ng-untouched ng-pristine ng-valid" id="type" name="type" autocomplete="type" jsaction="change:;blur:;"><!----></select><!----></div><!----><!----></div></preforms-form-field></preforms-select-field><!----></div><div hidden><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-select-field data-field-id="pokemon" ngh="12" jsaction="click:;input:;focusout:;focusin:;change:;"><preforms-form-field ngh="8"><div class="preforms-form-field select"><label class="preforms-form-field-label" for="pokemon"> Select Pokemon </label><!----><div class="preforms-form-field-row"><!----><select class="preforms-select-field ng-untouched ng-pristine ng-valid" id="pokemon" name="pokemon" autocomplete="pokemon" jsaction="change:;blur:;"><!----></select><!----></div><!----><!----></div></preforms-form-field></preforms-select-field><!----></div><div hidden><preforms-dynamic-field ngh="0"></preforms-dynamic-field><preforms-button-field data-field-id="button-fb48d074-4fa3-451e-bf82-44e080b78973" ngh="13" jsaction="click:;input:;focusout:;focusin:;change:;"><button class="preforms-form-button primary" type="button" value="undefined"><!----> Attack! <!----></button></preforms-button-field><!----></div><!----></preforms-dynamic-field-group></form></preforms-dynamic-form></app-dynamic-form-fetch-remote><!----></div></div></demo-card><demo-card _ngcontent-ng-c3737945541 title="Result" _nghost-ng-c1535181870 ngh="0"><div _ngcontent-ng-c1535181870 class="demo-card"><h3 _ngcontent-ng-c1535181870>Result</h3><div _ngcontent-ng-c1535181870 class="demo-body"><result-viewer _ngcontent-ng-c3737945541 ngh="15"><!----></result-viewer></div></div></demo-card></div><code-tabs _ngcontent-ng-c3737945541 ngh="19"><mat-tab-group mat-stretch-tabs="false" dynamicheight class="mat-mdc-tab-group mat-primary mat-mdc-tab-group-dynamic-height" style="--mat-tab-animation-duration: 500ms;" ngh="17"><mat-tab-header class="mat-mdc-tab-header" ngh="0"><div mat-ripple class="mat-ripple mat-mdc-tab-header-pagination mat-mdc-tab-header-pagination-before mat-mdc-tab-header-pagination-disabled" jsaction="click:;mousedown:;touchend:;"><div class="mat-mdc-tab-header-pagination-chevron"></div></div><div class="mat-mdc-tab-label-container" jsaction="keydown:;"><div role="tablist" class="mat-mdc-tab-list" style="transform: translateX(0px);"><div class="mat-mdc-tab-labels"><div role="tab" mattablabelwrapper cdkmonitorelementfocus class="mdc-tab mat-mdc-tab mat-focus-indicator mdc-tab--active" id="mat-tab-group-3-label-0" tabindex="0" aria-posinset="1" aria-setsize="1" aria-controls="mat-tab-group-3-content-0" aria-selected="true" aria-disabled="false" jsaction="click:;"><span class="mdc-tab__ripple"></span><div mat-ripple class="mat-ripple mat-mdc-tab-ripple"></div><span class="mdc-tab__content"><span class="mdc-tab__text-label"><!---->TS<!----></span></span><span class="mdc-tab-indicator"><span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span></div><!----></div></div></div><div mat-ripple class="mat-ripple mat-mdc-tab-header-pagination mat-mdc-tab-header-pagination-after mat-mdc-tab-header-pagination-disabled" jsaction="mousedown:;click:;touchend:;"><div class="mat-mdc-tab-header-pagination-chevron"></div></div></mat-tab-header><mat-tab hidden ngh="18"><!----></mat-tab><!----><!----><!----><div class="mat-mdc-tab-body-wrapper"><mat-tab-body role="tabpanel" class="mat-mdc-tab-body mat-mdc-tab-body-active" id="mat-tab-group-3-content-0" aria-labelledby="mat-tab-group-3-label-0" aria-hidden="false" ngh="16"><div cdkscrollable class="mat-mdc-tab-body-content mat-tab-body-content-can-animate"><markdown ngh="0"><pre><code class="language-typescript">import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
 import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core/tokens';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
 import {
-  FormElement,
+  CheckboxField,
+  DialogField,
+  FieldButton,
+  FieldGroup,
+  FieldWrapper,
+  FormDivider,
   FormFieldEventType,
+  FormImage,
+  FormTitle,
+  InputField,
   NumberField,
+  OutputField,
   SelectField,
-  SubmitButton,
-  TextField,
   TriggerAction,
 } from '@preforms/ts';
 
-import { Observable, of } from 'rxjs';
+import { from } from 'rxjs';
+
+function randomIntBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function createPlayer(playerName: string, url = '$value', showdown = 'back_default') {
+  return new FieldGroup({
+    key: playerName,
+    hidden: true,
+    fields: [
+      new FormImage({
+        src: '',
+        key: 'image',
+      }),
+      new InputField({
+        type: 'range',
+        key: 'hp',
+        value: 0,
+        className: 'indicator',
+      }),
+      new InputField({ type: 'range', key: 'attack', value: 0, className: 'indicator' }),
+      new InputField({ type: 'range', key: 'defense', value: 0, className: 'indicator' }),
+      new NumberField({
+        key: 'hit',
+        readonly: true,
+        className: 'hit',
+      }),
+      new OutputField({
+        key: 'damage',
+        calculation: `Number(${playerName}.hit) - Number(${playerName}.defense) / 2`,
+        for: ['p1', 'p2'],
+      }),
+    ],
+    triggers: [
+      {
+        on: FormFieldEventType.SELECTED,
+        action: TriggerAction.FETCH,
+        fetchUrl: url,
+        sourceField: 'pokemon',
+        mode: 'patch',
+        projection: {
+          target: 'value',
+          select: {
+            hp: 'stats[0].base_stat',
+            attack: 'stats[1].base_stat',
+            defense: 'stats[2].base_stat',
+            image: `sprites.other.showdown.${showdown}`,
+          },
+        },
+      },
+      {
+        on: FormFieldEventType.SELECTED,
+        action: TriggerAction.UPDATE_STATE,
+        applyState: {
+          hidden: false,
+        },
+      },
+    ],
+  });
+}
 
 @Component({
-  selector: 'app-dynamic-form-fetch',
-  template: `&lt;preforms-dynamic-form (submittedData)="logData($event)" [fields]="fields" /&gt;`,
+  selector: 'app-dynamic-form-fetch-remote',
+  template: `&lt;preforms-dynamic-form
+    (submittedData)="logData($event)"
+    [fields]="fields"
+    className="pokemon"
+  /&gt;`,
   imports: [DynamicFormComponent],
-  encapsulation: ViewEncapsulation.None,
+  styles: [
+    `
+      .pokemon {
+        .grid {
+          max-width: 400px;
+          padding: 20px;
+          display: grid;
+          grid-template-areas: 'a a' 'b b';
+          gap: 10px;
+          grid-auto-rows: 40px 300px;
+          align-items: end;
+        }
+
+        .hit {
+          .preforms-input-field {
+            all: unset;
+          }
+        }
+
+        .indicator {
+          .preforms-input-field {
+            max-width: 100%;
+          }
+        }
+
+        .primary {
+          background-color: rgb(255, 187, 0);
+          padding: 0.6rem 2rem;
+          border: 1px solid #cfd6e3;
+          border-radius: 25px;
+          font-weight: 700;
+          margin-top: 30px;
+          display: inline-block;
+        }
+      }
+    `,
+  ],
   providers: [
     NATIVE_FORM_ELEMENTS,
     {
       provide: DYNAMIC_FORM_FETCHER,
-      useValue: (url: string): Observable&lt;Partial&lt;FormElement&gt;[]&gt; =&gt; {
-        // simulate API returning fields based on selection
-        const selection = url.split('/').pop();
-
-        const selectField = new SelectField({
-          key: 'product',
-          label: 'Select Product',
-          value: selection,
-          options: [
-            { label: 'Product A', value: 'productA' },
-            { label: 'Product B', value: 'productB' },
-          ],
-          triggers: [
-            {
-              on: FormFieldEventType.CHANGE,
-              action: TriggerAction.FETCH,
-              fetchUrl: '/api/forms/$value',
-              mode: 'replace', // replace the current form with fetched fields
-            },
-          ],
-        });
-
-        if (selection === 'productA') {
-          return of([
-            selectField,
-            new TextField({
-              key: 'productA_feature',
-              label: 'Feature A',
-              placeholder: 'Enter feature A',
-              required: true,
-            }),
-            new NumberField({
-              key: 'productA_quantity',
-              label: 'Quantity',
-              min: 1,
-              value: 1,
-            }),
-          ]);
-        }
-
-        if (selection === 'productB') {
-          return of([
-            selectField,
-            new TextField({
-              key: 'productB_color',
-              label: 'Color',
-              placeholder: 'Enter color',
-              required: true,
-            }),
-            new NumberField({
-              key: 'productB_units',
-              label: 'Units',
-              min: 1,
-              value: 1,
-            }),
-          ]);
-        }
-
-        return of([]);
+      useValue: (url: string) =&gt; {
+        return from(fetch(url).then((res) =&gt; res.json()));
       },
     },
   ],
+  encapsulation: ViewEncapsulation.None,
 })
-export class DynamicFormFetchComponent {
+export class DynamicFormFetchRemoteComponent {
   @Output() formChange = new EventEmitter&lt;any&gt;();
 
   fields = [
-    new SelectField({
-      key: 'product',
-      label: 'Select Product',
-      options: [
-        { label: 'Product A', value: 'productA' },
-        { label: 'Product B', value: 'productB' },
-      ],
+    new CheckboxField({ key: 'done', hidden: true }),
+    new OutputField({
+      key: 'score',
+      calculation: 'Number(p1.damage) - Number(p2.damage)',
+      for: ['done'],
+    }),
+    new DialogField({
+      key: 'popup',
+      disabled: true,
+      fields: [new FormTitle('Tie!')],
       triggers: [
         {
-          on: FormFieldEventType.CHANGE,
-          action: TriggerAction.FETCH,
-          fetchUrl: '/api/forms/$value',
-          mode: 'replace', // replace the current form with fetched fields
+          on: 'change',
+          action: 'update_state',
+          applyState: {
+            fields: [new FormTitle('You win!')],
+          },
+          sourceField: 'score',
+          condition: {
+            operator: 'gt',
+            value: 0,
+          },
+        },
+        {
+          on: 'change',
+          action: 'update_state',
+          applyState: {
+            fields: [new FormTitle('You loss')],
+          },
+          sourceField: 'score',
+          condition: {
+            operator: 'lt',
+            value: 0,
+          },
         },
       ],
     }),
-    new TextField({
-      key: 'productA_feature',
-      label: 'Feature A',
-      placeholder: 'Enter feature A',
-      required: true,
+
+    new FieldWrapper({
+      className: 'grid',
+      fields: [
+        new FormDivider({ label: 'Player' }),
+        new FormDivider({ label: 'Enemy' }),
+        createPlayer('p1'),
+        createPlayer(
+          'p2',
+          'https://pokeapi.co/api/v2/pokemon/' + randomIntBetween(1, 151),
+          'front_default',
+        ),
+      ],
     }),
-    new NumberField({
-      key: 'productA_quantity',
-      label: 'Quantity',
-      min: 1,
-      value: 1,
+
+    new FormDivider({ label: 'Play!' }),
+
+    new SelectField({
+      key: 'type',
+      label: 'Select Pokemon Type',
+      options: [],
+      triggers: [
+        {
+          on: FormFieldEventType.INIT,
+          action: TriggerAction.FETCH,
+          fetchUrl: 'https://pokeapi.co/api/v2/type/',
+          mode: 'patch',
+          projection: {
+            target: 'options',
+            select: {
+              value: 'url',
+              label: 'name',
+            },
+            source: 'results',
+          },
+        },
+      ],
     }),
-    new SubmitButton(),
+
+    new SelectField({
+      key: 'pokemon',
+      label: 'Select Pokemon',
+      hidden: true,
+      options: [],
+      triggers: [
+        {
+          on: FormFieldEventType.CHANGE,
+          sourceField: 'type',
+          action: TriggerAction.FETCH,
+          fetchUrl: '$value',
+          mode: 'patch',
+          projection: {
+            target: 'options',
+            select: {
+              value: 'pokemon.url',
+              label: 'pokemon.name',
+            },
+            source: 'pokemon',
+          },
+        },
+        {
+          on: FormFieldEventType.SELECTED,
+          sourceField: 'type',
+          action: TriggerAction.UPDATE_STATE,
+          applyState: {
+            hidden: false,
+          },
+        },
+      ],
+    }),
+
+    new FieldButton({
+      type: 'button',
+      label: 'Attack!',
+      hidden: true,
+      className: 'primary',
+      triggers: [
+        {
+          on: 'selected',
+          sourceField: 'pokemon',
+          action: 'update_state',
+          applyState: {
+            hidden: false,
+          },
+        },
+        {
+          on: 'click',
+          action: 'update_state',
+          applyState: {
+            value: {
+              hit: 'p1.attack',
+            },
+          },
+          targetField: ['p2'],
+        },
+        {
+          on: 'click',
+          action: 'update_state',
+          applyState: {
+            value: {
+              hit: 'p2.attack',
+            },
+          },
+          targetField: ['p1'],
+          debounce: 1000,
+        },
+        {
+          on: 'click',
+          action: 'update_state',
+          applyState: {
+            value: true,
+          },
+          targetField: ['done'],
+          debounce: 1001,
+        },
+        {
+          on: 'click',
+          action: 'update_state',
+          applyState: {
+            disabled: false,
+          },
+          targetField: ['popup'],
+          debounce: 1002,
+        },
+      ],
+    }),
   ];
 
   logData(data: any) {
@@ -193,4 +336,4 @@ export class DynamicFormFetchComponent {
 </markdown><!----><!----></div></mat-tab-body><!----></div></mat-tab-group></code-tabs><br _ngcontent-ng-c3737945541><br _ngcontent-ng-c3737945541><!----></app-example-page><!----></main></div></app-root>
   <link rel="modulepreload" href="chunk-ID377JJW.js"><link rel="modulepreload" href="chunk-PGHOU3HN.js"><script src="scripts-PIPFBOW3.js" defer></script><script src="main-W674O3BF.js" type="module"></script>
 
-<script id="ng-state" type="application/json">{"__nghData__":[{},{"t":{"3":"t0"},"c":{"3":[{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1,"x":4}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1,"x":3}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1,"x":2}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1,"x":4}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1}]}}]}},{"t":{"1":"t5","4":"t6","7":"t7","8":"t8","9":"t9"},"c":{"1":[{"i":"t5","r":1}],"4":[],"7":[],"8":[],"9":[]},"n":{"7":"2fn2"}},{"n":{"1":"0f2n2fn"},"t":{"3":"t22"},"c":{"3":[{"i":"t22","r":3,"t":{"0":"t23","1":"t24"},"c":{"0":[],"1":[{"i":"t24","r":1}]},"x":2}]}},{"t":{"1":"t5","4":"t6","7":"t7","8":"t8","9":"t9"},"c":{"1":[{"i":"t5","r":1}],"4":[],"7":[],"8":[],"9":[]},"n":{"7":"2fn3"}},{"n":{"1":"0f2n2fn"},"t":{"2":"t10"},"c":{"2":[]}},{"n":{"1":"0f2n2fn"}},{"t":{"2":"t11","5":"t12"},"c":{"2":[],"5":[]}},{"t":{"1":"t4"},"c":{"1":[{"i":"t4","r":1,"c":{"1":[{"i":"c551867509","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c1776412260","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c1950231573","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c91646592","r":1}]}}]}},{"t":{"0":"t13"},"c":{"0":[]}},{"t":{"2":"t19"},"c":{"2":[{"i":"t20","r":2}]}},{"n":{"3":"0fnf3"},"t":{"3":"t14","4":"t17","8":"t18"},"c":{"3":[{"i":"t14","r":1,"t":{"6":"t15","7":"t16"},"c":{"6":[],"7":[{"i":"t16","r":1}]}}],"4":[{"i":"t17","r":3}],"8":[{"i":"t18","r":1}]}},{"t":{"0":"t20"},"c":{"0":[]}},{"n":{"2":"0fn"},"t":{"2":"t21"},"c":{"2":[{"i":"t21","r":2,"n":{"1":"0n4f3"},"c":{"0":[],"1":[]}}]}},{"t":{"0":"t2"},"c":{"0":[{"i":"t2","r":6,"c":{"3":[],"6":[{"i":"c963052133","r":1}]},"n":{"6":"5f2nf","9":"8f2nf"},"t":{"6":"t3"}}]}},{"c":{"5":[{"i":"c3737945541","r":1}]}}]}</script></body></html>
+<script id="ng-state" type="application/json">{"__nghData__":[{},{"t":{"3":"t0"},"c":{"3":[{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1,"x":4}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1,"x":3}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1,"x":2}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1,"x":4}]}},{"i":"t0","r":1,"t":{"5":"t1"},"c":{"5":[{"i":"t1","r":1}]}}]}},{"t":{"0":"t26","1":"t27","2":"t28","3":"t29","4":"t30","5":"t31","6":"t32"},"c":{"0":[{"i":"t26","r":1}],"1":[],"2":[],"3":[],"4":[],"5":[],"6":[]}},{"t":{"1":"t4"},"c":{"1":[{"i":"t4","r":1,"c":{"1":[{"i":"c2750769579","r":1}]}}]}},{"t":{"2":"t33"},"c":{"2":[{"i":"t33","r":1}]}},{"t":{"1":"t25"},"c":{"1":[{"i":"t25","r":1}]}},{"t":{"1":"t5","4":"t6","7":"t7","8":"t8","9":"t9"},"c":{"1":[{"i":"t5","r":1}],"4":[],"7":[],"8":[],"9":[]},"n":{"7":"2fn3"}},{"n":{"1":"0f2n2fn"},"t":{"2":"t10"},"c":{"2":[]}},{"t":{"1":"t5","4":"t6","7":"t7","8":"t8","9":"t9"},"c":{"1":[{"i":"t5","r":1}],"4":[],"7":[],"8":[],"9":[]},"n":{"7":"2fn2"}},{"n":{"1":"0f2n2fn"}},{"t":{"1":"t4"},"c":{"1":[{"i":"t4","r":1,"c":{"1":[{"i":"c3290052894","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c1776412260","r":1}]},"x":3},{"i":"t4","r":1,"c":{"1":[{"i":"c1950231573","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c1323955343","r":1}]}}]}},{"t":{"1":"t4"},"c":{"1":[{"i":"t4","r":1,"c":{"1":[{"i":"c2176329426","r":1}]},"x":2},{"i":"t4","r":1,"c":{"1":[{"i":"c227854929","r":1}]},"x":2}]}},{"n":{"1":"0f2n2fn"},"t":{"3":"t22"},"c":{"3":[]}},{"t":{"2":"t11","5":"t12"},"c":{"2":[],"5":[]}},{"t":{"1":"t4"},"c":{"1":[{"i":"t4","r":1,"c":{"1":[{"i":"c4189539709","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c1323955343","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c1117299657","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c2942786634","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c2176329426","r":1}]}},{"i":"t4","r":1,"c":{"1":[{"i":"c551867509","r":1}]},"x":2},{"i":"t4","r":1,"c":{"1":[{"i":"c91646592","r":1}]}}]}},{"t":{"0":"t13"},"c":{"0":[]}},{"t":{"2":"t19"},"c":{"2":[{"i":"t20","r":2}]}},{"n":{"3":"0fnf3"},"t":{"3":"t14","4":"t17","8":"t18"},"c":{"3":[{"i":"t14","r":1,"t":{"6":"t15","7":"t16"},"c":{"6":[],"7":[{"i":"t16","r":1}]}}],"4":[{"i":"t17","r":3}],"8":[{"i":"t18","r":1}]}},{"t":{"0":"t20"},"c":{"0":[]}},{"n":{"2":"0fn"},"t":{"2":"t21"},"c":{"2":[{"i":"t21","r":2,"n":{"1":"0n4f3"},"c":{"0":[],"1":[]}}]}},{"t":{"0":"t2"},"c":{"0":[{"i":"t2","r":6,"c":{"3":[],"6":[{"i":"c4063745536","r":1}]},"n":{"6":"5f2nf","9":"8f2nf"},"t":{"6":"t3"}}]}},{"c":{"5":[{"i":"c3737945541","r":1}]}}]}</script></body></html>
