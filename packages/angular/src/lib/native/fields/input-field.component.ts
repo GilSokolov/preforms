@@ -21,6 +21,7 @@ import { FormFieldComponent } from "./form-field.component";
         [formControl]="control"
         class="preforms-input-field"
         [attr.multiple]="field.multiple"
+        [attr.readonly]="field.readonly"
         [attr.spellcheck]="field.spellcheck"
         [attr.placeholder]="field.placeholder"
         [attr.autocomplete]="field.autocomplete"

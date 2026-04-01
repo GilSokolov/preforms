@@ -55,17 +55,30 @@ export interface BaseTrigger<T = any> {
 
 export type FetchMode = "patch" | "replace" | "merge";
 
+export type FetchProjection =
+  | {
+      target: string;
+      select: string; // primitive array
+      source?: string;
+    }
+  | {
+      target: string;
+      select: Record<string, string>; // map properties
+      source?: string;
+    };
+
 /**
  * Trigger to fetch data from an endpoint
  */
 export interface FetchTrigger<T = any> extends BaseTrigger<T> {
   action: "fetch";
   fetchUrl: string; // endpoint to fetch data from
-  mode?: FetchMode; // whether to merge fetched data with existing state
+  mode?: FetchMode; // whether to merge fetched data with existing state,
+  projection?: FetchProjection;
 }
 
 /**
- * Trigger to fetch data from an endpoint
+ * Trigger to fetch validations from an endpoint
  */
 export interface AsyncValidationTrigger<T = any> extends BaseTrigger<T> {
   action: TriggerAction.ASYNC_VALIDATE;
@@ -77,7 +90,7 @@ export interface AsyncValidationTrigger<T = any> extends BaseTrigger<T> {
  */
 export interface StateUpdateTrigger<T = any> extends BaseTrigger<T> {
   action: "update_state";
-  applyState: Partial<FormElementConfig<T>>; // state changes to apply
+  applyState: Partial<FormElementConfig<T> & Record<any, any> & { value: any }>; // state changes to apply
 }
 
 /**

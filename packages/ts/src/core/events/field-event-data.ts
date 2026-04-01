@@ -12,6 +12,7 @@ export enum FormFieldEventType {
   INPUT = "input",
   BLUR = "blur",
   FOCUS = "focus",
+  INIT = "init",
 }
 
 export interface FieldEventData<T = any> {

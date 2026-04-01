@@ -6,14 +6,13 @@ import {
   Input,
   Output,
 } from "@angular/core";
-import { FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import {
   FieldEventData,
   FormElement,
   FormEventType,
   FormFieldEventType,
   FormSchema,
-  RequestDataEvent,
 } from "@preforms/ts";
 import { FormEvent, FormFieldEvent } from "./decorators";
 import { DynamicFieldGroupComponent } from "./fields/base/dynamic-field-group.component";
@@ -21,8 +20,6 @@ import { FormHost } from "./form-host";
 import { DynamicFormSubmitEvent } from "./models";
 import { preformsProviders } from "./providers/performs-providers";
 import { FormService } from "./services";
-import { DYNAMIC_FORM_FETCHER } from "./tokens";
-import { untilDestroyed } from "./utils/until-destroyed";
 
 @Component({
   selector: "preforms-dynamic-form",
@@ -89,10 +86,6 @@ export class DynamicFormComponent<
 
   private readonly formService = inject(FormService);
 
-  private readonly untilDestroyed = untilDestroyed();
-
-  private readonly fetcher = inject(DYNAMIC_FORM_FETCHER, { optional: true });
-
   @FormEvent(FormEventType.REQUEST_RESET)
   onReset(event?: Event): void {
     event?.preventDefault();
@@ -109,15 +102,6 @@ export class DynamicFormComponent<
 
     this.submitted.emit(this.formService.getEventPayload<T>(meta));
     this.submittedData.emit(this.formService.getValues<T>(meta.buttonData));
-  }
-
-  @FormEvent(FormEventType.REQUEST_DATA)
-  fetchData({ url, mode }: RequestDataEvent): void {
-    if (!this.fetcher) return;
-
-    this.fetcher(url)
-      .pipe(this.untilDestroyed())
-      .subscribe((fields) => this.formService.onDataReady(fields, mode));
   }
 
   @FormFieldEvent({ field: "*", type: FormFieldEventType.CHANGE })

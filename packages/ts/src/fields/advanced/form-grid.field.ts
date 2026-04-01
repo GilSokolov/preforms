@@ -13,6 +13,7 @@ import { FormElement, FieldWrapperConfig, FieldWrapper } from "../../core";
  */
 export interface FormGridConfig extends Omit<FieldWrapperConfig, "component"> {
   columns?: string;
+  rows?: string;
   gap?: string;
 }
 
@@ -45,6 +46,8 @@ export class FormGrid extends FieldWrapper {
   /** CSS grid template columns (default: "1fr") */
   columns: string;
 
+  rows: string;
+
   /** CSS gap between fields (default: "1rem") */
   gap: string;
 
@@ -68,6 +71,7 @@ export class FormGrid extends FieldWrapper {
     });
 
     this.columns = config.columns || "1fr";
+    this.rows = config.rows || "1fr";
     this.gap = config.gap || "1rem";
   }
 }

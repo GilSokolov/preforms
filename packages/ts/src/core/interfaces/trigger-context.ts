@@ -1,5 +1,5 @@
 import { CrossFieldValidation } from "./cross-field-validation";
-import { FetchMode } from "./triggers";
+import { FetchProjection, FetchMode } from "./triggers";
 import { FieldUIState } from "./ui-config";
 
 export type ToggleProps = (keyof Pick<
@@ -14,9 +14,15 @@ export type ToggleProps = (keyof Pick<
 >)[];
 
 export interface TriggerContext {
+  getValues(): object;
   requestSubmit(): void;
   requestReset(): void;
-  fetch(url: string, mode: FetchMode): void;
+  fetch(
+    url: string,
+    mode: FetchMode,
+    mapper?: FetchProjection,
+    id?: string,
+  ): void;
   patchValue(id: string, value: unknown): void;
   updateState(ids: string[], state: Partial<FieldUIState>): void;
   validate(id: string, validation: CrossFieldValidation): void;

@@ -49,6 +49,10 @@ export class BaseFieldComponent<
 
   constructor() {
     this.__eventService.bindDecoratedHandlers(this, this.destroyRef);
+
+    setTimeout(() => {
+      this.emit(FormFieldEventType.INIT);
+    });
   }
 
   @HostBinding("attr.data-field-id")
@@ -106,6 +110,7 @@ export class BaseFieldComponent<
       const el = target.closest<HTMLElement>("[data-field-id]");
       if (!el || el.dataset["fieldId"] !== this.field.id) return;
     }
+
     // Build base payload
     const payload: FieldEventData = {
       type,

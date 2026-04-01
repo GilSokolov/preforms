@@ -54,7 +54,6 @@ import { Observable, of } from 'rxjs';
 
         return of([
           {
-            id: 'order-form-submit-btn',
             label: `Add $${price.toFixed(2)}`,
           },
         ]);
@@ -128,7 +127,6 @@ export class OrderFormDemoComponent {
           className: 'amount-control',
         }),
         new SubmitButton({
-          id: 'order-form-submit-btn',
           label: 'Add $9.34',
           className: 'primary',
           triggers: [

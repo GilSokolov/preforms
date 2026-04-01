@@ -1,0 +1,320 @@
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
+import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core/tokens';
+import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
+import {
+  CheckboxField,
+  DialogField,
+  FieldButton,
+  FieldGroup,
+  FieldWrapper,
+  FormDivider,
+  FormFieldEventType,
+  FormImage,
+  FormTitle,
+  InputField,
+  NumberField,
+  OutputField,
+  SelectField,
+  TriggerAction,
+} from '@preforms/ts';
+
+import { from } from 'rxjs';
+
+function randomIntBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function createPlayer(playerName: string, url = '$value', showdown = 'back_default') {
+  return new FieldGroup({
+    key: playerName,
+    hidden: true,
+    fields: [
+      new FormImage({
+        src: '',
+        key: 'image',
+      }),
+      new InputField({
+        type: 'range',
+        key: 'hp',
+        value: 0,
+        className: 'indicator',
+      }),
+      new InputField({ type: 'range', key: 'attack', value: 0, className: 'indicator' }),
+      new InputField({ type: 'range', key: 'defense', value: 0, className: 'indicator' }),
+      new NumberField({
+        key: 'hit',
+        readonly: true,
+        className: 'hit',
+      }),
+      new OutputField({
+        key: 'damage',
+        calculation: `Number(${playerName}.hit) - Number(${playerName}.defense) / 2`,
+        for: ['p1', 'p2'],
+      }),
+    ],
+    triggers: [
+      {
+        on: FormFieldEventType.SELECTED,
+        action: TriggerAction.FETCH,
+        fetchUrl: url,
+        sourceField: 'pokemon',
+        mode: 'patch',
+        projection: {
+          target: 'value',
+          select: {
+            hp: 'stats[0].base_stat',
+            attack: 'stats[1].base_stat',
+            defense: 'stats[2].base_stat',
+            image: `sprites.other.showdown.${showdown}`,
+          },
+        },
+      },
+      {
+        on: FormFieldEventType.SELECTED,
+        action: TriggerAction.UPDATE_STATE,
+        applyState: {
+          hidden: false,
+        },
+      },
+    ],
+  });
+}
+
+@Component({
+  selector: 'app-dynamic-form-fetch',
+  template: `<preforms-dynamic-form (submittedData)="logData($event)" [fields]="fields" />`,
+  imports: [DynamicFormComponent],
+  styles: [
+    `
+      .grid {
+        max-width: 400px;
+        padding: 20px;
+        display: grid;
+        grid-template-areas: 'a a' 'b b';
+        gap: 10px;
+        grid-auto-rows: 40px 300px;
+        align-items: end;
+      }
+
+      .hit {
+        .preforms-input-field {
+          all: unset;
+        }
+      }
+
+      .indicator {
+        .preforms-input-field {
+          max-width: 100%;
+        }
+      }
+    `,
+  ],
+  providers: [
+    NATIVE_FORM_ELEMENTS,
+    {
+      provide: DYNAMIC_FORM_FETCHER,
+      useValue: (url: string) => {
+        return from(fetch(url).then((res) => res.json()));
+      },
+    },
+  ],
+  encapsulation: ViewEncapsulation.None,
+})
+export class DynamicFormFetchComponent {
+  @Output() formChange = new EventEmitter<any>();
+
+  fields = [
+    new CheckboxField({ key: 'done', hidden: true }),
+    new OutputField({
+      key: 'score',
+      calculation: 'Number(p1.damage) - Number(p2.damage)',
+      for: ['done'],
+    }),
+    new DialogField({
+      key: 'popup',
+      disabled: true,
+      fields: [new FormTitle('Tie!')],
+      triggers: [
+        {
+          on: 'change',
+          action: 'update_state',
+          applyState: {
+            fields: [new FormTitle('You win!')],
+          },
+          sourceField: 'score',
+          condition: {
+            operator: 'gt',
+            value: 0,
+          },
+        },
+        {
+          on: 'change',
+          action: 'update_state',
+          applyState: {
+            fields: [new FormTitle('You loss')],
+          },
+          sourceField: 'score',
+          condition: {
+            operator: 'lt',
+            value: 0,
+          },
+        },
+      ],
+    }),
+
+    new FieldWrapper({
+      className: 'grid',
+      fields: [
+        new FormDivider({ label: 'Player' }),
+        new FormDivider({ label: 'Enemy' }),
+        createPlayer('p1'),
+        createPlayer(
+          'p2',
+          'https://pokeapi.co/api/v2/pokemon/' + randomIntBetween(1, 151),
+          'front_default',
+        ),
+      ],
+    }),
+
+    new SelectField({
+      key: 'type',
+      label: 'Select Pokemon Type',
+      options: [],
+      triggers: [
+        {
+          on: FormFieldEventType.INIT,
+          action: TriggerAction.FETCH,
+          fetchUrl: 'https://pokeapi.co/api/v2/type/',
+          mode: 'patch',
+          projection: {
+            target: 'options',
+            select: {
+              value: 'url',
+              label: 'name',
+            },
+            source: 'results',
+          },
+        },
+      ],
+    }),
+
+    new SelectField({
+      key: 'pokemon',
+      label: 'Select Pokemon',
+      hidden: true,
+      options: [],
+      triggers: [
+        {
+          on: FormFieldEventType.CHANGE,
+          sourceField: 'type',
+          action: TriggerAction.FETCH,
+          fetchUrl: '$value',
+          mode: 'patch',
+          projection: {
+            target: 'options',
+            select: {
+              value: 'pokemon.url',
+              label: 'pokemon.name',
+            },
+            source: 'pokemon',
+          },
+        },
+        {
+          on: FormFieldEventType.SELECTED,
+          sourceField: 'type',
+          action: TriggerAction.UPDATE_STATE,
+          applyState: {
+            hidden: false,
+          },
+        },
+      ],
+    }),
+
+    new FieldButton({
+      type: 'button',
+      label: 'Attack!',
+      hidden: true,
+      triggers: [
+        {
+          on: 'selected',
+          sourceField: 'pokemon',
+          action: 'update_state',
+          applyState: {
+            hidden: false,
+          },
+        },
+        {
+          on: 'click',
+          action: 'update_state',
+          applyState: {
+            value: {
+              hit: 'p1.attack',
+            },
+          },
+          targetField: ['p2'],
+        },
+        {
+          on: 'click',
+          action: 'update_state',
+          applyState: {
+            value: {
+              hit: 'p2.attack',
+            },
+          },
+          targetField: ['p1'],
+          debounce: 1000,
+        },
+        {
+          on: 'click',
+          action: 'update_state',
+          applyState: {
+            value: true,
+          },
+          targetField: ['done'],
+          debounce: 1001,
+        },
+        {
+          on: 'click',
+          action: 'update_state',
+          applyState: {
+            disabled: false,
+          },
+          targetField: ['popup'],
+          debounce: 1002,
+        },
+        // {
+        //   on: 'click',
+        //   action: 'submit',
+        //   debounce: 1003,
+        // },
+      ],
+    }),
+  ];
+
+  logData(data: any) {
+    this.formChange.emit(data);
+  }
+}
+
+//  new SelectField({
+//       key: 'product',
+//       label: 'Select Product',
+//       options: [],
+//       triggers: [
+//         {
+//           on: FormFieldEventType.INIT,
+//           action: TriggerAction.FETCH,
+//           fetchUrl: 'https://restcountries.com/v3.1/all?fields=name,capital,currencies',
+//           mode: 'patch',
+//           projection: {
+//             target: 'options',
+//             select: {
+//               value: 'name.common',
+//               label: 'name.common',
+//             },
+//             source: '',
+//           },
+//         },
+//       ],
+//     }),

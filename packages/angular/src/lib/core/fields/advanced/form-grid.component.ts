@@ -14,6 +14,7 @@ import { BaseFieldComponent } from "../base/base-field.component";
       class="form-grid"
       [style.display]="'grid'"
       [style.gridTemplateColumns]="field.columns"
+      [style.gridTemplateRows]="field.rows"
       [style.gap]="field.gap"
       [fields]="field.fields"
       [control]="control"

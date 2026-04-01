@@ -1,8 +1,10 @@
-import { inject, Injectable } from "@angular/core";
+import { ChangeDetectorRef, inject, Injectable } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import {
   CrossFieldValidation,
   FetchMode,
+  fetchProjection,
+  FetchProjection,
   FieldArray,
   FieldEventData,
   FieldGroup,
@@ -18,15 +20,15 @@ import {
 
 import { DynamicFormSubmitEvent } from "../models/submit-payload.model";
 
+import { SubmitMetadata } from "../models/submit-metadata";
+import { DYNAMIC_FORM_FETCHER } from "../tokens";
 import { untilDestroyed } from "../utils";
 import { convertToNestedObject } from "../utils/convertToNestedObject.util";
 import { deepMerge } from "../utils/deep-merge";
-import { replacePlaceholders } from "../utils/replace-placeholders.util";
 import { EventService } from "./event.service";
 import { FormFactoryService } from "./form-factory.service";
 import { FieldLookupResult, FormStateService } from "./state.service";
 import { FormValidationService } from "./validation.service";
-import { SubmitMetadata } from "../models/submit-metadata";
 
 @Injectable()
 export class FormService implements TriggerContext {
@@ -46,6 +48,8 @@ export class FormService implements TriggerContext {
   private validationService = inject(FormValidationService);
 
   private triggerEngine = new TriggerEngine(this);
+  private readonly fetcher = inject(DYNAMIC_FORM_FETCHER, { optional: true });
+  private cd = inject(ChangeDetectorRef);
 
   constructor() {
     this.handleEvents();
@@ -107,12 +111,19 @@ export class FormService implements TriggerContext {
     this.eventService.emitFormEvent(FormEventType.REQUEST_RESET);
   }
 
-  fetch(url: string, mode: FetchMode): void {
-    this.eventService.emitFormEvent(FormEventType.REQUEST_DATA, {
-      type: "fetch",
-      url: replacePlaceholders(url, this.getValues()),
-      mode,
-    });
+  fetch(
+    url: string,
+    mode: FetchMode,
+    mapper?: FetchProjection,
+    id?: string,
+  ): void {
+    if (!this.fetcher) return;
+
+    this.fetcher(url)
+      .pipe(this.untilDestroyed())
+      .subscribe((res: unknown) => {
+        this.onDataReady(this.normalizeData(res, mapper, id), mode);
+      });
   }
 
   patchValue(id: string, value: unknown): void {
@@ -156,6 +167,8 @@ export class FormService implements TriggerContext {
     this.fields = this.sortFields(fields);
 
     this.defaultValues = this.getValues();
+
+    this.cd.detectChanges();
 
     return form;
   }
@@ -251,12 +264,16 @@ export class FormService implements TriggerContext {
     });
 
     this.fields = this.sortFields([...this.fields, ...uniqueFields]);
+
+    this.cd.detectChanges();
   }
 
   private patchField(field: FormElement) {
     const existing = this.stateService.get(field.id);
 
     if (existing) this.setState(existing, field);
+
+    this.cd.detectChanges();
   }
 
   private setState(res: FieldLookupResult, state: Partial<FormElement>) {
@@ -266,7 +283,7 @@ export class FormService implements TriggerContext {
 
       if (state["disabled"] !== undefined)
         state["disabled"] ? control.disable() : control.enable();
-      if (state["value"] !== undefined) control.setValue(state["value"]);
+      if (state["value"] !== undefined) control.patchValue(state["value"]);
 
       if (state.value !== undefined) {
         this.emitFieldEvent(FormFieldEventType.INPUT, res.field, state.value);
@@ -281,6 +298,8 @@ export class FormService implements TriggerContext {
 
     // update config state for props like hidden and others that do not exist on AbstractControl
     deepMerge(res.field, state);
+
+    this.cd.detectChanges();
   }
 
   private handleEvents() {
@@ -299,6 +318,7 @@ export class FormService implements TriggerContext {
             this.triggerEngine.runFieldTriggers(
               l.field.triggers as FormFieldTrigger[],
               { ...e, id: l.field.id },
+              e.id,
             );
           });
         }
@@ -317,5 +337,29 @@ export class FormService implements TriggerContext {
     return [...fields].sort(
       (a, b) => (a.order || Infinity) - (b.order || Infinity),
     );
+  }
+
+  private normalizeData(
+    res: unknown,
+    mapper?: FetchProjection,
+    id?: string,
+  ): FormElement[] {
+    const result = mapper
+      ? fetchProjection(res, mapper)
+      : (res as Partial<FormElement> | Partial<FormElement>[]);
+
+    const fields = Array.isArray(result) ? result : [result];
+
+    return fields.map((field: Partial<FormElement>) => {
+      const res = field.id ? this.stateService.get(field.id) : { field: null };
+
+      const existing = res?.field || {};
+
+      return {
+        id,
+        ...existing,
+        ...field,
+      } as FormElement;
+    });
   }
 }

@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { DynamicFormElement } from "../../decorators";
 import { BaseFieldComponent } from "../base";
 import { FormImage } from "@preforms/ts";
+import { AbstractControl } from "@angular/forms";
 
 @DynamicFormElement({ component: "form-image" })
 @Component({
@@ -9,7 +10,7 @@ import { FormImage } from "@preforms/ts";
   template: `
     <div class="preforms-image" [class]="field.className">
       <img
-        [src]="field.src"
+        [src]="field.src || control.value"
         [alt]="field.alt || ''"
         [attr.width]="field.width || null"
         [attr.height]="field.height || null"
@@ -30,4 +31,7 @@ import { FormImage } from "@preforms/ts";
     }
   `,
 })
-export class FormImageComponent extends BaseFieldComponent<never, FormImage> {}
+export class FormImageComponent extends BaseFieldComponent<
+  AbstractControl,
+  FormImage
+> {}

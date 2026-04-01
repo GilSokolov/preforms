@@ -23,7 +23,14 @@ export class FormFactoryService {
 
     for (const field of fields) {
       if (field.kind === "decorative") {
-        this.stateService.set(field, new FormControl());
+        const control = new FormControl();
+        if (field.key) {
+          group[field.key] = control;
+          this.stateService.set(field, control);
+        } else {
+          this.stateService.set(field, control);
+        }
+
         continue;
       }
 

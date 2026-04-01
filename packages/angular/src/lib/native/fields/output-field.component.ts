@@ -57,6 +57,7 @@ export class OutputFieldComponent
   }
 
   private calculate() {
+    if (this.field.disabled) return;
     const formValue = this.formService.getValues();
 
     if (!this.field.calculation) return;
@@ -73,6 +74,11 @@ export class OutputFieldComponent
 
       // update control and reactive output
       this.control.setValue(result, { emitEvent: false });
+
+      if (this.output !== result) {
+        this.emit("change");
+      }
+
       this.output = result;
     } catch (err) {
       console.error("Error evaluating output calculation", err);
