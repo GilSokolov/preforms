@@ -1,4 +1,5 @@
 fields = [
   new EmailField(),
-  new NumberField({ key: 'amount' })
+  new NumberField({ key: 'amount' }),
+  new SubmitButton('Checkout')
 ];

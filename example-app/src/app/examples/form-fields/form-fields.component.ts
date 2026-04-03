@@ -2,17 +2,16 @@ import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/cor
 import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
 import {
-  TextField,
-  EmailField,
-  PasswordField,
-  NumberField,
-  SelectField,
-  FormFieldOption,
   CheckboxGroupField,
+  EmailField,
+  FormFieldOption,
   InputField,
-  TextareaField,
-  OutputField,
+  NumberField,
+  PasswordField,
+  SelectField,
   SubmitButton,
+  TextareaField,
+  TextField,
 } from '@preforms/ts';
 
 @Component({

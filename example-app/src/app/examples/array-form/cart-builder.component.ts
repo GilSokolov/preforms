@@ -70,7 +70,6 @@ export class CartBuilderComponent {
               label: 'Subtotal',
               calculation: 'Number(items[$index].price) * Number(items[$index].qty)',
               for: ['price[$index]', 'qty[$index]'],
-              disabled: true,
               className: 'subtotal',
             }),
           ],
@@ -97,7 +96,6 @@ export class CartBuilderComponent {
     new OutputField({
       key: 'cartTotal',
       label: 'Total',
-      disabled: true,
       calculation: `
         items.reduce(
           (sum, i) => sum + (Number(i.price) * Number(i.qty)),

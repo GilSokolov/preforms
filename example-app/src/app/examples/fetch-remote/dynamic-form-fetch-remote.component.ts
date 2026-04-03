@@ -168,13 +168,17 @@ export class DynamicFormFetchRemoteComponent {
           on: 'change',
           action: 'update_state',
           applyState: {
-            fields: [new FormTitle('You loss')],
+            fields: [new FormTitle('You lose!')],
           },
           sourceField: 'score',
           condition: {
             operator: 'lt',
             value: 0,
           },
+        },
+        {
+          on: 'change',
+          action: 'submit',
         },
       ],
     }),

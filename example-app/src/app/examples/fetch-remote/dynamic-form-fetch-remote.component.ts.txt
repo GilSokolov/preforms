@@ -83,29 +83,45 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
 
 @Component({
   selector: 'app-dynamic-form-fetch-remote',
-  template: `<preforms-dynamic-form (submittedData)="logData($event)" [fields]="fields" />`,
+  template: `<preforms-dynamic-form
+    (submittedData)="logData($event)"
+    [fields]="fields"
+    className="pokemon"
+  />`,
   imports: [DynamicFormComponent],
   styles: [
     `
-      .grid {
-        max-width: 400px;
-        padding: 20px;
-        display: grid;
-        grid-template-areas: 'a a' 'b b';
-        gap: 10px;
-        grid-auto-rows: 40px 300px;
-        align-items: end;
-      }
-
-      .hit {
-        .preforms-input-field {
-          all: unset;
+      .pokemon {
+        .grid {
+          max-width: 400px;
+          padding: 20px;
+          display: grid;
+          grid-template-areas: 'a a' 'b b';
+          gap: 10px;
+          grid-auto-rows: 40px 300px;
+          align-items: end;
         }
-      }
 
-      .indicator {
-        .preforms-input-field {
-          max-width: 100%;
+        .hit {
+          .preforms-input-field {
+            all: unset;
+          }
+        }
+
+        .indicator {
+          .preforms-input-field {
+            max-width: 100%;
+          }
+        }
+
+        .primary {
+          background-color: rgb(255, 187, 0);
+          padding: 0.6rem 2rem;
+          border: 1px solid #cfd6e3;
+          border-radius: 25px;
+          font-weight: 700;
+          margin-top: 30px;
+          display: inline-block;
         }
       }
     `,
@@ -152,13 +168,17 @@ export class DynamicFormFetchRemoteComponent {
           on: 'change',
           action: 'update_state',
           applyState: {
-            fields: [new FormTitle('You loss')],
+            fields: [new FormTitle('You lose!')],
           },
           sourceField: 'score',
           condition: {
             operator: 'lt',
             value: 0,
           },
+        },
+        {
+          on: 'change',
+          action: 'submit',
         },
       ],
     }),
@@ -176,6 +196,8 @@ export class DynamicFormFetchRemoteComponent {
         ),
       ],
     }),
+
+    new FormDivider({ label: 'Play!' }),
 
     new SelectField({
       key: 'type',
@@ -235,6 +257,7 @@ export class DynamicFormFetchRemoteComponent {
       type: 'button',
       label: 'Attack!',
       hidden: true,
+      className: 'primary',
       triggers: [
         {
           on: 'selected',
