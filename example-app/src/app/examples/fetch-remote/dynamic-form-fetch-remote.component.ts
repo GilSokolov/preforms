@@ -55,7 +55,7 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
     ],
     triggers: [
       {
-        on: FormFieldEventType.SELECTED,
+        on: FormFieldEventType.SELECT,
         action: TriggerAction.FETCH,
         fetchUrl: url,
         sourceField: 'pokemon',
@@ -71,7 +71,7 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
         },
       },
       {
-        on: FormFieldEventType.SELECTED,
+        on: FormFieldEventType.SELECT,
         action: TriggerAction.UPDATE_STATE,
         applyState: {
           hidden: false,
@@ -243,7 +243,7 @@ export class DynamicFormFetchRemoteComponent {
           },
         },
         {
-          on: FormFieldEventType.SELECTED,
+          on: FormFieldEventType.SELECT,
           sourceField: 'type',
           action: TriggerAction.UPDATE_STATE,
           applyState: {
@@ -260,7 +260,7 @@ export class DynamicFormFetchRemoteComponent {
       className: 'primary',
       triggers: [
         {
-          on: 'selected',
+          on: 'select',
           sourceField: 'pokemon',
           action: 'update_state',
           applyState: {

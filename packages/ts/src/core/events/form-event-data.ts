@@ -22,8 +22,8 @@ export type FormEventData =
   | (BaseFormEventData & { type: FormEventType.RESET })
   | (BaseFormEventData & { type: FormEventType.SUBMIT })
   | (BaseFormEventData & { type: FormEventType.CHANGE; value: any })
-  | (BaseFormEventData & { type: FormEventType.DIRTY })
-  | (BaseFormEventData & { type: FormEventType.PRISTINE })
+  | (BaseFormEventData & { type: FormEventType.BECOME_DIRTY })
+  | (BaseFormEventData & { type: FormEventType.BECOME_PRISTINE })
   | (BaseFormEventData & { type: FormEventType.FOCUS })
   | (BaseFormEventData & { type: FormEventType.BLUR })
 

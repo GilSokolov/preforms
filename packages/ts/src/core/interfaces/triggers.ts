@@ -2,13 +2,21 @@ import { ComparisonOperator } from "../comparison-operator";
 import { CrossFieldValidation } from "./cross-field-validation";
 import { FormFieldEventType } from "../events/field-event-data";
 import { FormElementConfig } from "./form-element";
+import { SchemaNode } from "../../utils/transform";
+import { FormEventType } from "../events";
+import { FormSchemaConfig } from "../../schema";
+
+export type OneOrMany<T> = T | T[];
+
+export type FieldState<T> = Partial<FormElementConfig<T>> & {
+  value?: T;
+};
 
 export type ConditionValue<T> =
-  | T
-  | T[]
+  | OneOrMany<T>
   | {
       operator: ComparisonOperator | `${ComparisonOperator}`;
-      value: T | T[];
+      value: OneOrMany<T>;
     };
 
 /**
@@ -31,11 +39,20 @@ export enum TriggerAction {
   DIALOG_OPEN = "dialog_open",
   /** Close a dialog */
   DIALOG_CLOSE = "dialog_close",
+  LOAD = "load",
+  VALIDATE_ASYNC = "validate_async",
+  SET = "set",
+  TOGGLE = "toggle",
+  OPEN_DIALOG = "open_dialog",
+  CLOSE_DIALOG = "close_dialog",
+  EMIT = "emit",
 }
 
 export type TriggerEvent =
   | FormFieldEventType
   | `${FormFieldEventType}`
+  | FormEventType
+  | `${FormEventType}`
   | `custom:${string}`;
 
 /**
@@ -44,8 +61,10 @@ export type TriggerEvent =
 export interface BaseTrigger<T = any> {
   on: TriggerEvent; // event that triggers this action
   action: TriggerAction | `${TriggerAction}`; // the operation to perform
-  targetField?: string | string[]; // which field(s) to affect; defaults to self
-  sourceField?: string | string[]; // which field(s) to listen;
+  targetField?: OneOrMany<string>; // which field(s) to affect; defaults to self
+  sourceField?: OneOrMany<string>; // which field(s) to listen;
+  target?: OneOrMany<string>; // which field(s) to affect; defaults to self
+  source?: OneOrMany<string>; // which field(s) to listen;
   condition?: ConditionValue<T>; // optional conditional trigger
   id?: string; // optional unique identifier for debugging
   priority?: number; // optional execution order
@@ -139,6 +158,44 @@ export interface DialogTrigger<T = any> extends BaseTrigger<T> {
   targetId: string;
 }
 
+export type LoadMode = "patch" | "replace" | "merge";
+
+export interface LoadTriggerBase<T = unknown> extends BaseTrigger<T> {
+  action: TriggerAction.LOAD;
+  mode?: LoadMode;
+  transform?: Record<string, SchemaNode | Record<string, any>>;
+}
+
+/**
+ * Load data from a remote source
+ */
+export interface NetworkLoadTrigger<T = unknown> extends LoadTriggerBase<T> {
+  protocol: "http" | "graphql" | "websocket";
+  url: string;
+  query?: string;
+  event?: string;
+  params?: Record<string, unknown>;
+}
+
+/**
+ * Load data from a local source
+ */
+export interface LocalLoadTrigger<T = unknown> extends LoadTriggerBase<T> {
+  protocol: "storage" | "memory";
+  key: string;
+  params?: Record<string, unknown>;
+}
+
+export type LoadTrigger<T = unknown> =
+  | NetworkLoadTrigger<T>
+  | LocalLoadTrigger<T>;
+
+export interface SetTrigger<T = unknown> extends BaseTrigger<T> {
+  action: TriggerAction.SET;
+  scope: "field" | "form";
+  state: FieldState<T> | Partial<FormSchemaConfig>;
+}
+
 /**
  * Union of all possible triggers for a form field
  */
@@ -150,4 +207,5 @@ export type FormFieldTrigger<T = any> =
   | SubmitTrigger<T>
   | ResetTrigger<T>
   | DialogTrigger<T>
-  | AsyncValidationTrigger<T>;
+  | AsyncValidationTrigger<T>
+  | LoadTrigger<T>;

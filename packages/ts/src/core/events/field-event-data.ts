@@ -5,19 +5,19 @@ import { TriggerEvent } from "../interfaces";
  */
 export enum FormFieldEventType {
   CLICK = "click",
-  SELECTED = "selected",
-  CHECKED = "checked",
-  UNCHECKED = "unchecked",
   CHANGE = "change",
   INPUT = "input",
   BLUR = "blur",
   FOCUS = "focus",
   INIT = "init",
+  SELECT = "select",
+  CHECK = "check",
+  UNCHECK = "uncheck",
 }
 
 export interface FieldEventData<T = any> {
   /** Event type like 'input', 'change', 'blur', etc. */
-  type: TriggerEvent;
+  type: FormFieldEventType | `${FormFieldEventType}` | `custom:${string}`;
 
   /** The unique id of the field */
   id: string;

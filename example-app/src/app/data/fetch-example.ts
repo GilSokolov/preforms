@@ -22,7 +22,7 @@ export const fetchForm = [
     label: 'Agree to terms',
     triggers: [
       {
-        on: 'checked',
+        on: 'check',
         action: 'fetch',
         fetchUrl: '/api/terms/$value',
         mode: 'merge',

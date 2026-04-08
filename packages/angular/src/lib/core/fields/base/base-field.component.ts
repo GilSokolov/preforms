@@ -92,13 +92,13 @@ export class BaseFieldComponent<
       this.emit(FormFieldEventType.CHANGE, target);
       if (target instanceof HTMLInputElement && target.type === "checkbox") {
         const type = target.checked
-          ? FormFieldEventType.CHECKED
-          : FormFieldEventType.UNCHECKED;
+          ? FormFieldEventType.CHECK
+          : FormFieldEventType.UNCHECK;
         this.emit(type, target);
       }
 
       if (target instanceof HTMLSelectElement && target.selectedIndex >= 0)
-        this.emit(FormFieldEventType.SELECTED, target);
+        this.emit(FormFieldEventType.SELECT, target);
     }
   }
 

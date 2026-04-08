@@ -190,7 +190,11 @@ export class FormService implements TriggerContext {
     };
   }
 
-  emitFieldEvent(type: TriggerEvent, field: FormElement, value: unknown) {
+  emitFieldEvent(
+    type: FormFieldEventType | `custom:${string}`,
+    field: FormElement,
+    value: unknown,
+  ) {
     const fieldKey = (field as FieldGroup | FieldArray | FormField).key;
     const event: FieldEventData = {
       type,

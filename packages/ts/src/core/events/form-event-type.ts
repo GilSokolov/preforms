@@ -9,6 +9,7 @@
  * Enum values: snake_case strings used in configs and JSON
  */
 export enum FormEventType {
+  INIT = "init",
   // ----- Reset lifecycle -----
   /** Form was reset to initial state */
   RESET = "reset",
@@ -21,9 +22,8 @@ export enum FormEventType {
   /** Any field value changed */
   CHANGE = "change",
   /** Form has been modified */
-  DIRTY = "dirty",
-  /** Form is pristine (no changes) */
-  PRISTINE = "pristine",
+  BECOME_DIRTY = "become_dirty",
+  BECOME_PRISTINE = "become_pristine",
 
   // ----- Focus & interaction -----
   /** Field received focus */
