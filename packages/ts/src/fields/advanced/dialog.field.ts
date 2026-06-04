@@ -1,13 +1,15 @@
-import { FieldGroup, FieldGroupConfig } from "../../core";
+import { FieldWrapper, FieldWrapperConfig } from "../../core";
 
 /**
  * Configuration for the DialogField.
  */
-export interface DialogFieldConfig<T> extends FieldGroupConfig<T> {
+export interface DialogFieldConfig<T> extends FieldWrapperConfig<T> {
   /** Whether the dialog should display a close button. Default: true */
   closeBtn?: boolean;
 
   width?: string;
+
+  height?: string;
 
   /** Optional nested child fields inside the dialog */
 }
@@ -32,11 +34,13 @@ export interface DialogFieldConfig<T> extends FieldGroupConfig<T> {
  * });
  * ```
  */
-export class DialogField<T = unknown> extends FieldGroup<T> {
+export class DialogField<T = unknown> extends FieldWrapper<T> {
   /** Whether the dialog shows a close button */
   closeBtn: boolean;
 
   width?: string;
+
+  height?: string;
 
   constructor(config: DialogFieldConfig<T>) {
     super({ ...config, component: "dialog" });
@@ -44,5 +48,7 @@ export class DialogField<T = unknown> extends FieldGroup<T> {
     this.closeBtn = config.closeBtn ?? true;
 
     this.width = config.width;
+
+    this.height = config.height;
   }
 }
