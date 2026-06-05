@@ -10,7 +10,9 @@ import {
   DateOfBirth,
   Description,
   EmailField,
+  Fieldset,
   FirstName,
+  FormRow,
   FullName,
   Gender,
   LastName,
@@ -37,28 +39,28 @@ export class CommonFieldsComponent {
   @Output() formChange = new EventEmitter<any>();
 
   fields = [
-    new FirstName(),
-    new MiddleName(),
-    new LastName(),
+    new FormRow([new FirstName(), new MiddleName(), new LastName()]),
+
     new FullName(),
     new Name(),
-    new EmailField(),
     new UserName(),
+    new EmailField(),
     new PasswordField(),
     new PhoneNumber(),
     new DateOfBirth(),
     new Gender(),
-    new Address(),
-    new Street(),
-    new City(),
-    new State(),
-    new PostalCode(),
-    new Country(),
+    new Fieldset({
+      label: 'Address',
+      fields: [new Address()],
+    }),
+    new Fieldset({
+      label: 'Address composed',
+      fields: [new Street(), new City(), new State(), new PostalCode(), new Country()],
+    }),
     new CurrencyField(),
     new Description(),
-    new SubmitButton(),
-    new ResetButton(),
-    new ConfirmButton(),
+
+    new FormRow([new SubmitButton(), new ResetButton(), new ConfirmButton()]),
   ];
 
   logData(data: any) {

@@ -22,8 +22,9 @@ import { FieldWrapper, FieldWrapperConfig, FormElement } from "../../core";
  */
 export class Fieldset<T = unknown> extends FieldWrapper<T> {
   // 🔹 overload signatures
-  constructor(label: string, fields: FormElement[]);
+
   constructor(config: FieldWrapperConfig<T>);
+  constructor(label: string, fields: FormElement[]);
 
   // 🔹 implementation
   constructor(
