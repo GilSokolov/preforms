@@ -136,4 +136,9 @@ export interface AbstractFormElementConfig<T = unknown> {
   meta?: Record<string, any>;
 
   errors?: Record<string, any> | null;
+
+  /**
+   * css styles
+   */
+  style?: Record<string, string>;
 }

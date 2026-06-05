@@ -18,6 +18,7 @@ import { FieldButton } from "@preforms/ts";
       [attr.formaction]="field.formaction"
       [attr.formmethod]="field.formmethod"
       [class]="['preforms-form-button', field.className]"
+      [style]="field.style"
     >
       @for (icon of leftIcons; track $index) {
         <preforms-field-icon

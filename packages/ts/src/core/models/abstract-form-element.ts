@@ -39,6 +39,7 @@ export abstract class AbstractFormElement<T = unknown> {
   aria?: Record<string, string>;
   data?: Record<string, string>;
   meta?: Record<string, any>;
+  style?: Record<string, string>;
   errors?: FieldErrors | null;
   triggers?: FormFieldTrigger<T>[];
 
@@ -80,6 +81,7 @@ export abstract class AbstractFormElement<T = unknown> {
     this.aria = config.aria;
     this.data = config.data;
     this.meta = config.meta;
+    this.style = config.style;
     this.errors = config.errors;
     this.triggers = config.triggers;
   }
