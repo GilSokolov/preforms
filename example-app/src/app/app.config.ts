@@ -8,10 +8,12 @@ import { generatePassword } from './utils/generate-password';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { provideMarkdown } from 'ngx-markdown';
-import { provideDynamicFormLazyFields } from '@preforms/angular/core/providers';
+import { provideDynamicFormLazyFields, provideLoadAdapter } from '@preforms/angular/core/providers';
+import { HttpFetchAdapter } from './services/fetch';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideLoadAdapter(HttpFetchAdapter),
     provideHttpClient(withFetch()),
     provideMarkdown({ loader: HttpClient }),
     provideBrowserGlobalErrorListeners(),

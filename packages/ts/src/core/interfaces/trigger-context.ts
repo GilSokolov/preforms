@@ -1,5 +1,5 @@
 import { CrossFieldValidation } from "./cross-field-validation";
-import { FetchProjection, FetchMode } from "./triggers";
+import { FetchProjection, FetchMode, LoadTrigger } from "./triggers";
 import { FieldUIState } from "./ui-config";
 
 export type ToggleProps = (keyof Pick<
@@ -29,4 +29,5 @@ export interface TriggerContext {
   toggleFieldState(ids: string[], props: ToggleProps): void;
   openDialog(id: string): void;
   closeDialog(id: string): void;
+  load(trigger: LoadTrigger, id?: string): void;
 }

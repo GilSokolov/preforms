@@ -175,6 +175,8 @@ export interface NetworkLoadTrigger<T = unknown> extends LoadTriggerBase<T> {
   query?: string;
   event?: string;
   params?: Record<string, unknown>;
+  method?: "GET" | "POST";
+  body?: unknown;
 }
 
 /**

@@ -143,6 +143,14 @@ export class TriggerEngine {
       case TriggerAction.DIALOG_CLOSE:
         this.context.closeDialog(trigger.targetId);
         break;
+
+      case TriggerAction.LOAD:
+        if ("url" in trigger) {
+          trigger.url = this.normalizeUrl(trigger.url, event);
+        }
+
+        this.context.load(trigger, event.id);
+        break;
     }
 
     if (trigger.once) {

@@ -13,9 +13,11 @@ import {
   FormField,
   FormFieldEventType,
   FormFieldTrigger,
+  LoadMode,
+  LoadTrigger,
+  transform,
   TriggerContext,
   TriggerEngine,
-  TriggerEvent,
 } from "@preforms/ts";
 
 import { DynamicFormSubmitEvent } from "../models/submit-payload.model";
@@ -27,6 +29,7 @@ import { convertToNestedObject } from "../utils/convertToNestedObject.util";
 import { deepMerge } from "../utils/deep-merge";
 import { EventService } from "./event.service";
 import { FormFactoryService } from "./form-factory.service";
+import { LoadAdapterRegistry } from "./load-adapter-registry";
 import { FieldLookupResult, FormStateService } from "./state.service";
 import { FormValidationService } from "./validation.service";
 
@@ -46,6 +49,8 @@ export class FormService implements TriggerContext {
   private stateService = inject(FormStateService);
   private factoryService = inject(FormFactoryService);
   private validationService = inject(FormValidationService);
+
+  private adapterRegistry = inject(LoadAdapterRegistry);
 
   private triggerEngine = new TriggerEngine(this);
   private readonly fetcher = inject(DYNAMIC_FORM_FETCHER, { optional: true });
@@ -123,6 +128,19 @@ export class FormService implements TriggerContext {
       .pipe(this.untilDestroyed())
       .subscribe((res: unknown) => {
         this.onDataReady(this.normalizeData(res, mapper, id), mode);
+      });
+  }
+
+  load(trigger: LoadTrigger, id?: string) {
+    const adapter = this.adapterRegistry.get(trigger.protocol);
+
+    adapter
+      .execute(trigger, this.getValues())
+      .pipe(this.untilDestroyed())
+      .subscribe((res: unknown) => {
+        const data = this.normalizeData2(res, trigger.transform, id);
+        console.log(data);
+        this.onDataReady(data, trigger.mode || "replace");
       });
   }
 
@@ -206,7 +224,7 @@ export class FormService implements TriggerContext {
     this.eventService.emitFieldEvent(event);
   }
 
-  onDataReady(fields: FormElement[], mode: FetchMode): void {
+  onDataReady(fields: FormElement[], mode: FetchMode | LoadMode): void {
     switch (mode) {
       case "patch":
         fields.forEach((field) => this.patchField(field));
@@ -350,6 +368,30 @@ export class FormService implements TriggerContext {
   ): FormElement[] {
     const result = mapper
       ? fetchProjection(res, mapper)
+      : (res as Partial<FormElement> | Partial<FormElement>[]);
+
+    const fields = Array.isArray(result) ? result : [result];
+
+    return fields.map((field: Partial<FormElement>) => {
+      const res = field.id ? this.stateService.get(field.id) : { field: null };
+
+      const existing = res?.field || {};
+
+      return {
+        id,
+        ...existing,
+        ...field,
+      } as FormElement;
+    });
+  }
+
+  private normalizeData2(
+    res: unknown,
+    mapper?: any,
+    id?: string,
+  ): FormElement[] {
+    const result = mapper
+      ? transform(mapper, res)
       : (res as Partial<FormElement> | Partial<FormElement>[]);
 
     const fields = Array.isArray(result) ? result : [result];
