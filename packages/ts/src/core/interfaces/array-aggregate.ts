@@ -6,6 +6,76 @@ export type ArrayAggregateOperator =
   | ComparisonOperator.GTE
   | ComparisonOperator.LT
   | ComparisonOperator.LTE;
+
+type OperatorInput = ArrayAggregateOperator | `${ArrayAggregateOperator}`;
+
+type SumCountAvgConfig = {
+  field: string;
+  value: number;
+  operator?: OperatorInput;
+  message?: string;
+};
+
+type ProductConfig = {
+  field: [string, ...string[]];
+  value: number;
+  operator?: OperatorInput;
+  message?: string;
+};
+
+type UniqueConfig = {
+  field: string | string[];
+  value?: number;
+  operator?: OperatorInput;
+  message?: string;
+};
+
+export class Aggregate {
+  static sum(config: SumCountAvgConfig) {
+    return {
+      action: "sum",
+      ...config,
+    } as const;
+  }
+
+  static count(config: SumCountAvgConfig) {
+    return {
+      action: "count",
+      ...config,
+    } as const;
+  }
+
+  static avg(config: SumCountAvgConfig) {
+    return {
+      action: "avg",
+      ...config,
+    } as const;
+  }
+
+  static product(config: ProductConfig) {
+    return {
+      action: "product",
+      ...config,
+    } as const;
+  }
+
+  static unique(config: UniqueConfig | string, message?: string) {
+    const _config =
+      typeof config === "string" ? { field: config, message } : config;
+    return {
+      action: "unique",
+      ..._config,
+    } as const;
+  }
+}
+
+export type ArrayAggregate =
+  | ReturnType<typeof Aggregate.sum>
+  | ReturnType<typeof Aggregate.count>
+  | ReturnType<typeof Aggregate.avg>
+  | ReturnType<typeof Aggregate.product>
+  | ReturnType<typeof Aggregate.unique>;
+
 /**
  * Defines an aggregation or validation rule for an FieldArray.
  *
@@ -65,12 +135,12 @@ export type BaseArrayAggregate =
       message?: string;
     };
 
-export type ArrayAggregate =
-  | BaseArrayAggregate
-  | {
-      field: string | string[];
-      action: "unique";
-      value?: number;
-      operator?: ArrayAggregateOperator | `${ArrayAggregateOperator}`;
-      message?: string;
-    };
+// export type ArrayAggregate =
+//   | BaseArrayAggregate
+//   | {
+//       field: string | string[];
+//       action: "unique";
+//       value?: number;
+//       operator?: ArrayAggregateOperator | `${ArrayAggregateOperator}`;
+//       message?: string;
+//     };
