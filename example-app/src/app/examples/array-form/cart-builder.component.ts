@@ -9,6 +9,11 @@ import {
   OutputField,
   FormDivider,
   SubmitButton,
+  FieldButton,
+  DialogField,
+  TextareaField,
+  Aggregate,
+  FormGrid,
 } from '@preforms/ts';
 
 @Component({
@@ -40,8 +45,9 @@ export class CartBuilderComponent {
       value: [{ name: 'Wireless Mouse', price: 25, qty: 1 }],
 
       fields: [
-        new FormRow({
+        new FormGrid({
           className: 'cart-row',
+          gap: '1rem',
           fields: [
             new TextField({
               key: 'name',
@@ -65,47 +71,77 @@ export class CartBuilderComponent {
               required: true,
             }),
 
+            new FieldButton({
+              type: 'button',
+              label: 'Comment',
+              command: 'show-modal',
+              commandfor: 'comment-dialog[$index]',
+              className: 'comment-btn',
+            }),
+
             new OutputField({
-              key: 'subtotal',
-              label: 'Subtotal',
-              calculation: 'Number(items[$index].price) * Number(items[$index].qty)',
+              key: 'totalPrice',
+              calculation:
+                '"$"+(Number(items[$index].price) * Number(items[$index].qty)).toFixed(2)',
               for: ['price[$index]', 'qty[$index]'],
               className: 'subtotal',
             }),
+
+            new DialogField({
+              id: 'comment-dialog[$index]',
+              fields: [
+                new TextareaField({
+                  key: 'comment',
+                  rows: 5,
+                }),
+
+                new FormRow([
+                  new SubmitButton('Save'),
+
+                  new FieldButton({
+                    label: 'Close',
+                    type: 'button',
+                    command: 'close',
+                    commandfor: 'comment-dialog[$index]',
+                  }),
+                ]),
+              ],
+            }),
           ],
+          columns: '1fr 1fr 1fr 1fr',
         }),
       ],
 
       aggregates: [
-        {
-          action: 'product', // Special action: Σ(price × qty) across all items
+        // Special action: Σ(price × qty) across all items
+        Aggregate.product({
           field: ['price', 'qty'], // Fields to multiply per item
           value: 2000,
           operator: 'lte',
-          message: 'Cart total cannot exceed $2000',
-        },
-        {
-          action: 'unique',
-          field: 'name',
-        },
+          message: 'total cannot exceed $2000',
+        }),
+
+        Aggregate.unique('name'),
       ],
     }),
 
     new FormDivider({ label: 'Summary' }),
 
     new OutputField({
-      key: 'cartTotal',
-      label: 'Total',
+      key: 'total',
       calculation: `
-        items.reduce(
+        "$" + items.reduce(
           (sum, i) => sum + (Number(i.price) * Number(i.qty)),
           0
         )
       `,
-      for: ['price[*]', 'qty[*]'],
+      for: ['price[*]', 'qty[*]', 'items'],
     }),
 
-    new SubmitButton('Checkout'),
+    new SubmitButton({
+      label: 'Checkout',
+      className: 'checkout-btn',
+    }),
   ];
 
   logData(data: any) {

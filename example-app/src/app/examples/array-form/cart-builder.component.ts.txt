@@ -9,6 +9,10 @@ import {
   OutputField,
   FormDivider,
   SubmitButton,
+  FieldButton,
+  DialogField,
+  TextareaField,
+  Aggregate,
 } from '@preforms/ts';
 
 @Component({
@@ -42,6 +46,7 @@ export class CartBuilderComponent {
       fields: [
         new FormRow({
           className: 'cart-row',
+          gap: '1rem',
           fields: [
             new TextField({
               key: 'name',
@@ -72,22 +77,52 @@ export class CartBuilderComponent {
               for: ['price[$index]', 'qty[$index]'],
               className: 'subtotal',
             }),
+
+            new FieldButton({
+              type: 'button',
+              label: 'Comment',
+              command: 'show-modal',
+              commandfor: 'comment-dialog[$index]',
+            }),
+
+            new DialogField({
+              id: 'comment-dialog[$index]',
+              fields: [
+                new TextareaField({
+                  key: 'comment',
+                  rows: 5,
+                }),
+
+                new FormRow([
+                  new SubmitButton('Save'),
+
+                  new FieldButton({
+                    label: 'Close',
+                    type: 'button',
+                    command: 'close',
+                    commandfor: 'comment-dialog[$index]',
+                  }),
+                ]),
+              ],
+            }),
           ],
+          style: {
+            borderBottom: '1px solid rgb(184, 182, 182)',
+            padding: '0.5rem',
+          },
         }),
       ],
 
       aggregates: [
-        {
-          action: 'product', // Special action: Σ(price × qty) across all items
+        // Special action: Σ(price × qty) across all items
+        Aggregate.product({
           field: ['price', 'qty'], // Fields to multiply per item
           value: 2000,
           operator: 'lte',
           message: 'Cart total cannot exceed $2000',
-        },
-        {
-          action: 'unique',
-          field: 'name',
-        },
+        }),
+
+        Aggregate.unique('name'),
       ],
     }),
 
@@ -105,7 +140,10 @@ export class CartBuilderComponent {
       for: ['price[*]', 'qty[*]'],
     }),
 
-    new SubmitButton('Checkout'),
+    new SubmitButton({
+      label: 'Checkout',
+      className: 'checkout-btn',
+    }),
   ];
 
   logData(data: any) {

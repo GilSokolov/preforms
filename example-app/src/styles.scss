@@ -57,14 +57,14 @@ body {
   color: #111;
 }
 
+.preforms-field-hint,
 .preforms-form-field-hint {
-  font-size: 0.75rem;
   color: var(--muted);
 }
 
+.preforms-field-error,
 .preforms-form-field-error {
   color: #b00020;
-  font-size: 0.75rem;
 }
 
 a {
