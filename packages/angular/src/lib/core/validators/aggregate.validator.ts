@@ -151,7 +151,7 @@ export function arrayAggregateValidator(rules: ArrayAggregate[]): ValidatorFn {
             action,
             message:
               message ||
-              `${Array.isArray(field) ? field.join(", ") : field} must be unique`,
+              `${Array.isArray(field) ? field.join(", ") : field} field${Array.isArray(field) ? "s" : ""} must be unique`,
           };
         }
         continue;
