@@ -2,7 +2,7 @@ import { FieldWrapperConfig, FormElement } from "../interfaces";
 
 import { AbstractFormElement } from "./abstract-form-element";
 
-export class FieldWrapper<T = unknown> extends AbstractFormElement<T> {
+export class FieldWrapper<T = any> extends AbstractFormElement<T> {
   kind = "wrapper" as const;
   fields: FormElement[];
 

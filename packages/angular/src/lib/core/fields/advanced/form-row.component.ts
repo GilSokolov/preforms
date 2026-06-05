@@ -15,9 +15,9 @@ import { DynamicFormElement } from "../../decorators";
       [fields]="field.fields"
       [style.display]="'flex'"
       [style.gap]="field.gap"
-      [style.align-items]="'center'"
       [class]="[field.className, 'form-row']"
       [style.justify-content]="field.position"
+      [style]="field.style"
     />
   `,
   imports: [ReactiveFormsModule, DynamicFieldGroupComponent],

@@ -61,8 +61,8 @@ import { BaseFieldComponent } from "../../core/fields";
       [id]="field.id"
       [class]="['preforms-dialog', field.className]"
       [ngStyle]="{
-        minWidth: field.width || '500px',
-        minHeight: field.height || '250px',
+        width: field.width || '350px',
+        height: field.height || '250px',
       }"
     >
       <div class="preforms-dialog-panel">

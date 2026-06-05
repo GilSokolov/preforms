@@ -42,9 +42,9 @@ import { FieldIconComponent } from "../../core/fields";
       }
 
       @if (error) {
-        <p class="preforms-form-field-error" aria-live="polite">
+        <small class="preforms-form-field-error" aria-live="polite">
           {{ error }}
-        </p>
+        </small>
       }
     </div>
   `,
