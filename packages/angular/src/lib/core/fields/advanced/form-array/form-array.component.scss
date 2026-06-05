@@ -1,19 +1,26 @@
-label {
+.preforms-array-label {
   margin: 10px 0;
   display: block;
 }
 
-.handle {
-  width: 18px;
-  preforms-handle {
-    display: none;
-  }
+.preforms-array-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.form-array-row:hover {
-  .handle {
-    preforms-handle {
-      display: inline;
-    }
+.preforms-array-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+preforms-array-handle {
+  visibility: hidden;
+}
+
+.preforms-array-item:hover {
+  preforms-array-handle {
+    visibility: visible;
   }
 }

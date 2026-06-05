@@ -5,18 +5,12 @@ import { FormArray, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import {
   CdkDrag,
   CdkDragDrop,
-  CdkDragHandle,
   CdkDropList,
   moveItemInArray,
 } from "@angular/cdk/drag-drop";
 
-import {
-  FieldArray,
-  FieldEventData,
-  FormFieldEventType,
-  instantiateArrayRow,
-} from "@preforms/ts";
-import { DynamicFormElement, FormFieldEvent } from "../../../decorators";
+import { FieldArray, instantiateArrayRow } from "@preforms/ts";
+import { DynamicFormElement } from "../../../decorators";
 import { FormFactoryService } from "../../../services/form-factory.service";
 import { BaseFieldComponent } from "../../base/base-field.component";
 import { DynamicFieldGroupComponent } from "../../base/dynamic-field-group.component";
@@ -30,7 +24,6 @@ import { HandleComponent } from "./handle.component";
     CdkDrag,
     CdkDropList,
     CommonModule,
-    CdkDragHandle,
     HandleComponent,
     ReactiveFormsModule,
     DynamicFieldGroupComponent,
@@ -80,11 +73,14 @@ export class FieldArrayComponent
     this.array.push(group);
 
     this.array.markAsTouched();
+
+    this.emit("input");
   }
 
   /** Deletes a group and its config entry */
   remove(index: number): void {
     this.array.removeAt(index);
+    this.emit("input");
   }
 
   fields(index: number) {
