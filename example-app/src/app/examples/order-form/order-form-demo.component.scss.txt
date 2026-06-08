@@ -26,10 +26,6 @@
     margin-left: 10px;
   }
 
-  .form-end {
-    // height: 20px;
-  }
-
   fieldset {
     border: 1px solid #e6e9ef;
     padding: 1rem;
