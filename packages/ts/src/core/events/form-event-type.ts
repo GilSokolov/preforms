@@ -38,4 +38,7 @@ export enum FormEventType {
   REQUEST_RESET = "request:reset",
   /** Host should fetch or refresh data */
   REQUEST_DATA = "request:data",
+
+  OPEN_DIALOG = "open_dialog",
+  CLOSE_DIALOG = "close_dialog",
 }

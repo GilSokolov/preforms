@@ -7,4 +7,6 @@ export interface FormFieldIcon {
   order?: number;
   visible?: string;
   emit?: `custom:${string}`;
+  command?: "show-modal" | "close" | "request-close";
+  commandfor?: string;
 }

@@ -39,7 +39,12 @@ export class FieldIconComponent implements OnInit, OnDestroy {
   private ref?: ComponentRef<any>;
 
   get isButton(): boolean {
-    return !!(this.icon.expressions || this.icon.action || this.icon.emit);
+    return !!(
+      this.icon.expressions ||
+      this.icon.action ||
+      this.icon.emit ||
+      this.icon.command
+    );
   }
 
   ngOnInit(): void {

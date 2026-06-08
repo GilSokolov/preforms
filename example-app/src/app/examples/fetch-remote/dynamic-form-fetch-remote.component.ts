@@ -3,7 +3,6 @@ import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.compon
 import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core/tokens';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
 import {
-  CheckboxField,
   DialogField,
   FieldButton,
   FieldGroup,
@@ -35,13 +34,26 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
         key: 'image',
       }),
       new InputField({
-        type: 'range',
+        type: 'number',
         key: 'hp',
         value: 0,
         className: 'indicator',
+        readonly: true,
       }),
-      new InputField({ type: 'range', key: 'attack', value: 0, className: 'indicator' }),
-      new InputField({ type: 'range', key: 'defense', value: 0, className: 'indicator' }),
+      new InputField({
+        type: 'number',
+        key: 'attack',
+        value: 0,
+        className: 'indicator',
+        readonly: true,
+      }),
+      new InputField({
+        type: 'number',
+        key: 'defense',
+        value: 0,
+        className: 'indicator',
+        readonly: true,
+      }),
       new NumberField({
         key: 'hit',
         readonly: true,
@@ -49,8 +61,10 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
       }),
       new OutputField({
         key: 'damage',
-        calculation: `Number(${playerName}.hit) - Number(${playerName}.defense) / 2`,
+        calculation: `
+        ${playerName}.hit ? Number(${playerName}.defense) - Number(${playerName}.hit) : 0`,
         for: ['p1', 'p2'],
+        // hidden: true,
       }),
     ],
     triggers: [
@@ -141,16 +155,15 @@ export class DynamicFormFetchRemoteComponent {
   @Output() formChange = new EventEmitter<any>();
 
   fields = [
-    new CheckboxField({ key: 'done', hidden: true }),
     new OutputField({
       key: 'score',
-      calculation: 'Number(p1.damage) - Number(p2.damage)',
-      for: ['done'],
+      calculation: 'Number(p1.damage) > Number(p2.damage)',
+      for: ['p1', 'p2'],
+      hidden: true,
     }),
     new DialogField({
       key: 'popup',
-      disabled: true,
-      fields: [new FormTitle('Tie!')],
+      fields: [],
       triggers: [
         {
           on: 'change',
@@ -158,11 +171,8 @@ export class DynamicFormFetchRemoteComponent {
           applyState: {
             fields: [new FormTitle('You win!')],
           },
+          condition: true,
           sourceField: 'score',
-          condition: {
-            operator: 'gt',
-            value: 0,
-          },
         },
         {
           on: 'change',
@@ -170,15 +180,8 @@ export class DynamicFormFetchRemoteComponent {
           applyState: {
             fields: [new FormTitle('You lose!')],
           },
+          condition: false,
           sourceField: 'score',
-          condition: {
-            operator: 'lt',
-            value: 0,
-          },
-        },
-        {
-          on: 'change',
-          action: 'submit',
         },
       ],
     }),
@@ -196,9 +199,7 @@ export class DynamicFormFetchRemoteComponent {
         ),
       ],
     }),
-
     new FormDivider({ label: 'Play!' }),
-
     new SelectField({
       key: 'type',
       label: 'Select Pokemon Type',
@@ -220,7 +221,6 @@ export class DynamicFormFetchRemoteComponent {
         },
       ],
     }),
-
     new SelectField({
       key: 'pokemon',
       label: 'Select Pokemon',
@@ -252,7 +252,6 @@ export class DynamicFormFetchRemoteComponent {
         },
       ],
     }),
-
     new FieldButton({
       type: 'button',
       label: 'Attack!',
@@ -286,31 +285,20 @@ export class DynamicFormFetchRemoteComponent {
             },
           },
           targetField: ['p1'],
-          debounce: 1000,
         },
         {
           on: 'click',
-          action: 'update_state',
-          applyState: {
-            value: true,
-          },
-          targetField: ['done'],
-          debounce: 1001,
-        },
-        {
-          on: 'click',
-          action: 'update_state',
-          applyState: {
-            disabled: false,
-          },
-          targetField: ['popup'],
-          debounce: 1002,
+          action: TriggerAction.OPEN_DIALOG,
+          target: 'popup',
+          debounce: 500,
         },
       ],
     }),
   ];
 
   logData(data: any) {
-    this.formChange.emit(data);
+    console.log(data);
+
+    // this.formChange.emit(data);
   }
 }

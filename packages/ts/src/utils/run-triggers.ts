@@ -74,8 +74,12 @@ import { evaluateComparison } from "./evaluate-comparison";
 export function shouldTrigger<T>(
   trigger: FormFieldTrigger<T>,
   value: unknown,
+  ctx: any,
 ): boolean {
   if (trigger?.condition == null) return true;
+
+  if (typeof trigger?.condition === "function")
+    return (trigger.condition as (ctx: any) => boolean)(ctx);
 
   if (
     typeof trigger.condition === "object" &&

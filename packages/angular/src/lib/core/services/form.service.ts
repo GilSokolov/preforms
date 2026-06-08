@@ -32,6 +32,7 @@ import { FormFactoryService } from "./form-factory.service";
 import { LoadAdapterRegistry } from "./load-adapter-registry";
 import { FieldLookupResult, FormStateService } from "./state.service";
 import { FormValidationService } from "./validation.service";
+import { isFileList } from "../utils/isFileList";
 
 @Injectable()
 export class FormService implements TriggerContext {
@@ -92,12 +93,16 @@ export class FormService implements TriggerContext {
     return formData;
   }
 
-  openDialog(id: string): void {
-    this.updateState([id], { disabled: false });
+  openDialog(target: string): void {
+    this.eventService.emitFormEvent(FormEventType.OPEN_DIALOG, {
+      target,
+    });
   }
 
-  closeDialog(id: string): void {
-    this.updateState([id], { disabled: true });
+  closeDialog(target: string): void {
+    this.eventService.emitFormEvent(FormEventType.CLOSE_DIALOG, {
+      target,
+    });
   }
 
   updateState(ids: string[], state: Partial<FormElement>): void {
@@ -329,8 +334,7 @@ export class FormService implements TriggerContext {
       .onFormFieldEvent("*.*")
       .pipe(this.untilDestroyed())
       .subscribe((e) => {
-        if (e.value instanceof FileList)
-          this.files.set(e.name, Array.from(e.value));
+        if (isFileList(e.value)) this.files.set(e.name, Array.from(e.value));
         else this.files.delete(e.name);
 
         const listeners = this.stateService.getListeners(e.id);

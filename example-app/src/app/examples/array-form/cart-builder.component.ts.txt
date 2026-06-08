@@ -13,6 +13,7 @@ import {
   DialogField,
   TextareaField,
   Aggregate,
+  FormGrid,
 } from '@preforms/ts';
 
 @Component({
@@ -44,7 +45,7 @@ export class CartBuilderComponent {
       value: [{ name: 'Wireless Mouse', price: 25, qty: 1 }],
 
       fields: [
-        new FormRow({
+        new FormGrid({
           className: 'cart-row',
           gap: '1rem',
           fields: [
@@ -70,19 +71,20 @@ export class CartBuilderComponent {
               required: true,
             }),
 
-            new OutputField({
-              key: 'subtotal',
-              label: 'Subtotal',
-              calculation: 'Number(items[$index].price) * Number(items[$index].qty)',
-              for: ['price[$index]', 'qty[$index]'],
-              className: 'subtotal',
-            }),
-
             new FieldButton({
               type: 'button',
               label: 'Comment',
               command: 'show-modal',
               commandfor: 'comment-dialog[$index]',
+              className: 'comment-btn',
+            }),
+
+            new OutputField({
+              key: 'totalPrice',
+              calculation:
+                '"$"+(Number(items[$index].price) * Number(items[$index].qty)).toFixed(2)',
+              for: ['price[$index]', 'qty[$index]'],
+              className: 'subtotal',
             }),
 
             new DialogField({
@@ -106,10 +108,7 @@ export class CartBuilderComponent {
               ],
             }),
           ],
-          style: {
-            borderBottom: '1px solid rgb(184, 182, 182)',
-            padding: '0.5rem',
-          },
+          columns: '1fr 1fr 1fr 1fr',
         }),
       ],
 
@@ -119,7 +118,7 @@ export class CartBuilderComponent {
           field: ['price', 'qty'], // Fields to multiply per item
           value: 2000,
           operator: 'lte',
-          message: 'Cart total cannot exceed $2000',
+          message: 'total cannot exceed $2000',
         }),
 
         Aggregate.unique('name'),
@@ -129,15 +128,14 @@ export class CartBuilderComponent {
     new FormDivider({ label: 'Summary' }),
 
     new OutputField({
-      key: 'cartTotal',
-      label: 'Total',
+      key: 'total',
       calculation: `
-        items.reduce(
+        "$" + items.reduce(
           (sum, i) => sum + (Number(i.price) * Number(i.qty)),
           0
         )
       `,
-      for: ['price[*]', 'qty[*]'],
+      for: ['price[*]', 'qty[*]', 'items'],
     }),
 
     new SubmitButton({

@@ -93,7 +93,7 @@ export class TriggerEngine {
   ) {
     const firedKey = `${event.id}:${event.type}`;
 
-    if (!shouldTrigger(trigger, event.value)) return;
+    if (!shouldTrigger(trigger, event.value, this.context.getValues())) return;
 
     if (trigger.once && this.firedSet.has(firedKey)) return;
 
@@ -136,12 +136,12 @@ export class TriggerEngine {
         this.context.requestReset();
         break;
 
-      case TriggerAction.DIALOG_OPEN:
-        this.context.openDialog(trigger.targetId);
+      case TriggerAction.OPEN_DIALOG:
+        this.context.openDialog(trigger.target);
         break;
 
       case TriggerAction.DIALOG_CLOSE:
-        this.context.closeDialog(trigger.targetId);
+        this.context.closeDialog(trigger.target);
         break;
 
       case TriggerAction.LOAD:

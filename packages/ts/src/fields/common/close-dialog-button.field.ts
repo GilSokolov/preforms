@@ -14,9 +14,9 @@ import { FieldButton, FieldButtonConfig } from "../../core/models/field-button";
  * ```
  */
 export class CloseDialogButton extends FieldButton {
-  targetId: string;
+  target: string;
 
-  constructor(targetId: string, labelOrConfig?: string | FieldButtonConfig) {
+  constructor(target: string, labelOrConfig?: string | FieldButtonConfig) {
     const config =
       typeof labelOrConfig === "string"
         ? { label: labelOrConfig }
@@ -30,14 +30,14 @@ export class CloseDialogButton extends FieldButton {
       triggers: [
         {
           on: "click",
-          action: TriggerAction.DIALOG_CLOSE,
-          targetId,
+          action: TriggerAction.CLOSE_DIALOG,
+          target,
         },
       ],
       command: "close",
-      commandfor: targetId,
+      commandfor: target,
     });
 
-    this.targetId = targetId;
+    this.target = target;
   }
 }

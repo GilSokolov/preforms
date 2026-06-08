@@ -26,6 +26,8 @@ export type FormEventData =
   | (BaseFormEventData & { type: FormEventType.BECOME_PRISTINE })
   | (BaseFormEventData & { type: FormEventType.FOCUS })
   | (BaseFormEventData & { type: FormEventType.BLUR })
+  | (BaseFormEventData & { type: FormEventType.OPEN_DIALOG; target: string })
+  | (BaseFormEventData & { type: FormEventType.CLOSE_DIALOG; target: string })
 
   // ----- Host request events -----
   | (BaseFormEventData & { type: FormEventType.REQUEST_SUBMIT })

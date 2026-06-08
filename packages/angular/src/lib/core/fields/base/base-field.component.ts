@@ -1,4 +1,5 @@
 import {
+  afterNextRender,
   Component,
   DestroyRef,
   HostBinding,
@@ -48,11 +49,19 @@ export class BaseFieldComponent<
   private destroyRef = inject(DestroyRef);
 
   constructor() {
+    afterNextRender(() => {
+      this.afterFirstRender();
+    });
+  }
+
+  afterFirstRender() {
     this.__eventService.bindDecoratedHandlers(this, this.destroyRef);
 
-    setTimeout(() => {
-      this.emit(FormFieldEventType.INIT);
-    });
+    if (this.field) {
+      setTimeout(() => {
+        this.emit(FormFieldEventType.INIT);
+      });
+    }
   }
 
   @HostBinding("attr.data-field-id")

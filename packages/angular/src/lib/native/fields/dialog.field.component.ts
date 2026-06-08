@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { DialogField } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
+import { DialogField, FormEventData, FormEventType } from "@preforms/ts";
+import { DynamicFormElement, FormEvent } from "../../core/decorators";
 import { DynamicFormComponent } from "../../core/dynamic-form.component";
 import { BaseFieldComponent } from "../../core/fields";
 
@@ -72,7 +72,7 @@ import { BaseFieldComponent } from "../../core/fields";
               type="button"
               class="preforms-dialog-close-btn"
               aria-label="Close dialog"
-              (click)="dialog.close()"
+              (click)="closeDialog()"
             >
               ✕
             </button>
@@ -82,15 +82,54 @@ import { BaseFieldComponent } from "../../core/fields";
         <div class="preforms-dialog-content">
           <preforms-dynamic-form
             [fields]="field.fields"
-            (submittedData)="control.patchValue($event); dialog.close()"
+            (submittedData)="submit($event)"
           />
         </div>
       </div>
     </dialog>
   `,
   imports: [ReactiveFormsModule, DynamicFormComponent, CommonModule],
+  host: { ngSkipHydration: "true" },
 })
 export class DialogFieldComponent extends BaseFieldComponent<
   FormGroup,
   DialogField
-> {}
+> {
+  @ViewChild("dialog") dialog!: ElementRef<HTMLDialogElement>;
+
+  closeDialog(): void {
+    this.dialog.nativeElement.close();
+  }
+
+  submit(data: { [key: string]: any }): void {
+    this.control.patchValue(data);
+    this.closeDialog();
+  }
+
+  @FormEvent(FormEventType.OPEN_DIALOG)
+  private handleOpen(event: FormEventData): void {
+    this.handleDialogEvent(event, "open");
+  }
+
+  @FormEvent(FormEventType.CLOSE_DIALOG)
+  private handleClose(event: FormEventData): void {
+    this.handleDialogEvent(event, "close");
+  }
+
+  private handleDialogEvent(
+    event: FormEventData,
+    action: "open" | "close",
+  ): void {
+    if (!("target" in event) || event.target !== this.field.id) return;
+
+    const dialog = this.dialog.nativeElement;
+
+    if (action === "open" && !dialog.open) {
+      dialog.showModal();
+    }
+
+    if (action === "close" && dialog.open) {
+      dialog.close();
+    }
+  }
+}

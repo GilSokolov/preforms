@@ -17,7 +17,8 @@ export type ConditionValue<T> =
   | {
       operator: ComparisonOperator | `${ComparisonOperator}`;
       value: OneOrMany<T>;
-    };
+    }
+  | ((ctx: any) => boolean);
 
 /**
  * Actions that can be performed when a trigger fires.
@@ -148,14 +149,18 @@ export interface ResetTrigger<T = any> extends BaseTrigger<T> {
  * Trigger interface specific for DialogField
  */
 export interface DialogTrigger<T = any> extends BaseTrigger<T> {
-  action: TriggerAction.DIALOG_OPEN | TriggerAction.DIALOG_CLOSE;
+  action:
+    | TriggerAction.DIALOG_OPEN
+    | TriggerAction.DIALOG_CLOSE
+    | TriggerAction.CLOSE_DIALOG
+    | TriggerAction.OPEN_DIALOG;
 
   /**
    * Optional target dialog ID or key.
    * Useful when multiple dialogs exist in the same form.
    * If omitted, the trigger applies to the current DialogField.
    */
-  targetId: string;
+  target: string;
 }
 
 export type LoadMode = "patch" | "replace" | "merge";

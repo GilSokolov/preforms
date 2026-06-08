@@ -92,6 +92,8 @@ export class IconsFormComponent {
           name: 'ℹ️',
           side: 'left',
           emit: 'custom:skuInfoOpen',
+          command: 'show-modal',
+          commandfor: 'sku-info',
         },
       ],
     }),
@@ -101,6 +103,7 @@ export class IconsFormComponent {
       disabled: true,
       closeBtn: true,
       width: '400px',
+      height: '350px',
       fields: [
         new FormTitle('What is SKU?', FormTitleLevel.H2),
         new FormDescription(
@@ -113,14 +116,6 @@ export class IconsFormComponent {
           'Avoid spaces or special characters',
           'Use a pattern that reflects product type or brand',
         ]),
-      ],
-      triggers: [
-        {
-          on: 'custom:skuInfoOpen',
-          action: 'update_state',
-          applyState: { disabled: false },
-          sourceField: 'SKU',
-        },
       ],
     }),
 

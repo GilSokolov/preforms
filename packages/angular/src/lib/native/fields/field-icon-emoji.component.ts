@@ -10,6 +10,8 @@ import { FieldIcon } from "../../core/models";
           type="button"
           class="preforms-field-icon button"
           [attr.title]="icon.title"
+          [attr.command]="icon.command"
+          [attr.commandfor]="icon.commandfor"
           (click)="handler()"
         >
           {{ icon.name }}
