@@ -7,7 +7,7 @@ import { RadioField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "radio" })
 @Component({
-  selector: "preforms-mat-radio-field",
+  selector: "preforms-mat-radio",
   template: `
     <mat-radio-group [formControl]="control">
       @for (option of field.options; track $index) {

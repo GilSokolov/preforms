@@ -11,7 +11,7 @@ import {
 
 @DynamicFormElement({ component: "details" })
 @Component({
-  selector: "preforms-details-field",
+  selector: "preforms-details",
   template: `
     <mat-accordion>
       <mat-expansion-panel>
@@ -21,10 +21,7 @@ import {
             {{ field.description }}
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <preforms-dynamic-field-group
-          [fields]="field.fields"
-          [control]="control"
-        />
+        <preforms-group [fields]="field.fields" [control]="control" />
       </mat-expansion-panel>
     </mat-accordion>
   `,

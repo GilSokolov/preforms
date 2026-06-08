@@ -18,7 +18,7 @@ import { HandleComponent } from "./handle.component";
 
 @DynamicFormElement({ component: "array" })
 @Component({
-  selector: "preforms-array-field",
+  selector: "preforms-array",
   standalone: true,
   imports: [
     CdkDrag,

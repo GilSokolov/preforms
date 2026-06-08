@@ -5,7 +5,7 @@ import { EditorField } from './editor';
 
 @Component({
   selector: 'app-lazy-loading',
-  template: ` <preforms-dynamic-form (submittedData)="logData($event)" [fields]="fields" /> `,
+  template: ` <preforms (submittedData)="logData($event)" [fields]="fields" /> `,
   imports: [DynamicFormComponent],
 })
 export class LazyLoadingFieldsComponent {

@@ -7,10 +7,10 @@ import { BaseFieldComponent } from "../../core/fields";
 
 @DynamicFormElement({ component: "checkbox-group" })
 @Component({
-  selector: "preforms-mat-checkbox-group-field",
+  selector: "preforms-mat-checkbox-group",
   template: `
-    <div [formArray]="control" class="preforms-checkbox-group-field">
-      <div class="preforms-checkbox-group-field-header">
+    <div [formArray]="control" class="preforms-checkbox-group">
+      <div class="preforms-checkbox-group-header">
         {{ field.label }}
       </div>
       @for (option of field.fields; track $index; let i = $index) {

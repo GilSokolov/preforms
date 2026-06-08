@@ -17,10 +17,7 @@ import { MatCardModule } from "@angular/material/card";
         <mat-card-title>{{ field.label }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <preforms-dynamic-field-group
-          [fields]="field.fields"
-          [control]="control"
-        />
+        <preforms-group [fields]="field.fields" [control]="control" />
       </mat-card-content>
     </mat-card>
   `,

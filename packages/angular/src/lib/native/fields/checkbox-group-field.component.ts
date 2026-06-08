@@ -21,8 +21,10 @@ import { BaseFieldComponent } from "../../core/fields";
             (change)="update($event.target)"
             [checked]="isSelected(option.value)"
           />
-          <span class="label-text">{{ option.label }}</span>
-          <span class="description">{{ option.description }}</span>
+          <span class="preforms-checkbox-label">{{ option.label }}</span>
+          <span class="preforms-checkbox-description">{{
+            option.description
+          }}</span>
         </label>
       }
     </div>

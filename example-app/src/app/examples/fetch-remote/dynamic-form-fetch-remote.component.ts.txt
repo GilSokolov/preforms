@@ -3,7 +3,6 @@ import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.compon
 import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core/tokens';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
 import {
-  CheckboxField,
   DialogField,
   FieldButton,
   FieldGroup,
@@ -16,7 +15,6 @@ import {
   NumberField,
   OutputField,
   SelectField,
-  SubmitButton,
   TriggerAction,
 } from '@preforms/ts';
 
@@ -36,13 +34,26 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
         key: 'image',
       }),
       new InputField({
-        type: 'range',
+        type: 'number',
         key: 'hp',
         value: 0,
         className: 'indicator',
+        readonly: true,
       }),
-      new InputField({ type: 'range', key: 'attack', value: 0, className: 'indicator' }),
-      new InputField({ type: 'range', key: 'defense', value: 0, className: 'indicator' }),
+      new InputField({
+        type: 'number',
+        key: 'attack',
+        value: 0,
+        className: 'indicator',
+        readonly: true,
+      }),
+      new InputField({
+        type: 'number',
+        key: 'defense',
+        value: 0,
+        className: 'indicator',
+        readonly: true,
+      }),
       new NumberField({
         key: 'hit',
         readonly: true,
@@ -50,9 +61,10 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
       }),
       new OutputField({
         key: 'damage',
-        calculation: `Number(${playerName}.defense) - Number(${playerName}.hit)`,
+        calculation: `
+        ${playerName}.hit ? Number(${playerName}.defense) - Number(${playerName}.hit) : 0`,
         for: ['p1', 'p2'],
-        hidden: true,
+        // hidden: true,
       }),
     ],
     triggers: [
@@ -85,11 +97,7 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
 
 @Component({
   selector: 'app-dynamic-form-fetch-remote',
-  template: `<preforms-dynamic-form
-    (submittedData)="logData($event)"
-    [fields]="fields"
-    className="pokemon"
-  />`,
+  template: `<preforms (submittedData)="logData($event)" [fields]="fields" className="pokemon" />`,
   imports: [DynamicFormComponent],
   styles: [
     `
@@ -145,7 +153,7 @@ export class DynamicFormFetchRemoteComponent {
   fields = [
     new OutputField({
       key: 'score',
-      calculation: 'Number(p1.damage) < Number(p2.damage)',
+      calculation: 'Number(p1.damage) > Number(p2.damage)',
       for: ['p1', 'p2'],
       hidden: true,
     }),
@@ -278,6 +286,7 @@ export class DynamicFormFetchRemoteComponent {
           on: 'click',
           action: TriggerAction.OPEN_DIALOG,
           target: 'popup',
+          debounce: 500,
         },
       ],
     }),

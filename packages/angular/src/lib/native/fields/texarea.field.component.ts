@@ -8,7 +8,7 @@ import { FormFieldComponent } from "./form-field.component";
 
 @DynamicFormElement({ component: "textarea" })
 @Component({
-  selector: "preforms-input-field",
+  selector: "preforms-textarea",
   template: `
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       <textarea
@@ -19,7 +19,7 @@ import { FormFieldComponent } from "./form-field.component";
         [attr.wrap]="field.wrap"
         [formControl]="control"
         [readonly]="field.readonly"
-        class="preforms-input-field"
+        class="preforms-textarea"
         [autofocus]="field.autofocus"
         [spellcheck]="field.spellcheck"
         [attr.placeholder]="field.placeholder"

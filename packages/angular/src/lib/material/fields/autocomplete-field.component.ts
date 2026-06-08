@@ -9,7 +9,7 @@ import { InputField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "autocomplete" })
 @Component({
-  selector: "preforms-mat-autocomplete-field",
+  selector: "preforms-mat-autocomplete",
   template: `
     <mat-form-field>
       <mat-label>{{ field.label }}</mat-label>

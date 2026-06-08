@@ -10,7 +10,7 @@ import { DynamicFormElement } from "../../decorators";
 @Component({
   selector: "preforms-form-row",
   template: `
-    <preforms-dynamic-field-group
+    <preforms-group
       [control]="control"
       [fields]="field.fields"
       [style.display]="'flex'"

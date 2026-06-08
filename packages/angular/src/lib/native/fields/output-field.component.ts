@@ -22,7 +22,7 @@ function matchesFieldPattern(pattern: string, id: string): boolean {
 
 @DynamicFormElement({ component: "output" })
 @Component({
-  selector: "preforms-output-field",
+  selector: "preforms-output",
   template: `
     <label [class]="field.className">
       {{ field.label }}

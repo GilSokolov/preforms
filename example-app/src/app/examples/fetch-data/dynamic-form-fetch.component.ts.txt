@@ -16,7 +16,7 @@ import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-dynamic-form-fetch',
-  template: `<preforms-dynamic-form (submittedData)="logData($event)" [fields]="fields" />`,
+  template: `<preforms (submittedData)="logData($event)" [fields]="fields" />`,
   imports: [DynamicFormComponent],
   encapsulation: ViewEncapsulation.None,
   providers: [

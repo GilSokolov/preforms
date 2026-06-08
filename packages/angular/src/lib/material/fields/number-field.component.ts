@@ -7,9 +7,11 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { AriaAttributesDirective } from "../../core/directives";
 import { FieldIconComponent } from "../../core/fields";
+import { DynamicFormElement } from "../../core/decorators";
 
+@DynamicFormElement({ component: "preforms-number" })
 @Component({
-  selector: "preforms-mat-number-input",
+  selector: "preforms-mat-number",
   template: `
     <mat-form-field [class]="['preforms-form-field', field.className]">
       @if (field.label) {

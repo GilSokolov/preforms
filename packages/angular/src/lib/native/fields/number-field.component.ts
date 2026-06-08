@@ -9,7 +9,7 @@ import { FormFieldComponent } from "./form-field.component";
 
 @DynamicFormElement({ component: "number" })
 @Component({
-  selector: "preforms-number-input",
+  selector: "preforms-number",
   template: `
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       <input
@@ -20,7 +20,7 @@ import { FormFieldComponent } from "./form-field.component";
         [attr.list]="listName"
         [formControl]="control"
         [attr.step]="field.step"
-        class="preforms-input-field"
+        class="preforms-input"
         [attr.readonly]="field.readonly"
         [attr.autofocus]="field.autofocus"
         [attr.placeholder]="field.placeholder"

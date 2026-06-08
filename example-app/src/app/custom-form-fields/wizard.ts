@@ -15,7 +15,7 @@
 //   template: ` <mat-stepper #stepper [linear]="true" orientation="vertical">
 //     @for (field of field.fields; track $index; let i = $index) {
 //       <mat-step [stepControl]="formGroup(field.key)" [label]="field.label">
-//         <preforms-dynamic-field-group [fields]="field.fields" [control]="formGroup(field.key)" />
+//         <preforms-group [fields]="field.fields" [control]="formGroup(field.key)" />
 
 //         <div>
 //           @if (i) {

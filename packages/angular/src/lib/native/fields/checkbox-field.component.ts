@@ -7,12 +7,12 @@ import { BaseFieldComponent } from "../../core/fields";
 
 @DynamicFormElement({ component: "checkbox" })
 @Component({
-  selector: "preforms-checkbox-input",
+  selector: "preforms-checkbox",
   template: `
     <label [class]="field.className">
       <input type="checkbox" [formControl]="control" />
-      <span class="label-text">{{ field.label }}</span>
-      <span class="description">{{ field.description }}</span>
+      <span class="preforms-checkbox-label">{{ field.label }}</span>
+      <span class="preforms-checkbox-description">{{ field.description }}</span>
     </label>
   `,
   imports: [ReactiveFormsModule],

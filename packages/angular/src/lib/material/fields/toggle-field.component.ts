@@ -8,7 +8,7 @@ import { BaseFieldComponent } from "../../core/fields";
 
 @DynamicFormElement({ component: "toggle" })
 @Component({
-  selector: "preforms-mat-toggle-field",
+  selector: "preforms-mat-toggle",
   template: `
     <mat-slide-toggle
       [id]="field.id"

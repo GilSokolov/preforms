@@ -10,7 +10,7 @@ import { BaseFieldComponent } from "../base/base-field.component";
 @Component({
   selector: "preforms-form-grid",
   template: `
-    <preforms-dynamic-field-group
+    <preforms-group
       class="form-grid"
       [style.display]="'grid'"
       [style.gridTemplateColumns]="field.columns"

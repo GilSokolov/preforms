@@ -20,21 +20,21 @@ import { RadioField } from "@preforms/ts";
           [value]="option.value"
           [formControl]="control"
         />
-        <span class="label-text">{{ option.label }}</span>
-        <span class="description">{{ option.description }}</span>
+        <span class="preforms-radio-label">{{ option.label }}</span>
+        <span class="preforms-radio-description">{{ option.description }}</span>
       </label>
     }
 
     @if (field.hint) {
-      <small class="preforms-form-field-hint">
+      <small class="preforms-field-hint">
         {{ field.hint }}
       </small>
     }
 
     @if (error) {
-      <p class="preforms-form-field-error" aria-live="polite">
+      <small class="preforms-field-error" aria-live="polite">
         {{ error }}
-      </p>
+      </small>
     }
   `,
   imports: [ReactiveFormsModule],

@@ -6,7 +6,7 @@ import { FieldButton } from "@preforms/ts";
 
 @DynamicFormElement({ component: "button" })
 @Component({
-  selector: "preforms-button-field",
+  selector: "preforms-button",
   template: `
     <button
       [type]="field.type"
@@ -17,7 +17,7 @@ import { FieldButton } from "@preforms/ts";
       [attr.commandfor]="field.commandfor"
       [attr.formaction]="field.formaction"
       [attr.formmethod]="field.formmethod"
-      [class]="['preforms-form-button', field.className]"
+      [class]="['preforms-button', field.className]"
       [style]="field.style"
     >
       @for (icon of leftIcons; track $index) {

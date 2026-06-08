@@ -14,6 +14,7 @@ import {
   FormFieldOption,
   FormImage,
   FormRow,
+  FormSpacer,
   FormTitle,
   FormTitleLevel,
   NumberField,
@@ -25,7 +26,7 @@ import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-order-form-demo',
-  template: `<preforms-dynamic-form
+  template: `<preforms
     className="product-form"
     (submittedData)="logData($event)"
     [fields]="fields"
@@ -100,7 +101,7 @@ export class OrderFormDemoComponent {
       placeholder: 'it may not be possible to meetall requests',
     }),
 
-    new FormDivider({ className: 'form-end' }),
+    new FormSpacer(),
 
     new FormRow({
       position: 'space-between',

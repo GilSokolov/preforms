@@ -7,7 +7,7 @@ import { BaseFieldComponent } from "../../core/fields";
 
 @DynamicFormElement({ component: "button" })
 @Component({
-  selector: "preforms-mat-button-field",
+  selector: "preforms-mat-button",
   template: `
     <button
       [matButton]="appearance"
@@ -19,7 +19,7 @@ import { BaseFieldComponent } from "../../core/fields";
       [attr.commandfor]="field.commandfor"
       [attr.formaction]="field.formaction"
       [attr.formmethod]="field.formmethod"
-      [class]="['preforms-form-button', field.className]"
+      [class]="['preforms-button', field.className]"
     >
       {{ field.label }}
     </button>

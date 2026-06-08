@@ -7,7 +7,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @DynamicFormElement({ component: "checkbox" })
 @Component({
-  selector: "preforms-mat-checkbox-field",
+  selector: "preforms-mat-checkbox",
   template: `
     <mat-checkbox [formControl]="control">{{ field.label }}</mat-checkbox>
 

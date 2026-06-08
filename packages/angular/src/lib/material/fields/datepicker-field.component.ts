@@ -9,7 +9,7 @@ import { DateField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "datepicker" })
 @Component({
-  selector: "preforms-mat-input-field",
+  selector: "preforms-mat-datepicker",
   template: `
     <mat-form-field>
       <mat-label [attr.for]="field.key">{{ field.label }}</mat-label>

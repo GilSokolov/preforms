@@ -25,7 +25,7 @@ import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-order-form-demo',
-  template: `<preforms-dynamic-form
+  template: `<preforms
     className="product-form"
     (submittedData)="logData($event)"
     [fields]="fields"

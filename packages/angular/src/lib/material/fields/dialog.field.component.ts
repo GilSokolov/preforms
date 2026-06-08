@@ -88,10 +88,7 @@ import { MatIconModule } from "@angular/material/icon";
         </form>
       }
       <div class="dialog-container">
-        <preforms-dynamic-form
-          [fields]="field.fields"
-          (submitted)="setValue($event)"
-        />
+        <preforms [fields]="field.fields" (submitted)="setValue($event)" />
       </div>
     </dialog>
   `,

@@ -3,7 +3,6 @@ import {
   ComponentRef,
   EventEmitter,
   inject,
-  Injector,
   Input,
   OnDestroy,
   OnInit,
@@ -16,7 +15,7 @@ import { BaseFieldComponent } from "./fields/base/base-field.component";
 import { LoaderService } from "./services/loader.service";
 
 @Component({
-  selector: "preforms-dynamic-field",
+  selector: "preforms-field",
   template: "",
 })
 export class DynamicFieldComponent implements OnInit, OnDestroy {

@@ -7,7 +7,7 @@ import { FormFieldComponent } from "./form-field.component";
 
 @DynamicFormElement({ component: "select" })
 @Component({
-  selector: "preforms-select-field",
+  selector: "preforms-select",
   template: `
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       <select

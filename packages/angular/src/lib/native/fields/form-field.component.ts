@@ -36,13 +36,13 @@ import { FieldIconComponent } from "../../core/fields";
       </div>
 
       @if (field.hint) {
-        <small class="preforms-form-field-hint">
+        <small class="preforms-field-hint">
           {{ field.hint }}
         </small>
       }
 
       @if (error) {
-        <small class="preforms-form-field-error" aria-live="polite">
+        <small class="preforms-field-error" aria-live="polite">
           {{ error }}
         </small>
       }

@@ -7,7 +7,7 @@ import { PasswordStenghtFieldComponent } from './password-strength';
 
 @Component({
   selector: 'app-extensible-form',
-  template: `<preforms-dynamic-form (submittedData)="logData($event)" [fields]="fields" />`,
+  template: `<preforms (submittedData)="logData($event)" [fields]="fields" />`,
   imports: [DynamicFormComponent],
   encapsulation: ViewEncapsulation.None,
   providers: [NATIVE_FORM_ELEMENTS, PasswordStenghtFieldComponent],

@@ -11,16 +11,13 @@ import {
 
 @DynamicFormElement({ component: "details" })
 @Component({
-  selector: "preforms-details-field",
+  selector: "preforms-details",
   template: `
     <details>
       <summary>{{ field.label }}</summary>
       <div class="form-field-hint">{{ field.hint }}</div>
 
-      <preforms-dynamic-field-group
-        [fields]="field.fields"
-        [control]="control"
-      />
+      <preforms-group [fields]="field.fields" [control]="control" />
     </details>
   `,
   imports: [ReactiveFormsModule, DynamicFieldGroupComponent],

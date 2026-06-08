@@ -8,7 +8,7 @@ import { BaseFieldComponent } from "../../core/fields";
 
 @DynamicFormElement({ component: "dialog" })
 @Component({
-  selector: "preforms-dialog-field",
+  selector: "preforms-dialog",
   styles: `
     .preforms-dialog {
       border: 0;
@@ -80,10 +80,7 @@ import { BaseFieldComponent } from "../../core/fields";
         }
 
         <div class="preforms-dialog-content">
-          <preforms-dynamic-form
-            [fields]="field.fields"
-            (submittedData)="submit($event)"
-          />
+          <preforms [fields]="field.fields" (submittedData)="submit($event)" />
         </div>
       </div>
     </dialog>

@@ -97,11 +97,7 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
 
 @Component({
   selector: 'app-dynamic-form-fetch-remote',
-  template: `<preforms-dynamic-form
-    (submittedData)="logData($event)"
-    [fields]="fields"
-    className="pokemon"
-  />`,
+  template: `<preforms (submittedData)="logData($event)" [fields]="fields" className="pokemon" />`,
   imports: [DynamicFormComponent],
   styles: [
     `

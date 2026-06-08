@@ -8,7 +8,7 @@ import { BaseFieldComponent } from "../../core/fields";
 
 @DynamicFormElement({ component: "select" })
 @Component({
-  selector: "preforms-mat-select-field",
+  selector: "preforms-mat-select",
   template: `
     <mat-form-field>
       <mat-label>{{ field.label }}</mat-label>

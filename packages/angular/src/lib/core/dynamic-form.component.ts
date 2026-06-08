@@ -22,7 +22,7 @@ import { preformsProviders } from "./providers/performs-providers";
 import { FormService } from "./services";
 
 @Component({
-  selector: "preforms-dynamic-form",
+  selector: "preforms",
   providers: [preformsProviders()],
   imports: [ReactiveFormsModule, DynamicFieldGroupComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,7 +34,7 @@ import { FormService } from "./services";
       (reset)="onReset($event)"
       (ngSubmit)="onSubmit($event)"
     >
-      <preforms-dynamic-field-group [fields]="fields" [control]="form" />
+      <preforms-group [fields]="fields" [control]="form" />
     </form>
   `,
 })

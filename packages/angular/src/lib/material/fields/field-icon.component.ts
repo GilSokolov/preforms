@@ -4,7 +4,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { FieldIcon } from "../../core/models";
 
 @Component({
-  selector: "app-field-icon",
+  selector: "preforms-field-icon",
   template: `
     @if (visible()) {
       @if (type === "button") {

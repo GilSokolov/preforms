@@ -9,7 +9,7 @@ import { FormFieldComponent } from "./form-field.component";
 
 @DynamicFormElement({ component: "input" })
 @Component({
-  selector: "preforms-input-field",
+  selector: "preforms-input",
   template: `
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       <input
@@ -19,7 +19,7 @@ import { FormFieldComponent } from "./form-field.component";
         [pfAria]="field.aria"
         [attr.list]="listName"
         [formControl]="control"
-        class="preforms-input-field"
+        class="preforms-input"
         [attr.multiple]="field.multiple"
         [attr.readonly]="field.readonly"
         [attr.spellcheck]="field.spellcheck"
@@ -28,12 +28,9 @@ import { FormFieldComponent } from "./form-field.component";
       />
 
       @if (field.options) {
-        <datalist class="preforms-form-field-datalist" [id]="listName">
+        <datalist class="preforms-datalist" [id]="listName">
           @for (item of field.options; track $index) {
-            <option
-              class="preforms-form-field-datalist-option"
-              [value]="item.value"
-            >
+            <option class="preforms-datalist-option" [value]="item.value">
               {{ item.label }}
             </option>
           }

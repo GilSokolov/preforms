@@ -9,7 +9,7 @@ import { BaseFieldComponent, FieldIconComponent } from "../../core/fields";
 
 @DynamicFormElement({ component: "input" })
 @Component({
-  selector: "preforms-mat-input-field",
+  selector: "preforms-mat-input",
   template: `
     <mat-form-field [class]="['preforms-form-field', field.className]">
       @if (field.label) {

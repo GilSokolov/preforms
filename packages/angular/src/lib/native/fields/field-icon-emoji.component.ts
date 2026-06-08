@@ -2,13 +2,13 @@ import { Component } from "@angular/core";
 import { FieldIcon } from "../../core/models";
 
 @Component({
-  selector: "preforms-field-icon-emoji",
+  selector: "preforms-icon",
   template: `
     @if (visible()) {
       @if (type === "button") {
         <button
           type="button"
-          class="preforms-field-icon button"
+          class="preforms-icon"
           [attr.title]="icon.title"
           [attr.command]="icon.command"
           [attr.commandfor]="icon.commandfor"
@@ -17,7 +17,7 @@ import { FieldIcon } from "../../core/models";
           {{ icon.name }}
         </button>
       } @else {
-        <span class="preforms-field-icon" [attr.title]="icon.title">
+        <span class="preforms-icon" [attr.title]="icon.title">
           {{ icon.name }}
         </span>
       }

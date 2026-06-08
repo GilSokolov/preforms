@@ -9,7 +9,7 @@ import { MatInputModule } from "@angular/material/input";
 
 @DynamicFormElement({ component: "date-range" })
 @Component({
-  selector: "preforms-mat-date-range-field",
+  selector: "preforms-mat-date-range",
   template: `
     <mat-form-field>
       <mat-label [attr.for]="fields[0].id">{{ field.label }}</mat-label>

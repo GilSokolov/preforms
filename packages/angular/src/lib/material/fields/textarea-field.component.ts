@@ -8,7 +8,7 @@ import { TextareaField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "textarea" })
 @Component({
-  selector: "preforms-textarea-field",
+  selector: "preforms-textarea",
   template: `
     <mat-form-field>
       <mat-label [attr.for]="field.key">{{ field.label }}</mat-label>

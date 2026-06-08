@@ -10,15 +10,12 @@ import { MatCardModule } from "@angular/material/card";
 
 @DynamicFormElement({ component: "fieldset" })
 @Component({
-  selector: "preforms-fieldset-field",
+  selector: "preforms-fieldset",
   template: `
     <fieldset>
       <legend>{{ field.label }}</legend>
 
-      <preforms-dynamic-field-group
-        [fields]="field.fields"
-        [control]="control"
-      />
+      <preforms-group [fields]="field.fields" [control]="control" />
     </fieldset>
   `,
   imports: [ReactiveFormsModule, DynamicFieldGroupComponent, MatCardModule],

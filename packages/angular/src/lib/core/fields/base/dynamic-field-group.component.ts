@@ -8,11 +8,11 @@ import { FormElement } from "@preforms/ts";
 import { DynamicFieldComponent } from "../../dynamic-field.component";
 
 @Component({
-  selector: "preforms-dynamic-field-group",
+  selector: "preforms-group",
   template: `
     @for (field of fields; track field.id) {
       <div [hidden]="field.hidden" [class]="className">
-        <preforms-dynamic-field [field]="field" [control]="getControl(field)" />
+        <preforms-field [field]="field" [control]="getControl(field)" />
       </div>
     }
   `,

@@ -26,7 +26,7 @@ export class Home {
     exc,
     exf,
     ee,
-    '<preforms-dynamic-form [fields]="fields" (submittedData)="onSubmit($event)"/>',
+    '<preforms [fields]="fields" (submittedData)="onSubmit($event)"/>',
     `new EmailField()
 new PasswordField()`,
     `new NumberField({ key: 'amount' })

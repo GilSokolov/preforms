@@ -19,11 +19,7 @@ import {
 @Component({
   selector: 'app-cart-builder',
   template: `
-    <preforms-dynamic-form
-      className="cart-form"
-      (submittedData)="logData($event)"
-      [fields]="fields"
-    />
+    <preforms className="cart-form" (submittedData)="logData($event)" [fields]="fields" />
   `,
   styleUrl: './cart-builder.component.scss',
   imports: [DynamicFormComponent],

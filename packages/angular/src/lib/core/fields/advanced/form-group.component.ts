@@ -9,9 +9,7 @@ import { FieldGroup } from "@preforms/ts";
 @DynamicFormElement({ component: "group" })
 @Component({
   selector: "preforms-form-group",
-  template: `
-    <preforms-dynamic-field-group [fields]="field.fields" [control]="control" />
-  `,
+  template: ` <preforms-group [fields]="field.fields" [control]="control" /> `,
   imports: [ReactiveFormsModule, DynamicFieldGroupComponent],
 })
 export class FormGroupComponent extends BaseFieldComponent<

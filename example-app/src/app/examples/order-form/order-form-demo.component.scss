@@ -5,25 +5,25 @@
     flex-direction: row;
     align-items: center;
 
-    .label-text {
+    .preforms-radio-label {
       margin-left: 8px;
     }
 
-    .description {
+    .preforms-radio-description {
       color: #666;
       font-size: 0.9rem;
       margin-left: auto;
     }
   }
 
-  .preforms-input-field {
+  .preforms-textarea {
     width: 100%;
     border: 0;
     padding: 0.5rem 0.6rem;
   }
 
-  .form-end {
-    height: 20px;
+  .preforms-form-field-label {
+    margin-left: 10px;
   }
 
   fieldset {
@@ -50,7 +50,7 @@
     border-color: #6366f1;
   }
 
-  .preforms-input-field:focus {
+  .preforms-input:focus {
     outline: none;
     border: none;
   }
@@ -69,13 +69,13 @@
     .preforms-form-field-row {
       display: flex;
     }
-    .preforms-input-field {
+    .preforms-input {
       border: 0;
       width: 50px;
       text-align: center;
     }
 
-    .preforms-input-field::-webkit-inner-spin-button {
+    .preforms-input::-webkit-inner-spin-button {
       appearance: none;
     }
 
@@ -95,13 +95,7 @@
     }
   }
 
-  .preforms-radio-field-header {
+  .preforms-radio-header {
     display: none;
-  }
-
-  .textarea {
-    label {
-      margin-left: 10px;
-    }
   }
 }
