@@ -91,7 +91,6 @@ export class IconsFormComponent {
         {
           name: 'ℹ️',
           side: 'left',
-          emit: 'custom:skuInfoOpen',
           command: 'show-modal',
           commandfor: 'sku-info',
         },

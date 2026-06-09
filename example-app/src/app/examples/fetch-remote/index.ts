@@ -46,7 +46,7 @@ When the user selects a value, a fetch action is triggered.
         defense: 'stats[2].base_stat',
         image: 'sprites.other.showdown.front_default'
       }
-      sourceField: 'type',
+      source: 'type',
     }
   ]
 }

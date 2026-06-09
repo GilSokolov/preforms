@@ -49,13 +49,13 @@ export class FormStateService {
     const sources: string[] = [];
 
     for (const trigger of field.triggers) {
-      if (!trigger.sourceField) continue;
+      if (!trigger.source) continue;
 
-      const sourceFields = Array.isArray(trigger.sourceField)
-        ? trigger.sourceField
-        : [trigger.sourceField];
+      const _sources = Array.isArray(trigger.source)
+        ? trigger.source
+        : [trigger.source];
 
-      for (const source of sourceFields) {
+      for (const source of _sources) {
         if (source) sources.push(source);
       }
     }

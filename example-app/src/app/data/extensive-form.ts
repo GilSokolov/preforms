@@ -165,10 +165,10 @@
 //         triggers: [
 //           {
 //             on: 'change',
-//             action: 'update_state',
-//             applyState: { hidden: false },
+//             action: 'update',
+//             state: { hidden: false },
 //             condition: { operator: 'gt', value: 0 },
-//             targetField: 'file',
+//             target: 'file',
 //           },
 //         ],
 //       }),
@@ -205,9 +205,9 @@
 //         triggers: [
 //           {
 //             on: 'input',
-//             action: 'update_state',
-//             targetField: 'calcB',
-//             applyState: { required: true },
+//             action: 'update',
+//             target: 'calcB',
+//             state: { required: true },
 //           },
 //         ],
 //       }),
@@ -261,9 +261,9 @@
 //         triggers: [
 //           {
 //             on: 'change',
-//             action: 'update_state',
-//             targetField: 'confirm-dialog',
-//             applyState: { disabled: false },
+//             action: 'update',
+//             target: 'confirm-dialog',
+//             state: { disabled: false },
 //             once: true, // show state only if USA
 //           },
 //         ],
@@ -323,9 +323,9 @@
 //     triggers: [
 //       {
 //         on: 'change',
-//         action: 'update_state',
-//         targetField: 'newsletters-dialog',
-//         applyState: { disabled: false },
+//         action: 'update',
+//         target: 'newsletters-dialog',
+//         state: { disabled: false },
 //         condition: true,
 //       },
 //     ],

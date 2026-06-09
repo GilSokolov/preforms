@@ -30,9 +30,9 @@ export class RoomSelectionComponent {
       triggers: [
         {
           on: 'change',
-          action: 'update_state',
-          applyState: { hidden: true },
-          targetField: [
+          action: 'update',
+          state: { hidden: true },
+          target: [
             'king-title',
             'queen-title',
             'junior-title',
@@ -43,9 +43,9 @@ export class RoomSelectionComponent {
         },
         {
           on: 'change',
-          action: 'update_state',
-          applyState: { hidden: false },
-          targetField: ['$value-title', '$value-description'],
+          action: 'update',
+          state: { hidden: false },
+          target: ['$value-title', '$value-description'],
         },
       ],
     }),

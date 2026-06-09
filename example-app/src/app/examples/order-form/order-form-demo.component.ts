@@ -129,13 +129,13 @@ export class OrderFormDemoComponent {
         }),
         new SubmitButton({
           label: 'Add $9.34',
-          className: 'primary',
+          className: 'order-btn',
           triggers: [
             {
               on: 'change',
               action: 'fetch',
               fetchUrl: '/api/calculate-price?amount={amount}&side={side}',
-              sourceField: ['side', 'amount'],
+              source: ['side', 'amount'],
               mode: 'patch',
             },
           ],

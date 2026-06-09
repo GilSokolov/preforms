@@ -10,7 +10,7 @@ import { PasswordStrengthField } from './PasswordStrengthField';
   component: 'password-strength',
 })
 @Component({
-  selector: 'app-pass-stenght-field',
+  selector: 'app-password-strength',
   template: `
     <div class="small" style="margin-top: 0.4rem">
       Strength:

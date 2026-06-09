@@ -136,7 +136,7 @@ export class OrderFormDemoComponent {
               on: 'change',
               action: 'fetch',
               fetchUrl: '/api/calculate-price?amount={amount}&side={side}',
-              sourceField: ['side', 'amount'],
+              source: ['side', 'amount'],
               mode: 'patch',
             },
           ],

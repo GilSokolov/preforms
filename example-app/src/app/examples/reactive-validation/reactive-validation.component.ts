@@ -28,9 +28,9 @@ export class ReactiveValidationFormComponent {
       triggers: [
         {
           on: 'change',
-          action: 'update_state',
-          targetField: 'upload',
-          applyState: { hidden: false },
+          action: 'update',
+          target: 'upload',
+          state: { hidden: false },
           condition: { operator: 'gt', value: 0 },
         },
       ],

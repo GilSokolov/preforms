@@ -26,23 +26,14 @@ export type ConditionValue<T> =
  * Enum values are snake_case strings used in configs and JSON.
  */
 export enum TriggerAction {
-  // ----- Form lifecycle -----
-  UPDATE_STATE = "update_state",
+  SET = "set",
+  UPDATE = "update",
   FETCH = "fetch",
   SUBMIT = "submit",
   RESET = "reset",
-  TOGGLE_FIELD = "toggle_field",
   VALIDATE = "validate",
-  ASYNC_VALIDATE = "async_validate",
-
-  // ----- Dialog UI -----
-  /** Open a dialog */
-  DIALOG_OPEN = "dialog_open",
-  /** Close a dialog */
-  DIALOG_CLOSE = "dialog_close",
   LOAD = "load",
   VALIDATE_ASYNC = "validate_async",
-  SET = "set",
   TOGGLE = "toggle",
   OPEN_DIALOG = "open_dialog",
   CLOSE_DIALOG = "close_dialog",
@@ -62,8 +53,6 @@ export type TriggerEvent =
 export interface BaseTrigger<T = any> {
   on: TriggerEvent; // event that triggers this action
   action: TriggerAction | `${TriggerAction}`; // the operation to perform
-  targetField?: OneOrMany<string>; // which field(s) to affect; defaults to self
-  sourceField?: OneOrMany<string>; // which field(s) to listen;
   target?: OneOrMany<string>; // which field(s) to affect; defaults to self
   source?: OneOrMany<string>; // which field(s) to listen;
   condition?: ConditionValue<T>; // optional conditional trigger
@@ -101,7 +90,7 @@ export interface FetchTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to fetch validations from an endpoint
  */
 export interface AsyncValidationTrigger<T = any> extends BaseTrigger<T> {
-  action: TriggerAction.ASYNC_VALIDATE;
+  action: TriggerAction.VALIDATE_ASYNC;
   fetchUrl: string; // endpoint to fetch data from
 }
 
@@ -109,23 +98,23 @@ export interface AsyncValidationTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to update the field's internal state
  */
 export interface StateUpdateTrigger<T = any> extends BaseTrigger<T> {
-  action: "update_state";
-  applyState: Partial<FormElementConfig<T> & Record<any, any> & { value: any }>; // state changes to apply
+  action: TriggerAction.UPDATE | `${TriggerAction.UPDATE}`;
+  state: Partial<FormElementConfig<T> & Record<any, any> & { value: any }>; // state changes to apply
 }
 
 /**
  * Trigger to toggle field properties
  */
 export interface ToggleTrigger<T = any> extends BaseTrigger<T> {
-  action: "toggle_field";
-  toggleStates: ("disabled" | "hidden" | "required" | "multiple")[]; // properties to toggle
+  action: TriggerAction.TOGGLE | `${TriggerAction.TOGGLE}`;
+  toggle: ("disabled" | "hidden" | "required" | "multiple")[]; // properties to toggle
 }
 
 /**
  * Trigger to perform cross-field validation
  */
 export interface ValidationTrigger<T = any> extends BaseTrigger<T> {
-  action: "validate";
+  action: TriggerAction.VALIDATE | `${TriggerAction.VALIDATE}`;
   validation: CrossFieldValidation; // validation rule to apply
 }
 
@@ -133,7 +122,7 @@ export interface ValidationTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to submit the form
  */
 export interface SubmitTrigger<T = any> extends BaseTrigger<T> {
-  action: "submit";
+  action: TriggerAction.SUBMIT | `${TriggerAction.SUBMIT}`;
   // additional properties like submit handler could be added here
 }
 
@@ -141,7 +130,7 @@ export interface SubmitTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to reset the form
  */
 export interface ResetTrigger<T = any> extends BaseTrigger<T> {
-  action: "reset";
+  action: TriggerAction.RESET | `${TriggerAction.RESET}`;
   // additional properties like reset target could be added here
 }
 
@@ -150,23 +139,17 @@ export interface ResetTrigger<T = any> extends BaseTrigger<T> {
  */
 export interface DialogTrigger<T = any> extends BaseTrigger<T> {
   action:
-    | TriggerAction.DIALOG_OPEN
-    | TriggerAction.DIALOG_CLOSE
+    | TriggerAction.OPEN_DIALOG
     | TriggerAction.CLOSE_DIALOG
-    | TriggerAction.OPEN_DIALOG;
-
-  /**
-   * Optional target dialog ID or key.
-   * Useful when multiple dialogs exist in the same form.
-   * If omitted, the trigger applies to the current DialogField.
-   */
+    | `${TriggerAction.OPEN_DIALOG}`
+    | `${TriggerAction.CLOSE_DIALOG}`;
   target: string;
 }
 
 export type LoadMode = "patch" | "replace" | "merge";
 
 export interface LoadTriggerBase<T = unknown> extends BaseTrigger<T> {
-  action: TriggerAction.LOAD;
+  action: TriggerAction.LOAD | `${TriggerAction.LOAD}`;
   mode?: LoadMode;
   transform?: Record<string, SchemaNode | Record<string, any>>;
 }
@@ -198,7 +181,7 @@ export type LoadTrigger<T = unknown> =
   | LocalLoadTrigger<T>;
 
 export interface SetTrigger<T = unknown> extends BaseTrigger<T> {
-  action: TriggerAction.SET;
+  action: TriggerAction.SET | `${TriggerAction.SET}`;
   scope: "field" | "form";
   state: FieldState<T> | Partial<FormSchemaConfig>;
 }

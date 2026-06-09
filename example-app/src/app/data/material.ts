@@ -36,11 +36,11 @@ export const material = [
     triggers: [
       {
         on: 'change',
-        action: 'update_state',
-        applyState: {
+        action: 'update',
+        state: {
           hidden: true,
         },
-        targetField: [
+        target: [
           'king-title',
           'queen-title',
           'junior-title',
@@ -51,11 +51,11 @@ export const material = [
       },
       {
         on: 'change',
-        action: 'update_state',
-        applyState: {
+        action: 'update',
+        state: {
           hidden: false,
         },
-        targetField: ['$value-title', '$value-description'],
+        target: ['$value-title', '$value-description'],
       },
     ],
   }),

@@ -19,15 +19,15 @@ export class TriggerEngine {
     return triggers
       .filter((trigger) => trigger.on === event.type)
       .forEach((trigger) => {
-        if (!trigger.sourceField) {
+        if (!trigger.source) {
           return this.scheduleOrRunTrigger(trigger, event);
         }
 
-        const sourceField = Array.isArray(trigger.sourceField)
-          ? trigger.sourceField
-          : [trigger.sourceField];
+        const _source = Array.isArray(trigger.source)
+          ? trigger.source
+          : [trigger.source];
 
-        if (source && sourceField.includes(source)) {
+        if (source && _source.includes(source)) {
           return this.scheduleOrRunTrigger(trigger, event);
         }
       });
@@ -70,10 +70,10 @@ export class TriggerEngine {
       event.type,
       source ?? "",
       trigger.action,
-      trigger.targetField
-        ? Array.isArray(trigger.targetField)
-          ? trigger.targetField.join(",")
-          : trigger.targetField
+      trigger.target
+        ? Array.isArray(trigger.target)
+          ? trigger.target.join(",")
+          : trigger.target
         : "",
       (trigger as any).fetchUrl ?? "",
     ].join("|");
@@ -97,18 +97,18 @@ export class TriggerEngine {
 
     if (trigger.once && this.firedSet.has(firedKey)) return;
 
-    const ids = this.normailzeTargetIds(trigger.targetField, event);
+    const ids = this.normailzeTargetIds(trigger.target, event);
 
     switch (trigger.action) {
-      case TriggerAction.UPDATE_STATE:
+      case TriggerAction.UPDATE:
         this.context.updateState(
           ids,
-          this.replaceIndexPlaceholders(trigger.applyState, event.value),
+          this.replaceIndexPlaceholders(trigger.state, event.value),
         );
         break;
 
-      case TriggerAction.TOGGLE_FIELD:
-        this.context.toggleFieldState(ids, trigger.toggleStates);
+      case TriggerAction.TOGGLE:
+        this.context.toggleFieldState(ids, trigger.toggle);
         break;
 
       case TriggerAction.FETCH:
@@ -120,7 +120,7 @@ export class TriggerEngine {
         );
         break;
 
-      case TriggerAction.ASYNC_VALIDATE:
+      case TriggerAction.VALIDATE_ASYNC:
         this.context.fetch(this.normalizeUrl(trigger.fetchUrl, event), "patch");
         break;
 
@@ -140,7 +140,7 @@ export class TriggerEngine {
         this.context.openDialog(trigger.target);
         break;
 
-      case TriggerAction.DIALOG_CLOSE:
+      case TriggerAction.CLOSE_DIALOG:
         this.context.closeDialog(trigger.target);
         break;
 

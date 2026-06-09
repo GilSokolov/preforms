@@ -93,11 +93,11 @@ export const iconsMat = [
     triggers: [
       {
         on: 'custom:skuInfoOpen',
-        action: 'update_state',
-        applyState: {
+        action: 'update',
+        state: {
           disabled: false,
         },
-        sourceField: 'SKU',
+        source: 'SKU',
       },
     ],
     width: '400px',

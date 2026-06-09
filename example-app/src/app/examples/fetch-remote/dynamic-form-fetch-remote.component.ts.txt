@@ -72,7 +72,7 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
         on: FormFieldEventType.SELECT,
         action: TriggerAction.FETCH,
         fetchUrl: url,
-        sourceField: 'pokemon',
+        source: 'pokemon',
         mode: 'patch',
         projection: {
           target: 'value',
@@ -86,8 +86,8 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
       },
       {
         on: FormFieldEventType.SELECT,
-        action: TriggerAction.UPDATE_STATE,
-        applyState: {
+        action: TriggerAction.UPDATE,
+        state: {
           hidden: false,
         },
       },
@@ -163,21 +163,21 @@ export class DynamicFormFetchRemoteComponent {
       triggers: [
         {
           on: 'change',
-          action: 'update_state',
-          applyState: {
+          action: 'update',
+          state: {
             fields: [new FormTitle('You win!')],
           },
           condition: true,
-          sourceField: 'score',
+          source: 'score',
         },
         {
           on: 'change',
-          action: 'update_state',
-          applyState: {
+          action: 'update',
+          state: {
             fields: [new FormTitle('You lose!')],
           },
           condition: false,
-          sourceField: 'score',
+          source: 'score',
         },
       ],
     }),
@@ -225,7 +225,7 @@ export class DynamicFormFetchRemoteComponent {
       triggers: [
         {
           on: FormFieldEventType.CHANGE,
-          sourceField: 'type',
+          source: 'type',
           action: TriggerAction.FETCH,
           fetchUrl: '$value',
           mode: 'patch',
@@ -240,9 +240,9 @@ export class DynamicFormFetchRemoteComponent {
         },
         {
           on: FormFieldEventType.SELECT,
-          sourceField: 'type',
-          action: TriggerAction.UPDATE_STATE,
-          applyState: {
+          source: 'type',
+          action: TriggerAction.UPDATE,
+          state: {
             hidden: false,
           },
         },
@@ -256,31 +256,31 @@ export class DynamicFormFetchRemoteComponent {
       triggers: [
         {
           on: 'select',
-          sourceField: 'pokemon',
-          action: 'update_state',
-          applyState: {
+          source: 'pokemon',
+          action: 'update',
+          state: {
             hidden: false,
           },
         },
         {
           on: 'click',
-          action: 'update_state',
-          applyState: {
+          action: 'update',
+          state: {
             value: {
               hit: 'p1.attack',
             },
           },
-          targetField: ['p2'],
+          target: ['p2'],
         },
         {
           on: 'click',
-          action: 'update_state',
-          applyState: {
+          action: 'update',
+          state: {
             value: {
               hit: 'p2.attack',
             },
           },
-          targetField: ['p1'],
+          target: ['p1'],
         },
         {
           on: 'click',

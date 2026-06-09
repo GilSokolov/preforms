@@ -32,9 +32,9 @@ Triggers define how fields react to events.
 ```ts
 {
   on: 'change',
-  action: 'update_state',
-  targetField: 'details',
-  applyState: { hidden: false }
+  action: 'update',
+  target: 'details',
+  state: { hidden: false }
 }
 ```
 
@@ -46,7 +46,7 @@ Trigger Anatomy
 {
 on: 'change',
 action: 'fetch',
-targetField: 'user',
+target: 'user',
 condition: { operator: 'gt', value: 0 }
 }
 ```
@@ -117,9 +117,9 @@ fetchUrl: "/api/users/$value";
 ### Field Targeting
 
 ```ts
-targetField: "email";
-targetField: ["a", "b"];
-targetField: "$value-title";
+target: "email";
+target: ["a", "b"];
+target: "$value-title";
 ```
 
 ### Array Matching
