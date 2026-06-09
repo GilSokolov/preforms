@@ -1,5 +1,3 @@
-import { TriggerEvent } from "../interfaces";
-
 /**
  * Events that can trigger a field action
  */
