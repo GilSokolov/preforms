@@ -1,5 +1,5 @@
-﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Preforms } from '@preforms/angular/core';
 import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
@@ -98,7 +98,7 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
 @Component({
   selector: 'app-dynamic-form-fetch-remote',
   template: `<preforms (submittedData)="logData($event)" [fields]="fields" className="pokemon" />`,
-  imports: [DynamicFormComponent],
+  imports: [Preforms],
   styles: [
     `
       .pokemon {

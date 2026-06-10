@@ -1,5 +1,5 @@
-﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Preforms } from '@preforms/angular/core';
 import { FIELD_ICON_TEMPLATES } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import { FieldIconEmojiComponent } from '@preforms/angular/native';
@@ -19,7 +19,7 @@ import {
 @Component({
   selector: 'app-icons-form',
   template: `<preforms (submittedData)="logData($event)" [fields]="fields" />`,
-  imports: [DynamicFormComponent],
+  imports: [Preforms],
   encapsulation: ViewEncapsulation.None,
   providers: [
     NATIVE_FORM_ELEMENTS,

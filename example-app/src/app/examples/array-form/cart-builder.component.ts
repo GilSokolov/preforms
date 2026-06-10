@@ -1,5 +1,5 @@
-﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Preforms } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
   FieldArray,
@@ -22,7 +22,7 @@ import {
     <preforms className="cart-form" (submittedData)="logData($event)" [fields]="fields" />
   `,
   styleUrl: './cart-builder.component.scss',
-  imports: [DynamicFormComponent],
+  imports: [Preforms],
   encapsulation: ViewEncapsulation.None,
   providers: [NATIVE_FORM_ELEMENTS],
 })

@@ -38,7 +38,7 @@ import { FormService } from "./services";
     </form>
   `,
 })
-export class DynamicFormComponent<
+export class Preforms<
   T = Record<string, unknown>,
 > extends FormHost {
   private formSchema: FormSchema = { fields: [] };

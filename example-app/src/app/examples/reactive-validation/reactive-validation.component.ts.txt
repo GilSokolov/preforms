@@ -1,12 +1,12 @@
-﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Preforms } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import { TextField, InputField, OutputField, SubmitButton } from '@preforms/ts';
 
 @Component({
   selector: 'app-reactive-validation-form',
   template: `<preforms (submittedData)="logData($event)" [fields]="fields" />`,
-  imports: [DynamicFormComponent],
+  imports: [Preforms],
   encapsulation: ViewEncapsulation.None,
   providers: [NATIVE_FORM_ELEMENTS],
 })

@@ -3,7 +3,7 @@
 Angular renderer and field components for Preforms dynamic forms.
 
 ```ts
-import { DynamicFormComponent } from "@preforms/angular/core";
+import { Preforms } from "@preforms/angular/core";
 import { NATIVE_FORM_ELEMENTS } from "@preforms/angular/native";
 ```
 

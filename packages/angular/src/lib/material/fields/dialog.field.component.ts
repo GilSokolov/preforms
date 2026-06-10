@@ -4,7 +4,7 @@ import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { DialogField } from "@preforms/ts";
 import { DynamicFormElement } from "../../core/decorators";
-import { DynamicFormComponent } from "../../core/dynamic-form.component";
+import { Preforms } from "../../core/dynamic-form.component";
 import { BaseFieldComponent } from "../../core/fields";
 import { DynamicFormSubmitEvent } from "../../core/models";
 import { untilDestroyed } from "../../core/utils";
@@ -94,7 +94,7 @@ import { MatIconModule } from "@angular/material/icon";
   `,
   imports: [
     ReactiveFormsModule,
-    DynamicFormComponent,
+    Preforms,
     CommonModule,
     MatInputModule,
     MatButtonModule,

@@ -1,5 +1,5 @@
-﻿import { Component, EventEmitter, Output } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Preforms } from '@preforms/angular/core';
 
 import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 @Component({
   selector: 'app-async-validate',
   template: `<preforms (submittedData)="logData($event)" [fields]="fields" />`,
-  imports: [DynamicFormComponent],
+  imports: [Preforms],
   providers: [
     NATIVE_FORM_ELEMENTS,
     {

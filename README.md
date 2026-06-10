@@ -19,13 +19,13 @@ pnpm add @angular/material @angular/cdk
 
 ```ts
 import { Component } from "@angular/core";
-import { DynamicFormComponent } from "@preforms/angular/core";
+import { Preforms } from "@preforms/angular/core";
 import { NATIVE_FORM_ELEMENTS } from "@preforms/angular/native";
 import { EmailField, PasswordField, SubmitButton } from "@preforms/ts";
 
 @Component({
   selector: "app-login-form",
-  imports: [DynamicFormComponent],
+  imports: [Preforms],
   providers: [NATIVE_FORM_ELEMENTS],
   template: `
     <preforms
@@ -59,7 +59,7 @@ Preforms is built around a few small concepts:
 ## Entry Points
 
 ```ts
-import { DynamicFormComponent } from "@preforms/angular/core";
+import { Preforms } from "@preforms/angular/core";
 import { NATIVE_FORM_ELEMENTS } from "@preforms/angular/native";
 import { MATERIAL_FORM_ELEMENTS } from "@preforms/angular/material";
 import { TextField, TriggerAction } from "@preforms/ts";

@@ -1,5 +1,5 @@
-﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Preforms } from '@preforms/angular/core';
 import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
@@ -17,7 +17,7 @@ import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-dynamic-form-fetch',
   template: `<preforms (submittedData)="logData($event)" [fields]="fields" />`,
-  imports: [DynamicFormComponent],
+  imports: [Preforms],
   encapsulation: ViewEncapsulation.None,
   providers: [
     NATIVE_FORM_ELEMENTS,

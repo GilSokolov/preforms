@@ -3,7 +3,7 @@ import { Component, ElementRef, ViewChild } from "@angular/core";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { DialogField, FormEventData, FormEventType } from "@preforms/ts";
 import { DynamicFormElement, FormEvent } from "../../core/decorators";
-import { DynamicFormComponent } from "../../core/dynamic-form.component";
+import { Preforms } from "../../core/dynamic-form.component";
 import { BaseFieldComponent } from "../../core/fields";
 
 @DynamicFormElement({ component: "dialog" })
@@ -85,7 +85,7 @@ import { BaseFieldComponent } from "../../core/fields";
       </div>
     </dialog>
   `,
-  imports: [ReactiveFormsModule, DynamicFormComponent, CommonModule],
+  imports: [ReactiveFormsModule, Preforms, CommonModule],
   host: { ngSkipHydration: "true" },
 })
 export class DialogFieldComponent extends BaseFieldComponent<
