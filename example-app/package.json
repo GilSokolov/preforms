@@ -9,7 +9,7 @@
     "test": "ng test",
     "sync:examples": "node scripts/copy-to-txt.js",
     "serve:ssr:example-app": "node dist/example-app/server/server.mjs",
-    "deploy:docs": "npx angular-cli-ghpages --dir=dist/example-app/browser"
+    "deploy:docs": "npx angular-cli-ghpages --cname=preforms.dev --dir=dist/example-app/browser"
   },
   "prettier": {
     "printWidth": 100,
