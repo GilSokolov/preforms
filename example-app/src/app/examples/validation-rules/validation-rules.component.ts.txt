@@ -15,7 +15,7 @@ export class ValidationFormComponent {
   fields = [
     new TextField({
       key: 'username',
-      hint: '3â€“30 characters. No spaces.',
+      hint: '3-30 characters. No spaces.',
       minLength: 3,
       maxLength: 30,
       pattern: ['^[a-zA-Z0-9_]+$', 'letters, numbers, underscore only'],
