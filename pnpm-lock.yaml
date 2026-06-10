@@ -173,29 +173,30 @@ importers:
   packages/angular:
     dependencies:
       '@angular/cdk':
-        specifier: '>=17'
+        specifier: '>=21 <22'
         version: 21.2.4(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1)))(rxjs@7.8.2)
       '@angular/common':
-        specifier: '>=15'
+        specifier: '>=21 <22'
         version: 21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2)
       '@angular/core':
-        specifier: '>=15'
+        specifier: '>=21 <22'
         version: 21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1)
       '@angular/forms':
-        specifier: '>=15'
+        specifier: '>=21 <22'
         version: 21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1)))(rxjs@7.8.2)
-      '@preforms/ts':
-        specifier: workspace:*
-        version: link:../ts
-      reflect-metadata:
-        specifier: '>=0.1.13'
-        version: 0.2.2
+      '@angular/material':
+        specifier: '>=21 <22'
+        version: 21.2.4(08696a047bbacb52bd04ea0fdc694349)
       rxjs:
-        specifier: '>=7'
+        specifier: ^7.8.0
         version: 7.8.2
       tslib:
         specifier: ^2.6.0
         version: 2.8.1
+    devDependencies:
+      '@preforms/ts':
+        specifier: workspace:*
+        version: link:../ts
 
   packages/ts:
     devDependencies:

@@ -21,8 +21,8 @@ import { FormFieldComponent } from "./form-field.component";
         [formControl]="control"
         [attr.step]="field.step"
         class="preforms-input"
-        [attr.readonly]="field.readonly"
-        [attr.autofocus]="field.autofocus"
+        [readOnly]="!!field.readonly"
+        [autofocus]="!!field.autofocus"
         [attr.placeholder]="field.placeholder"
         [attr.autocomplete]="field.autocomplete"
       />

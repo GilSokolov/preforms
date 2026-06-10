@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { BaseFieldComponent } from '@preforms/angular/core/fields';
+import { BaseFieldComponent } from '@preforms/angular/core';
 import { FormField } from '@preforms/ts';
 import { QuillModule } from 'ngx-quill';
 

@@ -6,7 +6,6 @@ import {
 } from "../../core/fields";
 import { Fieldset } from "@preforms/ts";
 import { DynamicFormElement } from "../../core/decorators";
-import { MatCardModule } from "@angular/material/card";
 
 @DynamicFormElement({ component: "fieldset" })
 @Component({
@@ -18,7 +17,7 @@ import { MatCardModule } from "@angular/material/card";
       <preforms-group [fields]="field.fields" [control]="control" />
     </fieldset>
   `,
-  imports: [ReactiveFormsModule, DynamicFieldGroupComponent, MatCardModule],
+  imports: [ReactiveFormsModule, DynamicFieldGroupComponent],
 })
 export class FieldsetFieldComponent extends BaseFieldComponent<
   FormGroup,

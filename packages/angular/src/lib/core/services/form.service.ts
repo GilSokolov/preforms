@@ -144,7 +144,6 @@ export class FormService implements TriggerContext {
       .pipe(this.untilDestroyed())
       .subscribe((res: unknown) => {
         const data = this.normalizeData2(res, trigger.transform, id);
-        console.log(data);
         this.onDataReady(data, trigger.mode || "replace");
       });
   }
@@ -305,8 +304,10 @@ export class FormService implements TriggerContext {
 
   private setState(res: FieldLookupResult, state: Partial<FormElement>) {
     const control = res.control;
+    const nextField = deepMerge({ ...res.field }, state) as FormElement;
+
     if (control) {
-      this.validationService.setValidators(control, res.field.kind, state);
+      this.validationService.setValidators(control, nextField.kind, nextField);
 
       if (state["disabled"] !== undefined)
         state["disabled"] ? control.disable() : control.enable();

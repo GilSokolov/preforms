@@ -59,7 +59,7 @@ export class DateRangeFieldComponent extends BaseFieldComponent<
   DateRangeField
 > {
   get isMobile() {
-    return window.innerWidth < 641;
+    return typeof window !== "undefined" && window.innerWidth < 641;
   }
 
   get fields() {

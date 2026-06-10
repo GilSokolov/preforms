@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
+﻿import { Component, EventEmitter, Output } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core';
 
-import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core/tokens';
-import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
+import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core';
+import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import { FormFieldEventType, SubmitButton, TriggerAction, UserName } from '@preforms/ts';
 import { of } from 'rxjs';
 

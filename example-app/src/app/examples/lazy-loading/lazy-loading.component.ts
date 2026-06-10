@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
+﻿import { Component, EventEmitter, Output } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core';
 import { SubmitButton } from '@preforms/ts';
 import { EditorField } from './editor';
 

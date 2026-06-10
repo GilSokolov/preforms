@@ -1,170 +1,77 @@
-# 🧠 Dynamic Forms – Mental Model
+# Preforms
 
-This library is built around a small set of powerful concepts.
+Type-safe dynamic form models for TypeScript, with Angular renderers for native
+and Material-style form controls.
 
-Understanding these will let you build complex forms quickly and predictably.
+## Packages
 
----
-
-## 🧱 1. Fields = Structure
-
-Fields define what your form looks like.
-
-```ts
-new TextField({ key: "username" });
-new EmailField({ key: "email" });
+```sh
+pnpm add @preforms/ts @preforms/angular
 ```
 
-They represent:
+For Material components, also install Angular Material:
 
-1. inputs
-
-2. layouts
-
-3. containers
-
-4. UI elements
-
-## ⚡ 2. Triggers = Behavior
-
-Triggers define how fields react to events.
-
-```ts
-{
-  on: 'change',
-  action: 'update',
-  target: 'details',
-  state: { hidden: false }
-}
+```sh
+pnpm add @angular/material @angular/cdk
 ```
 
-## 👉 “When X happens, do Y”
-
-Trigger Anatomy
+## Basic Angular Usage
 
 ```ts
-{
-on: 'change',
-action: 'fetch',
-target: 'user',
-condition: { operator: 'gt', value: 0 }
-}
-```
+import { Component } from "@angular/core";
+import { DynamicFormComponent } from "@preforms/angular/core";
+import { NATIVE_FORM_ELEMENTS } from "@preforms/angular/native";
+import { EmailField, PasswordField, SubmitButton } from "@preforms/ts";
 
-## ✅ 3. Validation = Rules
+@Component({
+  selector: "app-login-form",
+  imports: [DynamicFormComponent],
+  providers: [NATIVE_FORM_ELEMENTS],
+  template: `
+    <preforms
+      [fields]="fields"
+      (submittedData)="onSubmit($event)"
+    />
+  `,
+})
+export class LoginFormComponent {
+  fields = [
+    new EmailField({ key: "email", required: true }),
+    new PasswordField({ key: "password", required: true }),
+    new SubmitButton("Sign in"),
+  ];
 
-Validation ensures correctness.
-
-Simple
-
-```ts
-new TextField({
-  required: true,
-  minLength: 3,
-});
-```
-
-Cross-field
-
-```ts
-{
-  action: 'validate',
-  validation: {
-    operator: 'eq',
-    compareTo: 'password'
+  onSubmit(data: unknown) {
+    console.log(data);
   }
 }
 ```
 
-## 🎯 4. Actions = UI Interactions
+## Mental Model
 
-Actions are triggered by UI elements like icons.
+Preforms is built around a few small concepts:
 
-```ts
-icons: [
-  {
-    name: "❌",
-    side: "left",
-    action: "clear",
-  },
-];
-```
+- Fields define structure: inputs, buttons, groups, arrays, and decorative UI.
+- Triggers define behavior: update state, fetch data, validate, submit, or reset.
+- Validation defines correctness: required fields, patterns, ranges, arrays, and cross-field checks.
+- Renderers define UI: native controls by default, with Material components available separately.
 
-Handled via FieldActionService.
-
-## 🔄 Data Flow
-
-User Input
-↓
-Event (change/input)
-↓
-Triggers
-↓
-State Updates / Validation / Fetch
-↓
-Outputs Recalculate
-↓
-UI Updates
-
-## 🧠 Key Features
-
-### Dynamic References
+## Entry Points
 
 ```ts
-fetchUrl: "/api/users/$value";
+import { DynamicFormComponent } from "@preforms/angular/core";
+import { NATIVE_FORM_ELEMENTS } from "@preforms/angular/native";
+import { MATERIAL_FORM_ELEMENTS } from "@preforms/angular/material";
+import { TextField, TriggerAction } from "@preforms/ts";
 ```
 
-### Field Targeting
+## Build
 
-```ts
-target: "email";
-target: ["a", "b"];
-target: "$value-title";
+```sh
+pnpm build
+pnpm lint
 ```
 
-### Array Matching
+## License
 
-```ts
-for: ['items[*].price']
-```
-
-Matches:
-
-```ts
-items[0].price;
-items[1].price;
-```
-
-### Conditions
-
-```ts
-condition: {
-  operator: 'gt',
-  value: 0
-}
-```
-
-## ⚠️ When to Use What
-
-| Feature     | Use When                     |
-| ----------- | ---------------------------- |
-| Triggers    | Fields react to other fields |
-| Validation  | You need correctness         |
-| OutputField | You compute values           |
-| Actions     | User interacts with UI       |
-
-## 🚫 What You DON’T Need
-
-- manual subscriptions
-
-- valueChanges boilerplate
-
-- imperative glue code
-
-## 🏁 Summary
-
-Fields define structure
-Triggers define behavior
-Validation enforces rules
-Outputs derive values
-Actions handle interaction
+MIT

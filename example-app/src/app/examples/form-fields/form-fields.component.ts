@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
-import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
+﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core';
+import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
   CheckboxGroupField,
   EmailField,

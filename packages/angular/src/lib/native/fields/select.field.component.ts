@@ -15,13 +15,18 @@ import { FormFieldComponent } from "./form-field.component";
         [attr.name]="field.name"
         [attr.size]="field.size"
         [formControl]="control"
-        [attr.multiple]="field.multiple"
+        [multiple]="field.multiple"
         class="preforms-select-field"
-        [attr.autofocus]="field.autofocus"
+        [autofocus]="field.autofocus"
         [attr.autocomplete]="field.autocomplete"
       >
         @for (item of field.options; track $index) {
           @if (isOptionGroup(item)) {
+            <optgroup [label]="item.label" [disabled]="item.disabled">
+              @for (option of item.options; track $index) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </optgroup>
           } @else {
             <option [value]="item.value">{{ item.label }}</option>
           }

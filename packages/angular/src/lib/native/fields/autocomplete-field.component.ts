@@ -20,7 +20,7 @@ import { FormFieldComponent } from "./form-field.component";
         [attr.list]="listName"
         [formControl]="control"
         class="preforms-input"
-        [attr.multiple]="field.multiple"
+        [attr.multiple]="field.multiple ? '' : null"
         [attr.spellcheck]="field.spellcheck"
         [attr.placeholder]="field.placeholder"
         [attr.autocomplete]="field.autocomplete"
@@ -39,7 +39,7 @@ import { FormFieldComponent } from "./form-field.component";
   `,
   imports: [FormFieldComponent, ReactiveFormsModule, AriaAttributesDirective],
 })
-export class InputFieldComponent extends BaseFieldComponent<
+export class AutocompleteFieldComponent extends BaseFieldComponent<
   FormControl,
   InputField
 > {

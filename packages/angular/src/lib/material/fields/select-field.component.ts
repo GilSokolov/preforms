@@ -14,7 +14,7 @@ import { BaseFieldComponent } from "../../core/fields";
       <mat-label>{{ field.label }}</mat-label>
       <mat-select
         [formControl]="control"
-        [attr.multiple]="field.multiple ? 'multiple' : null"
+        [multiple]="!!field.multiple"
         (selectionChange)="emit('change')"
       >
         @for (option of field.options; track option) {

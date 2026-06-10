@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
-import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
+﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core';
+import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import { TextField, InputField, OutputField, SubmitButton } from '@preforms/ts';
 
 @Component({
@@ -20,7 +20,7 @@ export class ReactiveValidationFormComponent {
       minLength: 3,
       maxLength: 30,
       pattern: ['^[a-zA-Z0-9_]+$', 'letters, numbers, underscore only'],
-      hint: '3–30 characters, no spaces.',
+      hint: '3â€“30 characters, no spaces.',
     }),
     new InputField({
       key: 'files',

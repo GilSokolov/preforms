@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
-import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
+﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core';
+import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
   FieldArray,
   FormRow,
@@ -109,7 +109,7 @@ export class CartBuilderComponent {
       ],
 
       aggregates: [
-        // Special action: Σ(price × qty) across all items
+        // Special action: Î£(price Ã— qty) across all items
         Aggregate.product({
           field: ['price', 'qty'], // Fields to multiply per item
           value: 2000,

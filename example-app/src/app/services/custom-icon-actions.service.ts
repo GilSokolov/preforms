@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { FieldActionContext, FieldActionService } from '@preforms/angular/core/services';
+﻿import { Injectable } from '@angular/core';
+import { FieldActionContext, FieldActionService } from '@preforms/angular/core';
 import { generatePassword } from '../utils/generate-password';
 
 @Injectable({ providedIn: 'root' })

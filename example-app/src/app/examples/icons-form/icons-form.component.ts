@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
-import { FIELD_ICON_TEMPLATES } from '@preforms/angular/core/tokens';
-import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
-import { FieldIconEmojiComponent } from '@preforms/angular/native/fields/field-icon-emoji.component';
+﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core';
+import { FIELD_ICON_TEMPLATES } from '@preforms/angular/core';
+import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
+import { FieldIconEmojiComponent } from '@preforms/angular/native';
+
 import {
   DialogField,
   FormDescription,
@@ -48,7 +49,7 @@ export class IconsFormComponent {
           side: 'left',
           expressions: [
             "field.type = field.type === 'text' ? 'password' : 'text'",
-            "icon.name = field.type === 'text' ? '👁️' : '🔑'",
+            "icon.name = field.type === 'text' ? 👁️' : '🔑‘'",
           ],
         },
       ],

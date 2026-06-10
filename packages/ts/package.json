@@ -1,11 +1,35 @@
 {
   "name": "@preforms/ts",
   "version": "0.1.0",
+  "description": "TypeScript models, fields, schemas, and trigger utilities for Preforms.",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
+  "keywords": [
+    "forms",
+    "dynamic-forms",
+    "schema",
+    "typescript"
+  ],
+  "author": "Gil Sokolov",
+  "license": "MIT",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup --watch",

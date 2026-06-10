@@ -4,19 +4,27 @@
   "private": true,
   "version": "0.1.0",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "example-app"
   ],
-  "description": "",
+  "description": "Type-safe dynamic form models and Angular renderers.",
   "scripts": {
     "build": "pnpm -r build",
-    "lint": " pnpm -r run lint",
+    "lint": "pnpm -r run lint",
     "test": "pnpm -r test",
+    "pack:ts": "pnpm --filter @preforms/ts build && pnpm --dir packages/ts pack --dry-run",
+    "pack:angular": "pnpm --filter @preforms/angular build && pnpm --dir dist/angular pack --dry-run",
     "start:example": "pnpm --filter example-app start",
     "build:example": "pnpm --filter example-app build"
   },
-  "keywords": [],
+  "keywords": [
+    "forms",
+    "dynamic-forms",
+    "angular",
+    "typescript"
+  ],
   "author": "Gil Sokolov",
-  "license": "ISC",
+  "license": "MIT",
   "packageManager": "pnpm@10.30.3",
   "devDependencies": {
     "@angular-eslint/eslint-plugin": "^21.2.0",

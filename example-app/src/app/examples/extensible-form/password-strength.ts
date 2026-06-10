@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-import { DynamicFormElement, FormFieldEvent } from '@preforms/angular/core/decorators';
-import { BaseFieldComponent } from '@preforms/angular/core/fields';
+import { DynamicFormElement, FormFieldEvent } from '@preforms/angular/core';
+import { BaseFieldComponent } from '@preforms/angular/core';
 import { FieldEventData, FormFieldEventType } from '@preforms/ts';
 import { PasswordStrengthField } from './PasswordStrengthField';
 
@@ -31,7 +31,7 @@ export class PasswordStenghtFieldComponent extends BaseFieldComponent<
   FormControl<number>,
   PasswordStrengthField
 > {
-  hint = '—';
+  hint = '-';
 
   // computed score from control value
   get score(): number {

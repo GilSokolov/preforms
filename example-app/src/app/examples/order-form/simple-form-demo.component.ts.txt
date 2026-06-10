@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
-import { DYNAMIC_FORM_FETCHER, FIELD_ICON_TEMPLATES } from '@preforms/angular/core/tokens';
-import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
-import { FieldIconEmojiComponent } from '@preforms/angular/native/fields/field-icon-emoji.component';
+﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core';
+import { DYNAMIC_FORM_FETCHER, FIELD_ICON_TEMPLATES } from '@preforms/angular/core';
+import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
+import { FieldIconEmojiComponent } from '@preforms/angular/native';
 import {
   CheckboxField,
   ConfirmButton,
@@ -72,7 +72,7 @@ export class OrderFormDemoComponent {
       width: '400px',
     }),
     new FormTitle('Garlic Knot Chicken Breasts'),
-    new FormTitle('$9.34 🏷️', FormTitleLevel.H2),
+    new FormTitle('$9.34 ðŸ·ï¸', FormTitleLevel.H2),
     new FormDescription('Tender chicken breast with garlic, rosemary, and a hint of lemon.'),
 
     new Fieldset('Sides Dish', [
@@ -115,12 +115,12 @@ export class OrderFormDemoComponent {
           max: 5,
           icons: [
             {
-              name: '➕',
+              name: 'âž•',
               side: 'left',
               action: 'increment',
             },
             {
-              name: '➖',
+              name: 'âž–',
               side: 'right',
               action: 'decrement',
             },

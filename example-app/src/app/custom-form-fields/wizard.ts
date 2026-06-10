@@ -1,11 +1,11 @@
-// import { Component } from '@angular/core';
+﻿// import { Component } from '@angular/core';
 // import { FormGroup } from '@angular/forms';
 // import { MatButtonModule } from '@angular/material/button';
 // import { MatStepperModule } from '@angular/material/stepper';
 
 // import { WizardField } from './wizard.field';
-// import { DynamicFormElement } from '@preforms/angular/core/decorators';
-// import { BaseFieldComponent, DynamicFieldGroupComponent } from '@preforms/angular/core/fields';
+// import { DynamicFormElement } from '@preforms/angular/core';
+// import { BaseFieldComponent, DynamicFieldGroupComponent } from '@preforms/angular/core';
 
 // @DynamicFormElement({
 //   component: 'wizard',

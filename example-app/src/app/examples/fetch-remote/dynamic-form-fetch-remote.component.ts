@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DynamicFormComponent } from '@preforms/angular/core/dynamic-form.component';
-import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core/tokens';
-import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native/fields';
+﻿import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { DynamicFormComponent } from '@preforms/angular/core';
+import { DYNAMIC_FORM_FETCHER } from '@preforms/angular/core';
+import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
   DialogField,
   FieldButton,

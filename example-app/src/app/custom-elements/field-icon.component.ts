@@ -1,8 +1,8 @@
-// import { Component } from '@angular/core';
+﻿// import { Component } from '@angular/core';
 // import { MatButtonModule } from '@angular/material/button';
 // import { MatIconModule } from '@angular/material/icon';
 
-// import { FieldIcon } from '@preforms/angular/core/models';
+// import { FieldIcon } from '@preforms/angular/core';
 
 // @Component({
 //   selector: 'app-field-icon',

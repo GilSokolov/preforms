@@ -1,18 +1,19 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+﻿import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { provideRouter } from '@angular/router';
-import { FieldActionContext } from '@preforms/angular/core/services';
-import { FIELD_ACTIONS } from '@preforms/angular/core/tokens';
+import { DECORATIVE_FORM_ELEMENTS, FieldActionContext } from '@preforms/angular/core';
+import { FIELD_ACTIONS } from '@preforms/angular/core';
 import { routes } from './app.routes';
 import { generatePassword } from './utils/generate-password';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { provideMarkdown } from 'ngx-markdown';
-import { provideDynamicFormLazyFields, provideLoadAdapter } from '@preforms/angular/core/providers';
+import { provideDynamicFormLazyFields, provideLoadAdapter } from '@preforms/angular/core';
 import { HttpFetchAdapter } from './services/fetch';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    DECORATIVE_FORM_ELEMENTS,
     provideLoadAdapter(HttpFetchAdapter),
     provideHttpClient(withFetch()),
     provideMarkdown({ loader: HttpClient }),

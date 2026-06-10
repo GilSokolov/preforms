@@ -16,8 +16,10 @@
     "module": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@preforms/angular": ["../packages/angular/src/lib"],
-      "@preforms/angular/*": ["../packages/angular/src/lib/*"],
+      "@preforms/angular": ["../packages/angular/src/public-api.ts"],
+      "@preforms/angular/core": ["../packages/angular/src/lib/core/index.ts"],
+      "@preforms/angular/native": ["../packages/angular/src/lib/native/index.ts"],
+      "@preforms/angular/material": ["../packages/angular/src/lib/material/index.ts"],
       "@preforms/ts": ["../packages/ts/src"]
     }
   },

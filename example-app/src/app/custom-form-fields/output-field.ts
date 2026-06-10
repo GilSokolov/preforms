@@ -1,8 +1,8 @@
-// import { Component, inject, OnInit } from '@angular/core';
+﻿// import { Component, inject, OnInit } from '@angular/core';
 // import { FormControl, ReactiveFormsModule } from '@angular/forms';
-// import { DynamicFormElement, FormFieldEvent } from '@preforms/angular/core/decorators';
-// import { BaseFieldComponent } from '@preforms/angular/core/fields';
-// import { FormService } from '@preforms/angular/core/services';
+// import { DynamicFormElement, FormFieldEvent } from '@preforms/angular/core';
+// import { BaseFieldComponent } from '@preforms/angular/core';
+// import { FormService } from '@preforms/angular/core';
 // import { FieldEventData, FormFieldEventType, OutputField } from '@preforms/ts';
 
 // @DynamicFormElement({ component: 'output' })

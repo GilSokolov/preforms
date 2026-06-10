@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+﻿import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoadAdapter } from '@preforms/angular/core/models';
+import { LoadAdapter } from '@preforms/angular/core';
 import { NetworkLoadTrigger } from '@preforms/ts';
 
 @Injectable()

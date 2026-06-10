@@ -1,4 +1,4 @@
-// import { provideDynamicFormLazyFields } from '@preforms/angular/core/providers';
+﻿// import { provideDynamicFormLazyFields } from '@preforms/angular/core';
 // import { PasswordStenghtFieldComponent } from './password-strength';
 // import { WizardFieldComponent } from './wizard';
 
