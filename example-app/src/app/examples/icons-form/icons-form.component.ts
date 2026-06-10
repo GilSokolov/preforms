@@ -49,7 +49,7 @@ export class IconsFormComponent {
           side: 'left',
           expressions: [
             "field.type = field.type === 'text' ? 'password' : 'text'",
-            "icon.name = field.type === 'text' ? 👁️' : '🔑‘'",
+            "icon.name = field.type === 'text' ? '👁️' : '🔑'",
           ],
         },
       ],
