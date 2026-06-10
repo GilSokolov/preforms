@@ -1211,7 +1211,7 @@ export class IconsFormComponent {\r
           side: 'left',\r
           expressions: [\r
             "field.type = field.type === 'text' ? 'password' : 'text'",\r
-            "icon.name = field.type === 'text' ? \u{1F441}\uFE0F' : '\u{1F511}\u2018'",\r
+            "icon.name = field.type === 'text' ? '\u{1F441}\uFE0F' : '\u{1F511}'",\r
           ],\r
         },\r
       ],\r
@@ -1339,7 +1339,7 @@ export const appConfig: ApplicationConfig = {\r
     },\r
   ],\r
 };\r
-`;var Ts=class n{formChange=new C;fields=[new yt({hint:"At least 8 characters. Use a mix of letters and numbers.",minLength:8,autocomplete:"off",icons:[{name:"\u{1F3B2}",side:"left",action:"generatePassword",title:"Generate a random password"},{name:"\u{1F511}",side:"left",expressions:["field.type = field.type === 'text' ? 'password' : 'text'","icon.name = field.type === 'text' ? \u{1F441}\uFE0F' : '\u{1F511}\u2018'"]}]}),new Ee({key:"amount",value:0,min:0,icons:[{name:"\u2795",side:"left",expressions:["field.value++"]},{name:"\u2796",side:"right",expressions:["field.value--"]}]}),new W({key:"search",icons:[{name:"\u274C",side:"left",expressions:["field.value = null"],visible:"field.value"}]}),new W({key:"SKU",placeholder:"Enter unique product SKU",icons:[{name:"\u2139\uFE0F",side:"left",command:"show-modal",commandfor:"sku-info"}]}),new tn({key:"sku-info",disabled:!0,closeBtn:!0,width:"400px",height:"350px",fields:[new et("What is SKU?",2),new Ii(`A SKU is a unique identifier for each product in your inventory. 
+`;var Ts=class n{formChange=new C;fields=[new yt({hint:"At least 8 characters. Use a mix of letters and numbers.",minLength:8,autocomplete:"off",icons:[{name:"\u{1F3B2}",side:"left",action:"generatePassword",title:"Generate a random password"},{name:"\u{1F511}",side:"left",expressions:["field.type = field.type === 'text' ? 'password' : 'text'","icon.name = field.type === 'text' ? '\u{1F441}\uFE0F' : '\u{1F511}'"]}]}),new Ee({key:"amount",value:0,min:0,icons:[{name:"\u2795",side:"left",expressions:["field.value++"]},{name:"\u2796",side:"right",expressions:["field.value--"]}]}),new W({key:"search",icons:[{name:"\u274C",side:"left",expressions:["field.value = null"],visible:"field.value"}]}),new W({key:"SKU",placeholder:"Enter unique product SKU",icons:[{name:"\u2139\uFE0F",side:"left",command:"show-modal",commandfor:"sku-info"}]}),new tn({key:"sku-info",disabled:!0,closeBtn:!0,width:"400px",height:"350px",fields:[new et("What is SKU?",2),new Ii(`A SKU is a unique identifier for each product in your inventory. 
            It helps you track stock, manage orders, and avoid duplicate listings.`),new et("Tips for creating SKUs:",3),new Ka(["Keep it short and consistent (e.g., EB-AP-2026)","Avoid spaces or special characters","Use a pattern that reflects product type or brand"])]}),new W({key:"name",icons:[{name:"\u{1F524}",side:"right",action:"uppercase",title:"Uppercase text"}]}),new ue];logData(i){this.formChange.emit(i)}static \u0275fac=function(e){return new(e||n)};static \u0275cmp=v({type:n,selectors:[["app-icons-form"]],outputs:{formChange:"formChange"},features:[H([he,{provide:ur,useValue:pn}])],decls:1,vars:1,consts:[[3,"submittedData","fields"]],template:function(e,t){e&1&&(u(0,"preforms",0),R("submittedData",function(o){return t.logData(o)}),f()),e&2&&g("fields",t.fields)},dependencies:[re],encapsulation:2})};var _f={id:"icons-fields",title:"Icons & Input Actions",description:`
 Demonstrates interactive field icons. Includes:
 - Password show/hide and generate buttons
