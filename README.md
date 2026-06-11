@@ -15,10 +15,12 @@ A **TypeScript-first** form engine for Angular that makes complex forms feel sim
 ## Quick Start
 
 ```sh
-npm i @preforms/ts @preforms/angular
+npm i @preforms/ts @preforms/angular @angular/cdk
 ```
 
-Install both packages for Angular apps: `@preforms/ts` defines the field models and trigger types, while `@preforms/angular` renders them.
+Install the Preforms packages for Angular apps: `@preforms/ts` defines the field
+models and trigger types, while `@preforms/angular` renders them. `@angular/cdk`
+powers drag-and-drop array fields.
 
 ```ts
 import { Component } from "@angular/core";
@@ -166,7 +168,7 @@ import { TextField, TriggerAction } from "@preforms/ts";
 For Material components:
 
 ```sh
-npm i @angular/material @angular/cdk
+npm i @angular/material
 ```
 
 ## Development
