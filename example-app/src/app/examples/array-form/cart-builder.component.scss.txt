@@ -109,7 +109,7 @@
     border: 1px solid #d0d7de;
     border-radius: 8px;
     border-radius: 18px;
-    background: linear-gradient(135deg, yellow, orange);
+    background: linear-gradient(135deg, var(--green), var(--teal));
     border: 1px solid rgba(240, 190, 110, 0.25);
   }
 

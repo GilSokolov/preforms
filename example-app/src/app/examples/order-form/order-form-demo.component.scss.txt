@@ -10,7 +10,6 @@
     }
 
     .preforms-radio-description {
-      color: #666;
       font-size: 0.9rem;
       margin-left: auto;
     }
@@ -20,6 +19,7 @@
     width: 100%;
     border: 0;
     padding: 0.5rem 0.6rem;
+    background: none;
   }
 
   .preforms-form-field-label {
@@ -56,9 +56,9 @@
   }
 
   .order-btn {
-    background-color: rgb(255, 187, 0);
+    background-color: var(--indigo);
     padding: 0.6rem 2rem;
-    border: 1px solid #cfd6e3;
+    border: 1px solid var(--border);
     border-radius: 25px;
     font-weight: 700;
   }
@@ -73,6 +73,7 @@
       border: 0;
       width: 50px;
       text-align: center;
+      background: none;
     }
 
     .preforms-input::-webkit-inner-spin-button {

@@ -98,7 +98,7 @@ export class OrderFormDemoComponent {
 
     new TextareaField({
       key: 'notes',
-      placeholder: 'it may not be possible to meetall requests',
+      placeholder: 'it may not be possible to meet all requests',
     }),
 
     new FormSpacer(),
