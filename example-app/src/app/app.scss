@@ -5,12 +5,16 @@
   overflow: hidden;
   height: 100%;
   width: 100%;
+  background:
+    radial-gradient(circle at top, rgba(124, 107, 255, 0.12), transparent 35%),
+    linear-gradient(180deg, #0d1117 0%, #0b0f14 100%);
 }
 
 .content {
-  padding: 20px;
+  padding: 0;
   overflow: auto;
   flex: 1;
+  min-width: 0;
 }
 
 @media only screen and (max-width: 800px) {

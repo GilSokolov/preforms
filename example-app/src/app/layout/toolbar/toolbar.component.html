@@ -1,7 +1,12 @@
-<header class="toolbar">
-  <div class="title">
-    <a routerLink="">Preforms Showcase</a>
+<nav class="topbar">
+  <a class="nav-logo" routerLink="/">pre<span>forms</span></a>
+  <div class="nav-links">
+    <a routerLink="/examples/form-fields">Docs</a>
+    <a routerLink="/examples/cart-builder">Examples</a>
+    <a href="https://github.com/GilSokolov/preforms" target="_blank" rel="noreferrer">GitHub</a>
+    <a class="btn-nav" routerLink="/examples/form-fields">Get started →</a>
   </div>
+
   <button id="toggle-sidenav" (click)="sidenav.toggle()">
     <div class="menu_icon" [ngClass]="{ open: sidenav.isOpen$ | async }">
       <div class="bar1"></div>
@@ -9,4 +14,4 @@
       <div class="bar3"></div>
     </div>
   </button>
-</header>
+</nav>

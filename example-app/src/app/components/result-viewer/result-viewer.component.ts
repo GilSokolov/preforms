@@ -10,6 +10,15 @@ import { MarkdownModule, LanguagePipe } from 'ngx-markdown';
     }
   `,
   imports: [JsonPipe, MarkdownModule, LanguagePipe],
+  styles: [
+    `
+      :host {
+        display: block;
+        font-family: var(--mono);
+        color: var(--body);
+      }
+    `,
+  ],
 })
 export class ResultViewerComponent {
   @Input() value: any;

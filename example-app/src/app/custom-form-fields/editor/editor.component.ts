@@ -14,6 +14,7 @@ export class EditorField extends FormField<string> {
   selector: 'app-editor',
   imports: [QuillModule, ReactiveFormsModule],
   template: '<quill-editor [formControl]="control" />',
+  styleUrl: './editor.component.scss',
 })
 export class EditorComponent
   extends BaseFieldComponent<FormControl<string>, EditorField>

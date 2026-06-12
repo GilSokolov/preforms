@@ -1,84 +1,230 @@
-<h1>Preforms</h1>
-<h2>A class-based form modeling system for Angular</h2>
-<p>Build forms as real domain models — not configuration objects.</p>
-<p>
-  Preforms gives you a strongly-typed form modeling system with a built-in trigger engine for
-  cross-field validation, behavior and a domain-ready field library.
-</p>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Angular · TypeScript · Open Source</div>
+      <h1 class="hero-headline">
+        Define fields.<br />
+        Attach triggers.<br />
+        <span class="hl">Ship the form.</span>
+      </h1>
+      <p class="hero-sub">
+        A TypeScript-first form engine for Angular. Async validation, API-driven selects, dynamic
+        arrays, lazy-loaded components, and custom field models all declared in field models, no
+        component glue.
+      </p>
 
-<h2>Why Preforms</h2>
-<p>Most Angular form solutions treat forms as configuration:</p>
-<ul>
-  <li>JSON schemas</li>
-  <li>Config objects</li>
-  <li>Template-driven mappings</li>
-</ul>
-<p>Preforms takes a different approach:</p>
-<blockquote>Forms are object models with behavior.</blockquote>
-<p>
-  You define forms using classes like <strong>FormField</strong>, <strong>FieldGroup</strong>,
-  <strong>NumberField</strong>, and compose them like a real domain model.
-</p>
+      <div class="install-box">
+        <span class="install-prompt">$</span>
+        <span class="install-cmd" id="install-cmd">{{ heroInstall }}</span>
+        <button class="copy-btn" type="button" (click)="copyInstall($event)">copy</button>
+      </div>
 
-<h2>Get Started in 30 Seconds</h2>
+      <div class="hero-ctas">
+        <a class="btn-primary" routerLink="/examples/form-fields">Read the docs</a>
+        <a
+          class="btn-ghost"
+          href="https://github.com/GilSokolov/preforms"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View on GitHub
+        </a>
+      </div>
+    </div>
 
-<p>Install:</p>
-<markdown data="TBD" />
-<p>Define a form:</p>
-<markdown [data]="code[7] | language: 'typescript'" />
-<p>Render (Angular adapter handles UI automatically):</p>
-<markdown [data]="code[8] | language: 'html'" />
+    <div class="hero-right">
+      <div class="code-card">
+        <div class="code-titlebar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="code-filename">login.component.ts</span>
+        </div>
+        <div class="code-body">
+          @for (line of heroSnippet; track line.n) {
+            <pre
+              class="code-line"
+            ><span class="ln">{{ line.n }}</span><span [innerHTML]="line.html"></span></pre>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>
-  Preforms models are rendered automatically by the Angular adapter. <br />
-  No manual form wiring is required — models are interpreted into reactive forms and UI components.
-</p>
+<section class="band">
+  <div class="section-inner">
+    <div class="section-label">What it does</div>
+    <h2 class="section-title">All the hard parts, declared.</h2>
+    <p class="section-sub">
+      The common patterns in complex forms, extracted into a composable model layer.
+    </p>
 
-<h3>1. Form Modeling System</h3>
-<p>Define forms using strongly-typed classes.</p>
-<markdown [data]="code[0] | language: 'typescript'" />
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feat">
+          <div class="feat-icon indigo">
+            {{ feature.icon }}
+          </div>
+          <div class="feat-title">{{ feature.title }}</div>
+          <div class="feat-desc">{{ feature.desc }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
 
-<h3>2. Trigger Engine</h3>
-<p>Add cross-field behavior directly inside field definitions.</p>
-<markdown [data]="code[1] | language: 'typescript'" />
+<section class="band">
+  <div class="section-inner split-section">
+    <div class="split-content">
+      <div class="section-label">Triggers</div>
+      <h2 class="section-title">One object replaces a subscriber.</h2>
+      <p class="section-sub">
+        Triggers are the unit of reactivity in Preforms. Attach them to any field, point them at an
+        event, and let the engine handle the rest.
+      </p>
+      <div class="split-points">
+        <div class="point">
+          <span></span>
+          <p>Async validation hits your API without handwritten glue.</p>
+        </div>
+        <div class="point">
+          <span></span>
+          <p>A dependent select fetches its options when a parent value changes.</p>
+        </div>
+        <div class="point">
+          <span></span>
+          <p>A dialog opens when an icon is clicked and closes on a button command.</p>
+        </div>
+        <div class="point">
+          <span></span>
+          <p>No RxJS, no ViewChild, no parent component managing it all.</p>
+        </div>
+      </div>
+    </div>
 
-<h3>3. Domain Field Library (DX layer)</h3>
-<p>Preforms ships with a rich set of domain-ready field primitives.</p>
-<strong>Semantic Fields</strong>
-<markdown [data]="code[2] | language: 'typescript'" />
-<p>These fields include sensible defaults, structure, and validation.</p>
+    <div class="mini-stack">
+      <div class="mini-code">
+        <div class="mini-code-title">
+          <span class="mini-dot" style="background: var(--green)"></span>
+          Async validation
+        </div>
+        <div class="mini-code-body">
+          @for (line of asyncSnippet; track line.n) {
+            <pre
+              class="code-line"
+            ><span class="ln">{{ line.n }}</span><span [innerHTML]="line.html"></span></pre>
+          }
+        </div>
+      </div>
+      <div class="mini-code">
+        <div class="mini-code-title">
+          <span class="mini-dot" style="background: var(--amber)"></span>
+          Dependent select
+        </div>
+        <div class="mini-code-body">
+          @for (line of selectSnippet; track line.n) {
+            <pre
+              class="code-line"
+            ><span class="ln">{{ line.n }}</span><span [innerHTML]="line.html"></span></pre>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<strong>Domain Fields</strong>
-<markdown [data]="code[3] | language: 'typescript'" />
-<h2>Smart Defaults vs Explicit Control</h2>
-<p>Preforms balances minimal configuration with explicit identity.</p>
-<p>Intent-based fields (no key required)</p>
-<markdown [data]="code[9] | language: 'typescript'" />
-<p>Data-bound fields (explicit identity required)</p>
-<markdown [data]="code[10] | language: 'typescript'" />
+<section class="band">
+  <div class="section-inner">
+    <div class="section-label">Live examples</div>
+    <h2 class="section-title">See what's possible.</h2>
+    <p class="section-sub">Every example is interactive and linked to source.</p>
 
-<h2>Extensible UI System</h2>
-<p>You can create your own strongly-typed fields.</p>
-<markdown [data]="code[11] | language: 'typescript'" />
-<p>Preforms allows custom field components to be plugged directly into the form model.</p>
-<strong>Custom Field Components</strong>
-<p>Preforms lets you create fully custom UI field components.</p>
-<markdown [data]="code[5] | language: 'typescript'" />
-<strong>Bind it to a field model</strong>
-<markdown [data]="code[6] | language: 'typescript'" />
+    <div class="examples-grid">
+      @for (example of examples; track example.title) {
+        <a class="ex-card" [routerLink]="example.route">
+          <span class="ex-tag" [class.wild]="example.tag === 'wild'">{{ example.tag }}</span>
+          <div class="ex-title">{{ example.title }}</div>
+          <div class="ex-desc">{{ example.desc }}</div>
+          <div class="ex-arrow">→ view</div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
 
-<h2>What makes Preforms different</h2>
-<ul>
-  <li>Strongly typed form models</li>
-  <li>Object-oriented field system</li>
-  <li>Built-in cross-field validation</li>
-  <li>Declarative trigger engine</li>
-  <li>No JSON schema required</li>
-</ul>
+<section class="band">
+  <div class="section-inner split-section">
+    <div>
+      <div class="mini-code">
+        <div class="mini-code-title">
+          <span class="mini-dot" style="background: var(--indigo)"></span>
+          custom-field.ts
+        </div>
+        <div class="mini-code-body">
+          @for (line of customFieldSnippet; track line.n) {
+            <pre
+              class="code-line"
+            ><span class="ln">{{ line.n }}</span><span [innerHTML]="line.html"></span></pre>
+          }
+        </div>
+      </div>
+    </div>
 
-<h2>Example</h2>
+    <div class="split-content">
+      <div class="section-label">Extensibility</div>
+      <h2 class="section-title">Custom fields in two steps.</h2>
+      <p class="section-sub">
+        The engine doesn't know what an "editor" is. You tell it. Extend FormField, register an
+        Angular component against the type key, and the renderer handles the rest.
+      </p>
+      <div class="split-points">
+        <div class="point">
+          <span></span>
+          <p>Rich text editors, date pickers, map inputs, anything Angular can render.</p>
+        </div>
+        <div class="point">
+          <span></span>
+          <p>Components load lazily, so there is no bundle cost until the field appears.</p>
+        </div>
+        <div class="point">
+          <span></span>
+          <p>
+            Custom fields participate in triggers, validation, and aggregates like any built-in.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<markdown [data]="code[4] | language: 'typescript'" />
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title" style="line-height: 50px">Ready to stop writing form glue?</h2>
+    <p class="cta-sub">
+      Preforms is open source and MIT licensed. The docs have working examples for every feature.
+    </p>
+    <div class="cta-btns">
+      <a class="btn-primary" routerLink="/examples/form-fields">Read the docs</a>
+      <a
+        class="btn-ghost"
+        href="https://github.com/GilSokolov/preforms"
+        target="_blank"
+        rel="noreferrer"
+      >
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</section>
 
-<br />
-<br />
+<footer class="footer">
+  <div class="footer-inner">
+    <p>© 2026 Preforms · MIT License</p>
+    <div class="footer-links">
+      <a routerLink="/examples/form-fields">Docs</a>
+      <a routerLink="/examples/cart-builder">Examples</a>
+      <a href="https://github.com/GilSokolov/preforms" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </div>
+</footer>

@@ -1,3 +1,24 @@
 .info {
   max-width: 800px;
 }
+
+:host {
+  display: block;
+  padding: 2rem 1.5rem 3rem;
+  color: var(--body);
+  background:
+    radial-gradient(circle at top right, rgba(61, 207, 182, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(13, 17, 23, 0), rgba(13, 17, 23, 0.12));
+}
+
+h1 {
+  font-family: var(--mono);
+  color: var(--bright);
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+}
+
+.info {
+  max-width: 760px;
+  color: var(--muted);
+}

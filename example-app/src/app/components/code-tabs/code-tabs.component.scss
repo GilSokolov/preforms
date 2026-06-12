@@ -1,0 +1,21 @@
+::ng-deep .mat-mdc-tab-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+::ng-deep .mat-mdc-tab-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+
+::ng-deep .mat-mdc-tab-label,
+::ng-deep .mat-mdc-tab-label-content {
+  font-family: var(--mono);
+  color: var(--body);
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+  padding: 1rem;
+}

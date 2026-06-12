@@ -2,7 +2,7 @@
 <div class="layout" [ngClass]="{ open: service.isOpen$ | async }">
   <app-sidebar></app-sidebar>
 
-  <main class="content">
+  <main class="content" #content>
     <router-outlet></router-outlet>
   </main>
 </div>
