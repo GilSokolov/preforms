@@ -3,8 +3,7 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { SelectField } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "select" })
 @Component({

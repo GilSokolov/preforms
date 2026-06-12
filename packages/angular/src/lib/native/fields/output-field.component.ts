@@ -2,9 +2,9 @@ import { Component, inject, OnInit } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 import { FieldEventData, FormFieldEventType, OutputField } from "@preforms/ts";
-import { DynamicFormElement, FormFieldEvent } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
-import { FormService } from "../../core/services";
+import { DynamicFormElement, FormFieldEvent } from "@preforms/angular/core";
+import { BaseFieldComponent } from "@preforms/angular/core";
+import { FormService } from "@preforms/angular/core";
 
 function matchesFieldPattern(pattern: string, id: string): boolean {
   // exact match

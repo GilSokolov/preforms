@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormArray, FormControl, ReactiveFormsModule } from "@angular/forms";
 
 import { CheckboxGroupField } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement } from "@preforms/angular/core";
+import { BaseFieldComponent } from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "checkbox-group" })
 @Component({

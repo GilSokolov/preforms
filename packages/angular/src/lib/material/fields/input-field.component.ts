@@ -3,9 +3,13 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { InputField } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
-import { AriaAttributesDirective } from "../../core/directives";
-import { BaseFieldComponent, FieldIconComponent } from "../../core/fields";
+
+import {
+  DynamicFormElement,
+  BaseFieldComponent,
+  FieldIconComponent,
+  AriaAttributesDirective,
+} from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "input" })
 @Component({

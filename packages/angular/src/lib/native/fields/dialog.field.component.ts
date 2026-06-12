@@ -2,9 +2,9 @@ import { CommonModule } from "@angular/common";
 import { Component, ElementRef, ViewChild } from "@angular/core";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { DialogField, FormEventData, FormEventType } from "@preforms/ts";
-import { DynamicFormElement, FormEvent } from "../../core/decorators";
-import { Preforms } from "../../core/dynamic-form.component";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement, FormEvent } from "@preforms/angular/core";
+import { Preforms } from "@preforms/angular/core";
+import { BaseFieldComponent } from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "dialog" })
 @Component({

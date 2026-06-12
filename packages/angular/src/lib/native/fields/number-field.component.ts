@@ -2,9 +2,9 @@ import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 import { InputField } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
-import { AriaAttributesDirective } from "../../core/directives";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement } from "@preforms/angular/core";
+import { AriaAttributesDirective } from "@preforms/angular/core";
+import { BaseFieldComponent } from "@preforms/angular/core";
 import { FormFieldComponent } from "./form-field.component";
 
 @DynamicFormElement({ component: "number" })

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement } from "@preforms/angular/core";
+import { BaseFieldComponent } from "@preforms/angular/core";
 import { RadioField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "radio" })

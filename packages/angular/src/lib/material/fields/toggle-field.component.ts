@@ -3,8 +3,8 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { InputField } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+
+import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "toggle" })
 @Component({

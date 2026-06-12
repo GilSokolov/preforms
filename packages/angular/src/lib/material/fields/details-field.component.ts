@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { MatExpansionModule } from "@angular/material/expansion";
-import { DynamicFormElement } from "../../core/decorators";
-
-import { DetailsField } from "@preforms/ts";
 import {
+  DynamicFormElement,
   BaseFieldComponent,
   DynamicFieldGroupComponent,
-} from "../../core/fields";
+} from "@preforms/angular/core";
+
+import { DetailsField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "details" })
 @Component({

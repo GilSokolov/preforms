@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FieldIcon } from "../../core/models";
+import { FieldIcon } from "@preforms/angular/core";
 
 @Component({
   selector: "preforms-icon",

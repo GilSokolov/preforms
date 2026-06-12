@@ -3,8 +3,8 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
+
 import { InputField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "autocomplete" })

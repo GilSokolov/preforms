@@ -1,7 +1,7 @@
 import { AutocompleteFieldComponent } from "./autocomplete-field.component";
 import { FieldButtonComponent } from "./button-field.component";
 import { CheckboxGroupFieldComponent } from "./checkbox-group-field.component";
-import { FormDescriptionComponent } from "../../core/fields/decorative/form-description.component";
+import { FormDescriptionComponent } from "@preforms/angular/core";
 import { DetailsFieldComponent } from "./details.field.component";
 import { DialogFieldComponent } from "./dialog.field.component";
 import { FieldsetFieldComponent } from "./fieldset.field.component";

@@ -2,8 +2,7 @@ import { Component } from "@angular/core";
 import { FormArray, FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { CheckboxGroupField } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "checkbox-group" })
 @Component({
@@ -16,7 +15,7 @@ import { BaseFieldComponent } from "../../core/fields";
       @for (option of field.fields; track $index; let i = $index) {
         <mat-checkbox
           [value]="option.value"
-          (change)="update($event.checked, i)"
+          (change)="update($event.checked, i, option.value)"
         >
           {{ option.label }}
         </mat-checkbox>

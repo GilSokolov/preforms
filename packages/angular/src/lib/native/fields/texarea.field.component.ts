@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement } from "@preforms/angular/core";
+import { BaseFieldComponent } from "@preforms/angular/core";
 import { TextareaField } from "@preforms/ts";
 import { CommonModule } from "@angular/common";
 import { FormFieldComponent } from "./form-field.component";

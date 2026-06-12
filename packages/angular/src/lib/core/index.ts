@@ -1,4 +1,5 @@
 export * from "./decorators";
+export * from "./directives";
 export * from "./dynamic-field.component";
 export * from "./dynamic-form.component";
 export * from "./fields";
@@ -8,3 +9,4 @@ export * from "./providers";
 export * from "./services";
 export * from "./tokens";
 export * from "./validators";
+export * from "./utils";

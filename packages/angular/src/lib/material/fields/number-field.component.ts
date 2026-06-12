@@ -5,9 +5,12 @@ import { InputField } from "@preforms/ts";
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { AriaAttributesDirective } from "../../core/directives";
-import { FieldIconComponent } from "../../core/fields";
-import { DynamicFormElement } from "../../core/decorators";
+
+import {
+  DynamicFormElement,
+  FieldIconComponent,
+  AriaAttributesDirective,
+} from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "preforms-number" })
 @Component({

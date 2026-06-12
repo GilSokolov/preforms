@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 import { MatRadioModule } from "@angular/material/radio";
 import { RadioField } from "@preforms/ts";
 

@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 
-import { DynamicFormElement } from "../../core/decorators";
+import { DynamicFormElement } from "@preforms/angular/core";
 
 import { DetailsField } from "@preforms/ts";
 import {
   BaseFieldComponent,
   DynamicFieldGroupComponent,
-} from "../../core/fields";
+} from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "details" })
 @Component({

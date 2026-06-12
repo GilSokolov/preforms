@@ -23,7 +23,6 @@ import { FormDivider } from "@preforms/ts";
     .form-divider {
       display: flex;
       align-items: center;
-      // gap: 0.75rem;
       width: 100%;
 
       &::before,
@@ -34,7 +33,7 @@ import { FormDivider } from "@preforms/ts";
         background: var(--divider-color, #e5e7eb);
       }
 
-      &__label {
+      .form-divider__label {
         font-size: 0.875rem;
         color: var(--divider-label-color, #6b7280);
         white-space: nowrap;

@@ -3,8 +3,7 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 import { DateField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "datepicker" })

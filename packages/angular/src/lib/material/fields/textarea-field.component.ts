@@ -2,8 +2,9 @@ import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+
+import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
+
 import { TextareaField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "textarea" })

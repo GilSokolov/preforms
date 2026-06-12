@@ -3,7 +3,7 @@ import { AbstractControl } from "@angular/forms";
 
 import { FormField } from "@preforms/ts";
 
-import { FieldIconComponent } from "../../core/fields";
+import { FieldIconComponent } from "@preforms/angular/core";
 
 @Component({
   selector: "preforms-form-field",

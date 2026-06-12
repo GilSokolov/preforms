@@ -3,9 +3,9 @@ import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import {
   BaseFieldComponent,
   DynamicFieldGroupComponent,
-} from "../../core/fields";
+} from "@preforms/angular/core";
 import { Fieldset } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
+import { DynamicFormElement } from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "fieldset" })
 @Component({

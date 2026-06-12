@@ -3,14 +3,23 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { DialogField } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
-import { Preforms } from "../../core/dynamic-form.component";
-import { BaseFieldComponent } from "../../core/fields";
-import { DynamicFormSubmitEvent } from "../../core/models";
-import { untilDestroyed } from "../../core/utils";
+
+
+
+
+
 
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+
+
+import {
+  Preforms,
+  untilDestroyed,
+  DynamicFormElement,
+  BaseFieldComponent,
+  DynamicFormSubmitEvent,
+} from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "dialog" })
 @Component({

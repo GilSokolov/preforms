@@ -8,6 +8,8 @@
     "types": [],
     "moduleResolution": "bundler",
     "paths": {
+      // "@preforms/angular/core": ["./src/lib/core/index.ts"],
+      "@preforms/angular/core": ["../../dist/angular/core"],
       "@preforms/ts": ["../../packages/ts/dist"]
     },
     "experimentalDecorators": true

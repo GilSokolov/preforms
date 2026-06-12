@@ -5,6 +5,8 @@ import { FormListComponent } from "./form-list.component";
 import { FormSpacerComponent } from "./form-spacer.component";
 import { FormTitleComponent } from "./form-title.component";
 
+export * from "./form-description.component";
+
 export const DECORATIVE_FORM_ELEMENTS = [
   FormListComponent,
   FormImageComponent,

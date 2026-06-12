@@ -1,16 +1,14 @@
 import { Component, Input } from "@angular/core";
-import {
-  AbstractControl,
-  FormControl,
-  ReactiveFormsModule,
-} from "@angular/forms";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 import { InputField } from "@preforms/ts";
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { AriaAttributesDirective } from "../../core/directives";
-import { FieldIconComponent } from "../../core/fields";
+import {
+  FieldIconComponent,
+  AriaAttributesDirective,
+} from "@preforms/angular/core";
 
 @Component({
   selector: "preforms-field-field",

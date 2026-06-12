@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent, FieldIconComponent } from "../../core/fields";
+import { DynamicFormElement } from "@preforms/angular/core";
+import { BaseFieldComponent, FieldIconComponent } from "@preforms/angular/core";
 import { FieldButton } from "@preforms/ts";
 
 @DynamicFormElement({ component: "button" })

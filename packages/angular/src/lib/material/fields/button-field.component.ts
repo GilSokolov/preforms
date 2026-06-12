@@ -2,8 +2,7 @@ import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonAppearance, MatButtonModule } from "@angular/material/button";
 import { FieldButton } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
-import { BaseFieldComponent } from "../../core/fields";
+import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "button" })
 @Component({

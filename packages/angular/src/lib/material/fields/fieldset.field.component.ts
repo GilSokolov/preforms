@@ -1,11 +1,13 @@
 import { Component } from "@angular/core";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import {
+  DynamicFormElement,
   BaseFieldComponent,
   DynamicFieldGroupComponent,
-} from "../../core/fields";
+} from "@preforms/angular/core";
+
 import { Fieldset } from "@preforms/ts";
-import { DynamicFormElement } from "../../core/decorators";
+
 import { MatCardModule } from "@angular/material/card";
 
 @DynamicFormElement({ component: "fieldset" })
