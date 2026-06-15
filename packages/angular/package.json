@@ -1,6 +1,6 @@
 {
   "name": "@preforms/angular",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular renderer and field components for Preforms dynamic forms.",
   "type": "module",
   "peerDependencies": {

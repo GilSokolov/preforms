@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, Optional } from "@angular/core";
 import { LoadAdapter } from "../models/load-adapter";
 import { LOAD_ADAPTERS } from "../tokens/load.token";
 
@@ -6,9 +6,9 @@ import { LOAD_ADAPTERS } from "../tokens/load.token";
 export class LoadAdapterRegistry {
   private adapters = new Map<string, LoadAdapter>();
 
-  constructor(@Inject(LOAD_ADAPTERS) adapters: LoadAdapter[]) {
+  constructor(@Optional() @Inject(LOAD_ADAPTERS) adapters: LoadAdapter[] | null) {
     // last adapter wins (component overrides root)
-    for (const adapter of adapters) {
+    for (const adapter of adapters ?? []) {
       this.register(adapter);
     }
   }
