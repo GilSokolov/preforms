@@ -53,12 +53,14 @@ export class FormTitle extends FieldDecorative {
         ? { value: valueOrConfig, level }
         : valueOrConfig;
 
+    const resolvedLevel = config.level || FormTitleLevel.H1;
+
     super({
-      className: config.className || `form-title ${level}`,
+      className: config.className || `form-title ${resolvedLevel}`,
       ...config,
       component: "form-title",
     });
 
-    this.level = config.level || FormTitleLevel.H1;
+    this.level = resolvedLevel;
   }
 }
