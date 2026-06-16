@@ -70,8 +70,8 @@ export class Address extends FieldGroup<AddressValue> {
     const config: Optional<
       FieldGroupConfig<AddressValue>,
       "fields"
-    > = (configOrValue && "street" in configOrValue) ||
-    (configOrValue && "city" in configOrValue)
+    > = (configOrValue && "value" in configOrValue) ||
+    (configOrValue && "fields" in configOrValue)
       ? (configOrValue as FieldGroupConfig<AddressValue>)
       : {
           value: configOrValue as AddressValue,
