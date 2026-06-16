@@ -1,4 +1,4 @@
-import { FetchProjection, FormElement } from "../core";
+import type { FetchProjection, FormElement } from "../core";
 
 export const getValue = (obj: any, path: string): any =>
   path

@@ -1,4 +1,4 @@
-import { FieldArray, FormElement } from "../core";
+import type { FieldArray, FormElement } from "../core";
 import { resolveFieldId } from "./resolve-field-id";
 
 /**

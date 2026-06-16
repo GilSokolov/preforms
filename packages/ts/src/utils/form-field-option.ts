@@ -1,4 +1,5 @@
-import { FormFieldOption, FormFieldOptionConfig } from "../core";
+import type { FormFieldOptionConfig } from "../core/interfaces/form-field-config";
+import { FormFieldOption } from "../core/models/field-option";
 import { FormFieldOptionGroup } from "../core/models/field-option-group";
 
 /**

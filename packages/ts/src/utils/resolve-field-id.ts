@@ -1,4 +1,4 @@
-import { FormElement } from "../core";
+import type { FormElement } from "../core";
 
 export function resolveFieldId({ component, id }: FormElement): string {
   if (id) return id;

@@ -1,4 +1,4 @@
-import { FormFieldTrigger } from "../core";
+import type { FormFieldTrigger } from "../core";
 import { evaluateComparison } from "./evaluate-comparison";
 
 /**

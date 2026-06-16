@@ -1,4 +1,4 @@
-import { PatternInput, PatternRule } from "../core";
+import type { PatternInput, PatternRule } from "../core";
 
 export function normalizePattern(
   input?: PatternInput | PatternInput[],
