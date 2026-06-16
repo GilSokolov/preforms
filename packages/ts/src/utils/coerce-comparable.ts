@@ -13,7 +13,7 @@ export function coerceComparable(value: unknown): unknown {
   }
 
   // Numeric string
-  if (typeof value === "string" && !isNaN(Number(value))) {
+  if (typeof value === "string" && value.trim() !== "" && !isNaN(Number(value))) {
     return Number(value);
   }
 
