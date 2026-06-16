@@ -46,10 +46,14 @@ export interface FileFieldConfig extends FormFieldConfig<File | FileList> {
  * @param config - Configuration options for the file field.
  */
 export class FileField extends InputField<File | FileList> {
+  accept?: string;
+
   constructor(config: FileFieldConfig) {
     super({
       ...config,
       type: "file",
     });
+
+    this.accept = config.accept;
   }
 }

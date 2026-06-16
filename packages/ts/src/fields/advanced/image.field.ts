@@ -77,10 +77,28 @@ export interface ImageFieldConfig extends FormFieldConfig<Coordinates> {
  * @param config - Configuration options for the image field.
  */
 export class ImageField extends InputField<Coordinates> {
+  alt?: string;
+  src?: string;
+  height?: number;
+  width?: number;
+  formaction?: string;
+  formenctype?: string;
+  formmethod?: "GET" | "POST";
+  formtarget?: string;
+
   constructor(config: ImageFieldConfig) {
     super({
       ...config,
       type: "image", // enforce image input type
     });
+
+    this.alt = config.alt;
+    this.src = config.src;
+    this.height = config.height;
+    this.width = config.width;
+    this.formaction = config.formaction;
+    this.formenctype = config.formenctype;
+    this.formmethod = config.formmethod;
+    this.formtarget = config.formtarget;
   }
 }
