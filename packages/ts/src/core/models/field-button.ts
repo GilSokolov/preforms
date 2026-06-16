@@ -1,8 +1,6 @@
-import {
-  AbstractFormElement,
-  AbstractFormElementConfig,
-  FormFieldIcon,
-} from "..";
+import { AbstractFormElement } from "./abstract-form-element";
+import type { AbstractFormElementConfig } from "../interfaces/base-field-config";
+import type { FormFieldIcon } from "../interfaces/field-icon";
 
 type ButtonIcon = Pick<FormFieldIcon, "name" | "side">;
 
