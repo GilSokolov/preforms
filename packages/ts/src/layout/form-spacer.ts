@@ -1,12 +1,7 @@
-import { FieldDecorative, FormFieldConfig } from "../core";
+import { FieldDecorative, AbstractFormElementConfig } from "../core";
 
 export class Spacer extends FieldDecorative {
-  /**
-   * Constructs a new `FormSpacer`.
-   *
-   * @param config - Optional configuration object for CSS classes, id, or accessibility attributes.
-   */
-  constructor(config: Partial<FormFieldConfig<null>> = {}) {
+  constructor(config: Partial<AbstractFormElementConfig> = {}) {
     super({
       ...config,
       component: "form-spacer",

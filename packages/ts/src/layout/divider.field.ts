@@ -1,4 +1,4 @@
-import { FieldDecorative, FormFieldConfig } from "../core";
+import { FieldDecorative, AbstractFormElementConfig } from "../core";
 
 /**
  * A visual divider or separator for forms.
@@ -22,7 +22,7 @@ export class Divider extends FieldDecorative {
    *
    * @param config - Optional configuration object for CSS classes, id, or accessibility attributes.
    */
-  constructor(config: Partial<FormFieldConfig<null>> = {}) {
+  constructor(config: Partial<AbstractFormElementConfig> = {}) {
     super({
       ...config,
       component: "form-divider",
