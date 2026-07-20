@@ -8,14 +8,14 @@ import {
   ConfirmButton,
   Fieldset,
   FormDescription,
-  FormDivider,
+  Divider,
   FormElement,
   FormField,
   FormFieldOption,
   FormImage,
   FormRow,
-  FormSpacer,
-  FormTitle,
+  Spacer,
+  Title,
   FormTitleLevel,
   NumberField,
   RadioField,
@@ -71,8 +71,8 @@ export class OrderFormDemoComponent {
       src: 'chickengarlic.jpg',
       width: '400px',
     }),
-    new FormTitle('Garlic Knot Chicken Breasts'),
-    new FormTitle('$9.34 🏷️', FormTitleLevel.H2),
+    new Title('Garlic Knot Chicken Breasts'),
+    new Title('$9.34 🏷️', FormTitleLevel.H2),
     new FormDescription('Tender chicken breast with garlic, rosemary, and a hint of lemon.'),
 
     new Fieldset('Sides Dish', [
@@ -101,7 +101,7 @@ export class OrderFormDemoComponent {
       placeholder: 'it may not be possible to meet all requests',
     }),
 
-    new FormSpacer(),
+    new Spacer(),
 
     new FormRow({
       position: 'space-between',

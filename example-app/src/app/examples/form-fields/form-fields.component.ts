@@ -3,11 +3,11 @@ import { Preforms } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
   CheckboxGroupField,
-  EmailField,
+  Email,
   FormFieldOption,
   InputField,
   NumberField,
-  PasswordField,
+  Password,
   SelectField,
   SubmitButton,
   TextareaField,
@@ -26,8 +26,8 @@ export class FormFieldsComponent {
 
   fields = [
     new TextField({ key: 'username', placeholder: 'Username', required: true }),
-    new EmailField({ key: 'email', placeholder: 'you@example.com' }),
-    new PasswordField({
+    new Email({ key: 'email', placeholder: 'you@example.com' }),
+    new Password({
       key: 'password',
       hint: 'At least 8 characters',
     }),

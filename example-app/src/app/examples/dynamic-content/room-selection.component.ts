@@ -3,8 +3,8 @@ import { Preforms } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
   SelectField,
-  FormDivider,
-  FormTitle,
+  Divider,
+  Title,
   FormTitleLevel,
   FormDescription,
   SubmitButton,
@@ -50,11 +50,11 @@ export class RoomSelectionComponent {
       ],
     }),
 
-    new FormDivider({ label: 'Room Details' }),
+    new Divider({ label: 'Room Details' }),
 
-    new FormTitle({ value: 'King Room', id: 'king-title' }, FormTitleLevel.H2),
-    new FormTitle({ value: 'Queen Room', hidden: true, id: 'queen-title' }, FormTitleLevel.H2),
-    new FormTitle({ value: 'Junior Room', hidden: true, id: 'junior-title' }, FormTitleLevel.H2),
+    new Title({ value: 'King Room', id: 'king-title' }, FormTitleLevel.H2),
+    new Title({ value: 'Queen Room', hidden: true, id: 'queen-title' }, FormTitleLevel.H2),
+    new Title({ value: 'Junior Room', hidden: true, id: 'junior-title' }, FormTitleLevel.H2),
 
     new FormDescription({
       value: `A majestic retreat designed for travelers who appreciate space and elegance. 

@@ -3,9 +3,9 @@ import { Preforms } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
 import {
   DateField,
-  EmailField,
+  Email,
   NumberField,
-  PasswordField,
+  Password,
   SubmitButton,
   TriggerAction,
 } from '@preforms/ts';
@@ -21,12 +21,12 @@ export class CrossValidationFormComponent {
   @Output() formChange = new EventEmitter<any>();
 
   fields = [
-    new PasswordField({
+    new Password({
       minLength: 8,
       hint: 'At least 8 characters',
     }),
 
-    new PasswordField({
+    new Password({
       key: 'confirmPassword',
       label: 'Confirm password',
       triggers: [
@@ -42,11 +42,11 @@ export class CrossValidationFormComponent {
       ],
     }),
 
-    new EmailField({
+    new Email({
       placeholder: 'you@example.com',
     }),
 
-    new EmailField({
+    new Email({
       key: 'confirmEmail',
       label: 'Confirm Email',
       triggers: [

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { Preforms } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
-import { FieldArray, NumberField, DialogField, EmailField, SubmitButton } from '@preforms/ts';
+import { FieldArray, NumberField, DialogField, Email, SubmitButton } from '@preforms/ts';
 
 @Component({
   selector: 'app-advanced-components-form',
@@ -25,7 +25,7 @@ export class AdvancedComponentsFormComponent {
     new DialogField({
       key: 'newsletter',
       id: 'newsletter-dialog',
-      fields: [new EmailField({ key: 'email' }), new SubmitButton('Save')],
+      fields: [new Email({ key: 'email' }), new SubmitButton('Save')],
     }),
     new SubmitButton('Save All'),
   ];
