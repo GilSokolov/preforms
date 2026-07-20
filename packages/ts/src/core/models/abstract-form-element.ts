@@ -1,7 +1,7 @@
 import { toTitleCase } from "../../utils";
 import { AbstractFormElementConfig } from "../interfaces";
 import { FieldErrors } from "../interfaces/field-error";
-import { FieldKind } from "../interfaces/filed-kind";
+import { FieldKind } from "../interfaces/field-kind";
 import { FormFieldTrigger } from "../interfaces/triggers";
 
 export abstract class AbstractFormElement<T = unknown> {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { DateRangeField } from "./date-renge.field";
+import { DateRangeField } from "./date-range.field";
 import { DateField } from "../base";
 
 describe("DateRangeField", () => {

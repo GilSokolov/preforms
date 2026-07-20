@@ -19,5 +19,5 @@ export * from "./state.field";
 export * from "./street.field";
 export * from "./submit-button.field";
 export * from "./username.field";
-export * from "./gender.fileld";
+export * from "./gender.field";
 export * from "./middlename.field";

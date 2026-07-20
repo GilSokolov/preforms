@@ -8,7 +8,7 @@ export * from "./trigger-context";
 export * from "./triggers";
 export * from "./form-field-config";
 export * from "./wrapper-field-config";
-export * from "./filed-kind";
+export * from "./field-kind";
 export * from "./field-error";
 export * from "./pattern-rule";
 export * from "./field-icon";

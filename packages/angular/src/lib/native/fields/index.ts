@@ -8,7 +8,7 @@ import { FieldsetFieldComponent } from "./fieldset.field.component";
 import { InputFieldComponent } from "./input-field.component";
 import { RadioFieldComponent } from "./radio-field.component";
 import { SelectFieldComponent } from "./select.field.component";
-import { TextareaFieldComponent } from "./texarea.field.component";
+import { TextareaFieldComponent } from "./textarea.field.component";
 
 import { FieldIconEmojiComponent } from "./field-icon-emoji.component";
 import { CheckboxComponent } from "./checkbox-field.component";
@@ -47,4 +47,4 @@ export * from "./number-field.component";
 export * from "./output-field.component";
 export * from "./radio-field.component";
 export * from "./select.field.component";
-export * from "./texarea.field.component";
+export * from "./textarea.field.component";

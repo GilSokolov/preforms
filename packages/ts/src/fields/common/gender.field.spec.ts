@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Gender } from "./gender.fileld";
+import { Gender } from "./gender.field";
 
 describe("Gender", () => {
   it("sets the key to 'gender' and component to 'radio'", () => {
