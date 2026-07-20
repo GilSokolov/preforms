@@ -131,7 +131,8 @@ export class FormService implements TriggerContext {
     this.fetcher(url)
       .pipe(this.untilDestroyed())
       .subscribe((res: unknown) => {
-        this.onDataReady(this.normalizeData(res, mapper, id), mode);
+        const mapFn = mapper ? (r: unknown) => fetchProjection(r, mapper) : undefined;
+        this.onDataReady(this.normalizeResponse(res, mapFn, id), mode);
       });
   }
 
@@ -142,8 +143,8 @@ export class FormService implements TriggerContext {
       .execute(trigger, this.values())
       .pipe(this.untilDestroyed())
       .subscribe((res: unknown) => {
-        const data = this.normalizeData2(res, trigger.transform, id);
-        this.onDataReady(data, trigger.mode || "replace");
+        const mapFn = trigger.transform ? (r: unknown) => transform(trigger.transform!, r) : undefined;
+        this.onDataReady(this.normalizeResponse(res, mapFn, id), trigger.mode || "replace");
       });
   }
 
@@ -358,51 +359,21 @@ export class FormService implements TriggerContext {
     );
   }
 
-  private normalizeData(
+  private normalizeResponse(
     res: unknown,
-    mapper?: FetchProjection,
+    mapFn?: (res: unknown) => unknown,
     id?: string,
   ): FormElement[] {
-    const result = mapper
-      ? fetchProjection(res, mapper)
+    const result = mapFn
+      ? mapFn(res)
       : (res as Partial<FormElement> | Partial<FormElement>[]);
 
     const fields = Array.isArray(result) ? result : [result];
 
     return fields.map((field: Partial<FormElement>) => {
-      const res = field.id ? this.stateService.get(field.id) : { field: null };
+      const existing = field.id ? (this.stateService.get(field.id)?.field ?? {}) : {};
 
-      const existing = res?.field || {};
-
-      return {
-        id,
-        ...existing,
-        ...field,
-      } as FormElement;
-    });
-  }
-
-  private normalizeData2(
-    res: unknown,
-    mapper?: any,
-    id?: string,
-  ): FormElement[] {
-    const result = mapper
-      ? transform(mapper, res)
-      : (res as Partial<FormElement> | Partial<FormElement>[]);
-
-    const fields = Array.isArray(result) ? result : [result];
-
-    return fields.map((field: Partial<FormElement>) => {
-      const res = field.id ? this.stateService.get(field.id) : { field: null };
-
-      const existing = res?.field || {};
-
-      return {
-        id,
-        ...existing,
-        ...field,
-      } as FormElement;
+      return { id, ...existing, ...field } as FormElement;
     });
   }
 }
