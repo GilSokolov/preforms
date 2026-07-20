@@ -7,11 +7,11 @@ import { FieldIconEmojiComponent } from '@preforms/angular/native';
 import {
   DialogField,
   FormDescription,
-  FormList,
-  FormTitle,
+  List,
+  Title,
   FormTitleLevel,
   NumberField,
-  PasswordField,
+  Password,
   SubmitButton,
   TextField,
 } from '@preforms/ts';
@@ -33,7 +33,7 @@ export class IconsFormComponent {
   @Output() formChange = new EventEmitter<any>();
 
   fields = [
-    new PasswordField({
+    new Password({
       hint: 'At least 8 characters. Use a mix of letters and numbers.',
       minLength: 8,
       autocomplete: 'off',
@@ -105,13 +105,13 @@ export class IconsFormComponent {
       width: '400px',
       height: '350px',
       fields: [
-        new FormTitle('What is SKU?', FormTitleLevel.H2),
+        new Title('What is SKU?', FormTitleLevel.H2),
         new FormDescription(
           `A SKU is a unique identifier for each product in your inventory. 
            It helps you track stock, manage orders, and avoid duplicate listings.`,
         ),
-        new FormTitle('Tips for creating SKUs:', FormTitleLevel.H3),
-        new FormList([
+        new Title('Tips for creating SKUs:', FormTitleLevel.H3),
+        new List([
           'Keep it short and consistent (e.g., EB-AP-2026)',
           'Avoid spaces or special characters',
           'Use a pattern that reflects product type or brand',

@@ -7,10 +7,10 @@ import {
   FieldButton,
   FieldGroup,
   FieldWrapper,
-  FormDivider,
+  Divider,
   FormFieldEventType,
   FormImage,
-  FormTitle,
+  Title,
   InputField,
   NumberField,
   OutputField,
@@ -165,7 +165,7 @@ export class DynamicFormFetchRemoteComponent {
           on: 'change',
           do: 'update',
           state: {
-            fields: [new FormTitle('You win!')],
+            fields: [new Title('You win!')],
           },
           condition: true,
           source: 'score',
@@ -174,7 +174,7 @@ export class DynamicFormFetchRemoteComponent {
           on: 'change',
           do: 'update',
           state: {
-            fields: [new FormTitle('You lose!')],
+            fields: [new Title('You lose!')],
           },
           condition: false,
           source: 'score',
@@ -185,8 +185,8 @@ export class DynamicFormFetchRemoteComponent {
     new FieldWrapper({
       className: 'grid',
       fields: [
-        new FormDivider({ label: 'Player' }),
-        new FormDivider({ label: 'Enemy' }),
+        new Divider({ label: 'Player' }),
+        new Divider({ label: 'Enemy' }),
         createPlayer('p1'),
         createPlayer(
           'p2',
@@ -195,7 +195,7 @@ export class DynamicFormFetchRemoteComponent {
         ),
       ],
     }),
-    new FormDivider({ label: 'Play!' }),
+    new Divider({ label: 'Play!' }),
     new SelectField({
       key: 'type',
       label: 'Select Pokemon Type',

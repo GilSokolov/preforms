@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { Preforms } from '@preforms/angular/core';
 import { NATIVE_FORM_ELEMENTS } from '@preforms/angular/native';
-import { EmailField, SubmitButton, TextField } from '@preforms/ts';
+import { Email, SubmitButton, TextField } from '@preforms/ts';
 
 @Component({
   selector: 'app-basic-form',
@@ -20,7 +20,7 @@ export class BasicFormComponent {
       required: true,
     }),
 
-    new EmailField({
+    new Email({
       placeholder: 'you@example.com',
     }),
 

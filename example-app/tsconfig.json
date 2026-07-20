@@ -20,7 +20,10 @@
       "@preforms/angular/core": ["../packages/angular/src/lib/core/index.ts"],
       "@preforms/angular/native": ["../packages/angular/src/lib/native/index.ts"],
       "@preforms/angular/material": ["../packages/angular/src/lib/material/index.ts"],
-      "@preforms/ts": ["../packages/ts/src"]
+      "@preforms/ts": ["../packages/ts/src"],
+      "@preforms/ts/fields": ["../packages/ts/src/fields"],
+      "@preforms/ts/buttons": ["../packages/ts/src/buttons"],
+      "@preforms/ts/layout": ["../packages/ts/src/layout"]
     }
   },
   "angularCompilerOptions": {

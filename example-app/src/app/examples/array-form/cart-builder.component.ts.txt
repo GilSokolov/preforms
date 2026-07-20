@@ -7,7 +7,7 @@ import {
   TextField,
   NumberField,
   OutputField,
-  FormDivider,
+  Divider,
   SubmitButton,
   FieldButton,
   DialogField,
@@ -121,7 +121,7 @@ export class CartBuilderComponent {
       ],
     }),
 
-    new FormDivider({ label: 'Summary' }),
+    new Divider({ label: 'Summary' }),
 
     new OutputField({
       key: 'total',
