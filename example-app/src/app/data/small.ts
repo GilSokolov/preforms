@@ -1,8 +1,8 @@
 import {
   Fieldset,
   TextField,
-  EmailField,
-  PasswordField,
+  Email,
+  Password,
   TextareaField,
   FormGrid,
   InputField,
@@ -29,7 +29,7 @@ export const smallForm = [
   new InputField({ key: 'test-radio', type: 'radio', id: 'test-radio1', value: 'M' }),
   new InputField({ key: 'test-radio', type: 'radio', id: 'test-radio2', value: 'F' }),
   new SelectField({ key: 'list', options: ['a', 'b'] }),
-  new PasswordField({
+  new Password({
     hint: 'At least 8 characters. Use a mix of letters and numbers.',
     minLength: 8,
     autocomplete: 'off',

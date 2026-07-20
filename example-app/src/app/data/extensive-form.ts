@@ -1,8 +1,8 @@
 // import {
 //   Fieldset,
 //   TextField,
-//   EmailField,
-//   PasswordField,
+//   Email,
+//   Password,
 //   TextareaField,
 //   FormGrid,
 //   InputField,
@@ -30,7 +30,7 @@
 //   new Fieldset({
 //     key: 'account',
 //     fields: [
-//       new EmailField({
+//       new Email({
 //         placeholder: 'you@example.com',
 //         icons: [
 //           {
@@ -64,7 +64,7 @@
 //         ],
 //       }),
 
-//       new PasswordField({
+//       new Password({
 //         hint: 'At least 8 characters. Use a mix of letters and numbers.',
 //         minLength: 8,
 //         autocomplete: 'off',
@@ -309,7 +309,7 @@
 //     fields: [
 //       new FormDescription(`CNN's newsletters cover a variety of topics, from daily news to lifestyle content,
 //       markets info to medical news. Subscribe to get the latest information`),
-//       new EmailField({ key: 'email', id: 'newsletter', required: false }),
+//       new Email({ key: 'email', id: 'newsletter', required: false }),
 //       new FormRow([
 //         new CloseDialogButton('newsletters-dialog'),
 //         new SubmitButton({ type: 'submit', value: 'Save', meta: { appearance: 'tonal' } }),

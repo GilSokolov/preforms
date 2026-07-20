@@ -12,6 +12,21 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./fields": {
+      "types": "./dist/fields/index.d.ts",
+      "import": "./dist/fields/index.js",
+      "require": "./dist/fields/index.cjs"
+    },
+    "./buttons": {
+      "types": "./dist/buttons/index.d.ts",
+      "import": "./dist/buttons/index.js",
+      "require": "./dist/buttons/index.cjs"
+    },
+    "./layout": {
+      "types": "./dist/layout/index.d.ts",
+      "import": "./dist/layout/index.js",
+      "require": "./dist/layout/index.cjs"
+    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -31,7 +46,7 @@
   "author": "Gil Sokolov",
   "license": "MIT",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "tsup src/index.ts src/fields/index.ts src/buttons/index.ts src/layout/index.ts --format esm,cjs --dts",
     "dev": "tsup --watch",
     "lint": "eslint .",
     "test": "vitest run"

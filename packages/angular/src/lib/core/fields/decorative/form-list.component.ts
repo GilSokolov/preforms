@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormList } from "@preforms/ts";
+import { List } from "@preforms/ts";
 import { DynamicFormElement } from "../../decorators";
 import { BaseFieldComponent } from "..";
 
@@ -22,4 +22,4 @@ import { BaseFieldComponent } from "..";
     }
   `,
 })
-export class FormListComponent extends BaseFieldComponent<never, FormList> {}
+export class FormListComponent extends BaseFieldComponent<never, List> {}

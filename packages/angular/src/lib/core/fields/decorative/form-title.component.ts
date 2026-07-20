@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormTitle, FormTitleLevel } from "@preforms/ts";
+import { Title, FormTitleLevel } from "@preforms/ts";
 import { DynamicFormElement } from "../../decorators";
 import { BaseFieldComponent } from "..";
 
@@ -32,6 +32,6 @@ import { BaseFieldComponent } from "..";
     }
   `,
 })
-export class FormTitleComponent extends BaseFieldComponent<never, FormTitle> {
+export class FormTitleComponent extends BaseFieldComponent<never, Title> {
   FormTitleLevel = FormTitleLevel;
 }
