@@ -89,24 +89,24 @@ export type FetchProjection =
  * Trigger to fetch data from an endpoint
  */
 export interface FetchTrigger<T = any> extends BaseTrigger<T> {
-  do: "fetch";
+  do: TriggerAction.FETCH | `${TriggerAction.FETCH}`;
   fetchUrl: string; // endpoint to fetch data from
-  mode?: FetchMode; // whether to merge fetched data with existing state,
+  mode?: FetchMode;
   projection?: FetchProjection;
 }
 
 /**
  * Trigger to fetch validations from an endpoint
  */
-export interface AsyncValidationTrigger<T = any> extends BaseTrigger<T> {
-  do: TriggerAction.VALIDATE_ASYNC;
+export interface ValidateAsyncTrigger<T = any> extends BaseTrigger<T> {
+  do: TriggerAction.VALIDATE_ASYNC | `${TriggerAction.VALIDATE_ASYNC}`;
   fetchUrl: string; // endpoint to fetch data from
 }
 
 /**
  * Trigger to update the field's internal state
  */
-export interface StateUpdateTrigger<T = any> extends BaseTrigger<T> {
+export interface UpdateTrigger<T = any> extends BaseTrigger<T> {
   do: TriggerAction.UPDATE | `${TriggerAction.UPDATE}`;
   // Record<any, any> allows patching properties on user-defined custom field types that extend FormField
   state: Partial<FormElementConfig<T> & Record<any, any> & { value: any }>;
@@ -123,9 +123,9 @@ export interface ToggleTrigger<T = any> extends BaseTrigger<T> {
 /**
  * Trigger to perform cross-field validation
  */
-export interface ValidationTrigger<T = any> extends BaseTrigger<T> {
+export interface ValidateTrigger<T = any> extends BaseTrigger<T> {
   do: TriggerAction.VALIDATE | `${TriggerAction.VALIDATE}`;
-  validation: CrossFieldValidation; // validation rule to apply
+  validation: CrossFieldValidation;
 }
 
 /**
@@ -156,11 +156,9 @@ export interface DialogTrigger<T = any> extends BaseTrigger<T> {
   target: string;
 }
 
-export type LoadMode = "patch" | "replace" | "merge";
-
 export interface LoadTriggerBase<T = unknown> extends BaseTrigger<T> {
   do: TriggerAction.LOAD | `${TriggerAction.LOAD}`;
-  mode?: LoadMode;
+  mode?: FetchMode;
   transform?: Record<string, SchemaNode | Record<string, any>>;
 }
 
@@ -195,11 +193,11 @@ export type LoadTrigger<T = unknown> =
  */
 export type FormFieldTrigger<T = any> =
   | FetchTrigger<T>
-  | StateUpdateTrigger<T>
+  | UpdateTrigger<T>
   | ToggleTrigger<T>
-  | ValidationTrigger<T>
+  | ValidateTrigger<T>
   | SubmitTrigger<T>
   | ResetTrigger<T>
   | DialogTrigger<T>
-  | AsyncValidationTrigger<T>
+  | ValidateAsyncTrigger<T>
   | LoadTrigger<T>;

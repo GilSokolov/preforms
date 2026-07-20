@@ -13,7 +13,6 @@ import {
   FormField,
   FormFieldEventType,
   FormFieldTrigger,
-  LoadMode,
   LoadTrigger,
   transform,
   TriggerContext,
@@ -221,7 +220,7 @@ export class FormService implements TriggerContext {
     this.eventService.emitFieldEvent(event);
   }
 
-  onDataReady(fields: FormElement[], mode: FetchMode | LoadMode): void {
+  onDataReady(fields: FormElement[], mode: FetchMode): void {
     switch (mode) {
       case "patch":
         fields.forEach((field) => this.patchField(field));
