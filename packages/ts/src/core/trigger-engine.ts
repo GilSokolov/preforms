@@ -93,7 +93,7 @@ export class TriggerEngine {
   ) {
     const firedKey = `${event.id}:${event.type}`;
 
-    if (!shouldTrigger(trigger, event.value, this.context.values())) return;
+    if (!shouldTrigger(trigger, event.value, this.context)) return;
 
     if (trigger.once && this.firedSet.has(firedKey)) return;
 

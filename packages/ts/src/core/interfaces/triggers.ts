@@ -18,13 +18,17 @@ export type FieldState<T> = Partial<FormElementConfig<T>> & {
   value?: T;
 };
 
+export interface ConditionContext {
+  values(): object;
+}
+
 export type ConditionValue<T> =
   | OneOrMany<T>
   | {
       operator: ComparisonOperator | `${ComparisonOperator}`;
       value: OneOrMany<T>;
     }
-  | ((ctx: any) => boolean);
+  | ((ctx: ConditionContext) => boolean);
 
 /**
  * Actions that can be performed when a trigger fires.

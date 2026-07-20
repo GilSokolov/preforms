@@ -1,4 +1,5 @@
 import type { FormFieldTrigger } from "../core";
+import type { ConditionContext } from "../core/interfaces/triggers";
 import { evaluateComparison } from "./evaluate-comparison";
 
 /**
@@ -74,12 +75,12 @@ import { evaluateComparison } from "./evaluate-comparison";
 export function shouldTrigger<T>(
   trigger: FormFieldTrigger<T>,
   value: unknown,
-  ctx: any,
+  ctx: ConditionContext,
 ): boolean {
   if (trigger?.condition == null) return true;
 
   if (typeof trigger?.condition === "function")
-    return (trigger.condition as (ctx: any) => boolean)(ctx);
+    return trigger.condition(ctx);
 
   if (
     typeof trigger.condition === "object" &&
