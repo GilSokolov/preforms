@@ -14,20 +14,22 @@ export type ToggleProps = (keyof Pick<
 >)[];
 
 export interface TriggerContext {
-  getValues(): object;
-  requestSubmit(): void;
-  requestReset(): void;
+  values(): object;
+  submit(): void;
+  reset(): void;
   fetch(
     url: string,
     mode: FetchMode,
     mapper?: FetchProjection,
     id?: string,
   ): void;
-  patchValue(id: string, value: unknown): void;
-  updateState(ids: string[], state: Partial<FieldUIState>): void;
+  update(
+    ids: string | string[],
+    patch: Partial<FieldUIState> & { value?: unknown },
+  ): void;
   validate(id: string, validation: CrossFieldValidation): void;
-  toggleFieldState(ids: string[], props: ToggleProps): void;
-  openDialog(id: string): void;
-  closeDialog(id: string): void;
+  toggle(ids: string[], props: ToggleProps): void;
+  open(id: string): void;
+  close(id: string): void;
   load(trigger: LoadTrigger, id?: string): void;
 }

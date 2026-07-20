@@ -6,16 +6,15 @@ import { FormFieldTrigger, TriggerAction } from "./interfaces/triggers";
 
 function createContext(values: object = {}): TriggerContext {
   return {
-    getValues: vi.fn(() => values),
-    requestSubmit: vi.fn(),
-    requestReset: vi.fn(),
+    values: vi.fn(() => values),
+    submit: vi.fn(),
+    reset: vi.fn(),
     fetch: vi.fn(),
-    patchValue: vi.fn(),
-    updateState: vi.fn(),
+    update: vi.fn(),
     validate: vi.fn(),
-    toggleFieldState: vi.fn(),
-    openDialog: vi.fn(),
-    closeDialog: vi.fn(),
+    toggle: vi.fn(),
+    open: vi.fn(),
+    close: vi.fn(),
     load: vi.fn(),
   };
 }
@@ -48,7 +47,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent({ type: FormFieldEventType.CHANGE }));
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -63,7 +62,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent(), "some-source");
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
 
     it("runs the trigger when the event source matches a single source string", () => {
@@ -80,7 +79,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent(), "field-a");
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
 
     it("runs the trigger when the event source matches one of an array of sources", () => {
@@ -97,7 +96,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent(), "field-b");
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
 
     it("skips the trigger when the source does not match", () => {
@@ -114,7 +113,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent(), "field-b");
 
-      expect(context.requestSubmit).not.toHaveBeenCalled();
+      expect(context.submit).not.toHaveBeenCalled();
     });
 
     it("skips the trigger when a source is required but none was given", () => {
@@ -131,7 +130,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.requestSubmit).not.toHaveBeenCalled();
+      expect(context.submit).not.toHaveBeenCalled();
     });
   });
 
@@ -150,7 +149,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent({ value: "hello" }));
 
-      expect(context.requestSubmit).not.toHaveBeenCalled();
+      expect(context.submit).not.toHaveBeenCalled();
     });
 
     it("runs the trigger when the condition evaluates to true", () => {
@@ -167,7 +166,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent({ value: "hello" }));
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -183,7 +182,7 @@ describe("TriggerEngine", () => {
       engine.runFieldTriggers(triggers, createEvent());
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
 
     it("fires repeatedly when once is not set", () => {
@@ -197,7 +196,7 @@ describe("TriggerEngine", () => {
       engine.runFieldTriggers(triggers, createEvent());
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(2);
+      expect(context.submit).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -224,11 +223,11 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.requestSubmit).not.toHaveBeenCalled();
+      expect(context.submit).not.toHaveBeenCalled();
 
       vi.advanceTimersByTime(200);
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
 
     it("resets the timer when triggered again before it fires", () => {
@@ -248,11 +247,11 @@ describe("TriggerEngine", () => {
       engine.runFieldTriggers(triggers, createEvent());
       vi.advanceTimersByTime(100);
 
-      expect(context.requestSubmit).not.toHaveBeenCalled();
+      expect(context.submit).not.toHaveBeenCalled();
 
       vi.advanceTimersByTime(100);
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
 
     it("runs immediately when debounce is 0 or unset", () => {
@@ -265,7 +264,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -287,13 +286,13 @@ describe("TriggerEngine", () => {
       engine.destroy();
       vi.advanceTimersByTime(200);
 
-      expect(context.requestSubmit).not.toHaveBeenCalled();
+      expect(context.submit).not.toHaveBeenCalled();
       vi.useRealTimers();
     });
   });
 
   describe("action handling", () => {
-    it("UPDATE calls updateState with the target ids and state", () => {
+    it("UPDATE calls update with the target ids and patch", () => {
       const context = createContext();
       const engine = new TriggerEngine(context);
 
@@ -308,12 +307,12 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.updateState).toHaveBeenCalledWith(["field-2"], {
+      expect(context.update).toHaveBeenCalledWith(["field-2"], {
         disabled: true,
       });
     });
 
-    it("UPDATE defaults the target to the event id when no target is given", () => {
+    it("UPDATE defaults target to the event id when no target is given", () => {
       const context = createContext();
       const engine = new TriggerEngine(context);
 
@@ -327,12 +326,12 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent({ id: "field-1" }));
 
-      expect(context.updateState).toHaveBeenCalledWith(["field-1"], {
+      expect(context.update).toHaveBeenCalledWith(["field-1"], {
         disabled: true,
       });
     });
 
-    it("TOGGLE calls toggleFieldState with the target ids and props", () => {
+    it("TOGGLE calls toggle with the target ids and props", () => {
       const context = createContext();
       const engine = new TriggerEngine(context);
 
@@ -347,7 +346,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.toggleFieldState).toHaveBeenCalledWith(
+      expect(context.toggle).toHaveBeenCalledWith(
         ["field-2", "field-3"],
         ["hidden"],
       );
@@ -436,7 +435,7 @@ describe("TriggerEngine", () => {
       expect(context.validate).toHaveBeenCalledWith("field-2", validation);
     });
 
-    it("SUBMIT calls requestSubmit", () => {
+    it("SUBMIT calls submit", () => {
       const context = createContext();
       const engine = new TriggerEngine(context);
 
@@ -446,10 +445,10 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.requestSubmit).toHaveBeenCalledTimes(1);
+      expect(context.submit).toHaveBeenCalledTimes(1);
     });
 
-    it("RESET calls requestReset", () => {
+    it("RESET calls reset", () => {
       const context = createContext();
       const engine = new TriggerEngine(context);
 
@@ -459,10 +458,10 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.requestReset).toHaveBeenCalledTimes(1);
+      expect(context.reset).toHaveBeenCalledTimes(1);
     });
 
-    it("OPEN_DIALOG calls openDialog with the target", () => {
+    it("OPEN_DIALOG calls open with the target", () => {
       const context = createContext();
       const engine = new TriggerEngine(context);
 
@@ -476,10 +475,10 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.openDialog).toHaveBeenCalledWith("my-dialog");
+      expect(context.open).toHaveBeenCalledWith("my-dialog");
     });
 
-    it("CLOSE_DIALOG calls closeDialog with the target", () => {
+    it("CLOSE_DIALOG calls close with the target", () => {
       const context = createContext();
       const engine = new TriggerEngine(context);
 
@@ -493,7 +492,7 @@ describe("TriggerEngine", () => {
 
       engine.runFieldTriggers(triggers, createEvent());
 
-      expect(context.closeDialog).toHaveBeenCalledWith("my-dialog");
+      expect(context.close).toHaveBeenCalledWith("my-dialog");
     });
 
     it("LOAD normalizes the url and calls load with the event id", () => {

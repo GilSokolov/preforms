@@ -93,7 +93,7 @@ export class TriggerEngine {
   ) {
     const firedKey = `${event.id}:${event.type}`;
 
-    if (!shouldTrigger(trigger, event.value, this.context.getValues())) return;
+    if (!shouldTrigger(trigger, event.value, this.context.values())) return;
 
     if (trigger.once && this.firedSet.has(firedKey)) return;
 
@@ -101,14 +101,14 @@ export class TriggerEngine {
 
     switch (trigger.action) {
       case TriggerAction.UPDATE:
-        this.context.updateState(
+        this.context.update(
           ids,
           this.replaceIndexPlaceholders(trigger.state, event.value),
         );
         break;
 
       case TriggerAction.TOGGLE:
-        this.context.toggleFieldState(ids, trigger.toggle);
+        this.context.toggle(ids, trigger.toggle);
         break;
 
       case TriggerAction.FETCH:
@@ -129,19 +129,19 @@ export class TriggerEngine {
         break;
 
       case TriggerAction.SUBMIT:
-        this.context.requestSubmit();
+        this.context.submit();
         break;
 
       case TriggerAction.RESET:
-        this.context.requestReset();
+        this.context.reset();
         break;
 
       case TriggerAction.OPEN_DIALOG:
-        this.context.openDialog(trigger.target);
+        this.context.open(trigger.target);
         break;
 
       case TriggerAction.CLOSE_DIALOG:
-        this.context.closeDialog(trigger.target);
+        this.context.close(trigger.target);
         break;
 
       case TriggerAction.LOAD:
@@ -161,13 +161,13 @@ export class TriggerEngine {
   private normalizeUrl(url: string, event: FieldEventData) {
     return replacePlaceholders(
       url.replace("$value", event.value),
-      this.context.getValues(),
+      this.context.values(),
     );
   }
 
   private replaceIndexPlaceholders(obj: any, value: any): any {
     if (typeof obj === "string") {
-      const found = getValue(this.context.getValues(), obj);
+      const found = getValue(this.context.values(), obj);
 
       if (typeof found === "string") {
         return found.replace("$value", value);

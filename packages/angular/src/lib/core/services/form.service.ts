@@ -65,14 +65,14 @@ export class FormService implements TriggerContext {
     return this.form.valid;
   }
 
-  getValues<T = Record<string, unknown>>(
+  values<T = Record<string, unknown>>(
     buttonData: Record<string, unknown> = {},
   ): T {
     return { ...convertToNestedObject(this.form.value), ...buttonData };
   }
 
   getFormData(buttonData?: Record<string, unknown>): FormData {
-    const values = this.getValues(buttonData);
+    const values = this.values(buttonData);
     // Build FormData
     const formData = new FormData();
 
@@ -93,32 +93,31 @@ export class FormService implements TriggerContext {
     return formData;
   }
 
-  openDialog(target: string): void {
+  open(target: string): void {
     this.eventService.emitFormEvent(FormEventType.OPEN_DIALOG, {
       target,
     });
   }
 
-  closeDialog(target: string): void {
+  close(target: string): void {
     this.eventService.emitFormEvent(FormEventType.CLOSE_DIALOG, {
       target,
     });
   }
 
-  updateState(ids: string[], state: Partial<FormElement>): void {
-    ids.forEach((id: string) => {
+  update(
+    ids: string | string[],
+    patch: Partial<FormElement> & { value?: unknown },
+  ): void {
+    const idList = Array.isArray(ids) ? ids : [ids];
+    idList.forEach((id: string) => {
       const res = this.stateService.get(id);
-
-      if (res) this.setState(res, state);
+      if (res) this.setState(res, patch);
     });
   }
 
-  requestSubmit(): void {
+  submit(): void {
     this.eventService.emitFormEvent(FormEventType.REQUEST_SUBMIT);
-  }
-
-  requestReset(): void {
-    this.eventService.emitFormEvent(FormEventType.REQUEST_RESET);
   }
 
   fetch(
@@ -140,16 +139,12 @@ export class FormService implements TriggerContext {
     const adapter = this.adapterRegistry.get(trigger.protocol);
 
     adapter
-      .execute(trigger, this.getValues())
+      .execute(trigger, this.values())
       .pipe(this.untilDestroyed())
       .subscribe((res: unknown) => {
         const data = this.normalizeData2(res, trigger.transform, id);
         this.onDataReady(data, trigger.mode || "replace");
       });
-  }
-
-  patchValue(id: string, value: unknown): void {
-    this.stateService.patchValue(id, value);
   }
 
   validate(id: string, validation: CrossFieldValidation): void {
@@ -164,10 +159,7 @@ export class FormService implements TriggerContext {
       );
   }
 
-  toggleFieldState(
-    ids: string[],
-    props: ("hidden" | "disabled" | "required")[],
-  ): void {
+  toggle(ids: string[], props: ("hidden" | "disabled" | "required")[]): void {
     ids.forEach((id: string) => {
       const res = this.stateService.get(id);
       if (!res) return;
@@ -188,7 +180,7 @@ export class FormService implements TriggerContext {
 
     this.fields = this.sortFields(fields);
 
-    this.defaultValues = this.getValues();
+    this.defaultValues = this.values();
 
     this.cd.detectChanges();
 
@@ -206,7 +198,7 @@ export class FormService implements TriggerContext {
     const { action, method, buttonData } = meta;
     return {
       data: this.getFormData(buttonData),
-      raw: this.getValues(buttonData),
+      raw: this.values(buttonData),
       action,
       method,
     };

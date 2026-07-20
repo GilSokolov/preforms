@@ -101,7 +101,7 @@ export class Preforms<
     const meta = this.formService.getMetadata(event);
 
     this.submitted.emit(this.formService.getEventPayload<T>(meta));
-    this.submittedData.emit(this.formService.getValues<T>(meta.buttonData));
+    this.submittedData.emit(this.formService.values<T>(meta.buttonData));
   }
 
   @FormFieldEvent({ field: "*", type: FormFieldEventType.CHANGE })

@@ -58,7 +58,7 @@ export class OutputFieldComponent
 
   private calculate() {
     if (this.field.disabled) return;
-    const formValue = this.formService.getValues();
+    const formValue = this.formService.values();
 
     if (!this.field.calculation) return;
 
