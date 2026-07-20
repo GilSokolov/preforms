@@ -10,3 +10,5 @@ export interface FormFieldIcon {
   command?: "show-modal" | "close" | "request-close";
   commandfor?: string;
 }
+
+export type ButtonIcon = Pick<FormFieldIcon, "name" | "side">;
