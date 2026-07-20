@@ -26,7 +26,6 @@ export type ConditionValue<T> =
  * Enum values are snake_case strings used in configs and JSON.
  */
 export enum TriggerAction {
-  SET = "set",
   UPDATE = "update",
   FETCH = "fetch",
   SUBMIT = "submit",
@@ -179,12 +178,6 @@ export interface LocalLoadTrigger<T = unknown> extends LoadTriggerBase<T> {
 export type LoadTrigger<T = unknown> =
   | NetworkLoadTrigger<T>
   | LocalLoadTrigger<T>;
-
-export interface SetTrigger<T = unknown> extends BaseTrigger<T> {
-  do: TriggerAction.SET | `${TriggerAction.SET}`;
-  scope: "field" | "form";
-  state: FieldState<T> | Partial<FormSchemaConfig>;
-}
 
 /**
  * Union of all possible triggers for a form field
