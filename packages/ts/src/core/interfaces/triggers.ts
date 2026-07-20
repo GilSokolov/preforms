@@ -5,8 +5,14 @@ import { FormElementConfig } from "./form-element";
 import { SchemaNode } from "../../utils/transform";
 import { FormEventType } from "../events";
 import { FormSchemaConfig } from "../../schema";
+import { FieldUIState } from "./ui-config";
 
 export type OneOrMany<T> = T | T[];
+
+export type ToggleProps = (keyof Pick<
+  FieldUIState,
+  "checked" | "disabled" | "hidden" | "multiple" | "readonly" | "required" | "autofocus"
+>)[];
 
 export type FieldState<T> = Partial<FormElementConfig<T>> & {
   value?: T;
@@ -106,7 +112,7 @@ export interface StateUpdateTrigger<T = any> extends BaseTrigger<T> {
  */
 export interface ToggleTrigger<T = any> extends BaseTrigger<T> {
   do: TriggerAction.TOGGLE | `${TriggerAction.TOGGLE}`;
-  toggle: ("disabled" | "hidden" | "required" | "multiple")[]; // properties to toggle
+  toggle: ToggleProps;
 }
 
 /**

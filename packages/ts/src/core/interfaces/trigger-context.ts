@@ -1,17 +1,5 @@
 import { CrossFieldValidation } from "./cross-field-validation";
-import { FetchProjection, FetchMode, LoadTrigger } from "./triggers";
-import { FieldUIState } from "./ui-config";
-
-export type ToggleProps = (keyof Pick<
-  FieldUIState,
-  | "checked"
-  | "disabled"
-  | "hidden"
-  | "multiple"
-  | "readonly"
-  | "required"
-  | "autofocus"
->)[];
+import { FetchProjection, FetchMode, LoadTrigger, ToggleProps } from "./triggers";
 
 export interface TriggerContext {
   values(): object;
