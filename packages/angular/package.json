@@ -24,7 +24,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@preforms/ts": "workspace:*"
+    "@preforms/ts": "workspace:*",
+    "vitest": "^3.2.4"
   },
   "sideEffects": false,
   "keywords": [
@@ -37,6 +38,7 @@
   "license": "MIT",
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "vitest run"
   }
 }
