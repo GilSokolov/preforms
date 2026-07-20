@@ -38,7 +38,7 @@ import { Observable, of } from 'rxjs';
           triggers: [
             {
               on: FormFieldEventType.CHANGE,
-              action: TriggerAction.FETCH,
+              do: TriggerAction.FETCH,
               fetchUrl: '/api/forms/$value',
               mode: 'replace', // replace the current form with fetched fields
             },
@@ -100,7 +100,7 @@ export class DynamicFormFetchComponent {
       triggers: [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.FETCH,
+          do: TriggerAction.FETCH,
           fetchUrl: '/api/forms/$value',
           mode: 'replace', // replace the current form with fetched fields
         },

@@ -81,7 +81,7 @@ export class DateRangeField<T = unknown> extends FieldWrapper<T> {
         triggers: [
           {
             on: FormFieldEventType.BLUR,
-            action: "validate",
+            do: "validate",
             validation: {
               compareTo: "start",
               operator: ComparisonOperator.GT,

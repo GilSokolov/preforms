@@ -133,7 +133,7 @@ export class OrderFormDemoComponent {
           triggers: [
             {
               on: 'change',
-              action: 'fetch',
+              do: 'fetch',
               fetchUrl: '/api/calculate-price?amount={amount}&side={side}',
               source: ['side', 'amount'],
               mode: 'patch',

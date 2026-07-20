@@ -70,7 +70,7 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
     triggers: [
       {
         on: FormFieldEventType.SELECT,
-        action: TriggerAction.FETCH,
+        do: TriggerAction.FETCH,
         fetchUrl: url,
         source: 'pokemon',
         mode: 'patch',
@@ -86,7 +86,7 @@ function createPlayer(playerName: string, url = '$value', showdown = 'back_defau
       },
       {
         on: FormFieldEventType.SELECT,
-        action: TriggerAction.UPDATE,
+        do: TriggerAction.UPDATE,
         state: {
           hidden: false,
         },
@@ -163,7 +163,7 @@ export class DynamicFormFetchRemoteComponent {
       triggers: [
         {
           on: 'change',
-          action: 'update',
+          do: 'update',
           state: {
             fields: [new FormTitle('You win!')],
           },
@@ -172,7 +172,7 @@ export class DynamicFormFetchRemoteComponent {
         },
         {
           on: 'change',
-          action: 'update',
+          do: 'update',
           state: {
             fields: [new FormTitle('You lose!')],
           },
@@ -203,7 +203,7 @@ export class DynamicFormFetchRemoteComponent {
       triggers: [
         {
           on: FormFieldEventType.INIT,
-          action: TriggerAction.FETCH,
+          do: TriggerAction.FETCH,
           fetchUrl: 'https://pokeapi.co/api/v2/type/',
           mode: 'patch',
           projection: {
@@ -226,7 +226,7 @@ export class DynamicFormFetchRemoteComponent {
         {
           on: FormFieldEventType.CHANGE,
           source: 'type',
-          action: TriggerAction.FETCH,
+          do: TriggerAction.FETCH,
           fetchUrl: '$value',
           mode: 'patch',
           projection: {
@@ -241,7 +241,7 @@ export class DynamicFormFetchRemoteComponent {
         {
           on: FormFieldEventType.SELECT,
           source: 'type',
-          action: TriggerAction.UPDATE,
+          do: TriggerAction.UPDATE,
           state: {
             hidden: false,
           },
@@ -257,14 +257,14 @@ export class DynamicFormFetchRemoteComponent {
         {
           on: 'select',
           source: 'pokemon',
-          action: 'update',
+          do: 'update',
           state: {
             hidden: false,
           },
         },
         {
           on: 'click',
-          action: 'update',
+          do: 'update',
           state: {
             value: {
               hit: 'p1.attack',
@@ -274,7 +274,7 @@ export class DynamicFormFetchRemoteComponent {
         },
         {
           on: 'click',
-          action: 'update',
+          do: 'update',
           state: {
             value: {
               hit: 'p2.attack',
@@ -284,7 +284,7 @@ export class DynamicFormFetchRemoteComponent {
         },
         {
           on: 'click',
-          action: TriggerAction.OPEN_DIALOG,
+          do: TriggerAction.OPEN_DIALOG,
           target: 'popup',
           debounce: 500,
         },

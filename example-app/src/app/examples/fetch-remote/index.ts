@@ -38,7 +38,7 @@ When the user selects a value, a fetch action is triggered.
   triggers: [
     {
       on: 'change',
-      action: 'fetch',
+      do: 'fetch',
       fetchUrl: '$value',
       projection: {
         hp: 'stats[0].base_stat',

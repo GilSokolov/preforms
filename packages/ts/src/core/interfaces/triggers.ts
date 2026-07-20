@@ -52,7 +52,7 @@ export type TriggerEvent =
  */
 export interface BaseTrigger<T = any> {
   on: TriggerEvent; // event that triggers this action
-  action: TriggerAction | `${TriggerAction}`; // the operation to perform
+  do: TriggerAction | `${TriggerAction}`; // the operation to perform
   target?: OneOrMany<string>; // which field(s) to affect; defaults to self
   source?: OneOrMany<string>; // which field(s) to listen;
   condition?: ConditionValue<T>; // optional conditional trigger
@@ -80,7 +80,7 @@ export type FetchProjection =
  * Trigger to fetch data from an endpoint
  */
 export interface FetchTrigger<T = any> extends BaseTrigger<T> {
-  action: "fetch";
+  do: "fetch";
   fetchUrl: string; // endpoint to fetch data from
   mode?: FetchMode; // whether to merge fetched data with existing state,
   projection?: FetchProjection;
@@ -90,7 +90,7 @@ export interface FetchTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to fetch validations from an endpoint
  */
 export interface AsyncValidationTrigger<T = any> extends BaseTrigger<T> {
-  action: TriggerAction.VALIDATE_ASYNC;
+  do: TriggerAction.VALIDATE_ASYNC;
   fetchUrl: string; // endpoint to fetch data from
 }
 
@@ -98,7 +98,7 @@ export interface AsyncValidationTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to update the field's internal state
  */
 export interface StateUpdateTrigger<T = any> extends BaseTrigger<T> {
-  action: TriggerAction.UPDATE | `${TriggerAction.UPDATE}`;
+  do: TriggerAction.UPDATE | `${TriggerAction.UPDATE}`;
   state: Partial<FormElementConfig<T> & Record<any, any> & { value: any }>; // state changes to apply
 }
 
@@ -106,7 +106,7 @@ export interface StateUpdateTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to toggle field properties
  */
 export interface ToggleTrigger<T = any> extends BaseTrigger<T> {
-  action: TriggerAction.TOGGLE | `${TriggerAction.TOGGLE}`;
+  do: TriggerAction.TOGGLE | `${TriggerAction.TOGGLE}`;
   toggle: ("disabled" | "hidden" | "required" | "multiple")[]; // properties to toggle
 }
 
@@ -114,7 +114,7 @@ export interface ToggleTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to perform cross-field validation
  */
 export interface ValidationTrigger<T = any> extends BaseTrigger<T> {
-  action: TriggerAction.VALIDATE | `${TriggerAction.VALIDATE}`;
+  do: TriggerAction.VALIDATE | `${TriggerAction.VALIDATE}`;
   validation: CrossFieldValidation; // validation rule to apply
 }
 
@@ -122,7 +122,7 @@ export interface ValidationTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to submit the form
  */
 export interface SubmitTrigger<T = any> extends BaseTrigger<T> {
-  action: TriggerAction.SUBMIT | `${TriggerAction.SUBMIT}`;
+  do: TriggerAction.SUBMIT | `${TriggerAction.SUBMIT}`;
   // additional properties like submit handler could be added here
 }
 
@@ -130,7 +130,7 @@ export interface SubmitTrigger<T = any> extends BaseTrigger<T> {
  * Trigger to reset the form
  */
 export interface ResetTrigger<T = any> extends BaseTrigger<T> {
-  action: TriggerAction.RESET | `${TriggerAction.RESET}`;
+  do: TriggerAction.RESET | `${TriggerAction.RESET}`;
   // additional properties like reset target could be added here
 }
 
@@ -138,7 +138,7 @@ export interface ResetTrigger<T = any> extends BaseTrigger<T> {
  * Trigger interface specific for DialogField
  */
 export interface DialogTrigger<T = any> extends BaseTrigger<T> {
-  action:
+  do:
     | TriggerAction.OPEN_DIALOG
     | TriggerAction.CLOSE_DIALOG
     | `${TriggerAction.OPEN_DIALOG}`
@@ -149,7 +149,7 @@ export interface DialogTrigger<T = any> extends BaseTrigger<T> {
 export type LoadMode = "patch" | "replace" | "merge";
 
 export interface LoadTriggerBase<T = unknown> extends BaseTrigger<T> {
-  action: TriggerAction.LOAD | `${TriggerAction.LOAD}`;
+  do: TriggerAction.LOAD | `${TriggerAction.LOAD}`;
   mode?: LoadMode;
   transform?: Record<string, SchemaNode | Record<string, any>>;
 }
@@ -181,7 +181,7 @@ export type LoadTrigger<T = unknown> =
   | LocalLoadTrigger<T>;
 
 export interface SetTrigger<T = unknown> extends BaseTrigger<T> {
-  action: TriggerAction.SET | `${TriggerAction.SET}`;
+  do: TriggerAction.SET | `${TriggerAction.SET}`;
   scope: "field" | "form";
   state: FieldState<T> | Partial<FormSchemaConfig>;
 }

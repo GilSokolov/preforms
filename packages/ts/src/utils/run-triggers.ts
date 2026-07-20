@@ -39,7 +39,7 @@ import { evaluateComparison } from "./evaluate-comparison";
  * @example
  * ```ts
  * shouldTrigger(
- *   { action: "validate", condition: true },
+ *   { do: "validate", condition: true },
  *   "hello"
  * ); // true
  * ```
@@ -48,7 +48,7 @@ import { evaluateComparison } from "./evaluate-comparison";
  * ```ts
  * shouldTrigger(
  *   {
- *     action: "toggle",
+ *     do: "toggle",
  *     condition: {
  *       operator: ComparisonOperator.EMPTY
  *     }

@@ -33,7 +33,7 @@ This demo shows how to build a **multi-step / conditional form** that completely
 // Trigger on the initial SelectField
 triggers: [{
   on: FormFieldEventType.CHANGE,
-  action: TriggerAction.FETCH,
+  do: TriggerAction.FETCH,
   fetchUrl: '/api/forms/$value',   // $value = current selection
   mode: 'replace'
 }]

@@ -36,7 +36,7 @@ export const material = [
     triggers: [
       {
         on: 'change',
-        action: 'update',
+        do: 'update',
         state: {
           hidden: true,
         },
@@ -51,7 +51,7 @@ export const material = [
       },
       {
         on: 'change',
-        action: 'update',
+        do: 'update',
         state: {
           hidden: false,
         },

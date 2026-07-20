@@ -65,7 +65,7 @@ describe("CloseDialogButton", () => {
     expect(field.triggers).toEqual([
       {
         on: "click",
-        action: TriggerAction.CLOSE_DIALOG,
+        do: TriggerAction.CLOSE_DIALOG,
         target: "settingsDialog",
       },
     ]);

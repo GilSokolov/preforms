@@ -69,7 +69,7 @@ export class TriggerEngine {
       event.id,
       event.type,
       source ?? "",
-      trigger.action,
+      trigger.do,
       trigger.target
         ? Array.isArray(trigger.target)
           ? trigger.target.join(",")
@@ -99,7 +99,7 @@ export class TriggerEngine {
 
     const ids = this.normailzeTargetIds(trigger.target, event);
 
-    switch (trigger.action) {
+    switch (trigger.do) {
       case TriggerAction.UPDATE:
         this.context.update(
           ids,

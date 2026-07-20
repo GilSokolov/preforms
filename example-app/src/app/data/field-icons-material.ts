@@ -93,7 +93,7 @@ export const iconsMat = [
     triggers: [
       {
         on: 'custom:skuInfoOpen',
-        action: 'update',
+        do: 'update',
         state: {
           disabled: false,
         },

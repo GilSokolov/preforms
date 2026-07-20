@@ -36,7 +36,7 @@ export class AsyncValidationComponent {
       triggers: [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.VALIDATE_ASYNC,
+          do: TriggerAction.VALIDATE_ASYNC,
           fetchUrl: '/api/check-username/$value',
         },
       ],

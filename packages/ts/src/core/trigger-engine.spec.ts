@@ -41,8 +41,8 @@ describe("TriggerEngine", () => {
       const engine = new TriggerEngine(context);
 
       const triggers: FormFieldTrigger[] = [
-        { on: FormFieldEventType.BLUR, action: TriggerAction.SUBMIT },
-        { on: FormFieldEventType.CHANGE, action: TriggerAction.SUBMIT },
+        { on: FormFieldEventType.BLUR, do: TriggerAction.SUBMIT },
+        { on: FormFieldEventType.CHANGE, do: TriggerAction.SUBMIT },
       ];
 
       engine.runFieldTriggers(triggers, createEvent({ type: FormFieldEventType.CHANGE }));
@@ -57,7 +57,7 @@ describe("TriggerEngine", () => {
       const engine = new TriggerEngine(context);
 
       const triggers: FormFieldTrigger[] = [
-        { on: FormFieldEventType.CHANGE, action: TriggerAction.SUBMIT },
+        { on: FormFieldEventType.CHANGE, do: TriggerAction.SUBMIT },
       ];
 
       engine.runFieldTriggers(triggers, createEvent(), "some-source");
@@ -72,7 +72,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           source: "field-a",
         },
       ];
@@ -89,7 +89,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           source: ["field-a", "field-b"],
         },
       ];
@@ -106,7 +106,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           source: "field-a",
         },
       ];
@@ -123,7 +123,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           source: "field-a",
         },
       ];
@@ -142,7 +142,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           condition: "not-the-value",
         },
       ];
@@ -159,7 +159,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           condition: "hello",
         },
       ];
@@ -176,7 +176,7 @@ describe("TriggerEngine", () => {
       const engine = new TriggerEngine(context);
 
       const triggers: FormFieldTrigger[] = [
-        { on: FormFieldEventType.CHANGE, action: TriggerAction.SUBMIT, once: true },
+        { on: FormFieldEventType.CHANGE, do: TriggerAction.SUBMIT, once: true },
       ];
 
       engine.runFieldTriggers(triggers, createEvent());
@@ -190,7 +190,7 @@ describe("TriggerEngine", () => {
       const engine = new TriggerEngine(context);
 
       const triggers: FormFieldTrigger[] = [
-        { on: FormFieldEventType.CHANGE, action: TriggerAction.SUBMIT },
+        { on: FormFieldEventType.CHANGE, do: TriggerAction.SUBMIT },
       ];
 
       engine.runFieldTriggers(triggers, createEvent());
@@ -216,7 +216,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           debounce: 200,
         },
       ];
@@ -237,7 +237,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           debounce: 200,
         },
       ];
@@ -259,7 +259,7 @@ describe("TriggerEngine", () => {
       const engine = new TriggerEngine(context);
 
       const triggers: FormFieldTrigger[] = [
-        { on: FormFieldEventType.CHANGE, action: TriggerAction.SUBMIT, debounce: 0 },
+        { on: FormFieldEventType.CHANGE, do: TriggerAction.SUBMIT, debounce: 0 },
       ];
 
       engine.runFieldTriggers(triggers, createEvent());
@@ -277,7 +277,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.SUBMIT,
+          do: TriggerAction.SUBMIT,
           debounce: 200,
         },
       ];
@@ -299,7 +299,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.UPDATE,
+          do: TriggerAction.UPDATE,
           target: "field-2",
           state: { disabled: true },
         },
@@ -319,7 +319,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.UPDATE,
+          do: TriggerAction.UPDATE,
           state: { disabled: true },
         },
       ];
@@ -338,7 +338,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.TOGGLE,
+          do: TriggerAction.TOGGLE,
           target: ["field-2", "field-3"],
           toggle: ["hidden"],
         },
@@ -359,7 +359,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.FETCH,
+          do: TriggerAction.FETCH,
           fetchUrl: "/api/items/$value",
         },
       ];
@@ -382,7 +382,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.FETCH,
+          do: TriggerAction.FETCH,
           fetchUrl: "/api/items",
           mode: "merge",
           projection,
@@ -406,7 +406,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.VALIDATE_ASYNC,
+          do: TriggerAction.VALIDATE_ASYNC,
           fetchUrl: "/api/validate/$value",
         },
       ];
@@ -424,7 +424,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.VALIDATE,
+          do: TriggerAction.VALIDATE,
           target: "field-2",
           validation,
         },
@@ -440,7 +440,7 @@ describe("TriggerEngine", () => {
       const engine = new TriggerEngine(context);
 
       const triggers: FormFieldTrigger[] = [
-        { on: FormFieldEventType.CHANGE, action: TriggerAction.SUBMIT },
+        { on: FormFieldEventType.CHANGE, do: TriggerAction.SUBMIT },
       ];
 
       engine.runFieldTriggers(triggers, createEvent());
@@ -453,7 +453,7 @@ describe("TriggerEngine", () => {
       const engine = new TriggerEngine(context);
 
       const triggers: FormFieldTrigger[] = [
-        { on: FormFieldEventType.CHANGE, action: TriggerAction.RESET },
+        { on: FormFieldEventType.CHANGE, do: TriggerAction.RESET },
       ];
 
       engine.runFieldTriggers(triggers, createEvent());
@@ -468,7 +468,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.OPEN_DIALOG,
+          do: TriggerAction.OPEN_DIALOG,
           target: "my-dialog",
         },
       ];
@@ -485,7 +485,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.CLOSE_DIALOG,
+          do: TriggerAction.CLOSE_DIALOG,
           target: "my-dialog",
         },
       ];
@@ -502,7 +502,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.LOAD,
+          do: TriggerAction.LOAD,
           protocol: "http",
           url: "/api/load/$value",
         } as any,
@@ -523,7 +523,7 @@ describe("TriggerEngine", () => {
       const triggers: FormFieldTrigger[] = [
         {
           on: FormFieldEventType.CHANGE,
-          action: TriggerAction.LOAD,
+          do: TriggerAction.LOAD,
           protocol: "storage",
           key: "my-key",
         } as any,

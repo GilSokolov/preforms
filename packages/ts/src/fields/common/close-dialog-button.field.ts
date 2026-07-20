@@ -30,7 +30,7 @@ export class CloseDialogButton extends FieldButton {
       triggers: [
         {
           on: "click",
-          action: TriggerAction.CLOSE_DIALOG,
+          do: TriggerAction.CLOSE_DIALOG,
           target,
         },
       ],

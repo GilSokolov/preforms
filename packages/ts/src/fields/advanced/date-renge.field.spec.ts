@@ -28,7 +28,7 @@ describe("DateRangeField", () => {
   it("attaches a cross-field validation trigger to the end date", () => {
     const field = new DateRangeField();
     expect(field.fields[1].triggers).toHaveLength(1);
-    expect(field.fields[1].triggers?.[0].action).toBe("validate");
+    expect(field.fields[1].triggers?.[0].do).toBe("validate");
   });
 
   it("allows overriding the default fields with custom DateField instances", () => {

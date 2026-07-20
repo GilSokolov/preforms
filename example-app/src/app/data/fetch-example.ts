@@ -9,7 +9,7 @@ export const fetchForm = [
     triggers: [
       {
         on: 'change',
-        action: 'fetch',
+        do: 'fetch',
         fetchUrl: '/api/check-username/$value',
         mode: 'patch',
       },
@@ -23,7 +23,7 @@ export const fetchForm = [
     triggers: [
       {
         on: 'check',
-        action: 'fetch',
+        do: 'fetch',
         fetchUrl: '/api/terms/$value',
         mode: 'merge',
         once: true,

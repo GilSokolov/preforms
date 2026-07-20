@@ -32,7 +32,7 @@ export class CrossValidationFormComponent {
       triggers: [
         {
           on: 'input',
-          action: TriggerAction.VALIDATE,
+          do: TriggerAction.VALIDATE,
           validation: {
             operator: 'eq',
             compareTo: 'password',
@@ -52,7 +52,7 @@ export class CrossValidationFormComponent {
       triggers: [
         {
           on: 'input',
-          action: TriggerAction.VALIDATE,
+          do: TriggerAction.VALIDATE,
           validation: {
             operator: 'eq',
             compareTo: 'email',
@@ -73,7 +73,7 @@ export class CrossValidationFormComponent {
       triggers: [
         {
           on: 'change',
-          action: TriggerAction.VALIDATE,
+          do: TriggerAction.VALIDATE,
           validation: {
             operator: 'gt',
             compareTo: 'startDate',
@@ -96,7 +96,7 @@ export class CrossValidationFormComponent {
       triggers: [
         {
           on: 'blur',
-          action: TriggerAction.VALIDATE,
+          do: TriggerAction.VALIDATE,
           validation: {
             operator: 'lt',
             compareTo: 'orderAmount',

@@ -30,7 +30,7 @@ export class RoomSelectionComponent {
       triggers: [
         {
           on: 'change',
-          action: 'update',
+          do: 'update',
           state: { hidden: true },
           target: [
             'king-title',
@@ -43,7 +43,7 @@ export class RoomSelectionComponent {
         },
         {
           on: 'change',
-          action: 'update',
+          do: 'update',
           state: { hidden: false },
           target: ['$value-title', '$value-description'],
         },
