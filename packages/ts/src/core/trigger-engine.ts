@@ -79,7 +79,7 @@ export class TriggerEngine {
     ].join("|");
   }
 
-  private normailzeTargetIds(
+  private normalizeTargetIds(
     targetIds: string | string[] | undefined,
     event: FieldEventData,
   ) {
@@ -97,7 +97,7 @@ export class TriggerEngine {
 
     if (trigger.once && this.firedSet.has(firedKey)) return;
 
-    const ids = this.normailzeTargetIds(trigger.target, event);
+    const ids = this.normalizeTargetIds(trigger.target, event);
 
     switch (trigger.do) {
       case TriggerAction.UPDATE:
