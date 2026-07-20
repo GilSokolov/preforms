@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormSpacer } from "@preforms/ts";
+import { Spacer } from "@preforms/ts";
 import { DynamicFormElement } from "../../decorators";
 import { BaseFieldComponent } from "..";
 
@@ -17,5 +17,5 @@ import { BaseFieldComponent } from "..";
 })
 export class FormSpacerComponent extends BaseFieldComponent<
   never,
-  FormSpacer
+  Spacer
 > {}

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { DynamicFormElement } from "../../decorators";
 import { BaseFieldComponent } from "..";
-import { FormDivider } from "@preforms/ts";
+import { Divider } from "@preforms/ts";
 
 @DynamicFormElement({ component: "form-divider" })
 @Component({
@@ -43,5 +43,5 @@ import { FormDivider } from "@preforms/ts";
 })
 export class FormDividerComponent extends BaseFieldComponent<
   never,
-  FormDivider
+  Divider
 > {}

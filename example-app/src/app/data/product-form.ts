@@ -1,8 +1,8 @@
 import {
   Fieldset,
   TextField,
-  EmailField,
-  PasswordField,
+  Email,
+  Password,
   TextareaField,
   FormGrid,
   InputField,
@@ -24,13 +24,13 @@ import {
   CheckboxGroupField,
   ImageField,
   FormImage,
-  FormTitle,
+  Title,
   FormTitleLevel,
   FormDescription,
   Description,
   FieldButton,
   ConfirmButton,
-  FormDivider,
+  Divider,
 } from '@preforms/ts';
 
 const url =
@@ -42,8 +42,8 @@ export const productForm = [
     src: '/chickengarlic.jpg',
     width: '400px',
   }),
-  new FormTitle('Garlic Knot Chicken Breasts'),
-  new FormTitle('$9.34 🏷️', FormTitleLevel.H2),
+  new Title('Garlic Knot Chicken Breasts'),
+  new Title('$9.34 🏷️', FormTitleLevel.H2),
   new FormDescription('Tender chicken breast with garlic, rosemary, and a hint of lemon.'),
 
   new Fieldset('Sides Dish', [
@@ -72,7 +72,7 @@ export const productForm = [
     placeholder: 'it may not be possible to meetall requests',
   }),
 
-  new FormDivider({ className: 'form-end' }),
+  new Divider({ className: 'form-end' }),
 
   new FormRow({
     position: 'space-between',

@@ -1,4 +1,4 @@
-import { InputField, Name, PasswordField } from '@preforms/ts';
+import { InputField, Name, Password } from '@preforms/ts';
 
 export const fetchForm = [
   new Name({
