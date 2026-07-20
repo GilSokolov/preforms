@@ -18,14 +18,9 @@ export class EmailField extends InputField<string> {
   ) {
     const config: TextFieldConfigDerived =
       typeof configOrValue === "string"
-        ? { value: configOrValue }
+        ? { value: configOrValue, required }
         : configOrValue;
 
-    super({
-      ...config,
-      key: config.key || "email",
-      type: "email",
-      required,
-    });
+    super({ key: "email", ...config, type: "email" });
   }
 }

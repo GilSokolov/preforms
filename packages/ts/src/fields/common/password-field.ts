@@ -21,14 +21,9 @@ export class PasswordField extends InputField<string> {
   ) {
     const config: TextFieldConfigDerived =
       typeof configOrValue === "string"
-        ? { value: configOrValue }
+        ? { value: configOrValue, required }
         : configOrValue;
 
-    super({
-      ...config,
-      key: config.key || "password",
-      type: "password",
-      required,
-    });
+    super({ key: "password", ...config, type: "password" });
   }
 }
