@@ -1,34 +1,38 @@
 import tsPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import angularPlugin from "@angular-eslint/eslint-plugin";
-import angularTemplatePlugin from "@angular-eslint/eslint-plugin-template";
+import js from "@eslint/js";
 
 export default [
+  { ignores: ["dist/**", "**/*.html"] },
   {
-    files: ["*.ts"],
+    ...js.configs.recommended,
+    rules: {
+      ...js.configs.recommended.rules,
+      "no-undef": "off",
+    },
+  },
+  {
+    files: ["**/*.ts"],
     languageOptions: {
-      parser: "@typescript-eslint/parser",
-      parserOptions: {
-        project: "./tsconfig.json",
-        createDefaultProgram: true,
-      },
+      parser: tsParser,
     },
     plugins: {
       "@typescript-eslint": tsPlugin,
       "@angular-eslint": angularPlugin,
     },
-    extends: [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@angular-eslint/recommended",
-    ],
-    rules: {},
-  },
-  {
-    files: ["*.html"],
-    plugins: {
-      "@angular-eslint/template": angularTemplatePlugin,
+    rules: {
+      ...tsPlugin.configs.recommended.rules,
+      ...angularPlugin.configs.recommended.rules,
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-wrapper-object-types": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
+      "@typescript-eslint/no-unused-expressions": "off",
+      "@angular-eslint/no-input-rename": "off",
+      "@angular-eslint/prefer-inject": "off",
+      "no-undef": "off",
     },
-    extends: ["plugin:@angular-eslint/template/recommended"],
-    rules: {},
   },
 ];

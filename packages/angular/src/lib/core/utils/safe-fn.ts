@@ -31,7 +31,7 @@ export function safeEval(
 ) {
   // Simple validator: check for forbidden characters
   const forbidden =
-    /[\[\]\(\){};`]|constructor|__proto__|this|window|globalThis/;
+    /[[\](){}`;]|constructor|__proto__|this|window|globalThis/;
   if (forbidden.test(expr)) {
     throw new Error("Expression contains unsafe tokens");
   }
