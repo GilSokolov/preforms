@@ -108,7 +108,8 @@ export interface AsyncValidationTrigger<T = any> extends BaseTrigger<T> {
  */
 export interface StateUpdateTrigger<T = any> extends BaseTrigger<T> {
   do: TriggerAction.UPDATE | `${TriggerAction.UPDATE}`;
-  state: Partial<FormElementConfig<T> & Record<any, any> & { value: any }>; // state changes to apply
+  // Record<any, any> allows patching properties on user-defined custom field types that extend FormField
+  state: Partial<FormElementConfig<T> & Record<any, any> & { value: any }>;
 }
 
 /**
