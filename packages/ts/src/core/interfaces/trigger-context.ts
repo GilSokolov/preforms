@@ -1,5 +1,6 @@
 import { CrossFieldValidation } from "./cross-field-validation";
 import { FetchProjection, FetchMode, LoadTrigger, ToggleProps } from "./triggers";
+import { FieldUIState } from "./ui-config";
 
 export interface TriggerContext {
   values(): object;

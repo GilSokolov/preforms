@@ -1,6 +1,11 @@
-import type { FormFieldTrigger } from "../core";
-import type { ConditionContext } from "../core/interfaces/triggers";
+import type { FormFieldTrigger, ConditionValue, ConditionContext } from "../core/interfaces/triggers";
 import { evaluateComparison } from "./evaluate-comparison";
+
+function isConditionFn<T>(
+  v: ConditionValue<T>,
+): v is (ctx: ConditionContext) => boolean {
+  return typeof v === "function";
+}
 
 /**
  * Evaluates whether a trigger should fire based on the current field value
@@ -79,7 +84,7 @@ export function shouldTrigger<T>(
 ): boolean {
   if (trigger?.condition == null) return true;
 
-  if (typeof trigger?.condition === "function")
+  if (isConditionFn(trigger.condition))
     return trigger.condition(ctx);
 
   if (
