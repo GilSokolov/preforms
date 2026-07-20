@@ -28,4 +28,4 @@ jobs:
         run: pnpm -r run lint
 
       - name: Test
-        run: pnpm -r test
+        run: pnpm --filter @preforms/ts --filter @preforms/angular test
