@@ -1,5 +1,6 @@
 import { FieldArray } from "../models/field-array";
 import { FieldButton } from "../models/field-button";
+import { FieldExternal } from "../models/field-external";
 
 import { FieldGroup } from "../models/field-group";
 import { FormField } from "../models/form-field";
@@ -16,7 +17,8 @@ export type FormElement<T = any> =
   | FieldArray<T>
   | FieldButton<T>
   | FieldWrapper
-  | FieldDecorative;
+  | FieldDecorative
+  | FieldExternal<T>;
 
 export type FormElementConfig<T = any> = AbstractFormElementConfig<T> &
   FormFieldConfig<T> &

@@ -7,6 +7,7 @@
     "@angular/core": ">=21 <22",
     "@angular/common": ">=21 <22",
     "@angular/forms": ">=21 <22",
+    "@angular/platform-browser": ">=21 <22",
     "@angular/cdk": ">=21 <22",
     "@angular/material": ">=21 <22",
     "@preforms/ts": "^0.1.0",
@@ -24,6 +25,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@angular/platform-browser": ">=21 <22",
     "@preforms/ts": "workspace:*",
     "vitest": "^3.2.4"
   },

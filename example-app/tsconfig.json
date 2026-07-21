@@ -23,7 +23,8 @@
       "@preforms/ts": ["../packages/ts/src"],
       "@preforms/ts/fields": ["../packages/ts/src/fields"],
       "@preforms/ts/buttons": ["../packages/ts/src/buttons"],
-      "@preforms/ts/layout": ["../packages/ts/src/layout"]
+      "@preforms/ts/layout": ["../packages/ts/src/layout"],
+      "@preforms/ts/external": ["../packages/ts/src/external"]
     }
   },
   "angularCompilerOptions": {

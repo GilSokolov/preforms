@@ -34,6 +34,13 @@ export class FormFactoryService {
         continue;
       }
 
+      if (field.kind === "external") {
+        const control = new FormControl(field.value);
+        if (field.key) group[field.key] = control;
+        this.stateService.set(field, control);
+        continue;
+      }
+
       // handle container fields
       if (field.kind === "wrapper" && field.key === undefined) {
         const nested = this.build(field.fields);

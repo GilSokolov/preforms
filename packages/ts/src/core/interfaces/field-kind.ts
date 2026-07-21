@@ -4,4 +4,5 @@ export type FieldKind =
   | "array"
   | "wrapper"
   | "decorative"
-  | "button";
+  | "button"
+  | "external";
