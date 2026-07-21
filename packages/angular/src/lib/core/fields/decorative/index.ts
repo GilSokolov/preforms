@@ -1,11 +1,13 @@
 import { FormDescriptionComponent } from "./form-description.component";
 import { FormDividerComponent } from "./form-divider.component";
 import { FormImageComponent } from "./form-image.component";
+import { FormLinkComponent } from "./form-link.component";
 import { FormListComponent } from "./form-list.component";
 import { FormSpacerComponent } from "./form-spacer.component";
 import { FormTitleComponent } from "./form-title.component";
 
 export * from "./form-description.component";
+export * from "./form-link.component";
 
 export const DECORATIVE_FORM_ELEMENTS = [
   FormListComponent,
@@ -14,4 +16,5 @@ export const DECORATIVE_FORM_ELEMENTS = [
   FormSpacerComponent,
   FormDividerComponent,
   FormDescriptionComponent,
+  FormLinkComponent,
 ];

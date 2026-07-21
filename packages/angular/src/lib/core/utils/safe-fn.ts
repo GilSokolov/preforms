@@ -3,6 +3,7 @@ import {
   FieldButton,
   FormField,
   FormFieldIcon,
+  LinkField,
   SelectField,
 } from "@preforms/ts";
 
@@ -24,7 +25,7 @@ function isAllowedPath(path: string, ctx: Record<string, any>) {
 }
 
 export function safeEval(
-  field: FormField | FieldButton | SelectField,
+  field: FormField | FieldButton | SelectField | LinkField,
   icon: FormFieldIcon,
   control: AbstractControl,
   expr: string,

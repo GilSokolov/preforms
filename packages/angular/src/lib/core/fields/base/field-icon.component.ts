@@ -14,6 +14,7 @@ import {
   FormField,
   FormFieldEventType,
   FormFieldIcon,
+  LinkField,
   SelectField,
 } from "@preforms/ts";
 import { FieldActionService, FormService } from "../../services";
@@ -26,7 +27,7 @@ import { safeEval } from "../../utils";
 })
 export class FieldIconComponent implements OnInit, OnDestroy {
   @Input() icon!: FormFieldIcon;
-  @Input() field!: FormField | FieldButton | SelectField;
+  @Input() field!: FormField | FieldButton | SelectField | LinkField;
   @Input() control!: AbstractControl;
 
   private readonly fieldActionService = inject(FieldActionService);
