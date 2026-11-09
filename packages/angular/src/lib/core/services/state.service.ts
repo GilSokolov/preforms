@@ -30,6 +30,28 @@ export class FormStateService {
     this.setListeners(field, control);
   }
 
+  /**
+   * Drops a field from the index and from every listener bucket.
+   *
+   * Array rows re-register under new ids when their position changes, so this
+   * has to prune by object identity: the ids a field was filed under are
+   * already stale by the time it is re-registered.
+   */
+  unregister(field: FormElement) {
+    const current = this.index.get(field.id);
+
+    if (current?.field === field) this.index.delete(field.id);
+
+    for (const [source, listeners] of this.listeners) {
+      const remaining = listeners.filter((l) => l.field !== field);
+
+      if (remaining.length === listeners.length) continue;
+
+      if (remaining.length) this.listeners.set(source, remaining);
+      else this.listeners.delete(source);
+    }
+  }
+
   get(id: string) {
     return this.index.get(id);
   }

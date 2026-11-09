@@ -32,17 +32,16 @@ export function instantiateArrayRow(
 
       case "array":
       case "field":
+      case "external":
+      case "decorative":
+      case "button":
         return withIndexedId(cloned, index);
 
       case "wrapper":
         return {
-          ...cloned,
+          ...withIndexedId(cloned, index),
           fields: instantiateArrayRow(cloned.fields, index),
         };
-
-      case "decorative":
-      case "button":
-        return cloned;
 
       default:
         throw new Error(`Unsupported field kind: ${(cloned as any).kind}`);
@@ -76,8 +75,83 @@ function replaceIndexPlaceholders(obj: any, index: number): any {
 
 function withIndexedId<T extends FormElement>(config: T, index: number): T {
   const id = resolveFieldId(config);
+  const suffix = `[${index}]`;
+
   return {
     ...config,
-    id: `${id}[${index}]`,
+    // an author who already wrote [$index] into the id gets it indexed once
+    id: id.endsWith(suffix) ? id : `${id}${suffix}`,
   };
+}
+
+/**
+ * Re-points an already instantiated row at a new index, in place.
+ *
+ * Rows are mutable runtime state: a trigger may have set `hidden`, patched a
+ * label or swapped options, and the objects are the ones the template renders.
+ * So instead of rebuilding the row, this walks the template beside the live
+ * row and rewrites only what the template templatised with `[$index]`, plus
+ * the indexed ids themselves. Everything else is left alone.
+ *
+ * @param template - the row template (FieldArray.fields)
+ * @param live - the instantiated row, mutated in place
+ * @param from - the index the row currently carries
+ * @param to - the index it should carry
+ */
+export function reindexArrayRow(
+  template: FormElement[],
+  live: FormElement[],
+  from: number,
+  to: number,
+): void {
+  if (from === to) return;
+
+  template.forEach((config, i) => {
+    const target = live[i];
+
+    if (target) reindexElement(config, target, from, to);
+  });
+}
+
+function reindexElement(
+  config: FormElement,
+  target: FormElement,
+  from: number,
+  to: number,
+): void {
+  const suffix = `[${from}]`;
+  const base = target.id?.endsWith(suffix)
+    ? target.id.slice(0, -suffix.length)
+    : resolveFieldId(config);
+
+  (target as { id: string }).id = `${base}[${to}]`;
+
+  for (const key in config) {
+    if (key === "id" || key === "fields") continue;
+
+    const value = (config as any)[key];
+
+    if (!hasIndexPlaceholder(value)) continue;
+
+    (target as any)[key] = replaceIndexPlaceholders(value, to);
+  }
+
+  const nested = (config as any).fields;
+  const liveNested = (target as any).fields;
+
+  if (Array.isArray(nested) && Array.isArray(liveNested)) {
+    reindexArrayRow(nested, liveNested, from, to);
+  }
+}
+
+function hasIndexPlaceholder(value: unknown): boolean {
+  if (typeof value === "string") return value.includes("[$index]");
+
+  if (Array.isArray(value)) return value.some(hasIndexPlaceholder);
+
+  if (value && typeof value === "object") {
+    return Object.values(value).some(hasIndexPlaceholder);
+  }
+
+  return false;
 }

@@ -10,7 +10,7 @@ import { DynamicFieldComponent } from "../../dynamic-field.component";
 @Component({
   selector: "preforms-group",
   template: `
-    @for (field of fields; track field.id) {
+    @for (field of fields; track field) {
       <div [hidden]="field.hidden" [class]="className">
         <preforms-field [field]="field" [control]="getControl(field)" />
       </div>
