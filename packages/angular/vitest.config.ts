@@ -5,6 +5,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@preforms/ts": resolve(__dirname, "../ts/src/index.ts"),
+      "@preforms/angular/core": resolve(__dirname, "src/lib/core/index.ts"),
     },
   },
   test: {

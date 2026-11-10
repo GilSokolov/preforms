@@ -176,10 +176,10 @@ importers:
         specifier: '>=21 <22'
         version: 21.2.4(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1)))(rxjs@7.8.2)
       '@angular/common':
-        specifier: '>=21 <22'
+        specifier: ^20 || ^21
         version: 21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2)
       '@angular/core':
-        specifier: '>=21 <22'
+        specifier: ^20 || ^21
         version: 21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)(zone.js@0.16.1)
       '@angular/forms':
         specifier: '>=21 <22'
@@ -200,6 +200,9 @@ importers:
       '@preforms/ts':
         specifier: workspace:*
         version: link:../ts
+      jsdom:
+        specifier: ^27.4.0
+        version: 27.4.0
       vitest:
         specifier: ^3.2.4
         version: 3.2.6(@types/node@20.19.37)(jsdom@27.4.0)(less@4.6.4)(sass@1.98.0)
