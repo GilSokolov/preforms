@@ -55,6 +55,9 @@ export function evaluateComparison(
     case ComparisonOperator.IN:
       return Array.isArray(target) && target.includes(value as any);
 
+    case ComparisonOperator.NOT_IN:
+      return !(Array.isArray(target) && target.includes(value as any));
+
     case ComparisonOperator.GT:
       return typeof value === "number" && value > (target as number);
 

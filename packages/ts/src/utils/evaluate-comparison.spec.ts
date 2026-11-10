@@ -22,6 +22,15 @@ describe("evaluateComparison", () => {
     expect(evaluateComparison(ComparisonOperator.IN, 3, 3)).toBe(false);
   });
 
+  it("NOT_IN is true when the value is absent from the array target", () => {
+    expect(evaluateComparison(ComparisonOperator.NOT_IN, 9, [1, 2, 3, 4])).toBe(true);
+    expect(evaluateComparison(ComparisonOperator.NOT_IN, 3, [1, 2, 3, 4])).toBe(false);
+  });
+
+  it("NOT_IN is true when target is not an array", () => {
+    expect(evaluateComparison(ComparisonOperator.NOT_IN, 3, 3)).toBe(true);
+  });
+
   it("GT/GTE/LT/LTE compare numeric values", () => {
     expect(evaluateComparison(ComparisonOperator.GT, 10, 5)).toBe(true);
     expect(evaluateComparison(ComparisonOperator.GT, 5, 10)).toBe(false);

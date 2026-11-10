@@ -8,6 +8,8 @@ export enum ComparisonOperator {
   NEQ = "neq",
   /** Value is in a given array */
   IN = "in",
+  /** Value is not in a given array */
+  NOT_IN = "notIn",
   /** Greater than */
   GT = "gt",
   /** Greater than or equal to */
