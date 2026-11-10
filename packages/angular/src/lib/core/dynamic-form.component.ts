@@ -93,12 +93,28 @@ export class Preforms<
   }
 
   @FormEvent(FormEventType.REQUEST_SUBMIT)
-  onSubmit(event?: SubmitEvent): void {
-    this.form.markAllAsTouched();
-    this.form.updateValueAndValidity();
-    if (this.isInvalid) return;
+  onSubmit(event?: SubmitEvent | { sourceId?: string }): void {
+    const submitter = event && "submitter" in event ? event.submitter : null;
+    const skipValidation =
+      submitter instanceof HTMLButtonElement && submitter.formNoValidate;
+
+    if (!skipValidation) {
+      this.form.markAllAsTouched();
+      this.form.updateValueAndValidity();
+      if (this.isInvalid) return;
+    }
 
     const meta = this.formService.getMetadata(event);
+
+    // Angular's FormGroupDirective cancels the native submit because it reads
+    // the form's method (not the submitter's), so a formmethod="dialog" button
+    // would never dismiss its dialog. Do it here.
+    if (meta.method === "dialog" && submitter instanceof HTMLButtonElement) {
+      submitter.closest("dialog")?.close(submitter.value);
+    }
+
+    // A novalidate dialog button is a cancel: dismiss without submitting.
+    if (skipValidation && meta.method === "dialog") return;
 
     this.submitted.emit(this.formService.getEventPayload<T>(meta));
     this.submittedData.emit(this.formService.values<T>(meta.buttonData));

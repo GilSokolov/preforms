@@ -129,7 +129,7 @@ export class TriggerEngine {
         break;
 
       case TriggerAction.SUBMIT:
-        this.context.submit();
+        this.context.submit(event.id);
         break;
 
       case TriggerAction.RESET:

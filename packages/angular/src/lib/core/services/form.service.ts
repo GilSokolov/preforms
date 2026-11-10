@@ -115,8 +115,8 @@ export class FormService implements TriggerContext {
     });
   }
 
-  submit(): void {
-    this.eventService.emitFormEvent(FormEventType.REQUEST_SUBMIT);
+  submit(sourceId?: string): void {
+    this.eventService.emitFormEvent(FormEventType.REQUEST_SUBMIT, { sourceId });
   }
 
   fetch(
@@ -237,8 +237,24 @@ export class FormService implements TriggerContext {
     }
   }
 
-  getMetadata(event?: SubmitEvent): SubmitMetadata {
-    const submitter = event?.submitter;
+  getMetadata(event?: SubmitEvent | { sourceId?: string }): SubmitMetadata {
+    if (event && "sourceId" in event) {
+      // Submit requested by a trigger: describe the source button from its config.
+      const field = event.sourceId
+        ? this.stateService.get(event.sourceId)?.field
+        : undefined;
+      const name = field && "name" in field ? (field.name as string) : undefined;
+      if (!field || !name) return {};
+      const value = "value" in field ? (field.value as unknown) : undefined;
+
+      return {
+        buttonData: { [name]: (value as string | boolean) || true },
+        action: ("formaction" in field ? (field.formaction as string) : null) ?? null,
+        method: ("formmethod" in field ? (field.formmethod as string) : null) ?? null,
+      };
+    }
+
+    const submitter = (event as SubmitEvent | undefined)?.submitter;
 
     if (submitter instanceof HTMLButtonElement) {
       const name = submitter?.getAttribute("name");

@@ -4,7 +4,8 @@ import { FieldUIState } from "./ui-config";
 
 export interface TriggerContext {
   values(): object;
-  submit(): void;
+  /** `sourceId` is the field (e.g. a button) whose trigger requested the submit. */
+  submit(sourceId?: string): void;
   reset(): void;
   fetch(
     url: string,
