@@ -18,7 +18,7 @@ import { FormFieldComponent } from "./form-field.component";
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       <input
         [id]="field.id"
-        [type]="field.type"
+        [type]="field.type || 'text'"
         [name]="field.name"
         [pfAria]="field.aria"
         [attr.list]="listName"

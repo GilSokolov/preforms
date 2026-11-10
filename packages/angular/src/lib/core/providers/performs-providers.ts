@@ -1,5 +1,5 @@
 import { Optional, SkipSelf, Provider, FactoryProvider } from "@angular/core";
-import { ADVANCED_ELEMENTS } from "../fields";
+import { ADVANCED_ELEMENTS, DECORATIVE_FORM_ELEMENTS } from "../fields";
 import { FormService, EventService } from "../services";
 import { FormFactoryService } from "../services/form-factory.service";
 import { FormStateService } from "../services/state.service";
@@ -8,6 +8,7 @@ import { LoadAdapterRegistry } from "../services/load-adapter-registry";
 export function preformsProviders(): Provider[] {
   return [
     ADVANCED_ELEMENTS,
+    DECORATIVE_FORM_ELEMENTS,
     FormService,
     FormStateService,
     FormFactoryService,
