@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormArray, FormControl, ReactiveFormsModule } from "@angular/forms";
+import { FormArray, FormControl } from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { CheckboxGroupField } from "@preforms/ts";
 import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
@@ -8,7 +8,7 @@ import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 @Component({
   selector: "preforms-mat-checkbox-group",
   template: `
-    <div [formArray]="control" class="preforms-checkbox-group">
+    <div class="preforms-checkbox-group">
       <div class="preforms-checkbox-group-header">
         {{ field.label }}
       </div>
@@ -22,7 +22,7 @@ import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
       }
     </div>
   `,
-  imports: [ReactiveFormsModule, MatCheckboxModule],
+  imports: [MatCheckboxModule],
 })
 export class CheckboxGroupFieldComponent extends BaseFieldComponent<
   FormArray,

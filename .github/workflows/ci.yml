@@ -29,3 +29,26 @@ jobs:
 
       - name: Test
         run: pnpm --filter @preforms/ts --filter @preforms/angular test
+
+  angular-compat:
+    name: Build & Test (Angular ${{ matrix.angular }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        angular: [20, 21]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      # Installs the given Angular major into an isolated temp copy of the
+      # workspace, then builds and tests @preforms/ts and @preforms/angular.
+      - name: Build & test against Angular ${{ matrix.angular }}
+        run: node scripts/test-angular-matrix.mjs ${{ matrix.angular }}

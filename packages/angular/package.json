@@ -4,12 +4,12 @@
   "description": "Angular renderer and field components for Preforms dynamic forms.",
   "type": "module",
   "peerDependencies": {
-    "@angular/core": ">=21 <22",
-    "@angular/common": ">=21 <22",
-    "@angular/forms": ">=21 <22",
-    "@angular/platform-browser": ">=21 <22",
-    "@angular/cdk": ">=21 <22",
-    "@angular/material": ">=21 <22",
+    "@angular/core": "^20 || ^21",
+    "@angular/common": "^20 || ^21",
+    "@angular/forms": "^20 || ^21",
+    "@angular/platform-browser": "^20 || ^21",
+    "@angular/cdk": "^20 || ^21",
+    "@angular/material": "^20 || ^21",
     "@preforms/ts": "^0.1.0",
     "rxjs": "^7.8.0"
   },

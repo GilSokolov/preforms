@@ -14,7 +14,10 @@
     "pack:ts": "pnpm --filter @preforms/ts build && pnpm --dir packages/ts pack --dry-run",
     "pack:angular": "pnpm --filter @preforms/angular build && pnpm --dir dist/angular pack --dry-run",
     "start:example": "pnpm --filter example-app start",
-    "build:example": "pnpm --filter example-app build"
+    "build:example": "pnpm --filter example-app build",
+    "test:angular20": "node scripts/test-angular-matrix.mjs 20",
+    "test:angular21": "node scripts/test-angular-matrix.mjs 21",
+    "test:angular-matrix": "pnpm test:angular20 && pnpm test:angular21"
   },
   "keywords": [
     "forms",
