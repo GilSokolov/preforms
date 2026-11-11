@@ -205,6 +205,46 @@ describe("reindexArrayRow", () => {
     expect((row[0] as any).hint).toBe("row [0]");
   });
 
+  it("seeds a nested array from its own row's data, one row at a time", () => {
+    const tpl = [
+      { kind: "field", component: "input", id: "name", key: "name" },
+      {
+        kind: "array",
+        component: "array",
+        id: "cursors",
+        key: "cursors",
+        fields: [{ kind: "field", component: "input", id: "path", key: "path" }],
+      },
+      {
+        kind: "wrapper",
+        component: "fieldset",
+        id: "box",
+        key: "box",
+        fields: [
+          { kind: "array", component: "array", id: "tags", key: "tags", fields: [] },
+        ],
+      },
+    ] as unknown as FormElement[];
+
+    const data = [
+      { cursors: [{ path: "a" }, { path: "b" }], tags: ["x"] },
+      { cursors: [] },
+      { cursors: [{ path: "c" }] },
+    ];
+
+    const rows = data.map((row, i) => instantiateArrayRow(tpl, i, row));
+
+    expect(rows.map((r) => ((r[1] as any).value ?? []).length)).toEqual([
+      2, 0, 1,
+    ]);
+    expect((rows[0][1] as any).value).toEqual(data[0].cursors);
+    // wrappers are transparent: the array inside sees the row itself
+    expect(((rows[0][2] as any).fields[0] as any).value).toEqual(["x"]);
+    expect(((rows[1][2] as any).fields[0] as any).value).toBeUndefined();
+    // the template is never mutated
+    expect((tpl[1] as any).value).toBeUndefined();
+  });
+
   it("is a no-op when the index has not changed", () => {
     const tpl = template();
     const row = instantiateArrayRow(tpl, 1);

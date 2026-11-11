@@ -6,7 +6,9 @@ import { resolveFieldId } from "./resolve-field-id";
  *
  * @param fields - Array of FormFieldConfig objects defining each field in the row.
  * @param index - Index of the row (used to make field names unique).
- * @param parent - Optional parent key/id to namespace the row.
+ * @param rowValue - Optional data for this row. A nested `array` field whose key
+ *   holds an array in it is cloned with that array as its `value`, so it seeds
+ *   its own rows. Groups descend into `rowValue[group.key]`; wrappers are transparent.
  *
  * @remarks
  * - Only fields with a `name` or `key` property will receive a `name` for submission.
@@ -20,17 +22,37 @@ import { resolveFieldId } from "./resolve-field-id";
 export function instantiateArrayRow(
   fields: FormElement[],
   index: number,
+  rowValue?: unknown,
 ): FormElement[] {
+  const row =
+    rowValue && typeof rowValue === "object"
+      ? (rowValue as Record<string, unknown>)
+      : undefined;
+
   return fields.map((config: FormElement) => {
     const cloned = replaceIndexPlaceholders(config, index);
     switch (cloned.kind) {
       case "group":
         return {
           ...withIndexedId(cloned, index),
-          fields: instantiateArrayRow(cloned.fields, index),
+          fields: instantiateArrayRow(
+            cloned.fields,
+            index,
+            cloned.key ? row?.[cloned.key] : undefined,
+          ),
         };
 
-      case "array":
+      case "array": {
+        const nested = cloned.key ? row?.[cloned.key] : undefined;
+        const indexed = withIndexedId(cloned, index);
+
+        // a nested array seeds its own rows from field.value in ngOnInit, so it
+        // has to be handed the slice of this row's data that belongs to it
+        return Array.isArray(nested)
+          ? { ...indexed, value: nested }
+          : indexed;
+      }
+
       case "field":
       case "external":
       case "decorative":
@@ -40,7 +62,7 @@ export function instantiateArrayRow(
       case "wrapper":
         return {
           ...withIndexedId(cloned, index),
-          fields: instantiateArrayRow(cloned.fields, index),
+          fields: instantiateArrayRow(cloned.fields, index, row),
         };
 
       default:

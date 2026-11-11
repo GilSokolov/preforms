@@ -89,7 +89,7 @@ export class FieldArrayComponent
 
   ngOnInit(): void {
     this.field.value = Array.isArray(this.field.value) ? this.field.value : [];
-    this.field.value.forEach(() => this.add());
+    this.field.value.forEach((row: unknown) => this.add(row));
     this.array.patchValue(this.field.value);
   }
 
@@ -98,11 +98,11 @@ export class FieldArrayComponent
   }
 
   /** Adds a new group to the array */
-  add(): void {
+  add(rowValue?: unknown): void {
     if (!this.field.fields) throw new Error("Missing template configuration");
 
     const index = this.rows.length;
-    const fields = instantiateArrayRow(this.field.fields, index);
+    const fields = instantiateArrayRow(this.field.fields, index, rowValue);
 
     const { group, registrations } = this.factoryService.buildRow(fields);
 
