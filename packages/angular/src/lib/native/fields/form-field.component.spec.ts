@@ -32,7 +32,9 @@ describe("FormFieldComponent description", () => {
   beforeAll(() => {
     try {
       TestBed.initTestEnvironment(BrowserTestingModule, platformBrowserTesting());
-    } catch {}
+    } catch {
+      // already initialised by another spec in this worker
+    }
   });
   afterEach(() => TestBed.resetTestingModule());
 
