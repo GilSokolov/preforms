@@ -1,4 +1,10 @@
-import { Component, Input } from "@angular/core";
+import {
+  AfterContentInit,
+  Component,
+  ElementRef,
+  inject,
+  Input,
+} from "@angular/core";
 import { AbstractControl } from "@angular/forms";
 
 import { FormField } from "@preforms/ts";
@@ -13,6 +19,12 @@ import { FieldIconComponent } from "@preforms/angular/core";
         <label class="preforms-form-field-label" [for]="field.id">
           {{ field.label }}
         </label>
+      }
+
+      @if (field.description) {
+        <small class="preforms-field-description" [id]="descriptionId">
+          {{ field.description }}
+        </small>
       }
 
       <div class="preforms-form-field-row">
@@ -50,10 +62,27 @@ import { FieldIconComponent } from "@preforms/angular/core";
   `,
   imports: [FieldIconComponent],
 })
-export class FormFieldComponent {
+export class FormFieldComponent implements AfterContentInit {
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
+
   @Input() field!: FormField<any>;
   @Input() control!: AbstractControl;
   @Input() error?: string;
+
+  get descriptionId() {
+    return `${this.field.id}-description`;
+  }
+
+  /** Links the projected control to the description line for assistive tech. */
+  ngAfterContentInit(): void {
+    if (!this.field.description) return;
+    const control = this.host.nativeElement.querySelector(
+      "input, select, textarea",
+    );
+    if (control && !control.hasAttribute("aria-describedby")) {
+      control.setAttribute("aria-describedby", this.descriptionId);
+    }
+  }
 
   get leftIcons() {
     return this.field.icons?.filter((i) => i.side === "left") ?? [];
