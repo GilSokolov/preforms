@@ -1,0 +1,50 @@
+preforms-group.preforms-row-layout {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+preforms-group.preforms-row-layout > .preforms-row-item {
+  flex: var(--preforms-row-field-flex, 1 1 0);
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+preforms-group.preforms-row-layout > [data-preforms-row-size="select"] {
+  flex: var(--preforms-row-select-flex, 0 1 11rem);
+}
+
+preforms-group.preforms-row-layout > [data-preforms-row-size="compact"] {
+  flex: none;
+}
+
+/* The empty preforms-field anchor and the dynamically inserted field host
+   are siblings inside the flex item. */
+preforms-group.preforms-row-layout > .preforms-row-item > * {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+preforms-group.preforms-row-layout .preforms-form-field,
+preforms-group.preforms-row-layout mat-form-field {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+preforms-group.preforms-row-layout .preforms-form-field-row {
+  display: flex;
+  min-width: 0;
+}
+
+preforms-group.preforms-row-layout .preforms-form-field-row > input,
+preforms-group.preforms-row-layout .preforms-form-field-row > select,
+preforms-group.preforms-row-layout .preforms-form-field-row > textarea {
+  flex: 1 1 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}

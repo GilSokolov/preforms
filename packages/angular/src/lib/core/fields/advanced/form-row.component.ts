@@ -13,6 +13,7 @@ import { DynamicFormElement } from "../../decorators";
     <preforms-group
       [control]="control"
       [fields]="field.fields"
+      [rowLayout]="true"
       [style.display]="'flex'"
       [style.gap]="field.gap"
       [class]="[field.className, 'form-row']"

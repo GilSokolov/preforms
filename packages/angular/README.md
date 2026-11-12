@@ -122,6 +122,28 @@ Native controls are included. For Material components, install Angular Material:
 npm i @angular/material
 ```
 
+## Row sizing
+
+`FormRow` shares the available width equally between text fields by default.
+Selects use a shrinkable `11rem` basis; buttons, checkboxes and toggles keep
+their natural size. These layout styles ship with the renderer and work with
+native and Material fields, including rows nested in arrays. Compact items
+can wrap when the row is too narrow.
+
+Configure select sizing through the row's `style` option:
+
+```ts
+new FormRow([methodField, urlField], {
+  style: { "--preforms-row-select-flex": "0 1 9rem" },
+});
+```
+
+Use `"1 1 0"` for equally growing selects. `--preforms-row-field-flex`
+controls the other growing fields (default `1 1 0`). Field `className` values
+are also applied to the row item wrapper for individual sizing overrides.
+Existing `gap` and `position` options still apply; justification distributes
+space only when the fields have not already consumed it.
+
 ## License
 
 MIT
