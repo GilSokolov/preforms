@@ -56,17 +56,19 @@ a {
   color: inherit;
 }
 
-.preforms-field-description,
-.preforms-field-hint {
-  color: var(--muted);
-}
-
-.preforms-field-error {
-  color: var(--red);
-}
-
-.preforms-dialog-panel {
-  background-color: var(--card) !important;
+/* Theme the native forms from the app palette. Set on :root because every
+   form in this app shares one theme; a wrapper element works the same way. */
+:root {
+  --preforms-border: var(--border);
+  --preforms-radius: 0.5rem;
+  --preforms-field: var(--ink);
+  --preforms-surface: var(--card);
+  --preforms-muted: var(--muted);
+  --preforms-danger: var(--red);
+  --preforms-accent: var(--indigo);
+  --preforms-on-accent: #fff;
+  --preforms-backdrop: rgb(1 4 9 / 0.7);
+  --preforms-shadow: 0 16px 40px rgb(1 4 9 / 0.6);
 }
 
 /* Quill dark theme overrides */

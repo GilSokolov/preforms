@@ -13,6 +13,7 @@ import { SIMPLE_FORM_EXAMPLE } from './order-form';
 import { DYNAMIC_CONTENT } from './dynamic-content';
 import { SIMPLE_VALIDATION_FORM } from './validation-rules';
 import { DYNAMIC_SELECT_FETCH_REMOTE_EXAMPLE } from './fetch-remote';
+import { THEMING_EXAMPLE } from './theming';
 
 export const EXAMPLES = [
   BASIC_FORM_EXAMPLE,
@@ -29,5 +30,6 @@ export const EXAMPLES = [
   DYNAMIC_CONTENT,
   CART_BUILDER_EXAMPLE,
   LAZY_LOADING_FIELDS_EXAMPLE,
+  THEMING_EXAMPLE,
   DYNAMIC_SELECT_FETCH_REMOTE_EXAMPLE,
 ];

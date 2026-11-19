@@ -85,6 +85,8 @@ export class CartBuilderComponent {
 
             new DialogField({
               id: 'comment-dialog[$index]',
+              width: '420px',
+              height: '320px',
               fields: [
                 new TextareaField({
                   key: 'comment',
@@ -104,7 +106,7 @@ export class CartBuilderComponent {
               ],
             }),
           ],
-          columns: '1fr 1fr 1fr 1fr',
+          columns: 'minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto 7rem',
         }),
       ],
 
