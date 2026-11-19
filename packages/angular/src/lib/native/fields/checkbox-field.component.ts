@@ -4,10 +4,12 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { CheckboxField } from "@preforms/ts";
 import { DynamicFormElement } from "@preforms/angular/core";
 import { BaseFieldComponent } from "@preforms/angular/core";
+import { CHOICE_STYLES } from "./native-styles";
 
 @DynamicFormElement({ component: "checkbox" })
 @Component({
   selector: "preforms-checkbox",
+  styles: CHOICE_STYLES,
   template: `
     <label [class]="field.className">
       <input type="checkbox" [formControl]="control" />

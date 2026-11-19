@@ -10,9 +10,11 @@ import { AbstractControl } from "@angular/forms";
 import { FormField } from "@preforms/ts";
 
 import { FieldIconComponent } from "@preforms/angular/core";
+import { FORM_FIELD_STYLES } from "./native-styles";
 
 @Component({
   selector: "preforms-form-field",
+  styles: FORM_FIELD_STYLES,
   template: `
     <div [class]="['preforms-form-field', field.className]">
       @if (field.label) {

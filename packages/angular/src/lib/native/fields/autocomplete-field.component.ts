@@ -10,10 +10,12 @@ import {
 } from "@preforms/angular/core";
 
 import { FormFieldComponent } from "./form-field.component";
+import { CONTROL_STYLES } from "./native-styles";
 
 @DynamicFormElement({ component: "autocomplete" })
 @Component({
   selector: "preforms-autocomplete",
+  styles: CONTROL_STYLES,
   template: `
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       <input

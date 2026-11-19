@@ -10,7 +10,7 @@ import { BaseFieldComponent } from "..";
   styles: [
     `
       .preforms-spacer {
-        height: 1rem;
+        height: var(--preforms-gap, 1rem);
       }
     `,
   ],

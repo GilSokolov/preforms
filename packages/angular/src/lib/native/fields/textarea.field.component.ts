@@ -5,10 +5,12 @@ import { BaseFieldComponent } from "@preforms/angular/core";
 import { TextareaField } from "@preforms/ts";
 import { CommonModule } from "@angular/common";
 import { FormFieldComponent } from "./form-field.component";
+import { CONTROL_STYLES } from "./native-styles";
 
 @DynamicFormElement({ component: "textarea" })
 @Component({
   selector: "preforms-textarea",
+  styles: CONTROL_STYLES,
   template: `
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       <textarea

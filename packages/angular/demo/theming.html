@@ -1,0 +1,142 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>preforms theming demo</title>
+<!-- Copy of native-styles.ts (a spec fails if they drift). -->
+<style>
+.preforms-input,
+.preforms-select-field,
+.preforms-textarea {
+  box-sizing: border-box;
+  padding: var(--preforms-control-pad, 0.5rem);
+  border: 1px solid var(--preforms-border, color-mix(in srgb, currentColor 25%, transparent));
+  border-radius: var(--preforms-radius, 0.5rem);
+  background: var(--preforms-field, Field);
+    color: inherit;
+  font: inherit;
+}
+
+.preforms-input:focus-visible,
+.preforms-select-field:focus-visible,
+.preforms-textarea:focus-visible {
+  outline: 2px solid var(--preforms-accent, AccentColor);
+  outline-offset: 1px;
+}
+
+.preforms-input.ng-invalid.ng-touched,
+.preforms-select-field.ng-invalid.ng-touched,
+.preforms-textarea.ng-invalid.ng-touched {
+  border-color: var(--preforms-danger, #dc2626);
+}
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--preforms-accent, AccentColor);
+  color: inherit;
+  font: inherit;
+}
+
+.preforms-checkbox-description,
+.preforms-radio-description,
+.preforms-field-hint,
+.preforms-field-error {
+  font-size: var(--preforms-font-size-sm, 0.85rem);
+  line-height: var(--preforms-line-height, 1.4);
+}
+
+.preforms-checkbox-description,
+.preforms-radio-description,
+.preforms-field-hint {
+  color: var(--preforms-muted, color-mix(in srgb, currentColor 60%, transparent));
+}
+
+.preforms-field-error {
+  color: var(--preforms-danger, #dc2626);
+}
+.preforms-form-field {
+  margin-bottom: var(--preforms-gap, 1rem);
+}
+
+.preforms-form-field-label,
+.preforms-field-hint,
+.preforms-field-description,
+.preforms-field-error {
+  font-size: var(--preforms-font-size-sm, 0.85rem);
+  line-height: var(--preforms-line-height, 1.4);
+}
+
+.preforms-form-field-label,
+.preforms-field-hint {
+  color: var(--preforms-muted, color-mix(in srgb, currentColor 60%, transparent));
+}
+
+.preforms-field-description {
+  display: block;
+  color: var(--preforms-muted, color-mix(in srgb, currentColor 60%, transparent));
+}
+
+.preforms-field-error {
+  color: var(--preforms-danger, #dc2626);
+}
+</style>
+<style>
+  body { font: 16px system-ui; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); }
+  section { padding: 1.5rem; background: Canvas; color: CanvasText; }
+  h2 { font-size: 0.9rem; margin: 0 0 1rem; }
+  /* Consumer theme: tokens set on a wrapper, never on :root. */
+  .themed {
+    --preforms-accent: #7c3aed;
+    --preforms-on-accent: white;
+    --preforms-radius: 0.25rem;
+    --preforms-field: #f5f3ff;
+    --preforms-border: #c4b5fd;
+    --preforms-muted: #6d28d9;
+    --preforms-control-pad: 0.75rem;
+    --preforms-backdrop: rgb(76 29 149 / 0.5);
+    --preforms-pill-radius: 0.25rem;
+    --preforms-array-pad: 1rem;
+    --preforms-shadow: 0 12px 32px rgb(76 29 149 / 0.35);
+    color: #2e1065;
+    background: #fff;
+  }
+  .preforms-array-item { display: flex; align-items: center; margin-bottom: var(--preforms-gap, 1rem); padding: var(--preforms-array-pad, 0.5rem); border: 1px solid var(--preforms-border, color-mix(in srgb, currentColor 25%, transparent)); border-radius: var(--preforms-radius, 0.5rem); }
+  .cdk-drag-preview { box-sizing: border-box; background: var(--preforms-surface, Canvas); box-shadow: var(--preforms-shadow, 0 8px 24px rgb(0 0 0 / 0.2)); }
+  .preforms-dialog { border: 0; border-radius: var(--preforms-dialog-radius, var(--preforms-radius, 0.5rem)); max-width: var(--preforms-dialog-width, min(90vw, 500px)); background: var(--preforms-surface, Canvas); color: inherit; box-shadow: var(--preforms-shadow, 0 8px 24px rgb(0 0 0 / 0.2)); }
+  .preforms-dialog::backdrop { background: var(--preforms-backdrop, rgb(0 0 0 / 0.45)); }
+  .preforms-dialog-close-btn { border: 0; border-radius: var(--preforms-pill-radius, 999px); background: transparent; color: inherit; width: 2rem; height: 2rem; }
+  .btn { padding: .5rem 1rem; border: 1px solid var(--preforms-accent, AccentColor); border-radius: var(--preforms-radius, .5rem); background: var(--preforms-accent, AccentColor); color: var(--preforms-on-accent, AccentColorText); font: inherit; }
+</style>
+<body>
+  <section style="color-scheme: light"><h2>light, no tokens</h2>
+    <div id="f1"></div></section>
+  <section style="color-scheme: dark"><h2>dark, no tokens</h2>
+    <div id="f2"></div></section>
+  <section class="themed" style="color-scheme: light"><h2>tokens overridden</h2>
+    <div id="f3"></div></section>
+  <template id="form">
+    <div class="preforms-form-field">
+      <label class="preforms-form-field-label" for="n">Name</label>
+      <small class="preforms-field-description">As on your card</small>
+      <div class="preforms-form-field-row"><input id="n" class="preforms-input" value="Ada" /></div>
+      <small class="preforms-field-hint">Hint text</small>
+    </div>
+    <div class="preforms-form-field">
+      <label class="preforms-form-field-label">Notes</label>
+      <div class="preforms-form-field-row"><textarea class="preforms-textarea ng-invalid ng-touched"></textarea></div>
+      <small class="preforms-field-error">Required</small>
+    </div>
+    <label><input type="checkbox" checked /> <span>Subscribe</span></label>
+    <p><button class="btn">Save</button></p>
+    <div class="preforms-array-item"><div class="preforms-array-handle" style="color:var(--preforms-muted,color-mix(in srgb, currentColor 60%, transparent))"><svg width="18" height="24" viewBox="0 0 960 960" fill="currentColor"><circle cx="360" cy="560" r="56"/><circle cx="600" cy="560" r="56"/><circle cx="360" cy="320" r="56"/><circle cx="600" cy="320" r="56"/></svg></div><div class="preforms-array-group" style="flex:1">Array item</div></div>
+    <div class="preforms-array-item cdk-drag-preview" style="transform:translate(1.5rem,-0.5rem)"><div class="preforms-array-handle" style="color:var(--preforms-muted,color-mix(in srgb, currentColor 60%, transparent))"><svg width="18" height="24" viewBox="0 0 960 960" fill="currentColor"><circle cx="360" cy="560" r="56"/><circle cx="600" cy="560" r="56"/><circle cx="360" cy="320" r="56"/><circle cx="600" cy="320" r="56"/></svg></div><div class="preforms-array-group" style="flex:1">Mid-drag preview</div></div>
+    <p><button class="btn open" type="button">Open dialog</button></p>
+    <dialog class="preforms-dialog"><div class="preforms-dialog-header"><button type="button" class="preforms-dialog-close-btn">&#10005;</button></div><div class="preforms-dialog-content">Dialog body</div></dialog>
+  </template>
+  <script>
+    for (const id of ["f1", "f2", "f3"])
+      document.getElementById(id).append(document.getElementById("form").content.cloneNode(true));
+  for (const b of document.querySelectorAll(".open"))
+      b.addEventListener("click", () => b.closest("section").querySelector("dialog").showModal());
+    for (const b of document.querySelectorAll(".preforms-dialog-close-btn"))
+      b.addEventListener("click", () => b.closest("dialog").close());
+  </script>
+</body>

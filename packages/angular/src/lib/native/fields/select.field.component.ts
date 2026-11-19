@@ -5,6 +5,7 @@ import { DynamicFormElement } from "@preforms/angular/core";
 import { BaseFieldComponent } from "@preforms/angular/core";
 import { isOptionGroup, SelectField } from "@preforms/ts";
 import { FormFieldComponent } from "./form-field.component";
+import { CONTROL_STYLES } from "./native-styles";
 
 /**
  * Angular picks a select's ControlValueAccessor from the template statically:
@@ -17,6 +18,7 @@ import { FormFieldComponent } from "./form-field.component";
 @DynamicFormElement({ component: "select" })
 @Component({
   selector: "preforms-select",
+  styles: CONTROL_STYLES,
   template: `
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       @if (field.multiple) {

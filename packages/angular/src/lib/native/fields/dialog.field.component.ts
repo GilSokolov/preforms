@@ -12,9 +12,12 @@ import { BaseFieldComponent } from "@preforms/angular/core";
   styles: `
     .preforms-dialog {
       border: 0;
-      border-radius: 12px;
+      border-radius: var(--preforms-dialog-radius, var(--preforms-radius, 0.5rem));
       padding: 0;
-      max-width: min(90vw, 500px);
+      max-width: var(--preforms-dialog-width, min(90vw, 500px));
+      background: var(--preforms-surface, Canvas);
+      color: inherit;
+      box-shadow: var(--preforms-shadow, 0 8px 24px rgb(0 0 0 / 0.2));
       max-height: 90vh;
       overflow: hidden;
     }
@@ -23,36 +26,37 @@ import { BaseFieldComponent } from "@preforms/angular/core";
       display: flex;
       flex-direction: column;
       height: 100%;
-      background: white;
+      background: var(--preforms-surface, Canvas);
     }
 
     .preforms-dialog-header {
       display: flex;
       justify-content: flex-end;
-      padding: 0.5rem;
+      padding: var(--preforms-control-pad, 0.5rem);
     }
 
     .preforms-dialog-close-btn {
       width: 2rem;
       height: 2rem;
       border: 0;
-      border-radius: 999px;
+      border-radius: var(--preforms-pill-radius, 999px);
       background: transparent;
       cursor: pointer;
       display: grid;
       place-items: center;
+      color: inherit;
       font: inherit;
       line-height: 1;
     }
 
     .preforms-dialog-content {
-      padding: 1rem;
+      padding: var(--preforms-gap, 1rem);
       flex: 1;
       overflow: auto;
     }
 
     .preforms-dialog::backdrop {
-      background: rgb(0 0 0 / 0.45);
+      background: var(--preforms-backdrop, rgb(0 0 0 / 0.45));
     }
   `,
   template: `

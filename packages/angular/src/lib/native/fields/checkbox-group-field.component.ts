@@ -4,10 +4,12 @@ import { FormArray, FormControl } from "@angular/forms";
 import { CheckboxGroupField } from "@preforms/ts";
 import { DynamicFormElement } from "@preforms/angular/core";
 import { BaseFieldComponent } from "@preforms/angular/core";
+import { CHOICE_STYLES } from "./native-styles";
 
 @DynamicFormElement({ component: "checkbox-group" })
 @Component({
   selector: "preforms-checkbox-group",
+  styles: CHOICE_STYLES,
   template: `
     <div class="preforms-checkbox-group">
       <div class="preforms-checkbox-group-header">

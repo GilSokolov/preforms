@@ -3,10 +3,12 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { DynamicFormElement } from "@preforms/angular/core";
 import { BaseFieldComponent } from "@preforms/angular/core";
 import { RadioField } from "@preforms/ts";
+import { CHOICE_STYLES } from "./native-styles";
 
 @DynamicFormElement({ component: "radio" })
 @Component({
   selector: "preforms-radio-field",
+  styles: CHOICE_STYLES,
   template: `
     <strong class="preforms-radio-field-header">
       {{ field.label }}

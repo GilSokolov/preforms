@@ -1,13 +1,16 @@
 .preforms-array-label {
-  margin: 10px 0;
+  margin: var(--preforms-gap, 1rem) 0;
   display: block;
 }
 
 .preforms-array-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--preforms-gap, 1rem);
   min-width: 0;
+  padding: var(--preforms-array-pad, 0.5rem);
+  border: 1px solid var(--preforms-border, color-mix(in srgb, currentColor 25%, transparent));
+  border-radius: var(--preforms-radius, 0.5rem);
 }
 
 .preforms-array-group {
@@ -17,8 +20,32 @@
 
 .preforms-array-header {
   display: flex;
-  gap: 20px;
+  gap: var(--preforms-gap, 1rem);
   align-items: center;
+}
+
+.preforms-array-description,
+.preforms-field-hint,
+.preforms-field-error {
+  font-size: var(--preforms-font-size-sm, 0.85rem);
+  line-height: var(--preforms-line-height, 1.4);
+}
+
+.preforms-array-description,
+.preforms-field-hint {
+  color: var(--preforms-muted, color-mix(in srgb, currentColor 60%, transparent));
+}
+
+/* The preview stays inside the form (cdkDragPreviewContainer="parent") so it
+   inherits the tokens; position: fixed breaks under a transformed ancestor. */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  background: var(--preforms-surface, Canvas);
+  box-shadow: var(--preforms-shadow, 0 8px 24px rgb(0 0 0 / 0.2));
+}
+
+.preforms-field-error {
+  color: var(--preforms-danger, #dc2626);
 }
 
 preforms-array-handle {

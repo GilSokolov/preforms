@@ -6,10 +6,12 @@ import { DynamicFormElement } from "@preforms/angular/core";
 import { AriaAttributesDirective } from "@preforms/angular/core";
 import { BaseFieldComponent } from "@preforms/angular/core";
 import { FormFieldComponent } from "./form-field.component";
+import { CONTROL_STYLES } from "./native-styles";
 
 @DynamicFormElement({ component: "number" })
 @Component({
   selector: "preforms-number",
+  styles: CONTROL_STYLES,
   template: `
     <preforms-form-field [field]="field" [control]="control" [error]="error">
       <input

@@ -3,6 +3,15 @@ import { FieldIcon } from "@preforms/angular/core";
 
 @Component({
   selector: "preforms-icon",
+  styles: `
+    button.preforms-icon {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+  `,
   template: `
     @if (visible()) {
       @if (type === "button") {

@@ -12,6 +12,25 @@ import {
 @DynamicFormElement({ component: "details" })
 @Component({
   selector: "preforms-details",
+  styles: `
+    details {
+      border: 1px solid var(--preforms-border, color-mix(in srgb, currentColor 25%, transparent));
+      border-radius: var(--preforms-radius, 0.5rem);
+    }
+
+    summary {
+      padding: var(--preforms-control-pad, 0.5rem);
+      color: var(--preforms-muted, color-mix(in srgb, currentColor 60%, transparent));
+      cursor: pointer;
+    }
+
+    /* Raised body; the summary stays on the page background. */
+    details[open] > :not(summary) {
+      padding: var(--preforms-gap, 1rem);
+      background: var(--preforms-surface, Canvas);
+      border-radius: 0 0 var(--preforms-radius, 0.5rem) var(--preforms-radius, 0.5rem);
+    }
+  `,
   template: `
     <details>
       <summary>{{ field.label }}</summary>

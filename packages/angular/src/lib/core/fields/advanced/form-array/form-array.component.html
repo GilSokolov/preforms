@@ -29,7 +29,10 @@
     [class]="['preforms-array', field.className]"
   >
     @for (formGroup of array.controls; track formGroup; let i = $index) {
-      <div cdkDrag [formGroupName]="i" class="preforms-array-item">
+      <div
+        cdkDrag
+        cdkDragPreviewContainer="parent"
+        [formGroupName]="i" class="preforms-array-item">
         <preforms-array-handle />
 
         <preforms-group

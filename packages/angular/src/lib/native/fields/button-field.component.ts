@@ -7,6 +7,27 @@ import { FieldButton } from "@preforms/ts";
 @DynamicFormElement({ component: "button" })
 @Component({
   selector: "preforms-button",
+  styles: `
+    .preforms-button {
+      padding: var(--preforms-control-pad, 0.5rem) calc(var(--preforms-control-pad, 0.5rem) * 2);
+      border: 1px solid var(--preforms-accent, AccentColor);
+      border-radius: var(--preforms-radius, 0.5rem);
+      background: var(--preforms-accent, AccentColor);
+      color: var(--preforms-on-accent, AccentColorText);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .preforms-button:focus-visible {
+      outline: 2px solid var(--preforms-accent, AccentColor);
+      outline-offset: 2px;
+    }
+
+    .preforms-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  `,
   template: `
     <button
       [type]="field.type"

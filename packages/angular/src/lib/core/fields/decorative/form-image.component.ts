@@ -20,14 +20,14 @@ import { AbstractControl } from "@angular/forms";
   `,
   styles: `
     .preforms-image {
-      margin: 0.5rem 0 1rem;
+      margin: 0.5rem 0 var(--preforms-gap, 1rem);
     }
 
     .preforms-image img {
       max-width: 100%;
       height: auto;
       display: block;
-      border-radius: var(--form-image-radius, 4px);
+      border-radius: var(--preforms-radius, 0.5rem);
     }
   `,
 })

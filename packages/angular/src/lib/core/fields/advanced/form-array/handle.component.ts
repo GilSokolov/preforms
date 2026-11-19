@@ -3,6 +3,11 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "preforms-array-handle",
+  styles: `
+    .preforms-array-handle {
+      color: var(--preforms-muted, color-mix(in srgb, currentColor 60%, transparent));
+    }
+  `,
   template: `
     <div class="preforms-array-handle" cdkDragHandle>
       <svg
@@ -10,7 +15,7 @@ import { Component } from "@angular/core";
         width="18px"
         height="24px"
         viewBox="0 0 960 960"
-        fill="grey"
+        fill="currentColor"
       >
         <circle cx="360" cy="800" r="56.5" />
         <circle cx="600" cy="800" r="56.5" />

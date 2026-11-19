@@ -13,10 +13,10 @@ import { FormDescription } from "@preforms/ts";
   `,
   styles: `
     .preforms-description {
-      font-size: 0.875rem;
-      line-height: 1.5;
-      color: var(--form-description-color, #6b7280);
-      margin: 0.25rem 0 0.75rem;
+      font-size: var(--preforms-font-size-sm, 0.85rem);
+      line-height: var(--preforms-line-height, 1.4);
+      color: var(--preforms-muted, color-mix(in srgb, currentColor 60%, transparent));
+      margin: 0.25rem 0 var(--preforms-gap, 1rem);
     }
   `,
 })

@@ -30,12 +30,12 @@ import { Divider } from "@preforms/ts";
         content: "";
         flex: 1;
         height: 1px;
-        background: var(--divider-color, #e5e7eb);
+        background: var(--preforms-border, color-mix(in srgb, currentColor 25%, transparent));
       }
 
       .form-divider__label {
-        font-size: 0.875rem;
-        color: var(--divider-label-color, #6b7280);
+        font-size: var(--preforms-font-size-sm, 0.85rem);
+        color: var(--preforms-muted, color-mix(in srgb, currentColor 60%, transparent));
         white-space: nowrap;
       }
     }
