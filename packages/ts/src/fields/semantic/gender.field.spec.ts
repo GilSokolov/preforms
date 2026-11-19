@@ -10,7 +10,7 @@ describe("Gender", () => {
 
   it("defaults to the male/female option set", () => {
     const field = new Gender();
-    expect(field.options?.map((o) => o.value)).toEqual(["male", "female"]);
+    expect(field.options?.map((o) => (o as { value: unknown }).value)).toEqual(["male", "female"]);
   });
 
   it("defaults required to false", () => {

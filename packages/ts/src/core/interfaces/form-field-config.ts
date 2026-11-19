@@ -1,6 +1,7 @@
 import { AbstractFormElementConfig } from "./base-field-config";
 import { FormFieldIcon } from "./field-icon";
 import { PatternInput } from "./pattern-rule";
+import type { FormFieldOptionGroup } from "../models/field-option-group";
 
 /**
  * Base configuration for all form fields.
@@ -24,7 +25,7 @@ export interface FormFieldConfig<
   /**
    * Options for selectable fields (select, radio, checkbox-group, etc.).
    */
-  options?: FormFieldOptionConfig<T>;
+  options?: FormFieldOptionsInput<T>;
 
   /**
    * Whether the field accepts multiple values.
@@ -105,3 +106,25 @@ export interface FormFieldConfig<
 }
 
 export type FormFieldOptionConfig<T> = T[] | { value: T; label: string }[];
+
+/**
+ * A group of options as plain data, e.g. when a form is built from JSON.
+ * Converted to a `FormFieldOptionGroup` by the field constructor.
+ */
+export interface FormFieldOptionGroupConfig<T> {
+  label: string;
+  options: (T | { value: T; label: string })[];
+  disabled?: boolean;
+}
+
+/**
+ * What a field's `options` config accepts: plain values, `{ value, label }`
+ * objects, `FormFieldOption` / `FormFieldOptionGroup` instances, or plain
+ * group objects, in any mix.
+ */
+export type FormFieldOptionsInput<T> = (
+  | T
+  | { value: T; label: string }
+  | FormFieldOptionGroup<T>
+  | FormFieldOptionGroupConfig<T>
+)[];

@@ -10,7 +10,7 @@ describe("AutocompleteField", () => {
   it("normalizes string options into FormFieldOption instances", () => {
     const field = new AutocompleteField("country", ["Cyprus", "France"]);
     expect(field.options).toHaveLength(2);
-    expect(field.options?.[0].value).toBe("Cyprus");
+    expect((field.options?.[0] as { value: unknown }).value).toBe("Cyprus");
   });
 
   it("defaults value to an empty string", () => {

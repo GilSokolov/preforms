@@ -13,7 +13,7 @@ describe("SelectField", () => {
     expect(field.key).toBe("country");
     expect(field.value).toBe("USA");
     expect(field.options).toHaveLength(2);
-    expect(field.options?.[0].value).toBe("USA");
+    expect((field.options?.[0] as { value: unknown }).value).toBe("USA");
   });
 
   it("supports the full config object overload", () => {

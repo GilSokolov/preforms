@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
-import { SelectField } from "@preforms/ts";
+import { isOptionGroup, SelectField } from "@preforms/ts";
 import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 
 @DynamicFormElement({ component: "select" })
@@ -16,8 +16,16 @@ import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
         [multiple]="!!field.multiple"
         (selectionChange)="emit('change')"
       >
-        @for (option of field.options; track option) {
-          <mat-option [value]="option.value">{{ option.label }}</mat-option>
+        @for (item of field.options; track $index) {
+          @if (isOptionGroup(item)) {
+            <mat-optgroup [label]="item.label" [disabled]="item.disabled">
+              @for (option of item.options; track $index) {
+                <mat-option [value]="option.value">{{ option.label }}</mat-option>
+              }
+            </mat-optgroup>
+          } @else {
+            <mat-option [value]="item.value">{{ item.label }}</mat-option>
+          }
         }
       </mat-select>
       @if (field.hint) {
@@ -33,4 +41,6 @@ import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 export class SelectFieldComponent extends BaseFieldComponent<
   FormControl,
   SelectField
-> {}
+> {
+  isOptionGroup = isOptionGroup;
+}

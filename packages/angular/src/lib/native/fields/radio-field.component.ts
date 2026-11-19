@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { DynamicFormElement } from "@preforms/angular/core";
 import { BaseFieldComponent } from "@preforms/angular/core";
-import { RadioField } from "@preforms/ts";
+import { flattenOptions, RadioField } from "@preforms/ts";
 import { CHOICE_STYLES } from "./native-styles";
 
 @DynamicFormElement({ component: "radio" })
@@ -13,7 +13,7 @@ import { CHOICE_STYLES } from "./native-styles";
     <strong class="preforms-radio-field-header">
       {{ field.label }}
     </strong>
-    @for (option of field.options; track $index) {
+    @for (option of flatOptions; track $index) {
       <label [class]="field.className">
         <input
           type="radio"
@@ -44,4 +44,8 @@ import { CHOICE_STYLES } from "./native-styles";
 export class RadioFieldComponent extends BaseFieldComponent<
   FormControl,
   RadioField
-> {}
+> {
+  get flatOptions() {
+    return flattenOptions(this.field.options);
+  }
+}

@@ -19,7 +19,7 @@ describe("Currency", () => {
     });
 
     expect(field.options?.[0].label).toBe("USD — US Dollar");
-    expect(field.options?.[0].value).toBe("USD");
+    expect((field.options?.[0] as { value: unknown }).value).toBe("USD");
   });
 
   it("formats labels as just the code when labelFormat is 'code'", () => {

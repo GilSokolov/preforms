@@ -1,6 +1,8 @@
 import { FormFieldConfig } from "../interfaces/form-field-config";
 import { AbstractFormElement } from ".";
 import { FormFieldOption } from "./field-option";
+import { FormFieldOptionGroup } from "./field-option-group";
+import { normalizeOption } from "../../utils/form-field-option";
 import { PatternRule } from "../interfaces/pattern-rule";
 import { normalizePattern } from "../../utils/normalize-pattern";
 import { FormFieldIcon } from "../interfaces";
@@ -13,7 +15,7 @@ export class FormField<T = unknown> extends AbstractFormElement<T> {
 
   type?: string;
   autocomplete: "on" | "off" | string;
-  options?: FormFieldOption<T>[];
+  options?: (FormFieldOption<T> | FormFieldOptionGroup<T>)[];
   multiple?: boolean;
   min?: number;
   max?: number;
@@ -56,9 +58,7 @@ export class FormField<T = unknown> extends AbstractFormElement<T> {
 
     // options normalization
     if (config.options) {
-      this.options = config.options.map((opt) =>
-        opt instanceof FormFieldOption ? opt : new FormFieldOption(opt),
-      );
+      this.options = config.options.map((opt) => normalizeOption<T>(opt));
     }
 
     // pattern normalization

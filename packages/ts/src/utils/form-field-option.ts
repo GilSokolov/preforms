@@ -1,4 +1,8 @@
-import type { FormFieldOptionConfig } from "../core/interfaces/form-field-config";
+import type {
+  FormFieldOptionConfig,
+  FormFieldOptionGroupConfig,
+  FormFieldOptionsInput,
+} from "../core/interfaces/form-field-config";
 import { FormFieldOption } from "../core/models/field-option";
 import { FormFieldOptionGroup } from "../core/models/field-option-group";
 
@@ -46,23 +50,65 @@ export function isOptionGroup<T>(
  * ```
  */
 export function normalizeOptions<T>(
-  options: FormFieldOptionConfig<T> | FormFieldOptionGroup<T>[],
-) {
-  return options.map((opt) => {
-    if (opt instanceof FormFieldOption) return opt;
+  options: FormFieldOptionConfig<T> | FormFieldOptionsInput<T>,
+): (FormFieldOption<T> | FormFieldOptionGroup<T>)[] {
+  return (options as FormFieldOptionsInput<T>).map((opt) =>
+    normalizeOption<T>(opt),
+  );
+}
 
-    if (typeof opt === "string" || typeof opt === "number") {
-      return new FormFieldOption(opt);
-    }
+/**
+ * Normalizes one entry of an `options` list. Groups (instances or plain
+ * `{ label, options }` objects) become `FormFieldOptionGroup`s; everything else
+ * becomes a `FormFieldOption`.
+ */
+export function normalizeOption<T>(
+  opt: FormFieldOptionsInput<T>[number],
+): FormFieldOption<T> | FormFieldOptionGroup<T> {
+  if (opt instanceof FormFieldOption || opt instanceof FormFieldOptionGroup) {
+    return opt;
+  }
 
-    if (isOptionObject<T>(opt)) {
-      return new FormFieldOption(opt);
-    }
+  if (isOptionGroupConfig<T>(opt)) {
+    return new FormFieldOptionGroup<T>(opt.label, opt.options, opt.disabled);
+  }
 
-    throw new Error(
-      `Invalid option type. Must be FormFieldOption<T>, primitive, or { value: T; label: string }`,
-    );
-  });
+  if (typeof opt === "string" || typeof opt === "number") {
+    return new FormFieldOption<T>(opt as T);
+  }
+
+  if (isOptionObject<T>(opt)) {
+    return new FormFieldOption<T>(opt);
+  }
+
+  throw new Error(
+    `Invalid option type. Must be FormFieldOption<T>, FormFieldOptionGroup<T>, primitive, { value: T; label: string } or { label: string; options: [...] }`,
+  );
+}
+
+/**
+ * Expands groups into their options, for controls that have no group concept
+ * (radio, autocomplete, datalist).
+ */
+export function flattenOptions<T>(
+  options: readonly (FormFieldOption<T> | FormFieldOptionGroup<T>)[] | undefined,
+): FormFieldOption<T>[] {
+  return (options ?? []).flatMap((o) =>
+    o instanceof FormFieldOptionGroup ? o.options : [o],
+  );
+}
+
+/** A plain `{ label, options: [...] }` object (no `value`) is a group. */
+export function isOptionGroupConfig<T>(
+  opt: unknown,
+): opt is FormFieldOptionGroupConfig<T> {
+  return (
+    !!opt &&
+    typeof opt === "object" &&
+    !("value" in opt) &&
+    "label" in opt &&
+    Array.isArray((opt as { options?: unknown }).options)
+  );
 }
 
 export function isOptionObject<T>(

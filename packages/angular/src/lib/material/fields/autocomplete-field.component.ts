@@ -5,7 +5,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { DynamicFormElement, BaseFieldComponent } from "@preforms/angular/core";
 
-import { InputField } from "@preforms/ts";
+import { flattenOptions, InputField } from "@preforms/ts";
 
 @DynamicFormElement({ component: "autocomplete" })
 @Component({
@@ -21,7 +21,7 @@ import { InputField } from "@preforms/ts";
         [matAutocomplete]="auto"
       />
       <mat-autocomplete #auto="matAutocomplete">
-        @for (option of field.options; track $index) {
+        @for (option of flatOptions; track $index) {
           <mat-option [value]="option.value">
             {{ option.label }}
           </mat-option>
@@ -41,4 +41,8 @@ import { InputField } from "@preforms/ts";
 export class AutocompleteFieldComponent extends BaseFieldComponent<
   FormControl,
   InputField
-> {}
+> {
+  get flatOptions() {
+    return flattenOptions(this.field.options);
+  }
+}

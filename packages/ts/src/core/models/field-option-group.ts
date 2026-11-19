@@ -35,7 +35,7 @@ export class FormFieldOptionGroup<T = any> {
    */
   constructor(
     label: string,
-    options: FormFieldOptionConfig<T>,
+    options: FormFieldOptionConfig<T> | (T | { value: T; label: string })[],
     disabled = false,
   ) {
     this.label = label;

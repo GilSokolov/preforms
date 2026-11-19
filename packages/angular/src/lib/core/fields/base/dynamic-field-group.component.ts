@@ -45,10 +45,18 @@ export class DynamicFieldGroupComponent {
   }
 
   getControl(field: FormElement): AbstractControl {
+    // The form factory never adds a button's control to the group, so a keyed
+    // button resolves to the group, like an unkeyed one.
+    if (field.kind === "button") {
+      return this.control;
+    }
+
     if ("key" in field && field.key) {
       const ctrl = this.control.get(field.key);
       if (!ctrl) {
-        throw new Error(`Missing control for key: ${field.key}`);
+        throw new Error(
+          `Missing control for key: ${field.key}. Every keyed field needs a control in the form group. Buttons don't take one; use \`name\` or \`id\` for a button's identity.`,
+        );
       }
 
       return ctrl;

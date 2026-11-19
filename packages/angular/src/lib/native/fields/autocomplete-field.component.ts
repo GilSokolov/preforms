@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
-import { InputField } from "@preforms/ts";
+import { flattenOptions, InputField } from "@preforms/ts";
 
 import {
   AriaAttributesDirective,
@@ -34,7 +34,7 @@ import { CONTROL_STYLES } from "./native-styles";
 
       @if (field.options) {
         <datalist class="preforms-datalist" [id]="listName">
-          @for (item of field.options; track $index) {
+          @for (item of flatOptions; track $index) {
             <option class="preforms-datalist-option" [value]="item.value">
               {{ item.label }}
             </option>
@@ -49,6 +49,10 @@ export class AutocompleteFieldComponent extends BaseFieldComponent<
   FormControl,
   InputField
 > {
+  get flatOptions() {
+    return flattenOptions(this.field.options);
+  }
+
   get listName() {
     return this.field.options ? `${this.field.id}-list` : undefined;
   }

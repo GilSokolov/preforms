@@ -1,4 +1,4 @@
-import { FormField, FormFieldConfig, FormFieldOptionConfig } from "../../core";
+import { FormField, FormFieldConfig, FormFieldOptionsInput } from "../../core";
 
 type SelectConfig<T> = Omit<FormFieldConfig<T>, "component">;
 
@@ -27,11 +27,11 @@ export class SelectField<
   T extends string | number = string,
 > extends FormField<T> {
   constructor(config: SelectConfig<T>, value?: T);
-  constructor(key: string, options: FormFieldOptionConfig<T>, value?: T);
+  constructor(key: string, options: FormFieldOptionsInput<T>, value?: T);
 
   constructor(
     keyOrConfig: string | SelectConfig<T>,
-    valueOrOptions?: T | FormFieldOptionConfig<T>,
+    valueOrOptions?: T | FormFieldOptionsInput<T>,
     value?: T,
   ) {
     const config: SelectConfig<T> =
@@ -39,7 +39,7 @@ export class SelectField<
         ? {
             key: keyOrConfig,
             value,
-            options: valueOrOptions as FormFieldOptionConfig<T>,
+            options: valueOrOptions as FormFieldOptionsInput<T>,
           }
         : keyOrConfig;
 

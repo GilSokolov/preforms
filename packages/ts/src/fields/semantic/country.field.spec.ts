@@ -25,7 +25,7 @@ describe("Country", () => {
     });
 
     expect(field.options).toHaveLength(3);
-    expect(field.options?.map((o) => o.value)).toEqual([
+    expect(field.options?.map((o) => (o as { value: unknown }).value)).toEqual([
       "Canada",
       "USA",
       "Mexico",
