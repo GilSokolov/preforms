@@ -10,7 +10,7 @@
     "@angular/forms": "^20 || ^21",
     "@angular/material": "^20 || ^21",
     "@angular/platform-browser": "^20 || ^21",
-    "@preforms/ts": "^0.1.0",
+    "@preforms/ts": "^0.1.2",
     "rxjs": "^7.8.0"
   },
   "peerDependenciesMeta": {
